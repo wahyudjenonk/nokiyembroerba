@@ -1,0 +1,44 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+	<div class="col-lg-10">
+		<h2>Master {$submodul}</h2>
+		<ol class="breadcrumb">
+            <li>
+                Master
+            </li>
+            <li class="active">
+                <strong>Master PO Type</strong>
+            </li>
+        </ol>		
+	</div>
+</div>
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content" >
+					
+					<div id='grid_nya_{$submodul}' style='height:400px;'>
+						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
+							<label style='width:100px !important;'>Filter Data</label> :
+							<select id='{$submodul}_filter_kategori' style='width:150px;padding:5px;'>
+								<option value='col1'>Column 1</option>
+								<option value='col2'>Column 2</option>
+							</select>
+							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
+							
+							 {include file="backend/template/button_grid.html"}
+						</div>
+						
+						{include file="backend/template/grid.html"}
+					</div>
+					<div id='frm_{$submodul}' style='display:none;'></div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	//$('#grid_nya_{$submodul}').css('height', (getClientHeight()-) );
+</script>

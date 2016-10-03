@@ -1,0 +1,17 @@
+<style type="text/css">
+	.datagrid-row-over td{
+		background:#D0E5F5;
+	}
+	.datagrid-row-selected td{
+		background:#FBEC88;
+		color:#000;
+	}
+</style>
+
+
+<div id='grid_{$submodul}'></div>
+<script>
+$(function(){
+	genGrid('{$submodul}','grid_{$submodul}');
+});
+</script>
