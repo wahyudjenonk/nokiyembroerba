@@ -129,17 +129,16 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		case "phase":
 			judulnya = "";
 			urlnya = "phase";
-			//height = 800;
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'tp_warta',title:'Tipe Warta',width:200, halign:'center',align:'left'},
-			]
+				{field:'phase_code',title:'Phase Code',width:200, halign:'center',align:'left'},
+			];
 			kolom[modnya] = [	
-				{field:'nama_komisi',title:'Nama Komisi',width:200, halign:'center',align:'left'},
-				{field:'tgl_warta',title:'Tanggal',width:150, halign:'center',align:'center'},
-				{field:'judul_warta',title:'Judul',width:300, halign:'center',align:'left'},
-			]
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left'},
+				{field:'phase_year',title:'Year',width:150, halign:'center',align:'center'},
+				{field:'remark',title:'Remark',width:300, halign:'center',align:'left'},
+			];
 		break;
 		case "potype":
 			judulnya = "";
@@ -219,7 +218,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		onLoadSuccess: function(data){
 			if(data.total == 0){
 				var $panel = $(this).datagrid('getPanel');
-				var $info = '<div class="info-empty" style="margin-top:20%;">Data Tidak Tersedia</div>';
+				var $info = '<div class="info-empty" style="margin-top:18%;">Data Tidak Tersedia</div>';
 				$($panel).find(".datagrid-view").append($info);
 				//$('#edit').linkbutton({disabled:true});
 				//$('#del').linkbutton({disabled:true});

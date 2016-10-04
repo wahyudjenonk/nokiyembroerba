@@ -8366,3 +8366,14 @@ body.md-skin {
     margin: 0;
   }
 }
+
+div.info-empty {
+	display: block; 
+	margin: 100px auto 0px; 
+	background: none repeat scroll 0% 0% #EFEFEF; 
+	padding: 5px; text-align: center; 
+	border: 1px solid rgb(175, 175, 175); 
+	border-radius: 3px 3px 3px 3px;
+	font-size: 17px; 
+	width: 300px;
+}
