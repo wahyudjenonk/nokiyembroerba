@@ -25,6 +25,8 @@ class Backend extends JINGGA_Controller {
 	function getdisplay($p1="", $p2=""){
 		$display = false;
 		$temp = "backend/modul/".$p1."/".$p2.".html";
+		$editstatus = $this->input->post('editstatus');
+		$id = $this->input->post('id');
 		
 		switch($p1){
 			case "beranda":
@@ -35,7 +37,10 @@ class Backend extends JINGGA_Controller {
 				
 				switch($p2){
 					case "form-phase":
-						
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_phase', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
 					break;
 				}
 			break;
@@ -43,7 +48,8 @@ class Backend extends JINGGA_Controller {
 		
 		$this->nsmarty->assign("main", $p1);
 		$this->nsmarty->assign("submodul", $p2);
-		$this->nsmarty->assign("acak_form", md5(date('H:i:s')) );
+		$this->nsmarty->assign("editstatus", $editstatus);
+		$this->nsmarty->assign("acak", md5(date('H:i:s')) );
 		if(!file_exists($this->config->item('appl').APPPATH.'views/'.$temp)){$this->nsmarty->display('konstruksi.html');}
 		
 		if($display == true){
@@ -72,7 +78,7 @@ class Backend extends JINGGA_Controller {
 	}
 	
 	function test(){
-	
+		print_r($this->auth);
 	}
 	
 }

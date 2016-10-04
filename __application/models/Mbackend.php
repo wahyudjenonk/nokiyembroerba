@@ -20,6 +20,12 @@ class Mbackend extends CI_Model{
 					WHERE nama_user = '".$p1."'
 				";
 			break;
+			case "phase": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_phase
+				";
+			break;
 		}
 		
 		if($balikan == 'json'){
@@ -55,24 +61,21 @@ class Mbackend extends CI_Model{
 		}
 		
 		switch($table){
-			case "planning":
-				$table='tbl_execution_transaction';
-				if($sts_crud=='edit'){
-					if(isset($data['flag'])){$data['finish_date']=date('Y-m-d H:i:s');}
-				}
-				if($sts_crud=='add'){$data['flag']='P';}
-				//echo $sts_crud;exit;
-				//print_r($_POST);exit;
+			case "tbl_master_phase":
+				
 			break;
 		}
 		
 		switch ($sts_crud){
 			case "add":
+				$data['create_by'] = $this->auth['nama_user']; 
+				$data['create_date'] = date('Y-m-d H:i:s'); 
 				$this->db->insert($table,$data);
 			break;
 			case "edit":
+				$data['update_by'] = $this->auth['nama_user']; 
+				$data['update_date'] = date('Y-m-d H:i:s'); 
 				$this->db->update($table, $data, array('id' => $id) );
-				
 			break;
 			case "delete":
 				$this->db->delete($table, array('id' => $id));
