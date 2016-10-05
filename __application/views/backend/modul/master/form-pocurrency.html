@@ -1,0 +1,54 @@
+<form method="post" id='frmpocurrency_{$acak}' url='{$host}backend/simpandata/tbl_master_pocurrency' class="form-horizontal">
+	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
+	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
+	
+	<div class="form-group"><label class="col-sm-2 control-label">Currency</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='currency' value="{$data.po_currency|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Rate to IDR</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='rate_to_idr' value="{$data.rate_to_idr|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='remark' value="{$data.remark|default:''}" />
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='savePOCurrency' >Save</a>
+            <a class="btn btn-danger" id='cancelPOCurrency'>Cancel</a>
+        </div>
+    </div>	
+</form>
+
+<script>
+	$('#savePOCurrency').on('click',function(){
+		submit_form('frmpocurrency_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			$('#frm_pocurrency').html('');
+			$('#frm_pocurrency').hide();
+			$('#grid_nya_pocurrency').show();
+			$('#grid_pocurrency').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelPOCurrency').on('click',function(){
+		$('#frm_pocurrency').html('');
+		$('#frm_pocurrency').hide();
+		$('#grid_nya_pocurrency').show();
+		$('#grid_pocurrency').datagrid('reload');
+		return false;
+	});
+
+</script>

@@ -42,6 +42,36 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}
 					break;
+					case "form-potype":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_potype', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
+					case "form-pocurrency":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_pocurrency', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
+					case "form-region":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_region', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
+					case "form-sitename":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_sitename', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
+					case "form-pone":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_pone', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
 				}
 			break;
 		}

@@ -142,17 +142,82 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		break;
 		case "potype":
 			judulnya = "";
-			urlnya = "phase";
+			urlnya = "potype";
 			//height = 800;
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'tp_warta',title:'Erba',width:200, halign:'center',align:'left'},
+				{field:'po_type',title:'PO Type',width:200, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
-				{field:'nama_komisi',title:'Nama Komisi',width:200, halign:'center',align:'left'},
-				{field:'tgl_warta',title:'Tanggal',width:150, halign:'center',align:'center'},
-				{field:'judul_warta',title:'Judul',width:300, halign:'center',align:'left'},
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+			]
+		break;
+		case "pocurrency":
+			judulnya = "";
+			urlnya = "pocurrency";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'pocurrency',title:'PO Currency',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'rate_to_idr',title:'Rate to IDR',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+			]
+		break;
+		case "region":
+			judulnya = "";
+			urlnya = "region";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'region_code',title:'Region Code',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'region_name',title:'Region Name',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+			]
+		break;
+		case "pone":
+			judulnya = "";
+			urlnya = "pone";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'po_ne',title:'PO NE',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+			]
+		break;
+		case "sitename":
+			judulnya = "";
+			urlnya = "sitename";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'tbl_master_phase_id',title:'Master Phase ID',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'site_id',title:'Site ID',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'site_name',title:'Site Name',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'tbl_master_region_id',title:'Master Region ID',width:200, halign:'center',align:'left'},
+			]
+			kolom[modnya] = [	
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 			]
 		break;
 	}
@@ -238,6 +303,26 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 	switch(submodulnya){
 		case "phase":
 			table = "tbl_phase";
+			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
+		break;
+		case "potype":
+			table = "tbl_master_potype";
+			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
+		break;
+		case "pocurrency":
+			table = "tbl_master_pocurrency";
+			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
+		break;
+		case "region":
+			table = "tbl_master_region";
+			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
+		break;
+		case "sitename":
+			table = "tbl_master_sitename";
+			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
+		break;
+		case "pone":
+			table = "tbl_master_pone";
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		

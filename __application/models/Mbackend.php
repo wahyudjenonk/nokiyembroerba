@@ -26,6 +26,36 @@ class Mbackend extends CI_Model{
 					FROM tbl_master_phase
 				";
 			break;
+			case "potype": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_potype
+				";
+			break;
+			case "pocurrency": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_pocurrency
+				";
+			break;
+			case "region": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_region
+				";
+			break;
+			case "sitename": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_sitename
+				";
+			break;
+			case "pone": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_pone
+				";
+			break;
 		}
 		
 		if($balikan == 'json'){
@@ -62,6 +92,21 @@ class Mbackend extends CI_Model{
 		
 		switch($table){
 			case "tbl_master_phase":
+				
+			break;
+			case "tbl_master_potype":
+				
+			break;
+			case "tbl_master_pocurrency":
+				
+			break;
+			case "tbl_master_region":
+				
+			break;
+			case "tbl_master_sitename":
+				
+			break;
+			case "tbl_master_pone":
 				
 			break;
 		}
