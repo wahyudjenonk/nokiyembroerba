@@ -132,12 +132,16 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'phase_code',title:'Phase Code',width:200, halign:'center',align:'left'},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left'},
 			];
 			kolom[modnya] = [	
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left'},
-				{field:'phase_year',title:'Year',width:150, halign:'center',align:'center'},
+				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center'},
 				{field:'remark',title:'Remark',width:300, halign:'center',align:'left'},
+				{field:'create_by',title:'Create By',width:100, halign:'center',align:'left'},
+				{field:'create_date',title:'Create Date',width:150, halign:'center',align:'center'},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			];
 		break;
 		case "potype":
@@ -151,6 +155,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+				{field:'create_by',title:'Create By',width:100, halign:'center',align:'left'},
+				{field:'create_date',title:'Create Date',width:150, halign:'center',align:'center'},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			]
 		break;
 		case "pocurrency":
@@ -164,9 +172,11 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			]
 			kolom[modnya] = [	
 				{field:'rate_to_idr',title:'Rate to IDR',width:200, halign:'center',align:'left'},
-			]
-			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+				{field:'create_by',title:'Create By',width:100, halign:'center',align:'left'},
+				{field:'create_date',title:'Create Date',width:150, halign:'center',align:'center'},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			]
 		break;
 		case "region":
@@ -180,9 +190,11 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			]
 			kolom[modnya] = [	
 				{field:'region_name',title:'Region Name',width:200, halign:'center',align:'left'},
-			]
-			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+				{field:'create_by',title:'Create By',width:100, halign:'center',align:'left'},
+				{field:'create_date',title:'Create Date',width:150, halign:'center',align:'center'},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			]
 		break;
 		case "pone":
@@ -196,6 +208,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+				{field:'create_by',title:'Create By',width:100, halign:'center',align:'left'},
+				{field:'create_date',title:'Create Date',width:150, halign:'center',align:'center'},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			]
 		break;
 		case "sitename":
@@ -209,15 +225,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			]
 			kolom[modnya] = [	
 				{field:'site_id',title:'Site ID',width:200, halign:'center',align:'left'},
-			]
-			kolom[modnya] = [	
 				{field:'site_name',title:'Site Name',width:200, halign:'center',align:'left'},
-			]
-			kolom[modnya] = [	
 				{field:'tbl_master_region_id',title:'Master Region ID',width:200, halign:'center',align:'left'},
-			]
-			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
+				{field:'create_by',title:'Create By',width:100, halign:'center',align:'left'},
+				{field:'create_date',title:'Create Date',width:150, halign:'center',align:'center'},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			]
 		break;
 	}
