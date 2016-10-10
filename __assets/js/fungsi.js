@@ -287,10 +287,8 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				var $panel = $(this).datagrid('getPanel');
 				var $info = '<div class="info-empty" style="margin-top:18%;">Data Tidak Tersedia</div>';
 				$($panel).find(".datagrid-view").append($info);
-				//$('#edit').linkbutton({disabled:true});
-				//$('#del').linkbutton({disabled:true});
 			}else{
-				$($panel).find(".datagrid-view").append('');
+				$('.info-empty').remove();
 			}
 		},
 	});
@@ -299,12 +297,14 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 
 function genform(type, modulnya, submodulnya, stswindow, tabel){
 	var urlpost = host+'backend/get_form/'+submodulnya+'/form';
-	var urldelete = host+'backend/cruddata/'+submodulnya;
 	var id_tambahan = "";
-	
+	lebar = 850;
+	tinggi = 350;
+
 	switch(submodulnya){
 		case "phase":
-			table = "tbl_phase";
+			table = "tbl_master_phase";
+			judulwindow = 'Form Master Phase';
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "potype":
@@ -369,11 +369,11 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 						}
 					});
 				}else if(type=='delete'){
-					//if(confirm("Anda Yakin Menghapus Data Ini ?")){
-					$.messager.confirm('JResto Soft','Are You Sure Delete This Data ?',function(re){
+					urldelete = host+'backend/simpandata/'+table;
+					$.messager.confirm('POIN v.2','Are You Sure Delete This Data ?',function(re){
 						if(re){
 							loadingna();
-							$.post(urldelete, {id:row.id, 'sts_crud':'delete'}, function(r){
+							$.post(urldelete, {id:row.id, 'editstatus':'delete'}, function(r){
 								if(r==1){
 									winLoadingClose();
 									$.messager.alert('POIN v.2',"Data Deleted",'info');
@@ -386,7 +386,6 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 							});	
 						}
 					});	
-					//}
 				}
 				
 			}

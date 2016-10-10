@@ -35,11 +35,12 @@ h6 {
 h3,
 h4,
 h5 {
-  margin-top: 5px;
+  /*margin-top: 5px;*/
   font-weight: 600;
 }
 .nav > li > a {
-  color: #a7b1c2;
+  /*color: #a7b1c2;*/
+  color: #000000;
   font-weight: 600;
   padding: 14px 20px 14px 25px;
 }
@@ -47,7 +48,7 @@ h5 {
   color: #999c9e;
 }
 .nav > li.active > a {
-  color: #ffffff;
+  color: #000000;
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus {
@@ -70,7 +71,7 @@ h5 {
   border: 0;
 }
 .navbar-default {
-  background-color: transparent;
+  background-color: #F4F4F4;
   border-color: #2f4050;
 }
 .navbar-top-links li {
@@ -169,16 +170,15 @@ h5 {
 }
 .nav-header {
   padding: 6px 17px 3px 30px;
-  margin-bottom:20px;
-  background-color: #124191;
+  background-color: #134292;
   /*background-image: url("patterns/header-profile.png");*/
 }
 .pace-done .nav-header {
   transition: all 0.4s;
 }
 .nav > li.active {
-  border-left: 4px solid #19aa8d;
-  background: #293846;
+  border-left: 4px solid #134292;
+  background: #dedede ;
 }
 .nav.nav-second-level > li.active {
   border: none;
@@ -330,7 +330,7 @@ body.mini-navbar .navbar-default .nav > li > .nav-second-level li a {
 }
 .navbar-fixed-top,
 .navbar-static-top {
-  background: #E9E9EE;
+  background: #134292;
 }
 .fixed-nav #wrapper {
   margin-top: 0;
@@ -3767,7 +3767,7 @@ img.circle-border {
   cursor: move;
 }
 .breadcrumb {
-  background-color: #ffffff;
+  background-color: #F4F9FD;
   padding: 0;
   margin-bottom: 0;
 }
@@ -3911,10 +3911,13 @@ table.table-mail tr td {
 /* BACKGROUNDS */
 .gray-bg,
 .bg-muted {
-  background-color: #f3f3f4;
+  background-color: #fbfbfb;
 }
 .white-bg {
   background-color: #ffffff;
+}
+.blueaye-bg {
+  background-color: #F4F9FD;
 }
 .navy-bg,
 .bg-success {
