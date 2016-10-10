@@ -1,12 +1,12 @@
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper border-bottom blueaye-bg page-heading">
 	<div class="col-lg-10">
-		<h2>Master Phase</h2>
+		<h3><b>Master Phase</b></h3>
 		<ol class="breadcrumb">
             <li>
-                Master
+                Master Data
             </li>
             <li class="active">
-                <strong>Master Phase</strong>
+                <strong>Master PO Type</strong>
             </li>
         </ol>		
 	</div>
@@ -21,13 +21,21 @@
 						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
 							<label style='width:100px !important;'>Filter Data</label> :
 							<select id='{$submodul}_filter_kategori' style='width:150px;padding:5px;'>
-								<option value='phase_code'>Phase Code</option>
-								<option value='phase_name'>Phase Name</option>
+								<option value='all'>All</option>
+								<option value='phase_year'>Year</option>
 							</select>
 							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
-							<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'" style="width:80px">Print</a>
-							
-							 {include file="backend/template/button_grid.html"}
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
+								<span class="l-btn-left l-btn-icon-left">
+									<span class="l-btn-text">Search</span><span class="l-btn-icon icon-search">&nbsp;</span>
+								</span>
+							</a>
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="">
+								<span class="l-btn-left l-btn-icon-left">
+									<span class="l-btn-text">Export Excell</span><span class="l-btn-icon icon-xls">&nbsp;</span>
+								</span>
+							</a>
+							{include file="backend/template/button_grid.html"}
 						</div>
 						
 						{include file="backend/template/grid.html"}
@@ -42,5 +50,10 @@
 </div>
 
 <script>
-	//$('#grid_nya_{$submodul}').css('height', (getClientHeight()-) );
+	$('#search_{$submodul}').on('click', function(){
+		$('#grid_{$submodul}').datagrid('reload',{
+			'kat' : $('#{$submodul}_filter_kategori').val(),
+			'key' : $('#{$submodul}_txt').val()
+		});
+	});
 </script>

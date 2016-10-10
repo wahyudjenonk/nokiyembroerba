@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POIN v.2 | Nokia</title>
@@ -9,39 +8,49 @@
     <link href="{$host}__assets/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="{$host}__assets/css/animate.css" rel="stylesheet">
     <link href="{$host}__assets/css/style.css" rel="stylesheet">
-
+	<link href="{$host}__assets/plugin/bxslider/css/jquery.bxslider.css" rel="stylesheet" />
 </head>
 
 <body class="gray-bg" style='background:#E9E9EE !important;'>
 
-    <div class="loginColumns animated fadeInDown">
-        <div class="row">
-
-            <div class="col-md-6">
-                <h2 class="font-bold" style='margin-bottom:-50px !important;'>Welcome to POIN v.2</h2>
-				<img src='{$host}__assets/img/logo-nokia2.png' />
+    <div class="loginColumns animated fadeInDown" style=';'>
+        <div class="row" >
+			<div style='background:#ffffff !important; border:1px solid #00000; display:table;padding:20px;'>
+				<div class="col-md-6">
+					<ul class="bxslider">
+					  <li><img src="{$host}__assets/img/sliderlogin/image1.jpg" /></li>
+					  <li><img src="{$host}__assets/img/sliderlogin/image2.jpg" /></li>
+					  <li><img src="{$host}__assets/img/sliderlogin/image3.jpg" /></li>
+					</ul>
+				</div>
+				<div class="col-md-6">
+					<div class="ibox-content" style='padding:0px !important;'>
+						<center><img src="{$host}__assets/img/nokia_white_logo.png" width='250px' height='100px' style='margin-top:15px !important;'/></center>
+						<form class="m-t" role="form" action="{$host}backoffice-masuk" method="post">
+							<div class="form-group">
+								<input type="text" name='user' class="form-control" placeholder="Username" required="">
+							</div>
+							<div class="form-group">
+								<input type="password" name='pwd' class="form-control" placeholder="Password" required="">
+							</div>
+							<button type="submit" class="btn btn-primary">Login</button>
+							<a class="btn btn-danger">Forgot Password</a>
+						</form>
+						{if isset($error)}
+							<div style="text-align:center;margin-top:10px">
+								<span style="color:red;"><b><i>{$error}</i></b></span>
+							</div>
+						{/if}	
+					</div>
+				</div>
+				<div class="col-md-12" >
+					<hr style='margin-top:5px !important;margin-bottom:5px !important;border-color:#E2E2E2 !important;' />
+					<p class="m-t">
+						<small>Purchase Order Inventory Nokia v.2 &copy; 2016</small>
+					</p>
+				</div>
             </div>
-            <div class="col-md-6">
-                <div class="ibox-content">
-                    <form class="m-t" role="form" action="{$host}backoffice-masuk" method="post">
-                        <div class="form-group">
-                            <input type="text" name='user' class="form-control" placeholder="Username" required="">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name='pwd' class="form-control" placeholder="Password" required="">
-                        </div>
-                        <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
-                    </form>
-					{if isset($error)}
-						<div style="text-align:center;margin-top:10px">
-							<span style="color:red;"><b><i>{$error}</i></b></span>
-						</div>
-					{/if}	
-                    <p class="m-t" style='text-align:center;'>
-                        <small>Purchase Order Inventory Nokia v.2 &copy; 2016</small>
-                    </p>
-                </div>
-            </div>
+			
         </div>
         <hr/>
     </div>
@@ -49,9 +58,15 @@
     <!-- Mainly scripts -->
     <script src="{$host}__assets/js/jquery-2.1.1.js"></script>
     <script src="{$host}__assets/js/bootstrap.min.js"></script>
-
+    <script src="{$host}__assets/plugin/bxslider/js/jquery.bxslider.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('.bxslider').bxSlider({
+				auto: true,
+				pager: false
+			});
+		});
+	</script>
 </body>
-
-
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.6.1/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2016 16:44:12 GMT -->
 </html>

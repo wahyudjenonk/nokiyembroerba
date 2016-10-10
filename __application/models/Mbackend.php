@@ -24,36 +24,42 @@ class Mbackend extends CI_Model{
 				$sql = "
 					SELECT *
 					FROM tbl_master_phase
+					$where AND status = '1'
 				";
 			break;
 			case "potype": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_potype
+					$where AND status = '1'
 				";
 			break;
 			case "pocurrency": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_pocurrency
+					$where AND status = '1'
 				";
 			break;
 			case "region": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_region
+					$where AND status = '1'
 				";
 			break;
 			case "sitename": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_sitename
+					$where AND status = '1'
 				";
 			break;
 			case "pone": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_pone
+					$where AND status = '1'
 				";
 			break;
 		}
@@ -90,9 +96,12 @@ class Mbackend extends CI_Model{
 			unset($data['id']);
 		}
 		
+		$data['update_by'] = $this->auth['nama_user']; 
+		$data['update_date'] = date('Y-m-d H:i:s'); 
+		
 		switch($table){
 			case "tbl_master_phase":
-				
+			
 			break;
 			case "tbl_master_potype":
 				
@@ -112,18 +121,16 @@ class Mbackend extends CI_Model{
 		}
 		
 		switch ($sts_crud){
-			case "add":
-				$data['create_by'] = $this->auth['nama_user']; 
-				$data['create_date'] = date('Y-m-d H:i:s'); 
+			case "add": 
+				$data['status'] = 1;
 				$this->db->insert($table,$data);
 			break;
 			case "edit":
-				$data['update_by'] = $this->auth['nama_user']; 
-				$data['update_date'] = date('Y-m-d H:i:s'); 
 				$this->db->update($table, $data, array('id' => $id) );
 			break;
 			case "delete":
-				$this->db->delete($table, array('id' => $id));
+				$data['status'] = 0;
+				$this->db->update($table, $data, array('id' => $id) );
 			break;
 		}
 		
