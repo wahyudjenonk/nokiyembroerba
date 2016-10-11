@@ -339,26 +339,32 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		break;
 		case "potype":
 			table = "tbl_master_potype";
+			judulwindow = 'Form Master PO Type';
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pocurrency":
 			table = "tbl_master_pocurrency";
+			judulwindow = 'Form Master Currency';
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "region":
 			table = "tbl_master_region";
+			judulwindow = 'Form Master Region';
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "sitename":
 			table = "tbl_master_sitename";
+			judulwindow = 'Form Master NE Name';
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pone":
 			table = "tbl_master_pone";
+			judulwindow = 'Form Master Site Status'
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "masterpo":
 			table = "tbl_master_po";
+			judulwindow = 'Form Master PO';
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		
