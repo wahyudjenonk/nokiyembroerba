@@ -135,9 +135,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left'},
 			];
 			kolom[modnya] = [	
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left'},
-				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center'},
-				{field:'remark',title:'Remark',width:300, halign:'center',align:'left'},
+				{field:'id',title:'ID Phase',width:120, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
+				{field:'remark',title:'Remark',width:300, halign:'center',align:'left', sortable:true},
 				{field:'publish',title:'Publish',width:300, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
@@ -332,6 +333,8 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "phase":
 			table = "tbl_master_phase";
 			judulwindow = 'Form Master Phase';
+			lebar = 850;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "potype":
