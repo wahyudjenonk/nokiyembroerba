@@ -91,6 +91,27 @@ class Backend extends JINGGA_Controller {
 		echo $this->mbackend->getdata($p1,'json',$p3);
 	}
 	
+	function exportdata($type, $mod, $submodul){
+		switch($type){
+			case "excell":
+				$data = $this->mbackend->getdata($submodul, 'result_array');
+				
+				if($data){
+					header("Content-type: application/vnd-ms-excel");
+					header("Content-Disposition: attachment; filename=expordata-".$submodul.".xls");
+					
+					$this->nsmarty->assign('submodul', $submodul);
+					$this->nsmarty->assign('data', $data);
+					$html = $this->nsmarty->fetch('backend/modul/'.$mod.'/exportexcell.html');
+					
+					echo $html;
+				}else{
+					echo "No Data in Table";
+				}
+			break;
+		}
+	}
+	
 	function simpandata($p1="",$p2=""){
 		if($this->input->post('mod'))$p1=$this->input->post('mod');
 		$post = array();

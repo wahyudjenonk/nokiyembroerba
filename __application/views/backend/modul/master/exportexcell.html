@@ -1,0 +1,26 @@
+{if $submodul eq 'phase'}
+	<table>
+		<thead>
+			<tr>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Code</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Phase Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Year</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Publish</td>
+			</tr>
+		</thead>
+		<tbody>
+		{foreach from=$data item=rows}
+			<tr>
+				<td>{$rows.id}</td>
+				<td>{$rows.phase_code}</td>
+				<td>{$rows.phase_name}</td>
+				<td>{$rows.phase_year}</td>
+				<td>{$rows.remark}</td>
+				<td>{$rows.publish}</td>
+			</tr>
+		{/foreach}
+		</tbody>
+	</table>
+{/if}

@@ -8,8 +8,27 @@ class Mbackend extends CI_Model{
 	
 	function getdata($type="", $balikan="", $p1="", $p2="",$p3="",$p4=""){
 		$where = " WHERE 1=1 ";
-		if($this->input->post('key')){
-			$where .=" AND ".$this->input->post('kat')." like '%".$this->db->escape_str($this->input->post('key'))."%'";
+		if($this->input->post('kat')){
+			if($this->input->post('kat') == 'all'){
+				$table = $this->input->post('table');
+				$field = $this->db->list_fields($table);
+				$where .= " AND ( ";
+				foreach($field as $k => $v){
+					if($v == 'update_by' || $v == 'update_date'){
+						continue;
+					}
+					if ($k == reset($field)){
+						$where .= $v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
+					}elseif ($k == end($field)){
+						$where .= $v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
+					}else{
+						$where .= "OR ".$v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
+					}
+				}
+				$where .= " ) ";
+			}else{
+				$where .=" AND ".$this->input->post('kat')." like '%".$this->db->escape_str($this->input->post('key'))."%'";
+			}
 		}
 		
 		switch($type){
@@ -24,8 +43,9 @@ class Mbackend extends CI_Model{
 				$sql = "
 					SELECT *
 					FROM tbl_master_phase
-					$where AND status = '1'
+					$where 
 				";
+				
 			break;
 			case "potype": 
 				$sql = "
@@ -138,8 +158,12 @@ class Mbackend extends CI_Model{
 			case "edit":
 				$this->db->update($table, $data, array('id' => $id) );
 			break;
-			case "delete":
+			case "inactive":
 				$data['status'] = 0;
+				$this->db->update($table, $data, array('id' => $id) );
+			break;
+			case "activate":
+				$data['status'] = 1;
 				$this->db->update($table, $data, array('id' => $id) );
 			break;
 		}

@@ -19,10 +19,21 @@
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Publish</label>
 		<div class="col-sm-2">
-				<input type="radio" name="publish" id="publish" value="Yes" />Yes
-					<label for="radio"></label>
-				<input type="radio" name="publish" id="publish" value="No" />No
-					<label for="radio"></label>
+			{assign var=checkedyes value=''}
+			{assign var=checkedno value=''}
+			
+			{if $data.publish|default:'' eq 'Yes'}
+				{assign var=checkedyes value='checked'}
+				{assign var=checkedno value=''}
+			{elseif $data.publish|default:'' eq 'No'}
+				{assign var=checkedyes value=''}
+				{assign var=checkedno value='checked'}
+			{/if}
+				
+			<input type="radio" name="publish" id="publish" {$checkedyes} value="Yes"  /> Yes
+				<label for="radio"></label>
+			<input type="radio" name="publish" id="publish" {$checkedno} value="No" /> No
+				<label for="radio"></label>
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
@@ -48,19 +59,15 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_phase').html('');
-			$('#frm_phase').hide();
-			$('#grid_nya_phase').show();
+			
+			closeWindow();
 			$('#grid_phase').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelPhase').on('click',function(){
-		$('#frm_phase').html('');
-		$('#frm_phase').hide();
-		$('#grid_nya_phase').show();
-		$('#grid_phase').datagrid('reload');
+		closeWindow();
 		return false;
 	});
 
