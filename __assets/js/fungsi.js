@@ -226,8 +226,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	
 	grid_nya=$("#"+divnya).datagrid({
 		title:judulnya,
-        height:tingginya,
-        width:lebarnya,
+        //height:tingginya,
+        //width:lebarnya,
+		width: '100%',
+		height: '100%',
 		rownumbers:true,
 		iconCls:'database',
         fit:fitnya,

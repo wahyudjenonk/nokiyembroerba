@@ -108,7 +108,9 @@ $(document).ready(function () {
     $('.navbar-minimalize').on('click', function () {
         $("body").toggleClass("mini-navbar");
         SmoothlyMenu();
-
+		if(typeof submodul !== 'undefined'){
+			$('#grid_'+submodul).datagrid('resize');
+		}
     });
 
     // Tooltips demo
