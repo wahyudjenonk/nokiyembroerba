@@ -14,10 +14,11 @@
 <div class="wrapper wrapper-content">
 	<div class="row">
 		<div class="col-lg-12">
+			
 			<div class="ibox float-e-margins">
 				<div class="ibox-content" >
 					
-					<div id='grid_nya_{$submodul}' style='height:400px;'>
+					<div id='grid_nya_{$submodul}' style='height:400px;width:100%;'>
 						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
 							<label style='width:100px !important;'>Filter Data</label> :
 							<select id='{$submodul}_filter_kategori' style='width:150px;padding:5px;'>
@@ -45,11 +46,14 @@
 				
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>
 
 <script>
+	var submodul = "{$submodul|default:''}";
+		
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'kat' : $('#{$submodul}_filter_kategori').val(),
