@@ -1,12 +1,12 @@
 <div class="row wrapper border-bottom blueaye-bg page-heading">
 	<div class="col-lg-10">
-		<h2>Master PO Type</h2>
+		<h3><b>Master PO</b></h3>
 		<ol class="breadcrumb">
             <li>
-                Master
+                Master Progress
             </li>
             <li class="active">
-                <strong>Master PO Type</strong>
+                <strong>Master PO</strong>
             </li>
         </ol>		
 	</div>
@@ -14,15 +14,16 @@
 <div class="wrapper wrapper-content">
 	<div class="row">
 		<div class="col-lg-12">
+			
 			<div class="ibox float-e-margins">
 				<div class="ibox-content" >
 					
-					<div id='grid_nya_{$submodul}' style='height:400px;'>
+					<div id='grid_nya_{$submodul}' style='height:400px;width:100%;'>
 						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
 							<label style='width:100px !important;'>Filter Data</label> :
 							<select id='{$submodul}_filter_kategori' style='width:150px;padding:5px;'>
 								<option value='all'>All</option>
-								<option value='po_type'>PO Type</option>
+								<option value=''>not</option>
 							</select>
 							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
 							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
@@ -35,15 +36,17 @@
 									<span class="l-btn-text">Export Excell</span><span class="l-btn-icon icon-xls">&nbsp;</span>
 								</span>
 							</a>
-							 {include file="backend/template/button_grid.html"}
+							{include file="backend/template/button_grid.html"}
 						</div>
 						
 						{include file="backend/template/grid.html"}
 					</div>
+					
 					<div id='frm_{$submodul}' style='display:none;'></div>
 				
 				</div>
 			</div>
+			
 		</div>
 	</div>
 </div>

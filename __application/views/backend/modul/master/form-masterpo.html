@@ -1,0 +1,129 @@
+<form method="post" id='frmmasterpo_{$acak}' url='{$host}backend/simpandata/tbl_master_po' class="form-horizontal">
+	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
+	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
+	<br/>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Code</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='phase_code' value="{$data.phase_code|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Name</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='phase_name' value="{$data.phase_name|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Year</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='phase_year' value="{$data.phase_year|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Type</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_type' value="{$data.po_type|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO No</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_no' value="{$data.po_no|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Project Name</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='project_name' value="{$data.project_name|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Currency</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='currency' value="{$data.currency|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Basic Contract</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='basic_contract' value="{$data.basic_contract|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Update</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_update' value="{$data.po_update|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Recived</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_recived' value="{$data.po_recived|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Delivery</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_delivery' value="{$data.po_delivery|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Revisi On No</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='revision_no' value="{$data.revision_no|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Gross IDR</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_gross_idr' value="{$data.po_gross_idr|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Nett IDR</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_nett_idr' value="{$data.po_nett_idr|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Jis Dorr Rate</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='jis_dor_rate' value="{$data.jis_dorr_rate|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Gross USD</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_gross_USD' value="{$data.po_gross_idr|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Nett USD</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='po_nett_usd' value="{$data.po_nett_usd|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='remark' value="{$data.remark|default:''}" />
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='savePhase' >Save</a>
+            <a class="btn btn-danger" id='cancelPhase'>Cancel</a>
+        </div>
+    </div>	
+</form>
+
+<script>
+	$('#saveMasterPO').on('click',function(){
+		submit_form('frmmasterpo_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			$('#frm_masterpo').html('');
+			$('#frm_masterpo').hide();
+			$('#grid_nya_masterpo').show();
+			$('#grid_masterpo').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelMasterPO').on('click',function(){
+		$('#frm_masterpo').html('');
+		$('#frm_masterpo').hide();
+		$('#grid_nya_masterpo').show();
+		$('#grid_masterpo').datagrid('reload');
+		return false;
+	});
+
+</script>

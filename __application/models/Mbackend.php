@@ -62,6 +62,13 @@ class Mbackend extends CI_Model{
 					$where AND status = '1'
 				";
 			break;
+			case "masterpo": 
+				$sql = "
+					SELECT *
+					FROM tbl_master_po
+					$where AND status = '1'
+				";
+			break;
 		}
 		
 		if($balikan == 'json'){
@@ -116,6 +123,9 @@ class Mbackend extends CI_Model{
 				
 			break;
 			case "tbl_master_pone":
+				
+			break;
+			case "tbl_master_po":
 				
 			break;
 		}

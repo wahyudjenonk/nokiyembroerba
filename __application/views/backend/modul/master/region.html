@@ -21,11 +21,20 @@
 						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
 							<label style='width:100px !important;'>Filter Data</label> :
 							<select id='{$submodul}_filter_kategori' style='width:150px;padding:5px;'>
-								<option value='col1'>Region</option>
-								<option value='col2'>Column 2</option>
+								<option value='all'>ALL</option>
+								<option value='region_code'>Region</option>
 							</select>
 							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
-							
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
+								<span class="l-btn-left l-btn-icon-left">
+									<span class="l-btn-text">Search</span><span class="l-btn-icon icon-search">&nbsp;</span>
+								</span>
+							</a>
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="">
+								<span class="l-btn-left l-btn-icon-left">
+									<span class="l-btn-text">Export Excell</span><span class="l-btn-icon icon-xls">&nbsp;</span>
+								</span>
+							</a>
 							 {include file="backend/template/button_grid.html"}
 						</div>
 						
@@ -40,5 +49,12 @@
 </div>
 
 <script>
-	//$('#grid_nya_{$submodul}').css('height', (getClientHeight()-) );
+	var submodul = "{$submodul|default:''}";
+		
+	$('#search_{$submodul}').on('click', function(){
+		$('#grid_{$submodul}').datagrid('reload',{
+			'kat' : $('#{$submodul}_filter_kategori').val(),
+			'key' : $('#{$submodul}_txt').val()
+		});
+	});
 </script>
