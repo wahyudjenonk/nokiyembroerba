@@ -132,16 +132,25 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left'},
+				{field:'id',title:'ID Phase',width:120, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 			];
 			kolom[modnya] = [	
-				{field:'id',title:'ID Phase',width:120, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
 				{field:'remark',title:'Remark',width:300, halign:'center',align:'left', sortable:true},
-				{field:'publish',title:'Publish',width:300, halign:'center',align:'left'},
+				{field:'publish',title:'Publish',width:100, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Data Active";
+						} else {
+							return "Data Inactive";
+						}
+					}
+				},
 			];
 		break;
 		case "potype":
@@ -301,12 +310,8 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		},
 		//toolbar: '#tb_'+modnya,
 		rowStyler: function(index,row){
-			if(modnya == 'reservasi'){
-				if (row.flag == 1){
-					return 'background-color:#C5FFC2;'; // return inline style
-				}else if(row.flag == 0){
-					return 'background-color:#FFD1BB;'; // return inline style
-				}
+			if (row.status == 0){
+				return 'background-color:#FFD1BB;'; // return inline style
 			}
 			
 		},
@@ -389,7 +394,8 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			});
 		break;
 		case "edit":
-		case "delete":
+		case "inactive":
+		case "active":
 		
 			var row = $("#grid_"+submodulnya).datagrid('getSelected');
 			if(row){
@@ -408,20 +414,38 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 							$('#frm_'+submodulnya).html(resp).removeClass("loading");
 						}
 					});
-				}else if(type=='delete'){
+				}else if(type=='inactive'){
 					urldelete = host+'backend/simpandata/'+table;
-					$.messager.confirm('POIN v.2','Are You Sure Delete This Data ?',function(re){
+					$.messager.confirm('POIN v.2','Are You Sure Set Inactive This Data ?',function(re){
 						if(re){
 							loadingna();
-							$.post(urldelete, {id:row.id, 'editstatus':'delete'}, function(r){
+							$.post(urldelete, {id:row.id, 'editstatus':'inactive'}, function(r){
 								if(r==1){
 									winLoadingClose();
-									$.messager.alert('POIN v.2',"Data Deleted",'info');
+									$.messager.alert('POIN v.2',"Data Inactive",'info');
 									$('#grid_'+submodulnya).datagrid('reload');								
 								}else{
 									winLoadingClose();
 									console.log(r)
-									$.messager.alert('POIN v.2',"Failed Delete Data",'error');
+									$.messager.alert('POIN v.2',"Failed Set Inactive Data",'error');
+								}
+							});	
+						}
+					});	
+				}else if(type=='active'){
+					urldelete = host+'backend/simpandata/'+table;
+					$.messager.confirm('POIN v.2','Are You Sure Activated Again This Data ?',function(re){
+						if(re){
+							loadingna();
+							$.post(urldelete, {id:row.id, 'editstatus':'activate'}, function(r){
+								if(r==1){
+									winLoadingClose();
+									$.messager.alert('POIN v.2',"Data Activated Again",'info');
+									$('#grid_'+submodulnya).datagrid('reload');								
+								}else{
+									winLoadingClose();
+									console.log(r)
+									$.messager.alert('POIN v.2',"Failed Activated Data",'error');
 								}
 							});	
 						}
@@ -752,4 +776,27 @@ function gen_editor(id){
 		tinyMCE.execCommand('mceAddControl', true, id);
 	
 }
+
+function openWindowWithPost(url,params){
+    var newWindow = window.open(url, 'winpost'); 
+    if (!newWindow) return false;
+    var html = "";
+    html += "<html><head></head><body><form  id='formid' method='post' action='" + url + "'>";
+
+    $.each(params, function(key, value) { 
+            
+                if (value instanceof Array || value instanceof Object) {
+                    $.each(value, function(key1, value1) { 
+                        html += "<input type='hidden' name='" + key + "["+key1+"]' value='" + value1 + "'/>";
+                    });
+                }else{
+                    html += "<input type='hidden' name='" + key + "' value='" + value + "'/>";
+                }
+        });
+   
+    html += "</form><script type='text/javascript'>document.getElementById(\"formid\").submit()</script></body></html>";
+    newWindow.document.write(html);
+    return newWindow;
+}
+
 
