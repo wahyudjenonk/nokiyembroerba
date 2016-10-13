@@ -139,9 +139,9 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
 				{field:'remark',title:'Remark',width:300, halign:'center',align:'left', sortable:true},
-				{field:'publish',title:'Publish',width:100, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'publish',title:'Publish',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center', sortable:true},
 				{field:'status',title:'Status',width:130, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
@@ -159,13 +159,23 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			//height = 800;
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
-			frozen[modnya] = [	
+			frozen[modnya] = [
+				{field:'id',title:'ID Phase',width:120, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:200, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Data Active";
+						} else {
+							return "Data Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "pocurrency":
@@ -181,6 +191,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Data Active";
+						} else {
+							return "Data Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "region":
@@ -196,6 +215,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Data Active";
+						} else {
+							return "Data Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "pone":
@@ -211,6 +239,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Data Active";
+						} else {
+							return "Data Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "sitename":
@@ -226,6 +263,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Data Active";
+						} else {
+							return "Data Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "masterpo":
@@ -234,12 +280,14 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			//height = 800;
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'po_no',title:'PO No',width:200, halign:'center',align:'left'},
+			]
 			kolom[modnya] = [
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left'},
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left'},
 				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center'},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left'},
-				{field:'po_no',title:'PO No',width:200, halign:'center',align:'left'},
 				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'center'},
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left'},
 				{field:'basic_contract',title:'Basic Contract',width:200, halign:'center',align:'left'},
@@ -257,6 +305,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
 			]
 		break;
+		
 	}
 	
 	grid_nya=$("#"+divnya).datagrid({
@@ -265,7 +314,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
         //width:lebarnya,
 		width: '100%',
 		height: '100%',
-		rownumbers:true,
+		rownumbers:false,
 		iconCls:'database',
         fit:fitnya,
         striped:true,
@@ -338,38 +387,50 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "phase":
 			table = "tbl_master_phase";
 			judulwindow = 'Form Master Phase';
-			lebar = 850;
+			lebar = 700;
 			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "potype":
 			table = "tbl_master_potype";
 			judulwindow = 'Form Master PO Type';
+			lebar = 700;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pocurrency":
 			table = "tbl_master_pocurrency";
 			judulwindow = 'Form Master Currency';
+			lebar = 700;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "region":
 			table = "tbl_master_region";
 			judulwindow = 'Form Master Region';
+			lebar = 700;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "sitename":
 			table = "tbl_master_sitename";
 			judulwindow = 'Form Master NE Name';
+			lebar = 700;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pone":
 			table = "tbl_master_pone";
-			judulwindow = 'Form Master Site Status'
+			judulwindow = 'Form Master Site Status';
+			lebar = 700;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "masterpo":
 			table = "tbl_master_po";
 			judulwindow = 'Form Master PO';
+			lebar = 700;
+			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		

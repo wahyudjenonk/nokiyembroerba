@@ -72,6 +72,12 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}
 					break;
+					case "form-masterpo":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_po', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
 				}
 			break;
 		}
