@@ -132,22 +132,22 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID Phase',width:120, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:40, halign:'center',align:'left', sortable:true},
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 			];
 			kolom[modnya] = [	
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
-				{field:'remark',title:'Remark',width:300, halign:'center',align:'left', sortable:true},
-				{field:'publish',title:'Publish',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
+				{field:'publish',title:'Publish',width:50, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center', sortable:true},
-				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
-							return "Data Active";
+							return "Active";
 						} else {
-							return "Data Inactive";
+							return "Inactive";
 						}
 					}
 				},
@@ -160,19 +160,19 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'id',title:'ID Phase',width:120, halign:'center',align:'left', sortable:true},
-				{field:'po_type',title:'PO Type',width:200, halign:'center',align:'left'},
+				{field:'id',title:'ID',width:40, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
-							return "Data Active";
+							return "Active";
 						} else {
-							return "Data Inactive";
+							return "Inactive";
 						}
 					}
 				},
@@ -185,18 +185,18 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'currency',title:'Currency',width:200, halign:'center',align:'left'},
+				{field:'currency',title:'Currency',width:150, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
-							return "Data Active";
+							return "Active";
 						} else {
-							return "Data Inactive";
+							return "Inactive";
 						}
 					}
 				},
@@ -209,18 +209,18 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'region_code',title:'Region Code',width:200, halign:'center',align:'left'},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
-							return "Data Active";
+							return "Active";
 						} else {
-							return "Data Inactive";
+							return "Inactive";
 						}
 					}
 				},
@@ -233,18 +233,18 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'po_ne',title:'NE Name',width:200, halign:'center',align:'left'},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
-							return "Data Active";
+							return "Active";
 						} else {
-							return "Data Inactive";
+							return "Inactive";
 						}
 					}
 				},
@@ -257,18 +257,18 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'site_status',title:'Site Status',width:200, halign:'center',align:'left'},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left'},
 			]
 			kolom[modnya] = [	
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:130, halign:'center',align:'left',
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
-							return "Data Active";
+							return "Active";
 						} else {
-							return "Data Inactive";
+							return "Inactive";
 						}
 					}
 				},

@@ -51,42 +51,42 @@ class Mbackend extends CI_Model{
 				$sql = "
 					SELECT *
 					FROM tbl_master_potype
-					$where AND status = '1'
+					$where
 				";
 			break;
 			case "pocurrency": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_pocurrency
-					$where AND status = '1'
+					$where
 				";
 			break;
 			case "region": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_region
-					$where AND status = '1'
+					$where
 				";
 			break;
 			case "sitename": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_sitename
-					$where AND status = '1'
+					$where
 				";
 			break;
 			case "pone": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_pone
-					$where AND status = '1'
+					$where
 				";
 			break;
 			case "masterpo": 
 				$sql = "
 					SELECT *
 					FROM tbl_master_po
-					$where AND status = '1'
+					$where
 				";
 			break;
 		}

@@ -30,19 +30,15 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_potype').html('');
-			$('#frm_potype').hide();
-			$('#grid_nya_potype').show();
-			$('#grid_potype').datagrid('reload');
+			
+			closeWindow();
+			$('#grid_phase').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelPOType').on('click',function(){
-		$('#frm_potype').html('');
-		$('#frm_potype').hide();
-		$('#grid_nya_potype').show();
-		$('#grid_potype').datagrid('reload');
+		closeWindow();
 		return false;
 	});
 
