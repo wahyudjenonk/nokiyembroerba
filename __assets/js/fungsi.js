@@ -137,7 +137,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			];
 			kolom[modnya] = [	
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
+				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true, resizable: true},
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
 				{field:'publish',title:'Publish',width:50, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
@@ -161,13 +161,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
 				{field:'id',title:'ID',width:40, halign:'center',align:'left', sortable:true},
-				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left'},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left',
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -185,13 +185,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'currency',title:'Currency',width:150, halign:'center',align:'left'},
+				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left',
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -209,13 +209,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left'},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left',
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -233,13 +233,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left'},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left',
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -257,13 +257,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left'},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center'},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left',
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -281,28 +281,28 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'po_no',title:'PO No',width:200, halign:'center',align:'left'},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left'},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left'},
-				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center'},
-				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left'},
-				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'center'},
-				{field:'currency',title:'Currency',width:100, halign:'center',align:'left'},
-				{field:'basic_contract',title:'Basic Contract',width:200, halign:'center',align:'left'},
-				{field:'po_update',title:'PO Update',width:100, halign:'center',align:'center'},
-				{field:'po_recived',title:'PO Recived',width:100, halign:'center',align:'left'},
-				{field:'po_delivery',title:'PO Delivery',width:200, halign:'center',align:'left'},
-				{field:'revision_no',title:'Revisi On No',width:100, halign:'center',align:'center'},
-				{field:'po_gross_idr',title:'PO Gross IDR',width:100, halign:'center',align:'left'},
-				{field:'po_nett_idr',title:'PO Nett IDR',width:200, halign:'center',align:'left'},
-				{field:'jis_dor_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'center'},
-				{field:'po_gross_usd',title:'PO Gross USD',width:100, halign:'center',align:'left'},
-				{field:'po_nett_usd',title:'PO Nett USD',width:200, halign:'center',align:'left'},
-				{field:'remark',title:'Remark',width:300, halign:'center',align:'left'},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left'},
-				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'center'},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'center', sortable:true},
+				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
+				{field:'basic_contract',title:'Basic Contract',width:200, halign:'center',align:'left', sortable:true},
+				{field:'po_date',title:'PO Date',width:100, halign:'center',align:'center', sortable:true},
+				{field:'po_recived',title:'PO Recived',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_delivery',title:'PO Delivery',width:100, halign:'center',align:'left', sortable:true},
+				{field:'revision_no',title:'Revisi On No',width:100, halign:'center',align:'center', sortable:true},
+				{field:'po_gross_idr',title:'PO Gross IDR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_nett_idr',title:'PO Nett IDR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'jis_dor_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'center', sortable:true},
+				{field:'po_gross_usd',title:'PO Gross USD',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_nett_usd',title:'PO Nett USD',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 			]
 		break;
 		

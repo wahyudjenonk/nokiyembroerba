@@ -1890,7 +1890,7 @@ div.dt-button-info {
   display: block;
   padding: 6px 12px;
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-  width: 50%;
+  width: 100%;
   font-size: 14px;
 }
 .form-control:focus,
@@ -3369,7 +3369,7 @@ body {
   font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #2f4050;
   font-size: 11px;
-  color: #676a6c;
+  color: #134292;
   overflow-x: hidden;
 }
 html,
@@ -3767,7 +3767,7 @@ img.circle-border {
   cursor: move;
 }
 .breadcrumb {
-  background-color: #F4F9FD;
+  background-color: #DEDEDE;
   padding: 0;
   margin-bottom: 0;
 }
@@ -3810,7 +3810,7 @@ code {
   -moz-border-right-colors: none;
   -moz-border-top-colors: none;
   background-color: #ffffff;
-  border-color: #e7eaec;
+  border-color: #ffffff;
   border-image: none;
   border-style: solid solid none;
   border-width: 3px 0 0;
@@ -3823,7 +3823,7 @@ code {
   background-color: #ffffff;
   color: inherit;
   padding: 15px 20px 66px 20px;
-  border-color: #e7eaec;
+  border-color: #ffffff;
   border-image: none;
   border-style: solid solid none;
   border-width: 1px 0;
@@ -3911,13 +3911,13 @@ table.table-mail tr td {
 /* BACKGROUNDS */
 .gray-bg,
 .bg-muted {
-  background-color: #fbfbfb;
+  background-color: #ffffff;
 }
 .white-bg {
   background-color: #ffffff;
 }
 .blueaye-bg {
-  background-color: #F4F9FD;
+  background-color: #DEDEDE;
 }
 .navy-bg,
 .bg-success {
