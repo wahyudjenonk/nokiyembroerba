@@ -122,7 +122,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	var doble_klik=false;
 	var pagesizeboy = 10;
 	var singleSelek = true;
-	var nowrap_nya = true;
+	var nowrap_nya = false;
 	var footer=false;
 	
 	switch(modnya){
@@ -132,7 +132,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID',width:40, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 			];
 			kolom[modnya] = [	
@@ -160,7 +160,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'id',title:'ID',width:40, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -310,14 +310,12 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	
 	grid_nya=$("#"+divnya).datagrid({
 		title:judulnya,
-        //height:tingginya,
-        //width:lebarnya,
 		width: '100%',
 		height: '100%',
 		rownumbers:false,
 		iconCls:'database',
         fit:fitnya,
-        striped:true,
+        striped:false,
         pagination:true,
         remoteSort: false,
 		showFooter:footer,
