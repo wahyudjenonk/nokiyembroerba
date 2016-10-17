@@ -8,10 +8,14 @@
 	}
 </style>
 
-
-<div id='grid_{$submodul}'></div>
+<div id='maingrid_{$submodul}'>
+	<div id='grid_{$submodul}' style='height:100%;'></div>
+</div>
 <script>
 $(function(){
+	$('#maingrid_{$submodul}').css({
+		'height':(getClientHeight()-230)
+	});
 	genGrid('{$submodul}','grid_{$submodul}');
 });
 </script>
