@@ -30,18 +30,15 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_pocurrency').html('');
-			$('#frm_pocurrency').hide();
-			$('#grid_nya_pocurrency').show();
+			
+			closeWindow();
 			$('#grid_pocurrency').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelPOCurrency').on('click',function(){
-		$('#frm_pocurrency').html('');
-		$('#frm_pocurrency').hide();
-		$('#grid_nya_pocurrency').show();
+		closeWindow();
 		$('#grid_pocurrency').datagrid('reload');
 		return false;
 	});

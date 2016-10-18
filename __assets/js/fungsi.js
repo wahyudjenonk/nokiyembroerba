@@ -315,7 +315,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		rownumbers:false,
 		iconCls:'database',
         fit:fitnya,
-        striped:false,
+        striped:true,
         pagination:true,
         remoteSort: false,
 		showFooter:footer,
@@ -385,50 +385,50 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "phase":
 			table = "tbl_master_phase";
 			judulwindow = 'Form Master Phase';
-			lebar = 700;
+			lebar = 600;
 			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "potype":
 			table = "tbl_master_potype";
 			judulwindow = 'Form Master PO Type';
-			lebar = 700;
-			tinggi = 400;
+			lebar = 600;
+			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pocurrency":
 			table = "tbl_master_pocurrency";
 			judulwindow = 'Form Master Currency';
-			lebar = 700;
-			tinggi = 400;
+			lebar = 600;
+			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "region":
 			table = "tbl_master_region";
 			judulwindow = 'Form Master Region';
-			lebar = 700;
-			tinggi = 400;
+			lebar = 600;
+			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "sitename":
 			table = "tbl_master_sitename";
 			judulwindow = 'Form Master NE Name';
-			lebar = 700;
-			tinggi = 400;
+			lebar = 600;
+			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pone":
 			table = "tbl_master_pone";
 			judulwindow = 'Form Master Site Status';
-			lebar = 700;
-			tinggi = 400;
+			lebar = 600;
+			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "masterpo":
 			table = "tbl_master_po";
 			judulwindow = 'Form Master PO';
-			lebar = 700;
-			tinggi = 400;
+			lebar = 600;
+			tinggi = 600;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		

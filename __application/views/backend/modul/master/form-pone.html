@@ -30,18 +30,14 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_pone').html('');
-			$('#frm_pone').hide();
-			$('#grid_nya_pone').show();
+			closeWindow();
 			$('#grid_pone').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelPONE').on('click',function(){
-		$('#frm_pone').html('');
-		$('#frm_pone').hide();
-		$('#grid_nya_pone').show();
+		closeWindow();
 		$('#grid_pone').datagrid('reload');
 		return false;
 	});

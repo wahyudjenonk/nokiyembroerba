@@ -24,7 +24,11 @@
 				<td>{$rows.publish}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
-				<td>{$rows.status}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
 			</tr>
 		{/foreach}
 		</tbody>
@@ -50,7 +54,11 @@
 				<td>{$rows.remark}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
-				<td>{$rows.status}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
 			</tr>
 		{/foreach}
 		</tbody>
@@ -76,7 +84,11 @@
 				<td>{$rows.remark}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
-				<td>{$rows.status}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
 			</tr>
 		{/foreach}
 		</tbody>
@@ -102,7 +114,11 @@
 				<td>{$rows.remark}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
-				<td>{$rows.status}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
 			</tr>
 		{/foreach}
 		</tbody>
@@ -128,13 +144,17 @@
 				<td>{$rows.remark}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
-				<td>{$rows.status}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
 			</tr>
 		{/foreach}
 		</tbody>
 	</table>
 	
-{else $submodul eq 'sitename'}
+{elseif $submodul eq 'sitename'}
 	<table>
 		<thead>
 			<tr>
@@ -154,7 +174,11 @@
 				<td>{$rows.remark}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
-				<td>{$rows.status}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
 			</tr>
 		{/foreach}
 		</tbody>

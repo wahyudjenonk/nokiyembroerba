@@ -30,18 +30,14 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_sitename').html('');
-			$('#frm_sitename').hide();
-			$('#grid_nya_sitename').show();
+			closeWindow();
 			$('#grid_sitename').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelSiteName').on('click',function(){
-		$('#frm_sitename').html('');
-		$('#frm_sitename').hide();
-		$('#grid_nya_sitename').show();
+		closeWindow();
 		$('#grid_sitename').datagrid('reload');
 		return false;
 	});

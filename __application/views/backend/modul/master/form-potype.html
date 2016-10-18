@@ -39,6 +39,7 @@
 	
 	$('#cancelPOType').on('click',function(){
 		closeWindow();
+		$('#grid_phase').datagrid('reload');
 		return false;
 	});
 

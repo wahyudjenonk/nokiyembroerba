@@ -30,18 +30,14 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_region').html('');
-			$('#frm_region').hide();
-			$('#grid_nya_region').show();
+			closeWindow();
 			$('#grid_region').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelRegion').on('click',function(){
-		$('#frm_region').html('');
-		$('#frm_region').hide();
-		$('#grid_nya_region').show();
+		closeWindow();
 		$('#grid_region').datagrid('reload');
 		return false;
 	});
