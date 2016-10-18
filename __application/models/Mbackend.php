@@ -176,4 +176,49 @@ class Mbackend extends CI_Model{
 		}
 	}
 	
+	function importdata($type=""){
+		$this->load->library("PHPExcel");
+		if(!empty($_FILES['file_import']['name'])){
+			$ext = explode('.',$_FILES['file_import']['name']);
+			$exttemp = sizeof($ext) - 1;
+			$extension = $ext[$exttemp];
+			
+			$upload_path = "./__repository/tmp_upload/";
+			$filename =  $this->lib->uploadnong($upload_path, 'file_import', $type_import); //$file.'.'.$extension;
+			
+			$folder_aplod = $upload_path.$filename;
+			//set php excel settings
+			$cacheMethod   = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
+			$cacheSettings = array('memoryCacheSize' => '1600MB');
+			PHPExcel_Settings::setCacheStorageMethod($cacheMethod,$cacheSettings);
+			if($extension=='xls'){
+				$lib="Excel5";
+			}else{
+				$lib="Excel2007";
+			}
+			
+			//$inputFileType = PHPExcel_IOFactory::identify($upload_path.$filename);
+			//$objReader =  PHPExcel_IOFactory::createReader($inputFileType);//excel2007
+			$objReader =  PHPExcel_IOFactory::createReader($lib);//excel2007
+			ini_set('max_execution_time', 123456);
+			//end set
+			
+			$objPHPExcel = $objReader->load($folder_aplod); 
+			$objReader->setReadDataOnly(true);
+			$nama_sheet=$objPHPExcel->getSheetNames();
+			$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+			
+			switch($type){
+				case "tbl_master_po":
+					for($i=2; $i <= $worksheet->getHighestRow(); $i++){
+						if($worksheet->getCell("B".$i)->getCalculatedValue() != "" || $worksheet->getCell("B".$i)->getCalculatedValue() != null){
+							
+						}
+					}
+				break;
+			}
+			
+		}
+	}
+	
 }

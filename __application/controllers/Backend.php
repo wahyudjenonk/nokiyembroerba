@@ -80,6 +80,10 @@ class Backend extends JINGGA_Controller {
 					break;
 				}
 			break;
+			case "progress":
+				$display = true;
+				
+			break;
 		}
 		
 		$this->nsmarty->assign("main", $p1);
@@ -132,6 +136,10 @@ class Backend extends JINGGA_Controller {
 		else $editstatus = $p2;
 		
 		echo $this->mbackend->simpandata($p1, $post, $editstatus);
+	}
+	
+	function importdata($p1=""){
+		echo $this->mbackend->importdata($p1);
 	}
 	
 	function test(){
