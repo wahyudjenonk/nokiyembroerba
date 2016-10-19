@@ -1,0 +1,22 @@
+<form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/{$type_import}' class="form-horizontal">
+	<br/>
+	<div class="form-group"><label class="col-sm-2 control-label">File Excell</label>
+		<div class="col-sm-2">
+			<input type='file' name='file_import' class='validasi' />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">&nbsp;</label>
+		<div class="col-sm-6">
+			<a href=''>Download Template</a>
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='saveImport_{$acak}' >Save</a>
+            <a class="btn btn-danger" id='cancelImport_{$acak}'>Cancel</a>
+        </div>
+    </div>	
+	<div class="hr-line-dashed"></div>
+</form>

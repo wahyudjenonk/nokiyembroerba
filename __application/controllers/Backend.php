@@ -83,6 +83,14 @@ class Backend extends JINGGA_Controller {
 			case "progress":
 				$display = true;
 				
+				switch($p2){
+					case "import-masterpo":
+						$temp = "backend/modul/".$p1."/form-import.html";
+						$type_import = $this->input->post('type_import');
+						
+						$this->nsmarty->assign("type_import", $type_import);
+					break;
+				}
 			break;
 		}
 		
@@ -139,7 +147,13 @@ class Backend extends JINGGA_Controller {
 	}
 	
 	function importdata($p1=""){
-		echo $this->mbackend->importdata($p1);
+		$import = $this->mbackend->importdata($p1);
+		
+		if($import == 1){
+			echo $import;
+		}else{
+			
+		}
 	}
 	
 	function test(){
