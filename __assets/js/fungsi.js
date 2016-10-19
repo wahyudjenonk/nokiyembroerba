@@ -377,11 +377,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 
 function genform(type, modulnya, submodulnya, stswindow, tabel){
 	var urlpost = host+'backend/get_form/'+submodulnya+'/form';
+	var urlimport = "";
 	var id_tambahan = "";
 	lebar = 850;
 	tinggi = 350;
 
 	switch(submodulnya){
+		//Modul Master Data
 		case "phase":
 			table = "tbl_master_phase";
 			judulwindow = 'Form Master Phase';
@@ -424,17 +426,42 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
+		//End Modul Master Data
+		
+		//Modul Master Progress
 		case "masterpo":
 			table = "tbl_master_po";
 			judulwindow = 'Form Master PO';
-			lebar = 600;
+			lebar = 700;
 			tinggi = 600;
-			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
+			urlpost = host+'backend/getdisplay/progress/form-'+submodulnya;
+			
+			urlimport = host+'backend/getdisplay/progress/import-'+submodulnya;
+			lebar_import = 700;
+			tinggi_import = 600;
+			type_import = "masterpo";
 		break;
-		
+		//End Modul Master Progress
 	}
 	
 	switch(type){
+		case "import_data":
+			$.post(urlimport, { 'type_import':type_import }, function(resp){
+				if(stswindow == undefined){
+					$('#grid_nya_'+submodulnya).hide();
+					$('#frm_'+submodulnya).show().addClass("loading");	
+				}
+
+				if(stswindow == 'windowform'){
+					windowForm(resp, "Form Import Data", lebar_import, tinggi_import);
+				}else if(stswindow == 'windowpanel'){
+					windowFormPanel(resp, "Form Import Data", lebar_import, tinggi_import);
+				}else{
+					$('#frm_'+submodulnya).show();
+					$('#frm_'+submodulnya).html(resp).removeClass("loading");
+				}
+			});
+		break;
 		case "add":
 			$.post(urlpost, {'editstatus':'add', 'ts':table, 'id_tambahan':id_tambahan }, function(resp){
 				if(stswindow == undefined){
