@@ -1,0 +1,115 @@
+<form method="post" id='frmmastercr_{$acak}' url='{$host}backend/simpandata/tbl_master_cr' class="form-horizontal">
+	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
+	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
+	<br/>
+	<div class="form-group"><label class="col-sm-2 control-label">CR No Nokia</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_no_nokia' value="{$data.cr_no_nokia|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR No Indosat</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='cr_no_indosat' value="{$data.cr_no_indosat|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR Status</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_status' value="{$data.cr_status|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Code</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_phase_code' value="{$data.tbl_master_phase_code|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Name</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='tbl_master_phase_name' value="{$data.tbl_master_phase_name|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Year</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_phase_year' value="{$data.tbl_master_phase_year|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">NODIN</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='nodin' value="{$data.nodin|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR Position</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_posistion' value="{$data.cr_posistion|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR Pic</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_pic' value="{$data.cr_pic|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR Submit</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_submit' value="{$data.cr_submit|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR Approved</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_approved' value="{$data.cr_approved|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Value Before</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='value_before' value="{$data.value_before|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Value After</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='value_after' value="{$data.value_after|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Value Delta</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='value_delta' value="{$data.value_delta|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">CR Type</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cr_type' value="{$data.cr_type|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='remark' value="{$data.remark|default:''}" />
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='saveMasterCR' >Save</a>
+            <a class="btn btn-danger" id='cancelMasterCR'>Cancel</a>
+        </div>
+    </div>	
+</form>
+
+<script>
+	$('#saveMasterCR').on('click',function(){
+		submit_form('frmmastercr_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			closeWindow();
+			$('#grid_mastercr').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelMasterCR').on('click',function(){
+		closeWindow();
+		$('#grid_mastercr').datagrid('reload');
+		return false;
+	});
+
+</script>

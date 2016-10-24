@@ -281,6 +281,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
@@ -292,15 +293,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
 				{field:'basic_contract',title:'Basic Contract',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_date',title:'PO Date',width:100, halign:'center',align:'center', sortable:true},
-				{field:'po_recived',title:'PO Recived',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_received',title:'PO Recived',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_delivery',title:'PO Delivery',width:100, halign:'center',align:'left', sortable:true},
 				{field:'revision_no',title:'Revisi On No',width:100, halign:'center',align:'center', sortable:true},
 				{field:'po_gross_idr',title:'PO Gross IDR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_nett_idr',title:'PO Nett IDR',width:100, halign:'center',align:'left', sortable:true},
-				{field:'jis_dor_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'center', sortable:true},
+				{field:'jis_dorr_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'center', sortable:true},
 				{field:'po_gross_usd',title:'PO Gross USD',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_nett_usd',title:'PO Nett USD',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'remarks',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 			]

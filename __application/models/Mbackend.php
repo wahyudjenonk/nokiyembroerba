@@ -258,6 +258,8 @@ class Mbackend extends CI_Model{
 						
 						if($statusdata == true){
 							$podate = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("J".$i)->getCalculatedValue()), 'Y-m-d');
+							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
+							$podelivery = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
 							$arrayinsertbenar = array(
 								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'tbl_master_potype_id' => $tbl_master_potype_id,
@@ -265,6 +267,8 @@ class Mbackend extends CI_Model{
 								'project_name' => $worksheet->getCell("G".$i)->getCalculatedValue(),
 								'basic_contract' => $worksheet->getCell("I".$i)->getCalculatedValue(),
 								'po_date' => $podate,
+								'po_received' => $poreceived,
+								'po_delivery' => $podelivery,
 								'revision_no' => $worksheet->getCell("M".$i)->getCalculatedValue(),
 								
 								'po_gross_idr' => $worksheet->getCell("N".$i)->getCalculatedValue(),

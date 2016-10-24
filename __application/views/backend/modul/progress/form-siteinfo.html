@@ -1,0 +1,140 @@
+<form method="post" id='frmsiteinfo_{$acak}' url='{$host}backend/simpandata/tbl_siteinfo' class="form-horizontal">
+	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
+	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
+	<br/>
+	<div class="form-group"><label class="col-sm-2 control-label">BOQ No</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='boq_no' value="{$data.boq_no|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site ID</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='site_id' value="{$data.site_id|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site Name</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='site_name' value="{$data.site_name|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">SOW Category</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='sow_category' value="{$data.sow_category|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site Status</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='tbl_master_sitestatus' value="{$data.tbl_master_sitestatus|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Region Code</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_region_code' value="{$data.tbl_master_region_code|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Area Name</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='area_name' value="{$data.area_name|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Cluster</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='cluster' value="{$data.cluster|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Code</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_phase_code' value="{$data.tbl_master_phase_code|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Phase Name</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_phase_name' value="{$data.tbl_master_phase_name|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">SOW Detail</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='sow_detail' value="{$data.sow_detail|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">System Key</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='system_key' value="{$data.system_key|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site ID Ori</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='site_id_ori' value="{$data.site_id_ori|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site Name Ori</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='site_name_ori' value="{$data.site_name_ori|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">NE Name</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_pone' value="{$data.tbl_master_pone|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Network BOQ</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='network_boq' value="{$data.network_boq|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">System Key</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='system_key' value="{$data.system_key|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site ID Ori</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='site_id_ori' value="{$data.site_id_ori|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Site Name Ori</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="number" name='site_name_ori' value="{$data.site_name_ori|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">NE Name</label>
+		<div class="col-sm-2">
+			<input class="form-control" type="text" name='tbl_master_pone' value="{$data.tbl_master_pone|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
+		<div class="col-sm-10">
+			<input class="form-control" type="text" name='remark' value="{$data.remark|default:''}" />
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='saveSiteInfo' >Save</a>
+            <a class="btn btn-danger" id='cancelSiteInfo'>Cancel</a>
+        </div>
+    </div>	
+</form>
+
+<script>
+	$('#saveSiteInfo').on('click',function(){
+		submit_form('frmsiteinfo_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			closeWindow();
+			$('#grid_siteinfo').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelSiteInfo').on('click',function(){
+		closeWindow();
+		$('#grid_siteinfo').datagrid('reload');
+		return false;
+	});
+
+</script>
