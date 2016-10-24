@@ -184,10 +184,9 @@ class Mbackend extends CI_Model{
 			$extension = $ext[$exttemp];
 			
 			$upload_path = "./__repository/tmp_upload/";
-			$filename =  $this->lib->uploadnong($upload_path, 'file_import', $type_import); //$file.'.'.$extension;
+			$filename =  $this->lib->uploadnong($upload_path, 'file_import', $type);
 			
 			$folder_aplod = $upload_path.$filename;
-			//set php excel settings
 			$cacheMethod   = PHPExcel_CachedObjectStorageFactory::cache_to_phpTemp;
 			$cacheSettings = array('memoryCacheSize' => '1600MB');
 			PHPExcel_Settings::setCacheStorageMethod($cacheMethod,$cacheSettings);
@@ -197,8 +196,6 @@ class Mbackend extends CI_Model{
 				$lib="Excel2007";
 			}
 			
-			//$inputFileType = PHPExcel_IOFactory::identify($upload_path.$filename);
-			//$objReader =  PHPExcel_IOFactory::createReader($inputFileType);//excel2007
 			$objReader =  PHPExcel_IOFactory::createReader($lib);//excel2007
 			ini_set('max_execution_time', 123456);
 			//end set
@@ -207,17 +204,100 @@ class Mbackend extends CI_Model{
 			$objReader->setReadDataOnly(true);
 			$nama_sheet=$objPHPExcel->getSheetNames();
 			$worksheet = $objPHPExcel->setActiveSheetIndex(0);
-			
+			$array_benar = array();
+			$array_salah = array();
+						
 			switch($type){
-				case "tbl_master_po":
-					for($i=2; $i <= $worksheet->getHighestRow(); $i++){
-						if($worksheet->getCell("B".$i)->getCalculatedValue() != "" || $worksheet->getCell("B".$i)->getCalculatedValue() != null){
-							
+				case "masterpo":
+					for($i=6; $i <= $worksheet->getHighestRow(); $i++){
+						$statusdata = true;
+						$arrayphasesalah = array();
+						$arraypotypesalah = array();
+						$arraycurrencysalah = array();
+
+						if($worksheet->getCell("B".$i)->getCalculatedValue() != "" || $worksheet->getCell("C".$i)->getCalculatedValue() != "" || $worksheet->getCell("D".$i)->getCalculatedValue() != ""){
+							$arrayphase = array(
+								'phase_code' => $worksheet->getCell("B".$i)->getCalculatedValue(),
+								'phase_name' => $worksheet->getCell("D".$i)->getCalculatedValue(),
+								'phase_year' => $worksheet->getCell("C".$i)->getCalculatedValue(),
+							);
+							$cekphase = $this->db->get_where('tbl_master_phase', $arrayphase)->row_array();
+							if(isset($cekphase)){
+								$tbl_master_phase_id = $cekphase['id'];
+							}else{
+								$statusdata = false;
+								$arrayphasesalah['phase_code'] = $worksheet->getCell("B".$i)->getCalculatedValue();
+								$arrayphasesalah['phase_name'] = $worksheet->getCell("D".$i)->getCalculatedValue();
+								$arrayphasesalah['phase_year'] = $worksheet->getCell("C".$i)->getCalculatedValue();
+							}
+						}
+						if($worksheet->getCell("E".$i)->getCalculatedValue() != ""){
+							$arraypotype = array(
+								'po_type' => $worksheet->getCell("E".$i)->getCalculatedValue(),
+							);
+							$cekpotype = $this->db->get_where('tbl_master_potype', $arraypotype)->row_array();
+							if(isset($cekpotype)){
+								$tbl_master_potype_id = $cekpotype['id'];
+							}else{
+								$statusdata = false;
+								$arraypotypesalah['po_type'] = $worksheet->getCell("E".$i)->getCalculatedValue();
+							}
+						}
+						if($worksheet->getCell("H".$i)->getCalculatedValue() != ""){
+							$arraycurrency = array(
+								'currency' => $worksheet->getCell("H".$i)->getCalculatedValue(),
+							);
+							$cekcurrency = $this->db->get_where('tbl_master_pocurrency', $arraycurrency)->row_array();
+							if(isset($cekcurrency)){
+								$tbl_master_currency_id = $cekcurrency['id'];
+							}else{
+								$statusdata = false;
+								$arraycurrencysalah['currency'] = $worksheet->getCell("H".$i)->getCalculatedValue();
+							}
+						}
+						
+						if($statusdata == true){
+							$podate = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("J".$i)->getCalculatedValue()), 'Y-m-d');
+							$arrayinsertbenar = array(
+								'tbl_master_phase_id' => $tbl_master_phase_id,
+								'tbl_master_potype_id' => $tbl_master_potype_id,
+								'tbl_master_currency_id' => $tbl_master_currency_id,
+								'project_name' => $worksheet->getCell("G".$i)->getCalculatedValue(),
+								'basic_contract' => $worksheet->getCell("I".$i)->getCalculatedValue(),
+								'po_date' => $podate,
+								'revision_no' => $worksheet->getCell("M".$i)->getCalculatedValue(),
+								
+								'po_gross_idr' => $worksheet->getCell("N".$i)->getCalculatedValue(),
+								'po_nett_idr' => $worksheet->getCell("O".$i)->getCalculatedValue(),
+								'jis_dorr_rate' => $worksheet->getCell("P".$i)->getCalculatedValue(),
+								'po_gross_usd' => $worksheet->getCell("Q".$i)->getCalculatedValue(),
+								'po_nett_usd' => $worksheet->getCell("R".$i)->getCalculatedValue(),
+								'remarks' => $worksheet->getCell("S".$i)->getCalculatedValue(),
+							);
+							array_push($array_benar, $arrayinsertbenar);
+						}else{
+							$arrayinsertsalah = array(
+								'row' => $i,
+								'phase' => $arrayphasesalah,
+								'potype' => $arraypotypesalah,
+								'currency' => $arraycurrencysalah
+							);
+							array_push($array_salah, $arrayinsertsalah);
 						}
 					}
+					$table = "tbl_master_po";
+					
 				break;
 			}
 			
+			if(!empty($array_salah)){
+				return $array_salah;
+			}else{
+				if($array_benar){
+					$this->db->insert_batch($table, $array_benar);
+					return 1;
+				}
+			}
 		}
 	}
 	

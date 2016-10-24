@@ -153,7 +153,23 @@ class Backend extends JINGGA_Controller {
 			echo $import;
 		}else{
 			
+			
+			$this->nsmarty->assign('type', $p1);
+			$this->nsmarty->assign('data', $import);
+			$this->nsmarty->display("backend/modul/progress/hasil_import.html");
+			//*/
+			/*
+			echo "<pre>";
+			print_r($import);
+			//*/
 		}
+	}
+	
+	function download($type=""){
+		$this->load->helper('download');
+		$data = file_get_contents("__repository/template/temp_".$type.".xlsx");
+		$name = "temp_".$type.".xlsx";
+		force_download($name, $data);
 	}
 	
 	function test(){
