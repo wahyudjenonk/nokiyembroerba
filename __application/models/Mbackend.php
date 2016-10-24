@@ -84,8 +84,12 @@ class Mbackend extends CI_Model{
 			break;
 			case "masterpo": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_po
+					SELECT A.*, B.phase_code, B.phase_name, B.phase_year,
+						D.currency, C.po_type
+					FROM tbl_master_po A
+					LEFT JOIN tbl_master_phase B ON B.id = A.tbl_master_phase_id
+					LEFT JOIN tbl_master_potype C ON C.id = A.tbl_master_potype_id
+					LEFT JOIN tbl_master_pocurrency D ON D.id = A.tbl_master_currency_id
 					$where
 				";
 			break;
