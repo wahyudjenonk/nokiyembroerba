@@ -18,4 +18,21 @@
 			</tr>
 		{/foreach}
 	</table>
+	
+{elseif $type eq 'mastercr'}
+	<h1>Wrong Data</h1>
+	<br />
+	
+	<table width='100%'>
+		<tr style='background:#F2F2F2;'>
+			<td width='15%' align='center'><b>Rows Excel</b></td>
+			<td width='15%' align='center'><b>Phase Code</b></td>
+		</tr>
+		{foreach from=$data item=rows}
+			<tr>
+				<td>{$rows.row|default:''}</td>
+				<td>{$rows.phase.phase_code|default:'-'}</td>
+			</tr>
+		{/foreach}
+	</table>
 {/if}

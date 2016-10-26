@@ -306,6 +306,46 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 			]
 		break;
+		case "mastercr":
+			judulnya = "";
+			urlnya = "mastercr";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:200, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'cr_no_indosat',title:'CR No Indosat',width:200, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'tbl_master_phase_code',title:'Phase Code',width:75, halign:'center',align:'left', sortable:true},
+				{field:'tbl_master_phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'tbl_master_phase_year',title:'Phase Year',width:50, halign:'center',align:'left', sortable:true},
+				{field:'nodin',title:'NODIN',width:200, halign:'center',align:'left', sortable:true},
+				{field:'cr_position',title:'CR Position',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_pic',title:'CR Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_submit',title:'CR Submit',width:75, halign:'center',align:'left', sortable:true},
+				{field:'cr_approved',title:'CR Approved',width:75, halign:'center',align:'left', sortable:true},
+				{field:'po_recived',title:'PO Recived',width:75, halign:'center',align:'left', sortable:true},
+				{field:'value_before',title:'Value Before',width:100, halign:'center',align:'left', sortable:true},
+				{field:'value_after',title:'Value After',width:100, halign:'center',align:'left', sortable:true},
+				{field:'value_delta',title:'Value Delta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_type',title:'CR Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remark',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'left', sortable:true},
+				{field:'file_name',title:'File Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
 		
 	}
 	
@@ -441,6 +481,18 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			lebar_import = 700;
 			tinggi_import = 600;
 			type_import = "masterpo";
+		break;
+		case "mastercr":
+			table = "tbl_master_cr";
+			judulwindow = 'Form Master CR';
+			lebar = 700;
+			tinggi = 600;
+			urlpost = host+'backend/getdisplay/progress/form-'+submodulnya;
+			
+			urlimport = host+'backend/getdisplay/progress/import-'+submodulnya;
+			lebar_import = 700;
+			tinggi_import = 600;
+			type_import = "mastercr";
 		break;
 		//End Modul Master Progress
 	}

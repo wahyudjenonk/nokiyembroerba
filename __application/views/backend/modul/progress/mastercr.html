@@ -59,25 +59,15 @@
 	var submodul = "{$submodul|default:''}";
 	var param = {};
 	
-	$(document).keypress(function(e) {
-		if(e.which == 13) {
-			$('#grid_{$submodul}').datagrid('reload',{
-				'table' : 'tbl_master_cr',
-				'kat' : $('#{$submodul}_filter_kategori').val(),
-				'key' : $('#{$submodul}_txt').val()
-			});
-		}
-	});
-	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_master_cr',
+			'table' : 'tbl_master_mastercr',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_master_cr';
+		param['table'] = 'tbl_master_mastercr';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		

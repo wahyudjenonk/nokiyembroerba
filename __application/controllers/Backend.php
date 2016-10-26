@@ -78,6 +78,12 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}
 					break;
+					case "form-mastercr":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_cr', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
 				}
 			break;
 			case "progress":
@@ -85,6 +91,12 @@ class Backend extends JINGGA_Controller {
 				
 				switch($p2){
 					case "import-masterpo":
+						$temp = "backend/modul/".$p1."/form-import.html";
+						$type_import = $this->input->post('type_import');
+						
+						$this->nsmarty->assign("type_import", $type_import);
+					break;
+					case "import-mastercr":
 						$temp = "backend/modul/".$p1."/form-import.html";
 						$type_import = $this->input->post('type_import');
 						

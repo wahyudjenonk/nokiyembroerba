@@ -93,6 +93,14 @@ class Mbackend extends CI_Model{
 					$where
 				";
 			break;
+			case "mastercr": 
+				$sql = "
+					SELECT A.*, B.phase_code, B.phase_name, B.phase_year,
+					FROM tbl_master_cr A
+					LEFT JOIN tbl_master_phase B ON B.id = A.tbl_master_phase_id
+					$where
+				";
+			break;
 		}
 		
 		if($balikan == 'json'){
@@ -150,6 +158,9 @@ class Mbackend extends CI_Model{
 				
 			break;
 			case "tbl_master_po":
+				
+			break;
+			case "tbl_master_cr":
 				
 			break;
 		}
@@ -294,6 +305,61 @@ class Mbackend extends CI_Model{
 						}
 					}
 					$table = "tbl_master_po";
+					
+				break;
+				case "mastercr":
+					for($i=6; $i <= $worksheet->getHighestRow(); $i++){
+						$statusdata = true;
+						$arrayphasesalah = array();
+
+						if($worksheet->getCell("E".$i)->getCalculatedValue() != "" || $worksheet->getCell("F".$i)->getCalculatedValue() != "" || $worksheet->getCell("G".$i)->getCalculatedValue() != ""){
+							$arrayphase = array(
+								'phase_code' => $worksheet->getCell("E".$i)->getCalculatedValue(),
+								'phase_name' => $worksheet->getCell("F".$i)->getCalculatedValue(),
+								'phase_year' => $worksheet->getCell("G".$i)->getCalculatedValue(),
+							);
+							$cekphase = $this->db->get_where('tbl_master_phase', $arrayphase)->row_array();
+							if(isset($cekphase)){
+								$tbl_master_phase_id = $cekphase['id'];
+							}else{
+								$statusdata = false;
+								$arrayphasesalah['phase_code'] = $worksheet->getCell("E".$i)->getCalculatedValue();
+								$arrayphasesalah['phase_name'] = $worksheet->getCell("F".$i)->getCalculatedValue();
+								$arrayphasesalah['phase_year'] = $worksheet->getCell("G".$i)->getCalculatedValue();
+							}
+						}
+						
+						if($statusdata == true){
+							$crsubmit = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
+							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("M".$i)->getCalculatedValue()), 'Y-m-d');
+							$crapproved = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
+							$arrayinsertbenar = array(
+								'cr_no_nokia' => $worksheet->getCell("B".$i)->getCalculatedValue(),
+								'cr_no_indosat' => $worksheet->getCell("C".$i)->getCalculatedValue(),
+								'cr_status' => $worksheet->getCell("D".$i)->getCalculatedValue(),
+								'tbl_master_phase_id' => $tbl_master_phase_id,
+								'nodin' => $worksheet->getCell("H".$i)->getCalculatedValue(),
+								'cr_position' => $worksheet->getCell("I".$i)->getCalculatedValue(),
+								'cr_pic' => $worksheet->getCell("J".$i)->getCalculatedValue(),
+								'cr_submit' => $crsubmit,
+								'cr_approved' => $crapproved,
+								'po_received' => $poreceived,
+								'value_before' => $worksheet->getCell("N".$i)->getCalculatedValue(),	
+								'value_after' => $worksheet->getCell("O".$i)->getCalculatedValue(),
+								'value_delta' => $worksheet->getCell("P".$i)->getCalculatedValue(),
+								'cr_type' => $worksheet->getCell("Q".$i)->getCalculatedValue(),
+								'remarks' => $worksheet->getCell("R".$i)->getCalculatedValue(),
+							);
+							array_push($array_benar, $arrayinsertbenar);
+						}else{
+							$arrayinsertsalah = array(
+								'row' => $i,
+								'phase' => $arrayphasesalah,
+							);
+							array_push($array_salah, $arrayinsertsalah);
+						}
+					}
+					$table = "tbl_master_cr";
 					
 				break;
 			}
