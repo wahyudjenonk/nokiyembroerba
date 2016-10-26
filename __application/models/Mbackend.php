@@ -279,6 +279,7 @@ class Mbackend extends CI_Model{
 								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'tbl_master_potype_id' => $tbl_master_potype_id,
 								'tbl_master_currency_id' => $tbl_master_currency_id,
+								'po_no' => $worksheet->getCell("F".$i)->getCalculatedValue(),
 								'project_name' => $worksheet->getCell("G".$i)->getCalculatedValue(),
 								'basic_contract' => $worksheet->getCell("I".$i)->getCalculatedValue(),
 								'po_date' => $podate,
@@ -334,10 +335,10 @@ class Mbackend extends CI_Model{
 							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("M".$i)->getCalculatedValue()), 'Y-m-d');
 							$crapproved = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
 							$arrayinsertbenar = array(
+								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'cr_no_nokia' => $worksheet->getCell("B".$i)->getCalculatedValue(),
 								'cr_no_indosat' => $worksheet->getCell("C".$i)->getCalculatedValue(),
 								'cr_status' => $worksheet->getCell("D".$i)->getCalculatedValue(),
-								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'nodin' => $worksheet->getCell("H".$i)->getCalculatedValue(),
 								'cr_position' => $worksheet->getCell("I".$i)->getCalculatedValue(),
 								'cr_pic' => $worksheet->getCell("J".$i)->getCalculatedValue(),
@@ -354,7 +355,7 @@ class Mbackend extends CI_Model{
 						}else{
 							$arrayinsertsalah = array(
 								'row' => $i,
-								'phase' => $arrayphasesalah,
+								'phase' => $arrayphasesalah
 							);
 							array_push($array_salah, $arrayinsertsalah);
 						}
