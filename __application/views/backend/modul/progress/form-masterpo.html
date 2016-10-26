@@ -2,21 +2,6 @@
 	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
 	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
 	<br/>
-	<div class="form-group"><label class="col-sm-2 control-label">Phase Code</label>
-		<div class="col-sm-2">
-			<input class="form-control" type="text" name='phase_code' value="{$data.phase_code|default:''}" />
-		</div>
-	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">Phase Name</label>
-		<div class="col-sm-10">
-			<input class="form-control" type="text" name='phase_name' value="{$data.phase_name|default:''}" />
-		</div>
-	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">Phase Year</label>
-		<div class="col-sm-2">
-			<input class="form-control" type="text" name='phase_year' value="{$data.phase_year|default:''}" />
-		</div>
-	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Type</label>
 		<div class="col-sm-2">
 			<input class="form-control" type="text" name='po_type' value="{$data.po_type|default:''}" />
@@ -44,12 +29,12 @@
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Update</label>
 		<div class="col-sm-2">
-			<input class="form-control" type="date" name='po_update' value="{$data.po_update|default:''}" />
+			<input class="form-control" type="date" name='po_date' value="{$data.po_date|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Recived</label>
 		<div class="col-sm-2">
-			<input class="form-control" type="date" name='po_recived' value="{$data.po_recived|default:''}" />
+			<input class="form-control" type="date" name='po_received' value="{$data.po_received|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Delivery</label>

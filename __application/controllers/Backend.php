@@ -96,6 +96,12 @@ class Backend extends JINGGA_Controller {
 						
 						$this->nsmarty->assign("type_import", $type_import);
 					break;
+					case "form-masterpo":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_master_po', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+					break;
 					case "import-mastercr":
 						$temp = "backend/modul/".$p1."/form-import.html";
 						$type_import = $this->input->post('type_import');
@@ -127,8 +133,10 @@ class Backend extends JINGGA_Controller {
 				$data = $this->mbackend->getdata($submodul, 'result_array');
 				
 				if($data){
+					$date=date('Ymd');
+					$time=time();
 					header("Content-type: application/vnd-ms-excel");
-					header("Content-Disposition: attachment; filename=expordata-".$submodul.".xls");
+					header("Content-Disposition: attachment; filename=expordata-".$submodul."".$date."".$time.".xls");
 					
 					$this->nsmarty->assign('submodul', $submodul);
 					$this->nsmarty->assign('data', $data);
