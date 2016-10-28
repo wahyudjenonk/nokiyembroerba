@@ -62,7 +62,7 @@
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
-				'table' : 'tbl_master_masterpo',
+				'table' : 'tbl_master_po',
 				'kat' : $('#{$submodul}_filter_kategori').val(),
 				'key' : $('#{$submodul}_txt').val()
 			});
@@ -70,13 +70,13 @@
 	});
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_master_masterpo',
+			'table' : 'tbl_master_po',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_master_masterpo';
+		param['table'] = 'tbl_master_po';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		

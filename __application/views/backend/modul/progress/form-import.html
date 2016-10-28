@@ -1,5 +1,13 @@
 <form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/{$type_import}'  class="form-horizontal" enctype="multipart/form-data">
 	<br/>
+	<div class="form-group"><label class="col-sm-2 control-label">Method</label>
+		<div class="col-sm-2">
+			<select name='methodupload' style='padding:3px; width:100px;'>
+				<option value='N'>New Data</option>
+				<option value='U'>Update</option>
+			</select>
+		</div>
+	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">File Excell</label>
 		<div class="col-sm-2">
 			<input type='file' name='file_import' class='validasi' />
@@ -31,7 +39,6 @@
 				$('#grid_{$type_import}').datagrid('reload');
 				closeWindow();
 			}else{
-				alert(r);
 				$('#result_{$type_import}').html(r);
 			}
 		});

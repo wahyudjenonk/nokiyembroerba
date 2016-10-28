@@ -40,7 +40,7 @@ class Backend extends JINGGA_Controller {
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_master_phase', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
-						}
+						}						
 					break;
 					case "form-potype":
 						if($editstatus == 'edit'){
@@ -71,7 +71,7 @@ class Backend extends JINGGA_Controller {
 							$data = $this->db->get_where('tbl_master_pone', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}
-					break;
+					break;					
 				}
 			break;
 			
@@ -90,7 +90,11 @@ class Backend extends JINGGA_Controller {
 							$data = $this->db->get_where('tbl_master_po', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}
+						$this->nsmarty->assign("tbl_master_phase_id", $this->lib->fillcombo('tbl_master_phase', 'return', ($editstatus == 'edit' ? $data['tbl_master_phase_id'] : "") ) );
+						$this->nsmarty->assign("tbl_master_potype_id", $this->lib->fillcombo('tbl_master_potype', 'return', ($editstatus == 'edit' ? $data['tbl_master_potype_id'] : "") ) );
+						$this->nsmarty->assign("tbl_master_currency_id", $this->lib->fillcombo('tbl_master_pocurrency', 'return', ($editstatus == 'edit' ? $data['tbl_master_currency_id'] : "") ) );
 					break;
+					
 					case "import-mastercr":
 						$temp = "backend/modul/".$p1."/form-import.html";
 						$type_import = $this->input->post('type_import');
@@ -102,6 +106,7 @@ class Backend extends JINGGA_Controller {
 							$data = $this->db->get_where('tbl_master_cr', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}
+						$this->nsmarty->assign("tbl_master_phase_id", $this->lib->fillcombo('tbl_master_phase', 'return', ($editstatus == 'edit' ? $data['tbl_master_phase_id'] : "") ) );						
 					break;
 				}
 			break;

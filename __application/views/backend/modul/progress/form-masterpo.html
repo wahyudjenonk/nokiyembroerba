@@ -2,11 +2,27 @@
 	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
 	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
 	<br/>
-	<div class="form-group"><label class="col-sm-2 control-label">PO Type</label>
-		<div class="col-sm-2">
-			<input class="form-control" type="text" name='po_type' value="{$data.po_type|default:''}" />
+	<div class="form-group"><label class="col-sm-2 control-label">Phase</label>
+		<div class="col-sm-4">
+			<select class="form-control" name='tbl_master_phase_id'>
+				{$tbl_master_phase_id}
+			</select>
 		</div>
 	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">PO Type</label>
+		<div class="col-sm-4">
+			<select class="form-control" name='tbl_master_potype_id'>
+				{$tbl_master_potype_id}
+			</select>
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Currency</label>
+		<div class="col-sm-4">
+			<select class="form-control" name='tbl_master_currency_id'>
+				{$tbl_master_currency_id}
+			</select>
+		</div>
+	</div>	
 	<div class="form-group"><label class="col-sm-2 control-label">PO No</label>
 		<div class="col-sm-2">
 			<input class="form-control" type="text" name='po_no' value="{$data.po_no|default:''}" />
@@ -15,11 +31,6 @@
 	<div class="form-group"><label class="col-sm-2 control-label">Project Name</label>
 		<div class="col-sm-2">
 			<input class="form-control" type="text" name='project_name' value="{$data.project_name|default:''}" />
-		</div>
-	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">Currency</label>
-		<div class="col-sm-2">
-			<input class="form-control" type="text" name='currency' value="{$data.currency|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Basic Contract</label>

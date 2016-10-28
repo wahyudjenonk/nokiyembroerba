@@ -18,16 +18,16 @@ class Mbackend extends CI_Model{
 						continue;
 					}
 					if ($k == reset($field)){
-						$where .= $v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
+						$where .= " A.".$v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
 					}elseif ($k == end($field)){
-						$where .= $v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
+						$where .= " A.".$v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
 					}else{
-						$where .= "OR ".$v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
+						$where .= "OR A.".$v." like '%".$this->db->escape_str($this->input->post('key'))."%' ";
 					}
 				}
 				$where .= " ) ";
 			}else{
-				$where .=" AND ".$this->input->post('kat')." like '%".$this->db->escape_str($this->input->post('key'))."%'";
+				$where .=" AND A.".$this->input->post('kat')." like '%".$this->db->escape_str($this->input->post('key'))."%'";
 			}
 		}
 		
@@ -41,44 +41,44 @@ class Mbackend extends CI_Model{
 			break;
 			case "phase": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_phase
+					SELECT A.*
+					FROM tbl_master_phase A
 					$where 
 				";
 				
 			break;
 			case "potype": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_potype
+					SELECT A.*
+					FROM tbl_master_potype A
 					$where
 				";
 			break;
 			case "pocurrency": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_pocurrency
+					SELECT A.*
+					FROM tbl_master_pocurrency A
 					$where
 				";
 			break;
 			case "region": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_region
+					SELECT A.*
+					FROM tbl_master_region A
 					$where
 				";
 			break;
 			case "sitename": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_sitename
+					SELECT A.*
+					FROM tbl_master_sitename A
 					$where
 				";
 			break;
 			case "pone": 
 				$sql = "
-					SELECT *
-					FROM tbl_master_pone
+					SELECT A.*
+					FROM tbl_master_pone A
 					$where
 				";
 			break;
@@ -117,10 +117,25 @@ class Mbackend extends CI_Model{
 	
 	function get_combo($type="", $p1="", $p2=""){
 		switch($type){
-			case "cl_kategori":
+			case "tbl_master_phase":
 				$sql = "
-					SELECT id, nama_kategori as txt
-					FROM cl_kategori
+					SELECT A.id, CONCAT_WS('-', A.phase_code, A.phase_year) as txt
+					FROM $type A
+					WHERE A.status = '1'
+				";
+			break;
+			case "tbl_master_potype":
+				$sql = "
+					SELECT A.id, A.po_type as txt
+					FROM $type A
+					WHERE A.status = '1'
+				";
+			break;
+			case "tbl_master_pocurrency":
+				$sql = "
+					SELECT A.id, A.currency as txt
+					FROM $type A
+					WHERE A.status = '1'
 				";
 			break;
 		}
@@ -199,6 +214,7 @@ class Mbackend extends CI_Model{
 			$extension = $ext[$exttemp];
 			
 			$upload_path = "./__repository/tmp_upload/";
+			$filen = $_FILES['file_import']['name'];
 			$filename =  $this->lib->uploadnong($upload_path, 'file_import', $type);
 			
 			$folder_aplod = $upload_path.$filename;
@@ -221,6 +237,7 @@ class Mbackend extends CI_Model{
 			$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 			$array_benar = array();
 			$array_salah = array();
+			$method = $this->input->post('methodupload');
 						
 			switch($type){
 				case "masterpo":
@@ -272,9 +289,9 @@ class Mbackend extends CI_Model{
 						}
 						
 						if($statusdata == true){
-							$podate = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("J".$i)->getCalculatedValue()), 'Y-m-d');
-							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
-							$podelivery = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
+							$podate = date_format(date_create_from_format('d/m/Y', $worksheet->getCell("J".$i)->getCalculatedValue()), 'Y-m-d');
+							$poreceived = date_format(date_create_from_format('d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
+							$podelivery = date_format(date_create_from_format('d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
 							$arrayinsertbenar = array(
 								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'tbl_master_potype_id' => $tbl_master_potype_id,
@@ -286,15 +303,26 @@ class Mbackend extends CI_Model{
 								'po_received' => $poreceived,
 								'po_delivery' => $podelivery,
 								'revision_no' => $worksheet->getCell("M".$i)->getCalculatedValue(),
-								
 								'po_gross_idr' => $worksheet->getCell("N".$i)->getCalculatedValue(),
 								'po_nett_idr' => $worksheet->getCell("O".$i)->getCalculatedValue(),
 								'jis_dorr_rate' => $worksheet->getCell("P".$i)->getCalculatedValue(),
 								'po_gross_usd' => $worksheet->getCell("Q".$i)->getCalculatedValue(),
 								'po_nett_usd' => $worksheet->getCell("R".$i)->getCalculatedValue(),
 								'remarks' => $worksheet->getCell("S".$i)->getCalculatedValue(),
+								'file_name' => $filen,
+								'update_by' => $this->auth['nama_user'],
+								'update_date' => date('Y-m-d H:i:s'),
+								'status' => 1
 							);
-							array_push($array_benar, $arrayinsertbenar);
+							
+							if($method == 'N'){
+								array_push($array_benar, $arrayinsertbenar);
+							}elseif($method == 'U'){
+								$id = $worksheet->getCell("A".$i)->getCalculatedValue();
+								if($id){
+									$this->db->update('tbl_master_po', $arrayinsertbenar, array('id'=>$id) );
+								}
+							}
 						}else{
 							$arrayinsertsalah = array(
 								'row' => $i,
@@ -331,9 +359,9 @@ class Mbackend extends CI_Model{
 						}
 						
 						if($statusdata == true){
-							$crsubmit = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
-							$crapproved = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
-							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("M".$i)->getCalculatedValue()), 'Y-m-d');
+							$crsubmit 	= date_format(date_create_from_format('d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
+							$crapproved = date_format(date_create_from_format('d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
+							$poreceived = date_format(date_create_from_format('d/m/Y', $worksheet->getCell("M".$i)->getCalculatedValue()), 'Y-m-d');
 							$arrayinsertbenar = array(
 								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'cr_no_nokia' => $worksheet->getCell("B".$i)->getCalculatedValue(),
@@ -350,8 +378,20 @@ class Mbackend extends CI_Model{
 								'value_delta' => $worksheet->getCell("P".$i)->getCalculatedValue(),
 								'cr_type' => $worksheet->getCell("Q".$i)->getCalculatedValue(),
 								'remarks' => $worksheet->getCell("R".$i)->getCalculatedValue(),
+								'file_name' => $filen,
+								'update_by' => $this->auth['nama_user'],
+								'update_date' => date('Y-m-d H:i:s'),
+								'status' => 1
 							);
-							array_push($array_benar, $arrayinsertbenar);
+							
+							if($method == 'N'){
+								array_push($array_benar, $arrayinsertbenar);
+							}elseif($method == 'U'){
+								$id = $worksheet->getCell("A".$i)->getCalculatedValue();
+								if($id){
+									$this->db->update('tbl_master_cr', $arrayinsertbenar, array('id'=>$id) );
+								}
+							}
 						}else{
 							$arrayinsertsalah = array(
 								'row' => $i,
@@ -370,6 +410,8 @@ class Mbackend extends CI_Model{
 			}else{
 				if($array_benar){
 					$this->db->insert_batch($table, $array_benar);
+					return 1;
+				}else{
 					return 1;
 				}
 			}
