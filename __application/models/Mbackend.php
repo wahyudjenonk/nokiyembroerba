@@ -95,7 +95,7 @@ class Mbackend extends CI_Model{
 			break;
 			case "mastercr": 
 				$sql = "
-					SELECT A.*, B.phase_code, B.phase_name, B.phase_year,
+					SELECT A.*, B.phase_code, B.phase_name, B.phase_year
 					FROM tbl_master_cr A
 					LEFT JOIN tbl_master_phase B ON B.id = A.tbl_master_phase_id
 					$where
@@ -332,8 +332,8 @@ class Mbackend extends CI_Model{
 						
 						if($statusdata == true){
 							$crsubmit = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("K".$i)->getCalculatedValue()), 'Y-m-d');
-							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("M".$i)->getCalculatedValue()), 'Y-m-d');
 							$crapproved = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("L".$i)->getCalculatedValue()), 'Y-m-d');
+							$poreceived = date_format(date_create_from_format(' d/m/Y', $worksheet->getCell("M".$i)->getCalculatedValue()), 'Y-m-d');
 							$arrayinsertbenar = array(
 								'tbl_master_phase_id' => $tbl_master_phase_id,
 								'cr_no_nokia' => $worksheet->getCell("B".$i)->getCalculatedValue(),

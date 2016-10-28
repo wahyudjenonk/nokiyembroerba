@@ -318,9 +318,9 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			kolom[modnya] = [
 				{field:'cr_no_indosat',title:'CR No Indosat',width:200, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'tbl_master_phase_code',title:'Phase Code',width:75, halign:'center',align:'left', sortable:true},
-				{field:'tbl_master_phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'tbl_master_phase_year',title:'Phase Year',width:50, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:75, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Phase Year',width:50, halign:'center',align:'left', sortable:true},
 				{field:'nodin',title:'NODIN',width:200, halign:'center',align:'left', sortable:true},
 				{field:'cr_position',title:'CR Position',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_pic',title:'CR Pic',width:100, halign:'center',align:'left', sortable:true},
