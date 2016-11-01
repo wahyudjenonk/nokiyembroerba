@@ -274,6 +274,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				},
 			]
 		break;
+		
 		case "masterpo":
 			judulnya = "";
 			urlnya = "masterpo";
@@ -304,6 +305,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarks',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'file_name',title:'File Name',width:200, halign:'center',align:'left', sortable:true},
 			]
 		break;
 		case "mastercr":
@@ -326,12 +328,12 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'cr_pic',title:'CR Pic',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_submit',title:'CR Submit',width:75, halign:'center',align:'left', sortable:true},
 				{field:'cr_approved',title:'CR Approved',width:75, halign:'center',align:'left', sortable:true},
-				{field:'po_recived',title:'PO Recived',width:75, halign:'center',align:'left', sortable:true},
+				{field:'po_received',title:'PO Received',width:75, halign:'center',align:'left', sortable:true},
 				{field:'value_before',title:'Value Before',width:100, halign:'center',align:'left', sortable:true},
 				{field:'value_after',title:'Value After',width:100, halign:'center',align:'left', sortable:true},
 				{field:'value_delta',title:'Value Delta',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_type',title:'CR Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remark',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'left', sortable:true},
 				{field:'file_name',title:'File Name',width:200, halign:'center',align:'left', sortable:true},
@@ -344,6 +346,23 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 						}
 					}
 				},
+			]
+		break;
+		case "uploadtracker":
+			judulnya = "";
+			urlnya = "uploadtracker";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'file_name',title:'File Name',width:100, halign:'center',align:'left', sortable:true},
+				
+			]
+			kolom[modnya] = [
+				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'newupdate',title:'New / Update',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 			]
 		break;
 		
