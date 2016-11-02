@@ -30,7 +30,7 @@
 									<span class="l-btn-text"></span><span class="l-btn-icon icon-search">&nbsp;</span>
 								</span>
 							</a>
-							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="">
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="exportdata_{$submodul}" onClick="">
 								<span class="l-btn-left l-btn-icon-left">
 									<span class="l-btn-text">Export Excel</span><span class="l-btn-icon icon-xls">&nbsp;</span>
 								</span>
@@ -59,15 +59,24 @@
 	var submodul = "{$submodul|default:''}";
 	var param = {};
 	
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			$('#grid_{$submodul}').datagrid('reload',{
+				'table' : 'tbl_master_cr',
+				'kat' : $('#{$submodul}_filter_kategori').val(),
+				'key' : $('#{$submodul}_txt').val()
+			});
+		}
+	});
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_master_mastercr',
+			'table' : 'tbl_master_cr',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_master_mastercr';
+		param['table'] = 'tbl_master_cr';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		

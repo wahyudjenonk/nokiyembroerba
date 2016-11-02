@@ -306,6 +306,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 				{field:'file_name',title:'File Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "mastercr":

@@ -1,87 +1,54 @@
-{if $submodul eq 'phase'}
+{if $submodul eq 'masterpo'}
 	<table>
 		<thead>
 			<tr>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO No</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Code</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Phase Name</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Year</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Year</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Type</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Project Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Currency</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Basic Contract</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Date</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Received</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Delivery</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Revisi On No</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Gross IDR</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Nett IDR</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Jiss Dorr Rate</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Gross USD</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Nett USD</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Publish</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>File Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Status</td>
 			</tr>
 		</thead>
 		<tbody>
 		{foreach from=$data item=rows}
 			<tr>
 				<td>{$rows.id}</td>
+				<td>{$rows.po_no}</td>
 				<td>{$rows.phase_code}</td>
 				<td>{$rows.phase_name}</td>
 				<td>{$rows.phase_year}</td>
-				<td>{$rows.remark}</td>
-				<td>{$rows.publish}</td>
-				<td>{$rows.update_by}</td>
-				<td>{$rows.update_date}</td>
-				{if $rows.status|default:'' eq '1'}
-					<td>Active</td>
-				{elseif $rows.status|default:'' eq '0'}
-					<td>Inactive</td>
-				{/if}
-			</tr>
-		{/foreach}
-		</tbody>
-	</table>
-
-{elseif $submodul eq 'potype'}
-	<table>
-		<thead>
-			<tr>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Type</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
-			</tr>
-		</thead>
-		<tbody>
-		{foreach from=$data item=rows}
-			<tr>
-				<td>{$rows.id}</td>
 				<td>{$rows.po_type}</td>
-				<td>{$rows.remark}</td>
-				<td>{$rows.update_by}</td>
-				<td>{$rows.update_date}</td>
-				{if $rows.status|default:'' eq '1'}
-					<td>Active</td>
-				{elseif $rows.status|default:'' eq '0'}
-					<td>Inactive</td>
-				{/if}
-			</tr>
-		{/foreach}
-		</tbody>
-	</table>
-	
-{elseif $submodul eq 'pocurrency'}
-	<table>
-		<thead>
-			<tr>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Currency</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
-			</tr>
-		</thead>
-		<tbody>
-		{foreach from=$data item=rows}
-			<tr>
-				<td>{$rows.id}</td>
+				<td>{$rows.project_name}</td>
 				<td>{$rows.currency}</td>
-				<td>{$rows.remark}</td>
+				<td>{$rows.basic_contract}</td>
+				<td>{$rows.po_date}</td>
+				<td>{$rows.po_received}</td>
+				<td>{$rows.po_delivery}</td>
+				<td>{$rows.revision_no}</td>
+				<td>{$rows.po_gross_idr}</td>
+				<td>{$rows.po_nett_idr}</td>
+				<td>{$rows.jis_dorr_rate}</td>
+				<td>{$rows.po_gross_usd}</td>
+				<td>{$rows.po_nett_usd}</td>
+				<td>{$rows.remarks}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
 				{if $rows.status|default:'' eq '1'}
@@ -93,114 +60,55 @@
 		{/foreach}
 		</tbody>
 	</table>
-	
-{elseif $submodul eq 'region'}
+{elseif $submodul eq 'mastercr'}
 	<table>
 		<thead>
 			<tr>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Region Code</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
-			</tr>
-		</thead>
-		<tbody>
-		{foreach from=$data item=rows}
-			<tr>
-				<td>{$rows.id}</td>
-				<td>{$rows.region_code}</td>
-				<td>{$rows.remark}</td>
-				<td>{$rows.update_by}</td>
-				<td>{$rows.update_date}</td>
-				{if $rows.status|default:'' eq '1'}
-					<td>Active</td>
-				{elseif $rows.status|default:'' eq '0'}
-					<td>Inactive</td>
-				{/if}
-			</tr>
-		{/foreach}
-		</tbody>
-	</table>
-	
-{elseif $submodul eq 'pone'}
-	<table>
-		<thead>
-			<tr>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>NE Name</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
-			</tr>
-		</thead>
-		<tbody>
-		{foreach from=$data item=rows}
-			<tr>
-				<td>{$rows.id}</td>
-				<td>{$rows.po_ne}</td>
-				<td>{$rows.remark}</td>
-				<td>{$rows.update_by}</td>
-				<td>{$rows.update_date}</td>
-				{if $rows.status|default:'' eq '1'}
-					<td>Active</td>
-				{elseif $rows.status|default:'' eq '0'}
-					<td>Inactive</td>
-				{/if}
-			</tr>
-		{/foreach}
-		</tbody>
-	</table>
-	
-{elseif $submodul eq 'sitename'}
-	<table>
-		<thead>
-			<tr>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Site Status</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Remark</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
-			</tr>
-		</thead>
-		<tbody>
-		{foreach from=$data item=rows}
-			<tr>
-				<td>{$rows.id}</td>
-				<td>{$rows.site_status}</td>
-				<td>{$rows.remark}</td>
-				<td>{$rows.update_by}</td>
-				<td>{$rows.update_date}</td>
-				{if $rows.status|default:'' eq '1'}
-					<td>Active</td>
-				{elseif $rows.status|default:'' eq '0'}
-					<td>Inactive</td>
-				{/if}
-			</tr>
-		{/foreach}
-		</tbody>
-	</table>
-{elseif $submodul eq 'masterpo'}
-	<table>
-		<thead>
-			<tr>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR No Nokia</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR No Indosat</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>CR Status</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Code</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Name</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Phase Year</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>NODIN</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR Position</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR Pic</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR Submit</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR Approved</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Received</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Value Before</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Value After</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Value Delta</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR Type</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Remarks</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Status</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>File Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Status</td>
 			</tr>
 		</thead>
 		<tbody>
 		{foreach from=$data item=rows}
 			<tr>
 				<td>{$rows.id}</td>
+				<td>{$rows.cr_no_nokia}</td>
+				<td>{$rows.cr_no_indosat}</td>
+				<td>{$rows.cr_status}</td>
 				<td>{$rows.phase_code}</td>
+				<td>{$rows.phase_name}</td>
 				<td>{$rows.phase_year}</td>
+				<td>{$rows.nodin}</td>
+				<td>{$rows.cr_position}</td>
+				<td>{$rows.cr_pic}</td>
+				<td>{$rows.cr_submit}</td>
+				<td>{$rows.cr_approved}</td>
+				<td>{$rows.po_received}</td>
+				<td>{$rows.value_before}</td>
+				<td>{$rows.value_after}</td>
+				<td>{$rows.value_delta}</td>
+				<td>{$rows.cr_type}</td>
+				<td>{$rows.remarks}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
 				{if $rows.status|default:'' eq '1'}
