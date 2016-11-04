@@ -1,13 +1,16 @@
 {if $submodul eq 'masterpo'}
 	<table>
 		<thead>
+			<tr>MASTER PO</tr>
+			<tr></tr>
+			<tr></tr>
 			<tr>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
-				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO No</td>
+				<td style='text-align:center;font-weight:bold;background:#134292;' width='5%'>ID</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Code</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Phase Name</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Year</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO Type</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>PO No</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Project Name</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Currency</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Basic Contract</td>
@@ -31,11 +34,11 @@
 		{foreach from=$data item=rows}
 			<tr>
 				<td>{$rows.id}</td>
-				<td>{$rows.po_no}</td>
 				<td>{$rows.phase_code}</td>
 				<td>{$rows.phase_name}</td>
 				<td>{$rows.phase_year}</td>
 				<td>{$rows.po_type}</td>
+				<td>{$rows.po_no}</td>
 				<td>{$rows.project_name}</td>
 				<td>{$rows.currency}</td>
 				<td>{$rows.basic_contract}</td>
@@ -51,6 +54,7 @@
 				<td>{$rows.remarks}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
+				<td>{$rows.file_name}</td>
 				{if $rows.status|default:'' eq '1'}
 					<td>Active</td>
 				{elseif $rows.status|default:'' eq '0'}
@@ -63,6 +67,9 @@
 {elseif $submodul eq 'mastercr'}
 	<table>
 		<thead>
+			<tr>MASTER CR</tr>
+			<tr></tr>
+			<tr></tr>
 			<tr>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
 				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>CR No Nokia</td>
@@ -111,6 +118,7 @@
 				<td>{$rows.remarks}</td>
 				<td>{$rows.update_by}</td>
 				<td>{$rows.update_date}</td>
+				<td>{$rows.file_name}</td>
 				{if $rows.status|default:'' eq '1'}
 					<td>Active</td>
 				{elseif $rows.status|default:'' eq '0'}

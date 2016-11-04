@@ -133,10 +133,10 @@ class Backend extends JINGGA_Controller {
 				$data = $this->mbackend->getdata($submodul, 'result_array');
 				
 				if($data){
-					$date=date('Ymd');
-					$time=time();
+					$date=date('YmdHis');
+					
 					header("Content-type: application/vnd-ms-excel");
-					header("Content-Disposition: attachment; filename=expordata-".$submodul."".$date."".$time.".xls");
+					header("Content-Disposition: attachment; filename=expordata-".$submodul."-".$date.".xls");
 					
 					$this->nsmarty->assign('submodul', $submodul);
 					$this->nsmarty->assign('data', $data);

@@ -24,68 +24,68 @@
 		</div>
 	</div>	
 	<div class="form-group"><label class="col-sm-2 control-label">PO No</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='po_no' value="{$data.po_no|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Project Name</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='project_name' value="{$data.project_name|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Basic Contract</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='basic_contract' value="{$data.basic_contract|default:''}" />
 		</div>
 	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">PO Update</label>
-		<div class="col-sm-2">
+	<div class="form-group"><label class="col-sm-2 control-label">PO Date</label>
+		<div class="col-sm-4">
 			<input class="form-control" type="date" name='po_date' value="{$data.po_date|default:''}" />
 		</div>
 	</div>
-	<div class="form-group"><label class="col-sm-2 control-label">PO Recived</label>
-		<div class="col-sm-2">
+	<div class="form-group"><label class="col-sm-2 control-label">PO Received</label>
+		<div class="col-sm-4">
 			<input class="form-control" type="date" name='po_received' value="{$data.po_received|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Delivery</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="date" name='po_delivery' value="{$data.po_delivery|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Revisi On No</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='revision_no' value="{$data.revision_no|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Gross IDR</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='po_gross_idr' value="{$data.po_gross_idr|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Nett IDR</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='po_nett_idr' value="{$data.po_nett_idr|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Jis Dorr Rate</label>
-		<div class="col-sm-2">
-			<input class="form-control" type="text" name='jis_dor_rate' value="{$data.jis_dorr_rate|default:''}" />
+		<div class="col-sm-4">
+			<input class="form-control" type="text" name='jis_dorr_rate' value="{$data.jis_dorr_rate|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Gross USD</label>
-		<div class="col-sm-2">
-			<input class="form-control" type="text" name='po_gross_USD' value="{$data.po_gross_idr|default:''}" />
+		<div class="col-sm-4">
+			<input class="form-control" type="text" name='po_gross_usd' value="{$data.po_gross_usd|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Nett USD</label>
-		<div class="col-sm-2">
+		<div class="col-sm-4">
 			<input class="form-control" type="text" name='po_nett_usd' value="{$data.po_nett_usd|default:''}" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
 		<div class="col-sm-10">
-			<input class="form-control" type="text" name='remark' value="{$data.remark|default:''}" />
+			<input class="form-control" type="text" name='remarks' value="{$data.remarks|default:''}" />
 		</div>
 	</div>
 	<div class="hr-line-dashed"></div>
@@ -106,18 +106,14 @@
 			}else{
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
-			$('#frm_masterpo').html('');
-			$('#frm_masterpo').hide();
-			$('#grid_nya_masterpo').show();
+			closeWindow();
 			$('#grid_masterpo').datagrid('reload');
 		});
 		return false;
 	});
 	
 	$('#cancelMasterPO').on('click',function(){
-		$('#frm_masterpo').html('');
-		$('#frm_masterpo').hide();
-		$('#grid_nya_masterpo').show();
+		closeWindow();
 		$('#grid_masterpo').datagrid('reload');
 		return false;
 	});
