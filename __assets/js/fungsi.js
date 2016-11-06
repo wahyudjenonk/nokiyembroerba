@@ -364,12 +364,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'file_name',title:'File Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'filename',title:'File Name',width:250, halign:'center',align:'left', sortable:true},
 				
 			]
 			kolom[modnya] = [
-				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'newupdate',title:'New / Update',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_tracker',title:'Type Upload',width:250, halign:'center',align:'left', sortable:true},
+				{field:'type_upload',title:'New / Update',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 			]
@@ -434,7 +435,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		onLoadSuccess: function(data){
 			if(data.total == 0){
 				var $panel = $(this).datagrid('getPanel');
-				var $info = '<div class="info-empty" style="margin-top:18%;">Data Tidak Tersedia</div>';
+				var $info = '<div class="info-empty" style="margin-top:18%;">No Data Available</div>';
 				$($panel).find(".datagrid-view").append($info);
 			}else{
 				$('.info-empty').remove();
@@ -521,6 +522,24 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			lebar_import = 700;
 			tinggi_import = 600;
 			type_import = "mastercr";
+		break;
+		case "mastercr":
+			table = "tbl_master_cr";
+			judulwindow = 'Form Master CR';
+			lebar = 700;
+			tinggi = 600;
+			urlpost = host+'backend/getdisplay/progress/form-'+submodulnya;
+			
+			urlimport = host+'backend/getdisplay/progress/import-'+submodulnya;
+			lebar_import = 700;
+			tinggi_import = 600;
+			type_import = "mastercr";
+		break;
+		case "uploadtracker":			
+			urlimport = host+'backend/getdisplay/progress/import-'+submodulnya;
+			lebar_import = 700;
+			tinggi_import = 600;
+			type_import = "uploadtracker";
 		break;
 		//End Modul Master Progress
 	}
