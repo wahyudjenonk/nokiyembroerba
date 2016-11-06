@@ -25,7 +25,7 @@ class lib {
 		$exttemp = sizeof($ext) - 1;
 		$extension = $ext[$exttemp];
 		
-		$filename =  $file.'.'.$extension;
+		$filename =  $file; //.'.'.$extension;
 		
 		$files = $_FILES[$object]['name'];
 		$tmp  = $_FILES[$object]['tmp_name'];
@@ -261,7 +261,7 @@ class lib {
 			$selTxt = $p1;
 		}
 		
-		$optTemp = '<option value=""> -- Pilih -- </option>';
+		$optTemp = '<option value=""> -- Choose -- </option>';
 		switch($type){
 			case "jenis_pembayaran":
 				$data = array(
@@ -280,6 +280,18 @@ class lib {
 				$data = array(
 					'0' => array('id'=>'1','txt'=>'Aktif'),
 					'1' => array('id'=>'0','txt'=>'Tidak Aktif'),
+				);
+			break;
+			case "combotracker":
+				$data = array(
+					'0' => array('id'=>'siteinfo','txt'=>'Site Info'),
+					'1' => array('id'=>'siteprogress','txt'=>'Site Progress'),
+					'2' => array('id'=>'mcr','txt'=>'MCR'),
+					'3' => array('id'=>'atf','txt'=>'ATF'),
+					'4' => array('id'=>'sitebinder','txt'=>'Site Binder'),
+					'5' => array('id'=>'certificate','txt'=>'Certificate'),
+					'6' => array('id'=>'acceptanceclosing','txt'=>'Closing'),
+					'7' => array('id'=>'costsales','txt'=>'Cost & Sales')
 				);
 			break;
 			default:

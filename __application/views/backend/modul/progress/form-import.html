@@ -1,14 +1,29 @@
-<form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/{$type_import}'  class="form-horizontal" enctype="multipart/form-data">
+<form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/'  class="form-horizontal" enctype="multipart/form-data">
+	<input type='hidden' id='typeimport' name='typeimport' value='{$type_import}' />
 	<br/>
 	<div class="form-group"><label class="col-sm-2 control-label">Method</label>
 		<div class="col-sm-2">
-			<select name='methodupload' style='padding:3px; width:100px;'>
-				<option value='C'>Choose</option>
+			<select id='methodupload' name='methodupload' style='padding:3px; width:100px;'>
+				<option value=''>-- Choose --</option>
 				<option value='N'>New Data</option>
 				<option value='U'>Update</option>
 			</select>
 		</div>
 	</div>
+	{if $type_import eq 'uploadtracker'}
+	<div class="form-group"><label class="col-sm-2 control-label">Type Tracker</label>
+		<div class="col-sm-2">
+			<select id='typetracker' name='typetracker' style='padding:3px; width:100px;'>
+				{$combotracker}
+			</select>
+		</div>
+	</div>	
+	<div class="form-group"><label class="col-sm-2 control-label">Remarks</label>
+		<div class="col-sm-8">
+			<input class="form-control" type="text" name='remark' />
+		</div>
+	</div>	
+	{/if}
 	<div class="form-group"><label class="col-sm-2 control-label">File Excell</label>
 		<div class="col-sm-2">
 			<input type='file' name='file_import' class='validasi' />
@@ -17,7 +32,7 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">&nbsp;</label>
 		<div class="col-sm-6">
-			<a href='{$host}backend/download/{$type_import}' target='_blank'>Download Template</a>
+			<a href='javascript:void(0);' id='download' target='_blank'>Download Template</a>
 		</div>
 	</div>
 	<div class="hr-line-dashed"></div>
@@ -32,7 +47,39 @@
 <div id='result_{$type_import}'></div>
 
 <script>
+	var typeimport = '{$type_import}';
+	
+	if(typeimport == 'uploadtracker'){
+		$('#typetracker').on('change', function(){
+			$('#typeimport').val($(this).val());
+		});
+	}	
+	
+	$('#download').on('click', function(){
+		if(typeimport == 'uploadtracker'){
+			if($('#typetracker').val() == ""){
+				$.messager.alert('POIN', "Type Tracker Can't Empty!!", 'error');
+				return false;
+			}
+			urltype = $('#typetracker').val();
+		}else{
+			urltype = typeimport;
+		}
+		window.open('{$host}backend/download/'+urltype);
+	});
+	
 	$('#saveImport_{$acak}').on('click',function(){
+		if(typeimport == 'uploadtracker'){
+			if($('#typetracker').val() == ""){
+				$.messager.alert('POIN', "Type Tracker Can't Empty!!", 'error');
+				return false;
+			}
+		}
+		if($('#methodupload').val() == ""){
+			$.messager.alert('POIN', "Method Upload Can't Empty!!", 'error');
+			return false;
+		}		
+		
 		submit_form('frmimport_{$acak}',function(r){
 			if(r==1){
 				$.messager.alert('POIN', "Data Saved", 'info');

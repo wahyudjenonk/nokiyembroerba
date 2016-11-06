@@ -108,6 +108,14 @@ class Backend extends JINGGA_Controller {
 						}
 						$this->nsmarty->assign("tbl_master_phase_id", $this->lib->fillcombo('tbl_master_phase', 'return', ($editstatus == 'edit' ? $data['tbl_master_phase_id'] : "") ) );						
 					break;
+					
+					case "import-uploadtracker":
+						$temp = "backend/modul/".$p1."/form-import.html";
+						$type_import = $this->input->post('type_import');
+						
+						$this->nsmarty->assign("type_import", $type_import);
+						$this->nsmarty->assign("combotracker", $this->lib->fillcombo('combotracker', 'return') );
+					break;
 				}
 			break;
 		}
@@ -167,6 +175,7 @@ class Backend extends JINGGA_Controller {
 	}
 	
 	function importdata($p1=""){
+		$p1 = $this->input->post('typeimport');
 		$import = $this->mbackend->importdata($p1);
 		
 		if($import == 1){
@@ -177,7 +186,7 @@ class Backend extends JINGGA_Controller {
 			$this->nsmarty->assign('type', $p1);
 			$this->nsmarty->assign('data', $import);
 			$this->nsmarty->display("backend/modul/progress/hasil_import.html");
-			//*/
+			
 			/*
 			echo "<pre>";
 			print_r($import);
