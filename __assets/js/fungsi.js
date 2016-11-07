@@ -120,7 +120,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	var fitnya;
 	var klik=false;
 	var doble_klik=false;
-	var pagesizeboy = 10;
+	var pagesizeboy = 20;
 	var singleSelek = true;
 	var nowrap_nya = false;
 	var footer=false;
@@ -139,10 +139,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true, resizable: true},
 				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
-				{field:'publish',title:'Publish',width:50, halign:'center',align:'left', sortable:true},
+				{field:'publish',title:'Publish',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left',
+				{field:'status',title:'Status',width:100, halign:'center',align:'left',
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -185,6 +185,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
+				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
 				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -209,6 +210,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
+				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -233,6 +235,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
+				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -257,6 +260,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
+				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -375,7 +379,95 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
 			]
 		break;
-		
+		case "siteinfo":
+			judulnya = "";
+			urlnya = "siteinfo";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'boq_no',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cluster',title:'Cluster',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_detail',title:'SOW Detail',width:100, halign:'center',align:'left', sortable:true},
+				{field:'system_key',title:'System Key',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'so_svc',title:'SO SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_no',title:'Partner No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remark',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "siteprogress":
+			judulnya = "";
+			urlnya = "siteprogress";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'boq_no',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'tss',title:'TSS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'mos',title:'MOS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'installed',title:'Installed',width:100, halign:'center',align:'left', sortable:true},
+				{field:'g900',title:'G900',width:100, halign:'center',align:'left', sortable:true},
+				{field:'g1800',title:'G1800',width:100, halign:'center',align:'left', sortable:true},
+				{field:'u2100',title:'U2100',width:100, halign:'center',align:'left', sortable:true},
+				{field:'u900',title:'U900',width:100, halign:'center',align:'left', sortable:true},
+				{field:'l1800',title:'L1800',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_baseline',title:'ON AIR Baseline',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_date',title:'ON AIR Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_week',title:'ON AIR Week',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atp_date',title:'ATP Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atp_method',title:'ATP Method',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
 	}
 	
 	grid_nya=$("#"+divnya).datagrid({
@@ -393,7 +485,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
         url: urlglobal,		
 		nowrap: nowrap_nya,
 		pageSize:pagesizeboy,
-		pageList:[10,20,30,40,50,75,100,200],
+		pageList:[20,50,100,200],
 		queryParams:param,
 		frozenColumns:[
             frozen[modnya]
@@ -484,14 +576,14 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		break;
 		case "sitename":
 			table = "tbl_master_sitename";
-			judulwindow = 'Form Master NE Name';
+			judulwindow = 'Form Master Site Status';
 			lebar = 600;
 			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		case "pone":
 			table = "tbl_master_pone";
-			judulwindow = 'Form Master Site Status';
+			judulwindow = 'Form Master NE Name';
 			lebar = 600;
 			tinggi = 200;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
