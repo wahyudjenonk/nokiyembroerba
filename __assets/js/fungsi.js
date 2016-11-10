@@ -430,7 +430,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
 				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
-				{field:'boq_no',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
@@ -455,6 +455,35 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'atp_method',title:'ATP Method',width:100, halign:'center',align:'left', sortable:true},
 				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
 				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "mcr":
+			judulnya = "";
+			urlnya = "mcr";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'alarm_submit',title:'Alarm Submit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'alarm_approved',title:'Alarm Approved',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ssv_fr_submit',title:'SSV FR Submit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ssv_vr_approved',title:'SSV VR Approved',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ssv_frftr_submit',title:'SSV FR/FTR Submit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ftr_srftr_approved',title:'FTR SR/FTR Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
