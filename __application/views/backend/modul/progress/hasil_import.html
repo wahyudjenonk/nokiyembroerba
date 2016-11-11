@@ -73,4 +73,55 @@
 			</tr>
 		{/foreach}
 	</table>
+{elseif $type eq 'mcr'}
+	<h1>Wrong Data</h1>
+	<br />
+	<table width='100%'>
+		<tr style='background:#F2F2F2;'>
+			<td width='15%' align='center'><b>Rows Excel</b></td>
+			<td width='15%' align='center'><b>ID SiteInfo</b></td>
+			<td width='15%' align='center'><b>BoqNo</b></td>
+		</tr>
+		{foreach from=$data item=rows}
+			<tr>
+				<td>{$rows.row|default:'-'}</td>
+				<td>{$rows.siteinfo.id|default:'-'}</td>
+				<td>{$rows.siteinfo.boqno|default:'-'}</td>
+			</tr>
+		{/foreach}
+	</table>
+{elseif $type eq 'atf'}
+	<h1>Wrong Data</h1>
+	<br />
+	<table width='100%'>
+		<tr style='background:#F2F2F2;'>
+			<td width='15%' align='center'><b>Rows Excel</b></td>
+			<td width='15%' align='center'><b>ID SiteInfo</b></td>
+			<td width='15%' align='center'><b>BoqNo</b></td>
+		</tr>
+		{foreach from=$data item=rows}
+			<tr>
+				<td>{$rows.row|default:'-'}</td>
+				<td>{$rows.siteinfo.id|default:'-'}</td>
+				<td>{$rows.siteinfo.boqno|default:'-'}</td>
+			</tr>
+		{/foreach}
+	</table>
+{elseif $type eq 'costsales'}
+	<h1>Wrong Data</h1>
+	<br />
+	<table width='100%'>
+		<tr style='background:#F2F2F2;'>
+			<td width='15%' align='center'><b>Rows Excel</b></td>
+			<td width='15%' align='center'><b>ID SiteInfo</b></td>
+			<td width='15%' align='center'><b>BoqNo</b></td>
+		</tr>
+		{foreach from=$data item=rows}
+			<tr>
+				<td>{$rows.row|default:'-'}</td>
+				<td>{$rows.siteinfo.id|default:'-'}</td>
+				<td>{$rows.siteinfo.boqno|default:'-'}</td>
+			</tr>
+		{/foreach}
+	</table>
 {/if}

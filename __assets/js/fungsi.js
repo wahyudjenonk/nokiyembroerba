@@ -510,6 +510,76 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				},
 			]
 		break;
+		case "atf":
+			judulnya = "";
+			urlnya = "atf";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atf_submit',title:'ATF Submit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atf_approved1',title:'ATF Approved1',width:100, halign:'center',align:'left', sortable:true},
+				{field:'dismantle',title:'Dismantle',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_pickup',title:'Material Pickup',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_inbound_nokia',title:'Material Inbound Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_inbound_isat',title:'Material Inbound Isat',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atf_approved2',title:'ATF Approved2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atf_closed',title:'ATF Closed',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "costsales":
+			judulnya = "";
+			urlnya = "costsales";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_baseline',title:'On Air Baseline',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_date',title:'On Air Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pac_baseline',title:'PAC Baseline',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pac_date2',title:'PAC Date2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delay_no_onair',title:'Delay No On Air',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delay_on_days',title:'Delay On Days',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delay_no_pac',title:'Delay No Pac',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delay_on_days2',title:'Delay On Days2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'target_sales',title:'Target Sales',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_sales',title:'Actual Cost',width:100, halign:'center',align:'left', sortable:true},
+				{field:'target_cost',title:'Target Cost',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_cost',title:'Actual Cost',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+			]
+		break;
 	}
 	
 	grid_nya=$("#"+divnya).datagrid({
