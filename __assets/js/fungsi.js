@@ -401,15 +401,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sow_detail',title:'SOW Detail',width:100, halign:'center',align:'left', sortable:true},
 				{field:'system_key',title:'System Key',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
 				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
 				{field:'so_svc',title:'SO SVC',width:100, halign:'center',align:'left', sortable:true},
 				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
-				{field:'partner_no',title:'Partner No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remark',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_npo',title:'Partner No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true,
@@ -534,6 +534,73 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'material_inbound_isat',title:'Material Inbound Isat',width:100, halign:'center',align:'left', sortable:true},
 				{field:'atf_approved2',title:'ATF Approved2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'atf_closed',title:'ATF Closed',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "sitebinder":
+			judulnya = "";
+			urlnya = "sitebinder";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'10_lld_ndb',title:'10. LLD/NDB',width:100, halign:'center',align:'left', sortable:true},
+				{field:'22_tssr_pdf',title:'22. TSSR PDF',width:100, halign:'center',align:'left', sortable:true},
+				{field:'23_sid_pdf',title:'23. SID PDF',width:100, halign:'center',align:'left', sortable:true},
+				{field:'50_boq_pdf',title:'50. BOQ PDF',width:100, halign:'center',align:'left', sortable:true},
+				{field:'56_atf_xls',title:'56. ATF XLS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'56_atf_pdf',title:'56. ATF PDF',width:100, halign:'center',align:'left', sortable:true},
+				{field:'57_atp_functional',title:'57. ATP Functional',width:100, halign:'center',align:'left', sortable:true},
+				{field:'57_atp_physical',title:'57. ATP Physical',width:100, halign:'center',align:'left', sortable:true},
+				{field:'61_redline_pdf',title:'61. Redline PDF',width:100, halign:'center',align:'left', sortable:true},
+				{field:'62_bd_dwg',title:'62. BD DWG',width:100, halign:'center',align:'left', sortable:true},
+				{field:'63_abd_pdf',title:'63. ABD PDF',width:100, halign:'center',align:'left', sortable:true},
+				{field:'xx_others',title:'XX. OTHERS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'xx_others2',title:'XX. OTHERS2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'doc_submit',title:'DOC SUBMIT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'reviewer',title:'RIVIEWER',width:100, halign:'center',align:'left', sortable:true},
+				{field:'doc_accept',title:'DOC ACCEPT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'doc_status',title:'DOC STATUS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'70_ssv',title:'70. SSV',width:100, halign:'center',align:'left', sortable:true},
+				{field:'71_rssi',title:'71. RSSI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'73_pmr',title:'73. PMR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'74_alarm_log',title:'74. ALARM LOG',width:100, halign:'center',align:'left', sortable:true},
+				{field:'xx_others3',title:'XX. OTHERS3',width:100, halign:'center',align:'left', sortable:true},
+				{field:'xx_others4',title:'XX. OTHERS4',width:100, halign:'center',align:'left', sortable:true},
+				{field:'mcr_exit_accept',title:'MCR EXIT ACCEPT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'endorse_submit',title:'ENDORSE SUBMIT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'approver',title:'APPROVER',width:100, halign:'center',align:'left', sortable:true},
+				{field:'endorse_approved',title:'ENDORSE APPROVED',width:100, halign:'center',align:'left', sortable:true},
+				{field:'endorse_status',title:'ENDORSE STATUS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'dc_submit',title:'DC SUBMIT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'dc_reviewer',title:'DC RIVIEWER',width:100, halign:'center',align:'left', sortable:true},
+				{field:'dc_approved',title:'DC APPROVED',width:100, halign:'center',align:'left', sortable:true},
+				{field:'dc_status',title:'DC STATUS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'oa_to_atp',title:'AO TO ATP',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atp_to_submit',title:'ATP TO SUBMIT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'submit_to_accept',title:'SUBMIT TO ACCEPT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'accept_to_endorse',title:'ACCEPT TO ENDORSE',width:100, halign:'center',align:'left', sortable:true},
+				{field:'endorse_to_dc_approved',title:'ENDORSE TO DC APPROVED',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,

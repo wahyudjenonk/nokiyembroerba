@@ -128,4 +128,78 @@
 		{/foreach}
 		</tbody>
 	</table>
+{elseif $submodul eq 'siteinfo'}
+	<table>
+		<thead>
+			<tr>MASTER SITE INFO</tr>
+			<tr></tr>
+			<tr></tr>
+			<tr>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='5%'>ID</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>BOQ NO</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Site ID</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Site Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>SOW Category</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Site Status</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Region Code</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Area Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Cluster</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Code</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Phase Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>SOW Detail</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>System Key</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Site Ori</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Site Name Ori</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>NE Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Network BOQ</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>WP ID SVC </td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>SO SVC</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Partner NI</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Partner NPO</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='10%'>Remarks</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update By</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Update Date</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>File Name</td>
+				<td style='text-align:center;font-weight:bold;background:#FAFAFA;' width='20%'>Status</td>
+				
+			</tr>
+		</thead>
+		<tbody>
+		{foreach from=$data item=rows}
+			<tr>
+				<td>{$rows.id}</td>
+				<td>{$rows.boq_no}</td>
+				<td>{$rows.site_id}</td>
+				<td>{$rows.site_name}</td>
+				<td>{$rows.sow_category}</td>
+				<td>{$rows.site_status}</td>
+				<td>{$rows.region_code}</td>
+				<td>{$rows.area_name}</td>
+				<td>{$rows.cluster}</td>
+				<td>{$rows.phase_code}</td>
+				<td>{$rows.phase_name}</td>
+				<td>{$rows.sow_detail}</td>
+				<td>{$rows.system_key}</td>
+				<td>{$rows.site_id_ori}</td>
+				<td>{$rows.site_name_ori}</td>
+				<td>{$rows.po_ne}</td>
+				<td>{$rows.network_boq}</td>
+				<td>{$rows.wp_id_svc}</td>
+				<td>{$rows.so_svc}</td>
+				<td>{$rows.partner_ni}</td>
+				<td>{$rows.partner_npo}</td>
+				<td>{$rows.remarks_siteinfo}</td>
+				<td>{$rows.update_by}</td>
+				<td>{$rows.update_date}</td>
+				<td>{$rows.filename}</td>
+				{if $rows.status|default:'' eq '1'}
+					<td>Active</td>
+				{elseif $rows.status|default:'' eq '0'}
+					<td>Inactive</td>
+				{/if}
+		
+			</tr>
+		{/foreach}
+		</tbody>
+	</table>
 {/if}
