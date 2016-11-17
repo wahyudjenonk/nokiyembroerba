@@ -75,11 +75,12 @@
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
+	
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_master_po';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		
-		openWindowWithPost('{$host}backend/exportdata/excell/{$main}/{$submodul}', param);
+		openWindowWithPost('{$host}backend/exportdatawithtemplate/masterpo', param);
 	});
 </script>

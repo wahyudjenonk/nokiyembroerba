@@ -158,6 +158,59 @@ class Backend extends JINGGA_Controller {
 		}
 	}
 	
+	function exportdatawithtemplate($p1=""){
+		$this->load->library("PHPExcel");
+		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
+		$data = $this->mbackend->getdata($p1,'result_array');
+
+		switch($p1){
+			case "masterpo":
+				$filename = "export-data-masterpo";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-masterpo.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 9;
+				$headerStyle = array(
+					'fill' => array(
+							'type' => PHPExcel_Style_Fill::FILL_SOLID,
+							'color' => array('rgb'=>'BFBFBF'),
+					),
+					'font' => array(
+							'bold' => true,
+					)
+				);
+				
+				$worksheet->SetCellValue('A'.$rowCount,'ID');
+				$worksheet->getStyle('A'.$rowCount)->applyFromArray($headerStyle);
+				$worksheet->SetCellValue('B'.$rowCount,'PO No.');
+				$worksheet->getStyle('B'.$rowCount)->applyFromArray($headerStyle);
+				$worksheet->SetCellValue('C'.$rowCount,'Phase Code');
+				$worksheet->getStyle('C'.$rowCount)->applyFromArray($headerStyle);
+				$worksheet->SetCellValue('D'.$rowCount,'Phase Name');
+				$worksheet->getStyle('D'.$rowCount)->applyFromArray($headerStyle);
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['po_no']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['phase_code']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['phase_name']);
+				}
+			break;
+		}
+		
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Content-Type: application/force-download");
+		header("Content-Type: application/octet-stream");
+		header("Content-Type: application/download");;
+		header("Content-Disposition: attachment;filename=$filename.xls");
+		header("Content-Transfer-Encoding: binary ");
+		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
+		$objWriter->setOffice2003Compatibility(true);
+		$objWriter->save('php://output');
+	}		
+	
 	function simpandata($p1="",$p2=""){
 		if($this->input->post('mod'))$p1=$this->input->post('mod');
 		$post = array();
@@ -199,6 +252,16 @@ class Backend extends JINGGA_Controller {
 		$data = file_get_contents("__repository/template/temp_".$type.".xlsx");
 		$name = "temp_".$type.".xlsx";
 		force_download($name, $data);
+	}
+	
+	function setautoincrement(){
+		$table = $this->db->list_tables();
+		foreach($table as $k){
+			if($k != 'tbl_user'){
+				$sql = "Alter table ".$k." auto_increment = 100000";
+				$this->db->query($sql);
+			}
+		}
 	}
 	
 	function test(){
