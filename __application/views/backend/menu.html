@@ -1,45 +1,26 @@
 <ul class="nav metismenu" id="side-menu">
-
 	<li class="nav-header" style=''>
 		<img src="{$host}__assets/img/nokia_white_logo.png" width='130px' height='51px' style='margin-left:15px;'/>
 	</li>
-
 	<li>
         <a href="index-2.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Dashboard</span> </a> <!--isi dashboard nya: inti dashboard, master PO dan master Tracker. modelnya seperti poin yang lalu, tapi bisa di klik akan masuk ke page grafik -->
     </li>
-
 	<li>
-
         <a href="#"><i class="fa fa-database"></i> <span class="nav-label">Master Data</span><span class="fa arrow"></span></a><!-- input secara manual ke dalam database -->
-
         <ul class="nav nav-second-level collapse">
-
             <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/master/phase')">Master Phase</a></li>
-
             <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/master/potype')">Master PO Type</a></li>
-
             <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/master/pocurrency')">Master Currency</a></li>
-
             <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/master/region')">Master Region</a></li>
-
             <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/master/pone')">Master NE Name</a></li>
-
             <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/master/sitename')">Master Site Status</a></li>
-
         </ul>
-
     </li>
-
 	<li>
-
         <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">Master Progress</span><span class="fa arrow"></span> </a>
-
         <ul class="nav nav-second-level collapse">
-
        		<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/masterpo')">Master PO</a></li>
-
         	<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/mastercr')">Master CR</a></li>
-			
 			<li>
 				<a href="javascript:void(0);">Master Tracker<span class="fa arrow"></span></a>
 				<ul class="nav nav-third-level collapse">
@@ -54,84 +35,44 @@
 					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/costsales')">- Cost and Sales</a></li> <!--sampai sini -->
 				</ul>
 			</li>
-
-        	
-
        	</ul>
-
     </li>
 
 	<li>
-
         <a href="#"><i class="fa fa-list"></i> <span class="nav-label">PO All Database</span><span class="fa arrow"></span></a>
-
         <ul class="nav nav-second-level collapse">
-
-        	<li><a href="form_basic.html">Upload UL DB</a></li> <!-- page untuk upload file uploader dan database + table list file yang pernah di upload -->
-
-            <li><a href="form_basic.html">PO Uploader</a></li><!--Menampilkan PO Type 1.UL -->
-
+        	<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/upload')">Upload UL DB</a></li> <!-- page untuk upload file uploader dan database + table list file yang pernah di upload -->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/uploader')">PO Uploader</a></li><!--Menampilkan PO Type 1.UL -->
             <li><a href="form_basic.html">PO Uploader ($)</a></li><!--Menampilkan PO Type 1.UL with price yang bisa lihat yg sudah di atur akses-->
-
-            <li><a href="form_basic.html">PO Database</a></li><!--Menampilkan PO Type 2.DB-->
-
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/database')">PO Database</a></li><!--Menampilkan PO Type 2.DB-->
             <li><a href="form_basic.html">PO Database ($)</a></li><!--Menampilkan PO Type 2.DB with price yang bisa lihat yag sudah di atur akses-->
-
             <li><a href="form_basic.html">PO Mapping</a></li><!--Menampilkan PO Type 1.UL dan 2.DB -->
-
             <li><a href="form_basic.html">PO BOQ</a></li><!--Menampilkan PO Type 2.DB dengan sorting -->
-
             <li><a href="form_basic.html">Update BOQ OA</a></li>
-
             <li><a href="form_basic.html">Update BOQ BA</a></li>
-
             <li><a href="form_basic.html">Update BOQ INV</a></li>
-
             <li><a href="form_basic.html">Update WPID SO</a></li>
-
         </ul>
-
     </li>
-
 <li>
 
         <a href="#"><i class="fa fa-list"></i> <span class="nav-label">PO Report</span><span class="fa arrow"></span></a>
-
         <ul class="nav nav-second-level collapse">
-
         	<li><a href="form_basic.html">Report Phase</a></li>
-
         	<li><a href="form_basic.html">Report PO Type</a></li>
-
         	<li><a href="form_basic.html">Report PO Number</a></li>
-
         	<li><a href="form_basic.html">Report PO Site</a></li>
-
         	<li><a href="form_basic.html">Report PO Uploader</a></li>
-
         	<li><a href="form_basic.html">Report PO Database</a></li>
-
 </ul>    
-
 </li>
 
 <li>
-
         <a href="#"><i class="fa fa-list"></i> <span class="nav-label">User Management</span><span class="fa arrow"></span></a>
-
         <ul class="nav nav-second-level collapse">
-
         	<li><a href="form_basic.html">User List</a></li>
-
         	<li><a href="form_basic.html">Group List</a></li>
-
         	<li><a href="form_basic.html">Access Management</a></li>
-
-
-</ul>    
-
+        </ul>    
 </li>
-
-
-
 </ul>

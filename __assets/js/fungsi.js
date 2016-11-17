@@ -411,8 +411,8 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'partner_npo',title:'Partner No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true,
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:70, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -811,6 +811,13 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			lebar_import = 700;
 			tinggi_import = 600;
 			type_import = "uploadtracker";
+		break;
+		case "siteinfo":			
+			table = "tbl_master_tracker_siteinfo";
+			judulwindow = 'Form Site Info';
+			lebar = 700;
+			tinggi = 200;
+			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		//End Modul Master Progress
 	}
