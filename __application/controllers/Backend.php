@@ -204,10 +204,10 @@ class Backend extends JINGGA_Controller {
 		header("Content-Type: application/force-download");
 		header("Content-Type: application/octet-stream");
 		header("Content-Type: application/download");;
-		header("Content-Disposition: attachment;filename=$filename.xls");
+		header("Content-Disposition: attachment;filename=$filename.xlsx");
 		header("Content-Transfer-Encoding: binary ");
 		$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel); 
-		$objWriter->setOffice2003Compatibility(true);
+		//$objWriter->setOffice2003Compatibility(true);
 		$objWriter->save('php://output');
 	}		
 	
