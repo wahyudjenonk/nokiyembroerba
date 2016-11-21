@@ -30,9 +30,8 @@
 					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/mcr')">- MCR</a></li>
 					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/atf')">- ATF</a></li>
 					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/sitebinder')">- Site Binder</a></li>
-					<li><a href="javascript:void(0);">- Certificate</a></li>
-					<li><a href="javascript:void(0);">- Closing</a></li> 
-					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/costsales')">- Cost and Sales</a></li> <!--sampai sini -->
+					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/acceptanceclosing')">- Acceptance & Closing</a></li>
+					<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/progress/costsales')">- Cost & Sales</a></li> <!--sampai sini -->
 				</ul>
 			</li>
        	</ul>
@@ -41,13 +40,16 @@
 	<li>
         <a href="#"><i class="fa fa-list"></i> <span class="nav-label">PO All Database</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse">
-        	<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/upload')">Upload UL DB</a></li> <!-- page untuk upload file uploader dan database + table list file yang pernah di upload -->
-            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/uploader')">PO Uploader</a></li><!--Menampilkan PO Type 1.UL -->
-            <li><a href="form_basic.html">PO Uploader ($)</a></li><!--Menampilkan PO Type 1.UL with price yang bisa lihat yg sudah di atur akses-->
-            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/database')">PO Database</a></li><!--Menampilkan PO Type 2.DB-->
-            <li><a href="form_basic.html">PO Database ($)</a></li><!--Menampilkan PO Type 2.DB with price yang bisa lihat yag sudah di atur akses-->
-            <li><a href="form_basic.html">PO Mapping</a></li><!--Menampilkan PO Type 1.UL dan 2.DB -->
-            <li><a href="form_basic.html">PO BOQ</a></li><!--Menampilkan PO Type 2.DB dengan sorting -->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/upload')">Upload UL DB</a></li>
+        	<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/receivedall')">PO Received All</a></li> <!-- page untuk upload file uploader dan database + table list file yang pernah di upload -->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/receiveddollar')">PO Received ($)</a></li><!--Menampilkan PO Type 1.UL -->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/received')">PO Received</a></li><!--Menampilkan PO Type 1.UL with price yang bisa lihat yg sudah di atur akses-->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/reservationall')">PO Reservation All</a></li><!--Menampilkan PO Type 2.DB-->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/reservationdollar')">PO Reservation ($)</a></li>
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/reservation')">PO Reservation</a></li><!--Menampilkan PO Type 2.DB with price yang bisa lihat yag sudah di atur akses-->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/mapping')">PO Mapping</a></li><!--Menampilkan PO Type 1.UL dan 2.DB -->
+            <li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/database/boqpersite')">PO BOQ per Site</a></li><!--Menampilkan PO Type 2.DB dengan sorting -->
+             <li><a href="form_basic.html">Update BOQ All</a></li>
             <li><a href="form_basic.html">Update BOQ OA</a></li>
             <li><a href="form_basic.html">Update BOQ BA</a></li>
             <li><a href="form_basic.html">Update BOQ INV</a></li>

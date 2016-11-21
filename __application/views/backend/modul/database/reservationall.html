@@ -1,12 +1,12 @@
 <div class="row wrapper border-bottom blueaye-bg page-heading">
 	<div class="col-lg-10" style='margin-left:20px;'>
-		<h3><b>PO Uploader</b></h3>
+		<h3><b>PO Reservation All</b></h3>
 		<ol class="breadcrumb" style='margin-bottom:10px !important;'>
             <li>
-                PO ALL Database
+                PO All Database
             </li>
             <li class="active">
-                <strong>PO Uploader</strong>
+                <strong>PO Reservation All</strong>
             </li>
         </ol>		
 	</div>
@@ -55,7 +55,7 @@
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
-				'table' : 'tbl_uploader',
+				'table' : 'tbl_database',
 				'kat' : $('#{$submodul}_filter_kategori').val(),
 				'key' : $('#{$submodul}_txt').val()
 			});
@@ -64,16 +64,16 @@
 	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_uploader',
+			'table' : 'tbl_database',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_uploader';
+		param['table'] = 'tbl_database';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		
-		openWindowWithPost('{$host}backend/exportdata/excell/{$main}/{$submodul}', param);
+		openWindowWithPost('{$host}backend/exportdatawithtemplate/reservationall', param);
 	});
 </script>

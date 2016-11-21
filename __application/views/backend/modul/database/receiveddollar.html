@@ -1,12 +1,12 @@
 <div class="row wrapper border-bottom blueaye-bg page-heading">
 	<div class="col-lg-10" style='margin-left:20px;'>
-		<h3><b>Site Progress</b></h3>
+		<h3><b>PO Received IDR</b></h3>
 		<ol class="breadcrumb" style='margin-bottom:10px !important;'>
             <li>
-                Master Progress
+                PO ALL Database
             </li>
             <li class="active">
-                <strong>Site Progress</strong>
+                <strong>PO Received IDR</strong>
             </li>
         </ol>		
 	</div>
@@ -18,18 +18,17 @@
 			<div class="ibox">
 				<div class="ibox-content" style='padding-bottom:0px !important;'>
 					
-					<div id='grid_nya_{$submodul}' style='height:400px;width:100%;'>
+					<div id='grid_nya_{$submodul}'>
 						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
 							<select id='{$submodul}_filter_kategori' style='width:100px;padding:5px;'>
 								<option value='all'>All</option>
-								<option value=''>not</option>
+								<option value='phase_year'>Year</option>
 							</select>
 							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
 							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 								<span class="l-btn-left l-btn-icon-left">
 									<span class="l-btn-text"></span><span class="l-btn-icon icon-search">&nbsp;</span>
-						
-						</span>
+								</span>
 							</a>
 							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="exportdata_{$submodul}" onClick="">
 								<span class="l-btn-left l-btn-icon-left">
@@ -37,13 +36,11 @@
 								</span>
 							</a>
 							{include file="backend/template/button_grid.html"}
-						</div>
-						
+						</div>	
 						{include file="backend/template/grid.html"}
 					</div>
 					
-					<div id='frm_{$submodul}' style='display:none;'></div>
-				
+					<div id='frm_{$submodul}' style='display:none;'></div>				
 				</div>
 			</div>
 			
@@ -54,19 +51,29 @@
 <script>
 	var submodul = "{$submodul|default:''}";
 	var param = {};
+
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			$('#grid_{$submodul}').datagrid('reload',{
+				'table' : 'tbl_database',
+				'kat' : $('#{$submodul}_filter_kategori').val(),
+				'key' : $('#{$submodul}_txt').val()
+			});
+		}
+	});
 	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_master_masterpo',
+			'table' : 'tbl_database',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_master_tracker_siteprogress';
+		param['table'] = 'tbl_database';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		
-		openWindowWithPost('{$host}backend/exportdata/excell/{$main}/{$submodul}', param);
+		openWindowWithPost('{$host}backend/exportdatawithtemplate/receiveddollar', param);
 	});
 </script>

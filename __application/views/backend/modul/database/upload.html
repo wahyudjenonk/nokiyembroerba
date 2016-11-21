@@ -1,12 +1,12 @@
 <div class="row wrapper border-bottom blueaye-bg page-heading">
 	<div class="col-lg-10" style='margin-left:20px;'>
-		<h3><b>PO Database</b></h3>
+		<h3><b>Uploader UL DB</b></h3>
 		<ol class="breadcrumb" style='margin-bottom:10px !important;'>
             <li>
                 PO ALL Database
             </li>
             <li class="active">
-                <strong>PO Database</strong>
+                <strong>Uploader UL DB</strong>
             </li>
         </ol>		
 	</div>
@@ -55,7 +55,7 @@
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
-				'table' : 'tbl_database',
+				'table' : 'tbl_uploader',
 				'kat' : $('#{$submodul}_filter_kategori').val(),
 				'key' : $('#{$submodul}_txt').val()
 			});
@@ -64,13 +64,13 @@
 	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_database',
+			'table' : 'tbl_uploader',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_database';
+		param['table'] = 'tbl_uploader';
 		param['kat']   = $('#{$submodul}_filter_kategori').val();
 		param['key']   = $('#{$submodul}_txt').val();
 		
