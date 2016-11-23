@@ -35,6 +35,11 @@
 									<span class="l-btn-text">Export Excel</span><span class="l-btn-icon icon-xls">&nbsp;</span>
 								</span>
 							</a>
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="exportall_{$submodul}" onClick="">
+								<span class="l-btn-left l-btn-icon-left">
+									<span class="l-btn-text">Export All</span><span class="l-btn-icon icon-xls">&nbsp;</span>
+								</span>
+							</a>
 							
 							{include file="backend/template/button_grid.html" varbutton='siteinfo'}
 						</div>
@@ -78,5 +83,12 @@
 		param['key']   = $('#{$submodul}_txt').val();
 		
 		openWindowWithPost('{$host}backend/exportdatawithtemplate/siteinfo', param);
+	});
+	$('#exportall_{$submodul}').on('click', function(){
+		param['table'] = 'tbl_master_tracker_siteinfo_all';
+		param['kat']   = $('#{$submodul}_filter_kategori').val();
+		param['key']   = $('#{$submodul}_txt').val();
+		
+		openWindowWithPost('{$host}backend/exportdatawithtemplate/tracker_all', param);
 	});
 </script>

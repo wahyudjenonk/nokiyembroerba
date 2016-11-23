@@ -139,37 +139,37 @@ class Backend extends JINGGA_Controller {
 					break;	
 					case "form-receivedall":
 						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl__database', array('id'=>$id))->row_array();
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;	
 					case "form-receiveddollar":
 						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl__database', array('id'=>$id))->row_array();
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;
 					case "form-received":
 						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl__database', array('id'=>$id))->row_array();
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;	
 					case "form-reservationall":
 						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl__database', array('id'=>$id))->row_array();
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;	
 					case "form-reservationdollar":
 						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl__database', array('id'=>$id))->row_array();
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;
 					case "form-reservation":
 						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl__database', array('id'=>$id))->row_array();
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;			
@@ -380,7 +380,7 @@ class Backend extends JINGGA_Controller {
 				foreach($data as $k => $v){
 					$rowCount++;
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
-					$worksheet->SetCellValue('B'.$rowCount, $v['boq_no']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['boqno']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['site_id']);
 					$worksheet->SetCellValue('D'.$rowCount, $v['site_name']);
 					$worksheet->SetCellValue('E'.$rowCount, $v['sow_category']);

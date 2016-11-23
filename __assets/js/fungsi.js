@@ -369,7 +369,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'filename',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
+				{field:'file_name',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
 				
 			]
 			kolom[modnya] = [
@@ -388,7 +388,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'boq_no',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
@@ -413,7 +413,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
-				{field:'tbl_maste_uploadtracker_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:70, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
@@ -459,7 +459,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'tbl_maste_uploadtracker_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
@@ -711,6 +711,26 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'tbl_maste_uploadtracker_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
+			]
+		break;
+		case "upload":
+			judulnya = "";
+			urlnya = "upload";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'filename',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
+				
+			]
+			kolom[modnya] = [
+				{field:'type_tracker',title:'Type Upload',width:150, halign:'center',align:'left', sortable:true},
+				{field:'type_upload',title:'New / Update',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:100, halign:'center',align:'center', sortable:true},
 			]
 		break;
 		case "receivedall":
