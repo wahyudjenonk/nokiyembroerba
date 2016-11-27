@@ -131,12 +131,13 @@ class Backend extends JINGGA_Controller {
 				$display = true;
 				
 				switch($p2){
-					case "form-upload":
-						if($editstatus == 'edit'){
-							$data = $this->db->get_where('tbl_upload_database', array('id'=>$id))->row_array();
-							$this->nsmarty->assign("data", $data);
-						}						
-					break;	
+					case "import-uploadalldatabase":
+						$temp = "backend/modul/".$p1."/form-import.html";
+						$type_import = $this->input->post('type_import');
+						
+						$this->nsmarty->assign("type_import", $type_import);
+						$this->nsmarty->assign("combotracker", $this->lib->fillcombo('combotracker', 'return') );
+					break;
 					case "form-receivedall":
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();

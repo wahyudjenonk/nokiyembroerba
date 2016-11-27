@@ -710,27 +710,35 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'tbl_maste_uploadtracker_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'tbl_master_uploadtracker_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
 			]
 		break;
-		case "upload":
+		case "uploadalldatabase":
 			judulnya = "";
-			urlnya = "upload";
+			urlnya = "uploadalldatabase";
 			//height = 800;
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'filename',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
+				{field:'file_name',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
 				
 			]
 			kolom[modnya] = [
-				{field:'type_tracker',title:'Type Upload',width:150, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'Type Upload',width:150, halign:'center',align:'left', sortable:true},
 				{field:'type_upload',title:'New / Update',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remark',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
+				{field:'remarks',title:'Remark',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'center', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "receivedall":
@@ -742,9 +750,9 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'id_reff1',title:'ID Reff1',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_reff2',title:'ID Reff2',width:100, halign:'center',align:'left', sortable:true},
-				{field:'ul_type',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_level_1',title:'ID Reff1',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_level_2',title:'ID Reff2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
@@ -763,13 +771,14 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
 				{field:'implementer',title:'Implementer',width:100, halign:'center',align:'left', sortable:true},
 				{field:'manager',title:'Manager',width:100, halign:'center',align:'left', sortable:true},
-				{field:'document_text__free_text_notes',title:'Document Text / Free Text (notes)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'collective_no.',title:'Collective No.',width:100, halign:'center',align:'left', sortable:true},
+				{field:'document_text_free_text_notes',title:'Document Text / Free Text (notes)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'collective_no',title:'Collective No.',width:100, halign:'center',align:'left', sortable:true},
 				{field:'discount_type_header',title:'Discount Type (Header)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'discount_amount__percentage_header',title:'Discount Amount / Percentage (Header)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discount_amount_percentage_header',title:'Discount Amount / Percentage (Header)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'collective_no',title:'Collective No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
 				{field:'requester',title:'Requester',width:100, halign:'center',align:'left', sortable:true},
-				{field:'rfx__auction_number',title:'RFx / Auction Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'rfx_auction_number',title:'RFx / Auction Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'contract_number',title:'Contract Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'account_assignment_category',title:'Account Assignment Category',width:100, halign:'center',align:'left', sortable:true},
 				{field:'item_category',title:'Item Category',width:100, halign:'center',align:'left', sortable:true},
@@ -783,10 +792,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'material_group',title:'Material Group',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plant',title:'Plant',width:100, halign:'center',align:'left', sortable:true},
 				{field:'delivery_date',title:'Delivery Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'require_gr?',title:'Require GR?',width:100, halign:'center',align:'left', sortable:true},
-				{field:'invoice_receipt',title:'Invoice Receipt?',width:100, halign:'center',align:'left', sortable:true},
+				{field:'require_gr',title:'Require GR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'invoice_receipt',title:'Invoice Receipt',width:100, halign:'center',align:'left', sortable:true},
 				{field:'discount_type_item',title:'Discount Type (Item)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'amount__percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'amount_percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
 				{field:'indicator',title:'Indicator',width:100, halign:'center',align:'left', sortable:true},
 				{field:'assigned_to_line_item',title:'Assigned to Line Item',width:100, halign:'center',align:'left', sortable:true},
 				{field:'service_number',title:'Service Number',width:100, halign:'center',align:'left', sortable:true},
@@ -802,7 +811,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'activity_number',title:'Activity Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'assigned_to_line_item2',title:'Assigned to Line Item2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'invoicing_plan_date',title:'Invoicing Plan Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'percentage__to_be_invoiced',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'left', sortable:true},
+				{field:'percentage_to_be_invoiced',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'left', sortable:true},
 				{field:'values_to_be_invoiced',title:'Values to be invoiced',width:100, halign:'center',align:'left', sortable:true},
 				{field:'buyer',title:'Buyer',width:100, halign:'center',align:'left', sortable:true},
 				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
@@ -812,16 +821,24 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materialgrossprice',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materialnettprice',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalgrossprice',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnettprice',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetactual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetdelta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_upload',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]			
 		break;
 		case "receiveddollar":
@@ -833,7 +850,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'ul_type',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
@@ -851,16 +868,24 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materialgrossprice',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materialnettprice',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalgrossprice',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnettprice',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetactual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetdelta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_upload',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]		
 		break;
 		case "received":
@@ -872,7 +897,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'ul_type',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
@@ -891,8 +916,16 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_upload',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "reservationall":
@@ -904,9 +937,9 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'id_reff1',title:'ID Reff1',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_reff2',title:'ID Reff2',width:100, halign:'center',align:'left', sortable:true},
-				{field:'ul_type',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_level_2',title:'ID Reff1',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_level_3',title:'ID Reff2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
@@ -945,8 +978,8 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'material_group',title:'Material Group',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plant',title:'Plant',width:100, halign:'center',align:'left', sortable:true},
 				{field:'delivery_date',title:'Delivery Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'require_gr?',title:'Require GR?',width:100, halign:'center',align:'left', sortable:true},
-				{field:'invoice_receipt',title:'Invoice Receipt?',width:100, halign:'center',align:'left', sortable:true},
+				{field:'require_gr',title:'Require GR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'invoice_receipt',title:'Invoice Receipt',width:100, halign:'center',align:'left', sortable:true},
 				{field:'discount_type_item',title:'Discount Type (Item)',width:100, halign:'center',align:'left', sortable:true},
 				{field:'amount__percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
 				{field:'indicator',title:'Indicator',width:100, halign:'center',align:'left', sortable:true},
@@ -974,37 +1007,45 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materialgrossprice',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materialnettprice',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalgrossprice',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnettprice',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetactual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetdelta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
 				{field:'siteid',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sitename',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
 				{field:'regioncode',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
 				{field:'networkboq',title:'networkboq',width:100, halign:'center',align:'left', sortable:true},
 				{field:'wpidsvc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
-				{field:'Plan_Qty_Mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'Actual_Qty_Mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'Delta_Qty_Mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'Status_CR_Qty_Mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'Status_CR_Reloc_Mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'RemarksCR_Mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'RemarksCR_Reloc_Mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalgrossprice_Mapping',title:'totalgrossprice Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnettprice_Mapping',title:'totalnettprice Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetactual_Mapping',title:'totalnetactual Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetdelta_Mapping',title:'totalnetdelta Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'Boqno_old',title:'Boqno old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'siteid_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price_mapping',title:'totalgrossprice Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price_mapping',title:'totalnettprice Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_actual_mapping',title:'totalnetactual Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta_mapping',title:'totalnetdelta Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno_old',title:'Boqno old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'regioncode_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_upload',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "reservationdollar":
@@ -1016,7 +1057,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'ul_type',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
 				{field:'siteid',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
@@ -1053,7 +1094,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'id_upload',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "reservation":
@@ -1065,7 +1114,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'ul_type',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'type_database',title:'UL Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
 				{field:'siteid',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
@@ -1091,7 +1140,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'id_upload',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
 			]
 		break;
 		case "mapping":
@@ -1293,6 +1350,15 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
 		//End Modul Master Progress
+
+		//Start Modul PO All Database
+		case "uploadalldatabase":			
+			urlimport = host+'backend/getdisplay/database/import-'+submodulnya;
+			lebar_import = 700;
+			tinggi_import = 600;
+			type_import = "uploadalldatabase";
+		break;
+		//End Modul PO All Database
 	}
 	
 	switch(type){

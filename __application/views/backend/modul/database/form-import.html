@@ -1,0 +1,112 @@
+<form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/'  class="form-horizontal" enctype="multipart/form-data">
+	<input type='hidden' id='typeimport' name='typeimport' value='{$type_import}' />
+	<br/>
+	
+	<div class="form-group"><label class="col-sm-2 control-label">Type All Database</label>
+		<div class="col-sm-2">
+			<select id='typealldatabase' name='typealldatabase' style='padding:3px; width:105px;'>
+				<option value=''>-- Choose --</option>
+				<option value='received' id='received'>PO Received</option>
+				<option value='reservation' id='reservation'>PO Reservation</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Method</label>
+		<div class="col-sm-2">
+			<select id='methodupload' name='methodupload' style='padding:3px; width:105px;'>
+				<option value=''>-- Choose --</option>
+				<option value='N'>New Data</option>
+				<option value='U'>Update</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">File Excell</label>
+		<div class="col-sm-2">
+			<input type='file' name='file_import' class='validasi' />
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">&nbsp;</label>
+		<div class="col-sm-6">
+			<a href='javascript:void(0);' id='download' target='_blank'>Download Template</a>
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='saveImport_{$acak}' >Save</a>
+            <a class="btn btn-danger" id='cancelImport_{$acak}'>Cancel</a>
+        </div>
+    </div>	
+	<div class="hr-line-dashed"></div>
+</form>
+<div id='result_{$type_import}'></div>
+
+<script>
+	var typeimport = '{$type_import}';
+	
+	if(typeimport == 'uploadalldatabase'){
+		$('#typealldatabase').on('change', function(){
+			$('#typeimport').val($(this).val());
+			//alert($('#typetracker').val());
+			//console.log($('#typetracker').val());
+				$('#method').css({ 'display':'inline' });
+		});
+	}	
+	
+	$('#download').on('click', function(){
+		if(typeimport == 'uploadalldatabase'){
+			if($('#typealldatabase').val() == ""){
+				$.messager.alert('POIN', "Type Tracker Can't Empty!!", 'error');
+				return false;
+			}
+			urltype = $('#typealldatabase').val();
+		}else{
+			urltype = typeimport;
+		}
+		window.open('{$host}backend/download/'+urltype);
+	});
+	
+	$('#saveImport_{$acak}').on('click',function(){
+		if(typeimport == 'uploadalldatabase'){
+			if($('#typealldatabase').val() == ""){
+				$.messager.alert('POIN', "Type All Database Can't Empty!!", 'error');
+				return false;
+			}
+			if($('#typealldatabase').val() == "received"){
+				if($('#methodupload').val() == ""){
+					$.messager.alert('POIN', "Method Upload Can't Empty!!", 'error');
+					return false;
+				}		
+			}	
+			if($('#typealldatabase').val() == "reservation"){
+				if($('#methodupload').val() == ""){
+					$.messager.alert('POIN', "Method Upload Can't Empty!!", 'error');
+					return false;
+				}		
+			}	
+		}else{
+			if($('#methodupload').val() == ""){
+				$.messager.alert('POIN', "Method Upload Can't Empty!!", 'error');
+				return false;
+			}	
+		}	
+		
+		submit_form('frmimport_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+				$('#grid_{$type_import}').datagrid('reload');
+				closeWindow();
+			}else{
+				$('#result_{$type_import}').html(r);
+			}
+		});
+		return false;
+	});
+	
+	$('#cancelImport_{$acak}').on('click',function(){
+		closeWindow();
+		return false;
+	});
+</script>

@@ -294,6 +294,12 @@ class lib {
 					'7' => array('id'=>'costsales','txt'=>'Cost & Sales')
 				);
 			break;
+			case "comboalldatabse":
+				$data = array(
+					'0' => array('id'=>'received','txt'=>'Received'),
+					'1' => array('id'=>'reservation','txt'=>'Reservation'),
+				);
+			break;
 			default:
 				$data = $ci->mbackend->get_combo($type, $p1, $p2);
 			break;
