@@ -1480,11 +1480,9 @@ class Backend extends JINGGA_Controller {
 		if($import == 1){
 			echo $import;
 		}else{
-			
-			
 			$this->nsmarty->assign('type', $p1);
 			$this->nsmarty->assign('data', $import);
-			$this->nsmarty->display("backend/modul/progress/hasil_import.html");
+			$this->nsmarty->display("backend/modul/".$this->input->post('folder')."/hasil_import.html");
 			
 			/*
 			echo "<pre>";

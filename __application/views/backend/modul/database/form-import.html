@@ -1,9 +1,10 @@
 <form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/'  class="form-horizontal" enctype="multipart/form-data">
 	<input type='hidden' id='typeimport' name='typeimport' value='{$type_import}' />
+	<input type='hidden' id='folder' name='folder' value='database' />
 	<br/>
 	
 	<div class="form-group"><label class="col-sm-2 control-label">Type All Database</label>
-		<div class="col-sm-2">
+		<div class="col-sm-6">
 			<select id='typealldatabase' name='typealldatabase' style='padding:3px; width:105px;'>
 				<option value=''>-- Choose --</option>
 				<option value='received' id='received'>PO Received</option>

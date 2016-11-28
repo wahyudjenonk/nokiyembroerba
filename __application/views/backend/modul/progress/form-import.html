@@ -1,5 +1,7 @@
 <form method="post" id='frmimport_{$acak}' url='{$host}backend/importdata/'  class="form-horizontal" enctype="multipart/form-data">
 	<input type='hidden' id='typeimport' name='typeimport' value='{$type_import}' />
+	<input type='hidden' id='folder' name='folder' value='progress' />
+	
 	<br/>
 	
 	{if $type_import eq 'uploadtracker'}
