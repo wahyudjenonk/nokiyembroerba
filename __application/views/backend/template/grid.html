@@ -9,12 +9,12 @@
 </style>
 
 <div id='maingrid_{$submodul}'>
-	<div id='grid_{$submodul}' style='height:100%;'></div>
+	<div id='grid_{$submodul}' style='height:90%;'></div>
 </div>
 <script>
 $(function(){
 	$('#maingrid_{$submodul}').css({
-		'height':(getClientHeight()-230)
+		'height':({$tinggi_grid|default:'getClientHeight()-230'})
 	});
 	genGrid('{$submodul}','grid_{$submodul}');
 });

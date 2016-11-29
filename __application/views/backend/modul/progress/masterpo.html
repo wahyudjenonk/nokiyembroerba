@@ -19,7 +19,8 @@
 				<div class="ibox-content" style='padding-bottom:0px !important;'>
 					
 					<div id='grid_nya_{$submodul}' style='height:400px;width:100%;'>
-						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
+						<div id='tb_{$submodul}' style='margin-bottom:10px;'>
+							{*
 							<select id='{$submodul}_filter_kategori' style='width:100px;padding:5px;'>
 								<option value='all'>All</option>
 								<option value=''>not</option>
@@ -30,20 +31,37 @@
 									<span class="l-btn-text"></span><span class="l-btn-icon icon-search">&nbsp;</span>
 								</span>
 							</a>
-							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="exportdata_{$submodul}" onClick="">
-								<span class="l-btn-left l-btn-icon-left">
-									<span class="l-btn-text">Export Excel</span><span class="l-btn-icon icon-xls">&nbsp;</span>
-								</span>
-							</a>
-							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('import_data', '{$main}','{$submodul}', 'windowform');">
-								<span class="l-btn-left l-btn-icon-left">
-									<span class="l-btn-text">Import Data</span><span class="l-btn-icon icon-import">&nbsp;</span>
-								</span>
-							</a>
-							{include file="backend/template/button_grid.html"}
+							*}
+
+							<div style='width:100%;margin-bottom: 3px;'>
+								{include file="backend/template/button_grid.html"}							
+							</div>
+							<br>
+							<div style='width:100%'>
+								<label>Phase Year</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_phaseyear' /> &nbsp;
+								<label>Phase Name</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_phasename' /> &nbsp;
+								<label>PO Type</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_potype' /> &nbsp;
+								<label>All Field</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_allfield' /> &nbsp;
+								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
+									<span class="l-btn-left l-btn-icon-left">
+										<span class="l-btn-text">Filter Data</span><span class="l-btn-icon icon-search">&nbsp;</span>
+									</span>	
+								</a>
+								<a href="javascript:void(0)" style="float: right;" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('import_data', '{$main}','{$submodul}', 'windowform');">
+									<span class="l-btn-left l-btn-icon-left">
+										<span class="l-btn-text">Import Data</span><span class="l-btn-icon icon-import">&nbsp;</span>
+									</span>
+								</a>	
+								<a href="javascript:void(0)" style="float: right;" class="l-btn l-btn-small l-btn-plain" group="" id="exportdata_{$submodul}" onClick="">
+									<span class="l-btn-left l-btn-icon-left">
+										<span class="l-btn-text">Export Excel</span><span class="l-btn-icon icon-xls">&nbsp;</span>
+									</span>
+								</a>
+
+							</div>
 						</div>
 						
-						{include file="backend/template/grid_editable.html"}
+						{include file="backend/template/grid_editable.html" tinggi_grid="getClientHeight()-255"}
 					</div>
 					
 					<div id='frm_{$submodul}' style='display:none;'></div>
@@ -63,23 +81,35 @@
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_master_po',
-				'kat' : $('#{$submodul}_filter_kategori').val(),
-				'key' : $('#{$submodul}_txt').val()
+				'phaseyear' : $('#{$submodul}_phaseyear').val(),
+				'phasename' : $('#{$submodul}_phasename').val(),
+				'potype' 	: $('#{$submodul}_potype').val(),
+				'allfield' 	: $('#{$submodul}_allfield').val(),
+				'initial_phase' : 'B',
+				'initial_potype' : 'C'
 			});
 		}
 	});
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_master_po',
-			'kat' : $('#{$submodul}_filter_kategori').val(),
-			'key' : $('#{$submodul}_txt').val()
+			'phaseyear' : $('#{$submodul}_phaseyear').val(),
+			'phasename' : $('#{$submodul}_phasename').val(),
+			'potype' 	: $('#{$submodul}_potype').val(),
+			'allfield' 	: $('#{$submodul}_allfield').val(),
+			'initial_phase' : 'B',
+			'initial_potype' : 'C'
 		});
 	});
 	
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_master_po';
-		param['kat']   = $('#{$submodul}_filter_kategori').val();
-		param['key']   = $('#{$submodul}_txt').val();
+		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
+		param['phasename']   = $('#{$submodul}_phasename').val();
+		param['potype']   	 = $('#{$submodul}_potype').val();
+		param['allfield']    = $('#{$submodul}_allfield').val();
+		param['initial_phase']   = 'B';
+		param['initial_potype']   = 'C';
 		
 		openWindowWithPost('{$host}backend/exportdatawithtemplate/masterpo', param);
 	});
