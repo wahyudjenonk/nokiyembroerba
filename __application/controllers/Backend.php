@@ -226,14 +226,15 @@ class Backend extends JINGGA_Controller {
 				$filename = "export-data-masterpo";
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-masterpo.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
-				$rowCount = 9;
+				$rowCount = 5;
 				$headerStyle = array(
 					'fill' => array(
 							'type' => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb'=>'BFBFBF'),
+							'color' => array('rgb'=>'#134292'),
 					),
 					'font' => array(
 							'bold' => true,
+							'color' => array('rgb'=>'FFFFFF')
 					)
 				);
 				

@@ -751,7 +751,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'id',title:'ID Reff 1',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_reff1',title:'ID Reff 1',width:100, halign:'center',align:'left', sortable:true},
 				{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
@@ -1159,20 +1159,19 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			//height = 800;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_reff1',title:'ID Reff 1',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
-				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:70, halign:'center',align:'left', sortable:true},
+				{field:'id_reff1',title:'IDReff1',width:70, halign:'center',align:'left', sortable:true},
+				{field:'level',title:'Lev',width:25, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pr_number',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pr_line_item',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'purchasing_group',title:'Purchasing Group',width:100, halign:'center',align:'left', sortable:true},
 				{field:'document_type',title:'Document Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'vendor_account_number',title:'Vendor Account Number',width:100, halign:'center',align:'left', sortable:true},
@@ -1370,7 +1369,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 	var urlglobal="";
 	var param={};
 	var footer=false;
-	var pagesizeboy=10;
+	var pagesizeboy=20;
 	var paging=true;	
 	var fitnya=true;
 	var url_crud = host+"backend/simpansavedata/"+crud_table;
@@ -1456,7 +1455,98 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 					}
 				},
 			]
-		break;		
+		break;	
+		case "siteinfo":
+			judulnya = "";
+			urlnya = "siteinfo";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cluster',title:'Cluster',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_detail',title:'SOW Detail',width:100, halign:'center',align:'left', sortable:true},
+				{field:'system_key',title:'System Key',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'so_svc',title:'SO SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_npo',title:'Partner No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:70, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;	
+		case "siteprogress":
+			judulnya = "";
+			urlnya = "siteprogress";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'tss',title:'TSS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'mos',title:'MOS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'installed',title:'Installed',width:100, halign:'center',align:'left', sortable:true},
+				{field:'g900',title:'G900',width:100, halign:'center',align:'left', sortable:true},
+				{field:'g1800',title:'G1800',width:100, halign:'center',align:'left', sortable:true},
+				{field:'u2100',title:'U2100',width:100, halign:'center',align:'left', sortable:true},
+				{field:'u900',title:'U900',width:100, halign:'center',align:'left', sortable:true},
+				{field:'l1800',title:'L1800',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_baseline',title:'ON AIR Baseline',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_date',title:'ON AIR Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_week',title:'ON AIR Week',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atp_date',title:'ATP Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'atp_method',title:'ATP Method',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
 	
 		case "tbl_employees":
 			judulnya = "";
