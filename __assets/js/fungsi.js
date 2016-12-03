@@ -1301,6 +1301,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'group_user',title:'User Group',width:200, halign:'center',align:'left', sortable:true},
 				{field:'nama_lengkap',title:'Nama Lengkap',width:300, halign:'center',align:'left', sortable:true},
 				{field:'email',title:'Email',width:200, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:100, halign:'center',align:'left',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},				
 			]
 		break;
 		case "grouplist":
@@ -1321,7 +1330,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				},
 				{field:'id',title:'Access Management',width:150,halign:'center',align:'center',
 					formatter:function(value,rowData,rowIndex){
-						return '<button href="javascript:void(0)" onClick="kumpulAction(\'userrole\',\''+rowData.id+'\',\'Y\')" class="easyui-linkbutton" data-options="iconCls:\'icon-save\'">Set Up</button>';
+						return '<button href="javascript:void(0)" onClick="kumpulAction(\'userrole\',\''+rowData.id+'\',\''+rowData.group_user+'\')" class="easyui-linkbutton" data-options="iconCls:\'icon-save\'">Set Up</button>';
 					}
 				},				
 			]
@@ -1359,19 +1368,6 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			if(doble_klik==true){
 				switch(modnya){
 					case "list_produk_kasir":
-						$.post(host+'trx-penjualan', {'editstatus':'add', 'cl_meja_id':par1, 'tbl_produk_id':rowData.id}, function(resp){
-							if(resp == 1){
-								$('#grid_list_pesanan_kasir').datagrid('reload');
-								$('.info-empty').remove();
-								$.post(host+'total-pesanan', { 'id_meja':par1 }, function(resp){
-									var parsing = $.parseJSON(resp);
-									$('#total_qty').val(parsing.tot_qty);
-									$('#total_hrg').val(NumberFormat(parsing.tot_harga));
-								});
-							}else{
-								$.messager.alert('Error','Error System','error');
-							}
-						});
 					break;
 				}
 			}
@@ -2013,6 +2009,23 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			type_import = "uploadalldatabase";
 		break;
 		//End Modul PO All Database
+		
+		//Modul User Management
+		case "userlist":
+			table = "tbl_user";
+			judulwindow = 'Form User List';
+			lebar = 600;
+			tinggi = 420;
+			urlpost = host+'backend/getdisplay/usermanagement/form-'+submodulnya;
+		break;
+		case "grouplist":
+			table = "tbl_user_group";
+			judulwindow = 'Form Group List';
+			lebar = 600;
+			tinggi = 200;
+			urlpost = host+'backend/getdisplay/usermanagement/form-'+submodulnya;
+		break;
+		//End Modul User Management
 	}
 	
 	switch(type){
@@ -2196,6 +2209,13 @@ function kumpulAction(type, p1, p2, p3, p4, p5){
 				$('#grid_reservasi').datagrid('reload');	
 			} );
 		break;
+		case "userrole":
+			$.post(host+'backend/getdisplay/usermanagement/form_user_role', {'id':p1, 'editstatus':'add'}, function(resp){
+				var lebar = getClientWidth()-500;
+				var tinggi = getClientHeight()-180;
+				windowForm(resp, "User Group Role Privilleges - "+p2, lebar, tinggi);
+			});
+		break;		
 	}
 }	
 
