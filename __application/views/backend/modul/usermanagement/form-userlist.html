@@ -1,0 +1,83 @@
+<form method="post" id='frmuser_{$acak}' url='{$host}backend/simpandata/tbl_user' class="form-horizontal">
+	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
+	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
+	<br/>
+	
+	{if $editstatus eq 'add'}
+		{assign var=stsdisabled value=''}
+	{elseif $editstatus eq 'edit'}
+		{assign var=stsdisabled value='disabled'}
+	{/if}
+	
+	<div class="form-group"><label class="col-sm-2 control-label">Full Name</label>
+		<div class="col-sm-6">
+			<input class="form-control" type="text" name='nama_lengkap' id='nama_lengkap' value="{$data.nama_lengkap|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Username</label>
+		<div class="col-sm-4">
+			<input class="form-control" type="text" {$stsdisabled} name='nama_user' id='nama_user' value="{$data.nama_user|default:''}" />
+			<br/>
+			<span id='chkresult'></span>
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Password</label>
+		<div class="col-sm-4">
+			<input class="form-control" type="password" name='password' id='password' value="{$data.password|default:''}" />
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Group User</label>
+		<div class="col-sm-4">
+			<select class="form-control" name='cl_user_group_id'>
+				{$user_group}
+			</select>
+		</div>
+	</div>
+	<div class="form-group"><label class="col-sm-2 control-label">Email User</label>
+		<div class="col-sm-6">
+			<input class="form-control" type="text" name='email' id='email' value="{$data.email|default:''}" />
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+    <div class="form-group">
+        <div class="col-sm-4 col-sm-offset-2">
+            <a class="btn btn-primary" id='saveUserList_{$acak}' >Save</a>
+            <a class="btn btn-danger" id='cancelUserList_{$acak}'>Cancel</a>
+        </div>
+    </div>	
+</form>
+
+<script>
+	$('#nama_user').on('change', function(){
+		$.post(host+'backend/getdisplay/usermanagement/check_username', { 'username':$(this).val() }, function(resp){
+			if(resp == 1){
+				result = '<font color="green">User Available</font>';
+			}else{
+				result = '<font color="red">User Exist</font>';
+				$('#nama_user').val('');
+			}
+			
+			$('#chkresult').html(result);
+		});
+	});
+	
+	$('#saveUserList_{$acak}').on('click',function(){
+		submit_form('frmuser_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			closeWindow();
+			$('#grid_userlist').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelUserList_{$acak}').on('click',function(){
+		closeWindow();
+		$('#grid_userlist').datagrid('reload');
+		return false;
+	});	
+</script>

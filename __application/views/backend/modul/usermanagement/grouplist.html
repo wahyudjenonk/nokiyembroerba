@@ -47,16 +47,16 @@
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
-				'table' : 'tbl_user',
-				'username' : $('#{$submodul}_txt').val()
+				'table' : 'tbl_user_group',
+				'grouplist' : $('#{$submodul}_txt').val()
 			});
 		}
 	});
 	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_user',
-			'username' : $('#{$submodul}_txt').val()
+			'table' : 'tbl_user_group',
+			'grouplist' : $('#{$submodul}_txt').val()
 		});
 	});
 	

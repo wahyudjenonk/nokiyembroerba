@@ -16,6 +16,8 @@ class Backend extends JINGGA_Controller {
 	
 	function index(){
 		if($this->auth){
+			$menu = $this->mbackend->getdata('menu', 'variable');
+			$this->nsmarty->assign('menu', $menu);
 			$this->nsmarty->display( 'backend/main-backend.html');
 		}else{
 			$this->nsmarty->display( 'backend/main-login.html');
@@ -181,8 +183,87 @@ class Backend extends JINGGA_Controller {
 				$display = true;
 				
 				switch($p2){
-					case "":
+					case "check_username":
+						$display = false;
+						$username = $this->input->post('username');
+						$data = $this->mbackend->getdata('cekusername', 'row_array', $username);
+						if($data){
+							echo 0;
+						}else{
+							echo 1;
+						}
+					break;					
+					case "form-userlist":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_user', array('id'=>$id))->row_array();
+							$data['password'] = $this->encrypt->decode($data['password']);
+							$this->nsmarty->assign("data", $data);
+						}	
+						$this->nsmarty->assign("user_group", $this->lib->fillcombo('tbl_user_group', 'return', ($editstatus == 'edit' ? $data['cl_user_group_id'] : "") ) );
+					break;
+					case "form-grouplist":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_user_group', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}	
+					break;
+					case "form_user_role":
+						$id_role = $this->input->post('id');
+						$array = array();
+						$dataParent = $this->mbackend->getdata('menu_parent', 'result_array');
+						foreach($dataParent as $k=>$v){
+							$dataChild = $this->mbackend->getdata('menu_child', 'result_array', $v['id']);
+							$dataPrev = $this->mbackend->getdata('previliges_menu', 'row_array', $v['id'], $id_role);
+							
+							$array[$k]['id'] = $v['id'];
+							$array[$k]['nama_menu'] = $v['nama_menu'];
+							$array[$k]['id_prev'] = (isset($dataPrev['id']) ? $dataPrev['id'] : 0) ;
+							$array[$k]['buat'] = (isset($dataPrev['buat']) ? $dataPrev['buat'] : 0) ;
+							$array[$k]['baca'] = (isset($dataPrev['baca']) ? $dataPrev['baca'] : 0);
+							$array[$k]['ubah'] = (isset($dataPrev['ubah']) ? $dataPrev['ubah'] : 0);
+							$array[$k]['hapus'] = (isset($dataPrev['hapus']) ? $dataPrev['hapus'] : 0);
+							$array[$k]['child_menu'] = array();
+							$jml = 0;
+							foreach($dataChild as $y => $t){
+								$dataPrevChild = $this->mbackend->getdata('previliges_menu', 'row_array', $t['id'], $id_role);
+								$array[$k]['child_menu'][$y]['id_child'] = $t['id'];
+								$array[$k]['child_menu'][$y]['nama_menu_child'] = $t['nama_menu'];
+								$array[$k]['child_menu'][$y]['type_menu'] = $t['type_menu'];
+								$array[$k]['child_menu'][$y]['id_prev'] = (isset($dataPrevChild['id']) ? $dataPrevChild['id'] : 0) ;
+								$array[$k]['child_menu'][$y]['buat'] = (isset($dataPrevChild['buat']) ? $dataPrevChild['buat'] : 0) ;
+								$array[$k]['child_menu'][$y]['baca'] = (isset($dataPrevChild['baca']) ? $dataPrevChild['baca'] : 0) ;
+								$array[$k]['child_menu'][$y]['ubah'] = (isset($dataPrevChild['ubah']) ? $dataPrevChild['ubah'] : 0) ;
+								$array[$k]['child_menu'][$y]['hapus'] = (isset($dataPrevChild['hapus']) ? $dataPrevChild['hapus'] : 0) ;
+								$jml++;
+								
+								if($t['type_menu'] == 'CHC'){
+									$array[$k]['child_menu'][$y]['sub_child_menu'] = array();
+									$dataSubChild = $this->mbackend->getdata('menu_child_2', 'result_array', $t['id']);
+									$jml_sub_child = 0;
+									foreach($dataSubChild as $x => $z){
+										$dataPrevSubChild = $this->mbackend->getdata('previliges_menu', 'row_array', $z['id'], $id_role);
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['id_sub_child'] = $z['id'];
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['nama_menu_sub_child'] = $z['nama_menu'];
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['id_prev'] = (isset($dataPrevSubChild['id']) ? $dataPrevSubChild['id'] : 0) ;
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['buat'] = (isset($dataPrevSubChild['buat']) ? $dataPrevSubChild['buat'] : 0) ;
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['baca'] = (isset($dataPrevSubChild['baca']) ? $dataPrevSubChild['baca'] : 0) ;
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['ubah'] = (isset($dataPrevSubChild['ubah']) ? $dataPrevSubChild['ubah'] : 0) ;
+										$array[$k]['child_menu'][$y]['sub_child_menu'][$x]['hapus'] = (isset($dataPrevSubChild['hapus']) ? $dataPrevSubChild['hapus'] : 0) ;
+										$jml_sub_child++;
+									}
+								}
+							}
+							$array[$k]['total_child'] = $jml;
+						}
 						
+						/*
+						echo "<pre>";
+						print_r($array);
+						exit;
+						//*/
+						
+						$this->nsmarty->assign('role', $array);
+						$this->nsmarty->assign('id_group', $id_role);
 					break;
 				
 				}
@@ -193,9 +274,9 @@ class Backend extends JINGGA_Controller {
 		$this->nsmarty->assign("submodul", $p2);
 		$this->nsmarty->assign("editstatus", $editstatus);
 		$this->nsmarty->assign("acak", md5(date('H:i:s')) );
-		if(!file_exists($this->config->item('appl').APPPATH.'views/'.$temp)){$this->nsmarty->display('konstruksi.html');}
 		
 		if($display == true){
+			if(!file_exists($this->config->item('appl').APPPATH.'views/'.$temp)){$this->nsmarty->display('konstruksi.html');}
 			$this->nsmarty->display($temp);
 		}
 	}

@@ -2,6 +2,38 @@
 	<li class="nav-header" style=''>
 		<img src="{$host}__assets/img/nokia_white_logo.png" width='130px' height='51px' style='margin-left:15px;'/>
 	</li>
+	
+	{foreach from=$menu item=x}
+		<li>
+			{if $x.type_menu eq 'P'}
+			<a href="#"><i class="fa {$x.icon_menu}"></i> <span class="nav-label">{$x.parent}</span><span class="fa arrow"></span> </a>
+			<ul class="nav nav-second-level collapse">
+				{foreach from=$x.child item=y}
+					{if $y.type_menu eq 'C'}
+						<li><a href="javascript:void(0);" onClick="loadUrl('{$host}{$y.url}')">{$y.menu}</a></li>
+					{elseif $y.type_menu eq 'CHC'}
+						<li>
+							<a href="javascript:void(0);">{$y.menu}<span class="fa arrow"></span></a>
+							{if isset($y.sub_child) }
+								<ul class="nav nav-third-level collapse">
+									{foreach from=$y.sub_child item=z}
+										<li><a href="javascript:void(0);" onClick="loadUrl('{$host}{$z.url}')">- {$z.sub_menu}</a></li>
+									{/foreach}
+								</ul>
+							{/if}
+						</li>
+					{/if}
+				{/foreach}
+			</ul>
+			{elseif $x.type_menu eq 'B'}
+				<a href="{$host}"><i class="fa {$x.icon_menu}"></i> <span class="nav-label">{$x.parent}</span> </a>
+			{/if}
+		</li>
+	{/foreach}
+</ul>
+
+	
+	{*
 	<li>
         <a href="index-2.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Dashboard</span> </a> <!--isi dashboard nya: inti dashboard, master PO dan master Tracker. modelnya seperti poin yang lalu, tapi bisa di klik akan masuk ke page grafik -->
     </li>
@@ -56,7 +88,7 @@
             <li><a href="form_basic.html">Update WPID SO</a></li>
         </ul>
     </li>
-<li>
+	<li>
 
         <a href="#"><i class="fa fa-list"></i> <span class="nav-label">PO Report</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse">
@@ -66,14 +98,14 @@
         	<li><a href="form_basic.html">Report PO Site</a></li>
         	<li><a href="form_basic.html">Report PO Uploader</a></li>
         	<li><a href="form_basic.html">Report PO Database</a></li>
-</ul>    
-</li>
+		</ul>    
+	</li>
 
-<li>
+	<li>
         <a href="#"><i class="fa fa-list"></i> <span class="nav-label">User Management</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse">
         	<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/usermanagement/userlist')">User List</a></li>
         	<li><a href="javascript:void(0);" onClick="loadUrl('{$host}backend/getdisplay/usermanagement/grouplist')">Group List</a></li>
         </ul>    
-</li>
-</ul>
+	</li>
+	*}

@@ -1,0 +1,41 @@
+<form method="post" id='frmgrupuser_{$acak}' url='{$host}backend/simpandata/tbl_user_group' class="form-horizontal">
+	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
+	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
+	<br/>
+
+	<div class="form-group"><label class="col-sm-2 control-label">Group Name</label>
+		<div class="col-sm-6">
+			<input class="form-control" type="text" name='group_user' id='group_user' value="{$data.group_user|default:''}" />
+		</div>
+	</div>
+	<div class="hr-line-dashed"></div>
+</form>
+<div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+        <a class="btn btn-primary" id='saveGroupList_{$acak}' >Save</a>
+        <a class="btn btn-danger" id='cancelGroupList_{$acak}'>Cancel</a>
+    </div>
+</div>		
+
+
+<script>
+	$('#saveGroupList_{$acak}').on('click',function(){
+		submit_form('frmgrupuser_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			closeWindow();
+			$('#grid_grouplist').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelGroupList_{$acak}').on('click',function(){
+		closeWindow();
+		$('#grid_grouplist').datagrid('reload');
+		return false;
+	});	
+</script>
