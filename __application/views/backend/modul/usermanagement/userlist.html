@@ -1,0 +1,72 @@
+<div class="row wrapper border-bottom blueaye-bg page-heading">
+	<div class="col-lg-10" style='margin-left:20px;'>
+		<h3><b>User Management</b></h3>
+		<ol class="breadcrumb" style='margin-bottom:10px !important;'>
+            <li>
+                User Management
+            </li>
+            <li class="active">
+                <strong>User List</strong>
+            </li>
+        </ol>		
+	</div>
+</div>
+<div class="wrapper wrapper-content">
+	<div class="row">
+		<div class="col-lg-12" style='padding-right:0px !important;'>
+			
+			<div class="ibox">
+				<div class="ibox-content" style='padding-bottom:0px !important;'>
+					
+					<div id='grid_nya_{$submodul}'>
+						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
+							<label>Search User</label>
+							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
+							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
+								<span class="l-btn-left l-btn-icon-left">
+									<span class="l-btn-text"></span><span class="l-btn-icon icon-search">&nbsp;</span>
+								</span>
+							</a>
+							{include file="backend/template/button_grid.html"}
+						</div>	
+						{include file="backend/template/grid.html"}
+					</div>
+					
+					<div id='frm_{$submodul}' style='display:none;'></div>				
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<script>
+	var submodul = "{$submodul|default:''}";
+	var param = {};
+
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			$('#grid_{$submodul}').datagrid('reload',{
+				'table' : 'tbl_user',
+				'username' : $('#{$submodul}_txt').val()
+			});
+		}
+	});
+	
+	$('#search_{$submodul}').on('click', function(){
+		$('#grid_{$submodul}').datagrid('reload',{
+			'table' : 'tbl_user',
+			'username' : $('#{$submodul}_txt').val()
+		});
+	});
+	
+	/*
+	$('#exportdata_{$submodul}').on('click', function(){
+		param['table'] = 'tbl_user';
+		param['kat']   = $('#{$submodul}_filter_kategori').val();
+		param['key']   = $('#{$submodul}_txt').val();
+		
+		openWindowWithPost('{$host}backend/exportdata/excell/{$main}/{$submodul}', param);
+	});
+	*/
+</script>

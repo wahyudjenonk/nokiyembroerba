@@ -176,6 +176,17 @@ class Backend extends JINGGA_Controller {
 					break;			
 				}
 			break;
+			
+			case "usermanagement":
+				$display = true;
+				
+				switch($p2){
+					case "":
+						
+					break;
+				
+				}
+			break;
 		}
 		
 		$this->nsmarty->assign("main", $p1);
