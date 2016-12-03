@@ -124,6 +124,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	var singleSelek = true;
 	var nowrap_nya = false;
 	var footer=false;
+	var rownumbernya=false;
 	
 	switch(modnya){
 		case "phase":
@@ -1285,13 +1286,54 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 
 			]
 		break;
+		
+		
+		//modul User Management
+		case "userlist":
+			judulnya = "";
+			urlnya = "userlist";
+			urlglobal = host+'backend/getdata/'+urlnya;
+			rownumbernya = true;
+			frozen[modnya] = [
+				{field:'nama_user',title:'Username',width:150, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'group_user',title:'User Group',width:200, halign:'center',align:'left', sortable:true},
+				{field:'nama_lengkap',title:'Nama Lengkap',width:300, halign:'center',align:'left', sortable:true},
+				{field:'email',title:'Email',width:200, halign:'center',align:'left', sortable:true},
+			]
+		break;
+		case "grouplist":
+			judulnya = "";
+			urlnya = "grouplist";
+			urlglobal = host+'backend/getdata/'+urlnya;
+			rownumbernya = true;
+			kolom[modnya] = [
+				{field:'group_user',title:'User Group',width:200, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:150, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "<font color='green'>Group Active</font>";
+						} else {
+							return "<font color='red'>Group Inactive</font>";
+						}
+					}
+				},
+				{field:'id',title:'Access Management',width:150,halign:'center',align:'center',
+					formatter:function(value,rowData,rowIndex){
+						return '<button href="javascript:void(0)" onClick="kumpulAction(\'userrole\',\''+rowData.id+'\',\'Y\')" class="easyui-linkbutton" data-options="iconCls:\'icon-save\'">Set Up</button>';
+					}
+				},				
+			]
+		break;
+		//End modul User Management
 	}
 	
 	grid_nya=$("#"+divnya).datagrid({
 		title:judulnya,
 		width: '100%',
 		height: '100%',
-		rownumbers:false,
+		rownumbers:rownumbernya,
 		iconCls:'database',
         fit:fitnya,
         striped:true,
