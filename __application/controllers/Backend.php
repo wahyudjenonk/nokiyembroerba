@@ -1550,7 +1550,7 @@ class Backend extends JINGGA_Controller {
 		$objWriter->save('php://output');
 	}		
 	
-	function simpandata($p1="",$p2=""){
+	function simpandata($p1="",$p2="",$p3=""){
 		if($this->input->post('mod'))$p1=$this->input->post('mod');
 		$post = array();
         foreach($_POST as $k=>$v){
@@ -1558,12 +1558,11 @@ class Backend extends JINGGA_Controller {
 				//$post[$k] = $this->db->escape_str($this->input->post($k));
 				$post[$k] = $this->input->post($k);
 			}
-			
 		}
 		if(isset($post['editstatus'])){$editstatus = $post['editstatus'];unset($post['editstatus']);}
 		else $editstatus = $p2;
 		
-		echo $this->mbackend->simpandata($p1, $post, $editstatus);
+		echo $this->mbackend->simpandata($p1, $post, $editstatus, $p3);
 	}
 	
 	function importdata($p1=""){
@@ -1582,6 +1581,11 @@ class Backend extends JINGGA_Controller {
 			print_r($import);
 			//*/
 		}
+	}
+	
+	function getcombobox($type=""){
+		$datacombo = $this->mbackend->get_combo($type);
+		echo json_encode($datacombo);
 	}
 	
 	function download($type=""){

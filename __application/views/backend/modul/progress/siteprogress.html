@@ -19,7 +19,7 @@
 				<div class="ibox-content" style='padding-bottom:0px !important;'>
 					
 					<div id='grid_nya_{$submodul}' style='height:400px;width:100%;'>
-						<div id='tb_{$submodul}' style='margin-bottom:15px;'>
+						<div id='tb_{$submodul}' style='margin-bottom:5px;'>
 							{*
 							<select id='{$submodul}_filter_kategori' style='width:100px;padding:5px;'>
 								<option value='all'>All</option>
@@ -33,13 +33,13 @@
 							</a>
 							*}
 
-							<div style='width:100%;margin-bottom: 3px;'>
+							<div style='width:100%;margin-bottom: 0px;'>
+								<label>Phase Year</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_phaseyear' /> &nbsp;
+								<label>Phase Name</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_phasename' /> &nbsp;
 								{include file="backend/template/button_grid.html"}							
 							</div>
 							<br>
 							<div style='width:100%'>
-								<label>Phase Year</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_phaseyear' /> &nbsp;
-								<label>Phase Name</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_phasename' /> &nbsp;
 								<label>Region Code</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_regioncode' /> &nbsp;
 								<label>BOQ No</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_boqno' /> &nbsp;
 								<label>All Field</label> : <input type='text' style='width:100px;padding:5px;' id='{$submodul}_allfield' /> &nbsp;
@@ -62,7 +62,7 @@
 							</div>
 						</div>
 						
-						{include file="backend/template/grid_editable.html" tinggi_grid="getClientHeight()-255"}
+						{include file="backend/template/grid_editable.html" tinggi_grid="getClientHeight()-255" tablenya="tbl_master_tracker_siteprogress"}
 					</div>
 					
 					<div id='frm_{$submodul}' style='display:none;'></div>
@@ -87,6 +87,8 @@
 				'boqno' 	: $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'G',
+				'initial_boqno' : 'B',
+				
 			});
 		}
 	});
@@ -97,7 +99,8 @@
 			'phasename' : $('#{$submodul}_phasename').val(),
 			'boqno' 	: $('#{$submodul}_boqno').val(),
 			'allfield' 	: $('#{$submodul}_allfield').val(),
-			'initial_phase' : 'G'
+			'initial_phase' : 'G',
+			'initial_boqno' : 'B',
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
@@ -107,6 +110,7 @@
 		param['boq']    = $('#{$submodul}_boq').val();
 		param['allfield']    = $('#{$submodul}_allfield').val();
 		param['initial_phase']   = 'G';
+		param['initial_boqno']   = 'B';
 		
 		openWindowWithPost('{$host}backend/exportdatawithtemplate/siteinfo', param);
 	});
