@@ -1410,90 +1410,9 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 	var pagesizeboy=20;
 	var paging=true;	
 	var fitnya=true;
-	var url_crud = host+"backend/simpansavedata/"+crud_table;
+	var url_crud = host+"backend/simpandata/"+crud_table;
 
 	switch (modnya){
-		case "masterpo":
-			judulnya = "";
-			urlnya = "masterpo";
-			fitnya = true;
-			frozen[modnya] = [
-				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
-			]			
-			kolom[modnya] = [
-				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
-				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'center', sortable:true,
-					editor:{type:'textbox'}
-				},
-				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
-				{field:'basic_contract',title:'Basic Contract',width:200, halign:'center',align:'left', sortable:true},
-				{field:'po_date',title:'PO Date',width:100, halign:'center',align:'center', sortable:true},
-				{field:'po_received',title:'PO Recived',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_delivery',title:'PO Delivery',width:100, halign:'center',align:'left', sortable:true},
-				{field:'revision_no',title:'Revisi On No',width:100, halign:'center',align:'center', sortable:true},
-				{field:'po_gross_idr',title:'PO Gross IDR',width:100, halign:'center',align:'right', sortable:true},
-				{field:'po_nett_idr',title:'PO Nett IDR',width:100, halign:'center',align:'right', sortable:true},
-				{field:'jis_dorr_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'right', sortable:true},
-				{field:'po_gross_usd',title:'PO Gross USD',width:100, halign:'center',align:'right', sortable:true},
-				{field:'po_nett_usd',title:'PO Nett USD',width:100, halign:'center',align:'right', sortable:true},
-				{field:'remarks',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
-				{field:'file_name',title:'File Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true,
-					formatter: function(value,row,index){
-						if (row.status == 1){
-							return "Active";
-						} else {
-							return "Inactive";
-						}
-					}
-				},
-			]
-		break;
-		case "mastercr":
-			judulnya = "";
-			urlnya = "mastercr";
-			//height = 800;
-			urlglobal = host+'backend/getdata/'+urlnya;
-			frozen[modnya] = [
-				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'cr_no_nokia',title:'CR No Nokia',width:200, halign:'center',align:'left', sortable:true},
-			]
-			kolom[modnya] = [
-				{field:'cr_no_indosat',title:'CR No Indosat',width:200, halign:'center',align:'left', sortable:true},
-				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_code',title:'Phase Code',width:75, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'phase_year',title:'Phase Year',width:50, halign:'center',align:'left', sortable:true},
-				{field:'nodin',title:'NODIN',width:200, halign:'center',align:'left', sortable:true},
-				{field:'cr_position',title:'CR Position',width:100, halign:'center',align:'left', sortable:true},
-				{field:'cr_pic',title:'CR Pic',width:100, halign:'center',align:'left', sortable:true},
-				{field:'cr_submit',title:'CR Submit',width:75, halign:'center',align:'left', sortable:true},
-				{field:'cr_approved',title:'CR Approved',width:75, halign:'center',align:'left', sortable:true},
-				{field:'po_received',title:'PO Received',width:75, halign:'center',align:'left', sortable:true},
-				{field:'value_before',title:'Value Before',width:100, halign:'center',align:'right', sortable:true},
-				{field:'value_after',title:'Value After',width:100, halign:'center',align:'right', sortable:true},
-				{field:'value_delta',title:'Value Delta',width:100, halign:'center',align:'right', sortable:true},
-				{field:'cr_type',title:'CR Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'left', sortable:true},
-				{field:'file_name',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true,
-					formatter: function(value,row,index){
-						if (row.status == 1){
-							return "Active";
-						} else {
-							return "Inactive";
-						}
-					}
-				},
-			]
-		break;	
 		case "siteinfo":
 			judulnya = "";
 			urlnya = "siteinfo";
@@ -1503,28 +1422,120 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
+						}
+					}
+				}					
 			]
 			kolom[modnya] = [
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'cluster',title:'Cluster',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'tbl_master_sitename_id',title:'Site Status',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.site_status || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						url:host+'backend/getcombobox/tbl_master_sitename',
+                       }
+                    }
+				},
+				{field:'tbl_master_region_id',title:'Region Code',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.region_code || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						url:host+'backend/getcombobox/tbl_master_region',
+                       }
+                    }
+				},
+				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'cluster',title:'Cluster',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'tbl_master_phase_id',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.phase_code || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_phase',
+                       }
+                    }
+				},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sow_detail',title:'SOW Detail',width:100, halign:'center',align:'left', sortable:true},
-				{field:'system_key',title:'System Key',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_id_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
-				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
-				{field:'so_svc',title:'SO SVC',width:100, halign:'center',align:'left', sortable:true},
-				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
-				{field:'partner_npo',title:'Partner No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_detail',title:'SOW Detail',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'system_key',title:'System Key',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_id_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'tbl_master_pone_id',title:'NE Name',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.po_ne || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_pone',
+                       }
+                    }
+				},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'so_svc',title:'SO SVC',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'partner_npo',title:'Partner No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
@@ -1547,6 +1558,18 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			frozen[modnya] = [
 				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
+						}
+					}
+				}
 			]
 			kolom[modnya] = [
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
@@ -1555,22 +1578,124 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true},
-				{field:'tss',title:'TSS',width:100, halign:'center',align:'left', sortable:true},
-				{field:'mos',title:'MOS',width:100, halign:'center',align:'left', sortable:true},
-				{field:'installed',title:'Installed',width:100, halign:'center',align:'left', sortable:true},
-				{field:'g900',title:'G900',width:100, halign:'center',align:'left', sortable:true},
-				{field:'g1800',title:'G1800',width:100, halign:'center',align:'left', sortable:true},
-				{field:'u2100',title:'U2100',width:100, halign:'center',align:'left', sortable:true},
-				{field:'u900',title:'U900',width:100, halign:'center',align:'left', sortable:true},
-				{field:'l1800',title:'L1800',width:100, halign:'center',align:'left', sortable:true},
-				{field:'on_air_baseline',title:'ON AIR Baseline',width:100, halign:'center',align:'left', sortable:true},
-				{field:'on_air_date',title:'ON AIR Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'on_air_week',title:'ON AIR Week',width:100, halign:'center',align:'left', sortable:true},
-				{field:'atp_date',title:'ATP Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'atp_method',title:'ATP Method',width:100, halign:'center',align:'left', sortable:true},
+				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'tss',title:'TSS',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'mos',title:'MOS',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'installed',title:'Installed',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'g900',title:'G900',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'g1800',title:'G1800',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'u2100',title:'U2100',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'u900',title:'U900',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'l1800',title:'L1800',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'on_air_baseline',title:'ON AIR Baseline',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'on_air_date',title:'ON AIR Date',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'on_air_week',title:'ON AIR Week',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'atp_date',title:'ATP Date',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+				},
+				{field:'atp_method',title:'ATP Method',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
-				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
@@ -1661,8 +1786,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
         remoteSort: false,
         //showFooter: true,
 		url: (urlglobal == "" ? host+"backend/getdata/"+urlnya : urlglobal),		
-		saveUrl: url_crud+'/add',
-        updateUrl: url_crud+'/edit',
+		saveUrl: url_crud+'/add/inline_edit',
+        updateUrl: url_crud+'/edit/inline_edit',
         destroyUrl: url_crud+'/delete',
 		nowrap: true,
         singleSelect:true,
@@ -1675,6 +1800,31 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
             kolom[modnya]
         ],
 		//toolbar: tolbarnya,
+		onEndEdit:function(index,row){
+            if(divnya == "siteinfo"){
+				var ed_sitestatus = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'tbl_master_sitename_id'
+				});
+				var ed_regioncode = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'tbl_master_region_id'
+				});
+				var ed_phasecode = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'tbl_master_phase_id'
+				});
+				var ed_pone = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'tbl_master_pone_id'
+				});
+				
+				row.tbl_master_sitename_id = $(ed_sitestatus.target).combobox('getText');
+				row.tbl_master_region_id = $(ed_regioncode.target).combobox('getText');
+				row.tbl_master_phase_id = $(ed_phasecode.target).combobox('getText');
+				row.tbl_master_pone_id = $(ed_pone.target).combobox('getText');
+			}
+        },		
 		onBeforeEdit:function(index,row,rowIndex){
             row.editing = true;
             updateActions(divnya,index);
@@ -1688,7 +1838,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
             updateActions(divnya,index);
         },
 		onClickRow:function(rowIndex){
-			index_row=rowIndex;
+			index_row = rowIndex;
 		}
 	});	
 }	
@@ -1714,160 +1864,10 @@ function deleterow(div,target){
     });
 }
 function saverow(div,target,modul){
-	var url = ""; 
-	var divtotcost = ""; 
-	var divtotpercent = ""; 
-	var divtxtpercent = ""; 
-	var arraynya = [
-		'grid_assign_act_employee',
-		'grid_expense_source_employee',
-		'grid_assign_act_expense',
-		'grid_assign_emp_expense',
-		'grid_assign_assets_expense',
-		'grid_assign_act_assets',
-		'grid_assign_exp_assets',
-		'grid_assign_act_costobject',
-		'grid_assign_cust_costobject',
-		'grid_assign_loc_costobject',
-		'grid_assign_costobject_cust',
-		'grid_assign_location_cust',
-		'grid_assign_costobject_location',
-		'grid_assign_cust_location',
-		'tabel_employees',
-		'tabel_expenses',
-		'tabel_assets',
-		'tabel_act',
-		'tabel_act_to'
-	];
-	
-	if(div == 'grid_assign_act_employee'){
-		url = host+"homex/getcost/echo/cost/tbl_are/tbl_emp_id/"+$('#id_employee').val();
-		divtotcost = "cost_activity_employee";
-		divtotpercent = "total_percent_act_emp";
-		divtxtpercent = "total_percent_act_emp_txt";
-		
-	}else if(div == 'grid_expense_source_employee'){
-		url = host+"homex/getcost/echo/cost/tbl_efx/tbl_emp_id/"+$('#id_employee').val();
-		divtotcost = "cost_expense_employee";
-		divtotpercent = "total_percent_exp_emp";
-		divtxtpercent = "total_percent_exp_emp_txt";
-	
-	}else if(div == 'grid_assign_act_expense'){
-		url = host+"homex/getcost/echo/cost/tbl_are/tbl_exp_id/"+$('#id_expense').val();
-		divtotcost = "cost_activity_expense";
-		divtotpercent = "total_percent_act_exp";
-		divtxtpercent = "total_percent_act_exp_txt";
-	
-	}else if(div == 'grid_assign_emp_expense'){
-		url = host+"homex/getcost/echo/cost/tbl_efx/tbl_exp_id/"+$('#id_expense').val()+"/expense_emp/";
-		divtotcost = "cost_employee_expense";
-		divtotpercent = "total_percent_emp_exp";
-		divtxtpercent = "total_percent_emp_exp_txt";
-		
-	}else if(div == 'grid_assign_assets_expense'){
-		url = host+"homex/getcost/echo/cost/tbl_efx/tbl_exp_id/"+$('#id_expense').val()+"/expense_ass/";
-		divtotcost = "cost_assets_expense";
-		divtotpercent = "total_percent_ass_exp";
-		divtxtpercent = "total_percent_ass_exp_txt";
-		
-	}else if(div == 'grid_assign_act_assets'){
-		url = host+"homex/getcost/echo/cost/tbl_are/tbl_assets_id/"+$('#id_assets').val();
-		divtotcost = "cost_activity_assets";
-		divtotpercent = "total_percent_act_ass";
-		divtxtpercent = "total_percent_act_ass_txt";
-		
-	}else if(div == 'grid_assign_exp_assets'){
-		url = host+"homex/getcost/echo/cost/tbl_efx/tbl_assets_id/"+$('#id_assets').val()+"/expense_ass/";
-		divtotcost = "cost_expense_assets";
-		divtotpercent = "total_percent_exp_ass";
-		divtxtpercent = "total_percent_exp_ass_txt";
-		
-	}else if(div == 'grid_assign_act_costobject'){
-		url = host+"homex/getcost/echo/cost/tbl_prd/tbl_prm_id/"+$('#id_prm').val();
-		divtotcost = "total_costdriver_costobject";
-	
-	}else if(div == 'grid_assign_cust_costobject'){
-		url = host+"homex/getcost/echo/cost/tbl_ptp/tbl_prm_id/"+$('#id_prm').val()+"/customer_costobject/";
-		divtotcost = "total_customer_costobject";
-		
-	}else if(div == 'grid_assign_loc_costobject'){
-		url = host+"homex/getcost/echo/cost/tbl_ptp/tbl_prm_id/"+$('#id_prm').val()+"/location_costobject/";
-		divtotcost = "total_location_costobject";
-		
-	}else if(div == 'grid_assign_costobject_cust'){
-		url = host+"homex/getcost/echo/cost/tbl_ptp/tbl_cust_id/"+$('#id_cust').val()+"/costobject_customer/";
-		divtotcost = "total_costobject_customer";
-		
-	}else if(div == 'grid_assign_location_cust'){
-		url = host+"homex/getcost/echo/cost/tbl_ptp/tbl_cust_id/"+$('#id_cust').val()+"/location_customer/";
-		divtotcost = "total_location_customer";
-		
-	}else if(div == 'grid_assign_costobject_location'){
-		url = host+"homex/getcost/echo/cost/tbl_ptp/tbl_location_id/"+$('#id_location').val()+"/costobject_location/";
-		divtotcost = "total_costobject_location";
-		
-	}else if(div == 'grid_assign_cust_location'){
-		url = host+"homex/getcost/echo/cost/tbl_ptp/tbl_location_id/"+$('#id_location').val()+"/customer_location/";
-		divtotcost = "total_customer_location";
-		
-	}
-	// Activity
-	
-	else if(div == 'tabel_employees'){
-		url = host+"home/getcost/emp/"+id_act+"/"+$('#bulan_main').val()+"/"+$('#tahun_main').val();
-		divtotcost = "total_cost_from_employees";
-		//divtotpercent = "cost_form_employees";
-		divtxtpercent = "total_persen_from_employees";
-		
-	}
-	else if(div == 'tabel_expenses'){
-		url = host+"home/getcost/exp/"+id_act+"/"+$('#bulan_main').val()+"/"+$('#tahun_main').val();
-		divtotcost = "total_cost_from_expanses";
-		//divtotpercent = "cost_form_employees";
-		divtxtpercent = "total_persen_from_expanses";
-		
-	}
-	else if(div == 'tabel_assets'){
-		url = host+"home/getcost/assets/"+id_act+"/"+$('#bulan_main').val()+"/"+$('#tahun_main').val();
-		divtotcost = "total_cost_from_assets";
-		//divtotpercent = "cost_form_employees";
-		divtxtpercent = "total_persen_from_assets";
-		
-	}
-	else if(div == 'tabel_act'){
-		url = host+"home/getcost/f_act/"+id_act+"/"+$('#bulan_main').val()+"/"+$('#tahun_main').val();
-		divtotcost = "total_cost_from_activity";
-		//divtotpercent = "cost_form_employees";
-		divtxtpercent = "total_persen_from_activity";
-		
-	}
-	else if(div == 'tabel_act_to'){
-		url = host+"home/getcost/t_act/"+id_act+"/"+$('#bulan_main').val()+"/"+$('#tahun_main').val();
-		divtotcost = "total_cost_to_activity";
-		//divtotpercent = "cost_form_employees";
-		divtxtpercent = "total_persen_to_activity";
-		
-	}
-	
-	if(div == 'grid_assign_act_costobject' || div == 'grid_assign_cust_costobject' || div == 'grid_assign_loc_costobject' || div == 'grid_assign_costobject_cust' || div == 'grid_assign_location_cust' || div == 'grid_assign_costobject_location' || div == 'grid_assign_cust_location' ){
-		if($('#'+div).datagrid('endEdit', getRowIndex(target))){
-			$('#'+div).datagrid('reload');
-			if( $.inArray(div, arraynya) > -1 ){
-				get_total_cost(url,divtotcost,divtotpercent,divtxtpercent)
-			}
-		}else{
-			return false;
-		}
+	if($('#'+div).datagrid('endEdit', getRowIndex(target))){
+		$('#'+div).datagrid('reload');
 	}else{
-		var actionss = validasi_proportion(div,target,divtxtpercent);
-		console.log(actionss);
-		if(actionss == 1){
-			if( $.inArray(div, arraynya) > -1 ){
-				get_total_cost(url,divtotcost,divtotpercent,divtxtpercent)
-			}
-		}else{
-			return false;
-		}
+		return false;
 	}
 	
 	/*
@@ -1894,7 +1894,9 @@ function saverow(div,target,modul){
 	}
 	*/
 }
-
+function cancelrow(div,target){
+     $('#'+div).datagrid('cancelEdit', getRowIndex(target));
+}
 
 function genform(type, modulnya, submodulnya, stswindow, tabel){
 	var urlpost = host+'backend/get_form/'+submodulnya+'/form';
@@ -2396,6 +2398,35 @@ function openWindowWithPost(url,params){
     html += "</form><script type='text/javascript'>document.getElementById(\"formid\").submit()</script></body></html>";
     newWindow.document.write(html);
     return newWindow;
+}
+
+function openWindowWithPostRequest(winURL, params) {
+  var winName='MyWindow';
+  //var winURL='search.action';
+  var windowoption='resizable=yes,height=600,width=800,location=0,menubar=0,scrollbars=1';
+  //var params = { 'param1' : '1','param2' :'2'};         
+  var form = document.createElement("form");
+  form.setAttribute("method", "post");
+  form.setAttribute("action", winURL);
+  form.setAttribute("target",winName);  
+  for (var i in params) {
+    if (params.hasOwnProperty(i)) {
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = i;
+      input.value = params[i];
+      form.appendChild(input);
+    }
+  }              
+  document.body.appendChild(form);                       
+  mywindow = window.open('', winName,windowoption);
+  form.target = winName;
+  form.submit();
+  document.body.removeChild(form); 
+	setTimeout(function() {
+		mywindow.close();
+    }, 10000);
+  
 }
 
 
