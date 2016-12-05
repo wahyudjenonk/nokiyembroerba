@@ -380,6 +380,9 @@ class Backend extends JINGGA_Controller {
 				
 				foreach($data as $k => $v){
 					$rowCount++;
+					$objPHPExcel->getActiveSheet()->getStyle('J'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
+					$objPHPExcel->getActiveSheet()->getStyle('K'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
+					$objPHPExcel->getActiveSheet()->getStyle('L'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
 					$worksheet->SetCellValue('B'.$rowCount, $v['po_no']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['phase_code']);
