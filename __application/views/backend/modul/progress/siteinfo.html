@@ -35,7 +35,10 @@
 
 							<div style='width:100%;margin-bottom: 3px;'>
 								{include file="backend/template/button_grid.html"}	
-								<label>BOQ No</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_boqno' /> &nbsp;
+								<label>Site ID</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_siteid' /> &nbsp;
+								<label>Site Name</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_sitename' /> &nbsp;
+								<label>Region Code</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_regioncode' /> &nbsp;
+								<label>Name</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
 								<label>All Field</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_allfield' /> &nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
@@ -75,27 +78,41 @@
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_master_tracker_siteinfo',
-				'boqno' : $('#{$submodul}_boqno').val(),
+				'siteid' : $('#{$submodul}_siteid').val(),
+				'sitename' : $('#{$submodul}_sitename').val(),
+				'regioncode' 	: $('#{$submodul}_regioncode').val(),
 				'phasename' : $('#{$submodul}_phasename').val(),
-				'crstatus' 	: $('#{$submodul}_crstatus').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
-				'initial_boqno' : 'A',
+				'initial_site' : 'A',
+				'initial_regioncode' : 'D',
+				'initial_phase' : 'B'
 			});
 		}
 	});
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_master_tracker_siteinfo',
-			'boqno' : $('#{$submodul}_boqno').val(),
+			'siteid' : $('#{$submodul}_siteid').val(),
+			'sitename' : $('#{$submodul}_sitename').val(),
+			'regioncode' 	: $('#{$submodul}_regioncode').val(),
+			'phasename' : $('#{$submodul}_phasename').val(),
 			'allfield' 	: $('#{$submodul}_allfield').val(),
-			'initial_boqno' : 'A'
+			'initial_site' : 'A',
+			'initial_regioncode' : 'D',
+			'initial_phase' : 'B'
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_master_tracker_siteinfo';
-		param['boqno']   = $('#{$submodul}_boqno').val();
+		param['siteid']   = $('#{$submodul}_siteid').val();
+		param['sitename']   = $('#{$submodul}_sitename').val();
+		param['regioncode']   = $('#{$submodul}_regioncode').val();
+		param['phasename']   = $('#{$submodul}_phasename').val();
+		param['siteid']   = $('#{$submodul}_siteid').val();
 		param['allfield']    = $('#{$submodul}_allfield').val();
-		param['initial_boqno']   = 'A';
+		param['initial_site']   = 'A';
+		param['initial_regioncode']   = 'D';
+		param['initial_phase']   = 'B';
 		
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/siteinfo', param);
 	});

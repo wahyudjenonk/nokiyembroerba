@@ -408,71 +408,98 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('W'.$rowCount, $v['status']);
 				}
 			break;
-			case "siteinfo":
-				$filename = "export-data-siteinfo";
-				$objPHPExcel = $objReader->load("__repository/template_export/template-export-siteinfo.xlsx");
+			case "mastercr":
+				$filename = "export-data-mastercr";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-mastercr.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
-				$rowCount = 9;
+				$rowCount = 5;
 				$headerStyle = array(
 					'fill' => array(
 							'type' => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb'=>'BFBFBF'),
+							'color' => array('rgb'=>'#134292'),
 					),
 					'font' => array(
 							'bold' => true,
+							'color' => array('rgb'=>'FFFFFF')
 					)
 				);
 				
 				$worksheet->SetCellValue('A'.$rowCount,'ID');
 				$worksheet->getStyle('A'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('B'.$rowCount,'BOQ NO');
+				$worksheet->SetCellValue('B'.$rowCount,'CR No Nokia');
 				$worksheet->getStyle('B'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('C'.$rowCount,'Site ID');
+				$worksheet->SetCellValue('C'.$rowCount,'CR No Indosat');
 				$worksheet->getStyle('C'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('D'.$rowCount,'Site Name');
+				$worksheet->SetCellValue('D'.$rowCount,'CR Status');
 				$worksheet->getStyle('D'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('E'.$rowCount,'SOW Category');
+				$worksheet->SetCellValue('E'.$rowCount,'phasecode');
 				$worksheet->getStyle('E'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('F'.$rowCount,'Site Status');
+				$worksheet->SetCellValue('F'.$rowCount,'phasename');
 				$worksheet->getStyle('F'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('G'.$rowCount,'Region Code');
+				$worksheet->SetCellValue('G'.$rowCount,'phaseyear');
 				$worksheet->getStyle('G'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('H'.$rowCount,'Area Name');
+				$worksheet->SetCellValue('H'.$rowCount,'NODIN');
 				$worksheet->getStyle('H'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('I'.$rowCount,'Cluster');
+				$worksheet->SetCellValue('I'.$rowCount,'CR Position');
 				$worksheet->getStyle('I'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('J'.$rowCount,'Phase Code');
+				$worksheet->SetCellValue('J'.$rowCount,'CR PIC');
 				$worksheet->getStyle('J'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('K'.$rowCount,'Phase Name');
+				$worksheet->SetCellValue('K'.$rowCount,'CR Submit');
 				$worksheet->getStyle('K'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('L'.$rowCount,'SOW Detail');
+				$worksheet->SetCellValue('L'.$rowCount,'CR Approved');
 				$worksheet->getStyle('L'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('M'.$rowCount,'System Key');
+				$worksheet->SetCellValue('M'.$rowCount,'PO Received');
 				$worksheet->getStyle('M'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('N'.$rowCount,'Site Ori');
+				$worksheet->SetCellValue('N'.$rowCount,'Value Before');
 				$worksheet->getStyle('N'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('O'.$rowCount,'Site Name Ori');
+				$worksheet->SetCellValue('O'.$rowCount,'Value After');
 				$worksheet->getStyle('O'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('P'.$rowCount,'NE Name');
+				$worksheet->SetCellValue('P'.$rowCount,'Value Delta');
 				$worksheet->getStyle('P'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('Q'.$rowCount,'Network BOQ');
+				$worksheet->SetCellValue('Q'.$rowCount,'crtype');
 				$worksheet->getStyle('Q'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('R'.$rowCount,'WP ID SVC');
+				$worksheet->SetCellValue('R'.$rowCount,'remarks');
 				$worksheet->getStyle('R'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('S'.$rowCount,'SO SVC');
+				$worksheet->SetCellValue('S'.$rowCount,'updateby');
 				$worksheet->getStyle('S'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('T'.$rowCount,'Partner NI');
+				$worksheet->SetCellValue('T'.$rowCount,'updateat');
 				$worksheet->getStyle('T'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('U'.$rowCount,'Partner NPO');
+				$worksheet->SetCellValue('U'.$rowCount,'filename');
 				$worksheet->getStyle('U'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('V'.$rowCount,'Remarks');
+				$worksheet->SetCellValue('V'.$rowCount,'status');
 				$worksheet->getStyle('V'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('W'.$rowCount,'Update By');
-				$worksheet->getStyle('W'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('X'.$rowCount,'Update Date');
-				$worksheet->getStyle('X'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('Y'.$rowCount,'Status');
-				$worksheet->getStyle('Y'.$rowCount)->applyFromArray($headerStyle);
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['cr_no_nokia']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['cr_no_indosat']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['cr_status']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['phase_code']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['phase_year']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['nodin']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['cr_position']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['cr_pic']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['cr_submit']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['cr_approved']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['po_received']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['value_before']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['value_after']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['value_delta']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['cr_type']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['remarks']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['file_name']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['status']);
+				}
+			break;
+			case "siteinfo":
+				$filename = "export-data-siteinfo";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-siteinfo.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
 
 				foreach($data as $k => $v){
 					$rowCount++;
@@ -500,7 +527,99 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('V'.$rowCount, $v['remarks_siteinfo']);
 					$worksheet->SetCellValue('W'.$rowCount, $v['update_by']);
 					$worksheet->SetCellValue('X'.$rowCount, $v['update_date']);
-					$worksheet->SetCellValue('Y'.$rowCount, $v['status']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['uploader_id']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['status']);
+				}
+			break;
+			case "siteprogress":
+				$filename = "export-data-siteprogress";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-siteprogress.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['sow_category']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_status']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['po_ne']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['rfi']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['tss']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['mos']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['installed']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['g900']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['g1800']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['u2100']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['u900']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['l1800']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['on_air_baseline']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['on_air_date']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['on_air_week']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['ic_issues']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['ic_owner']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['atp_date']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['atp_method']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['partner_ni']);
+					$worksheet->SetCellValue('AA'.$rowCount, $v['indosat_pic']);
+					$worksheet->SetCellValue('AB'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('AC'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('AD'.$rowCount, $v['uploader_id']);
+					$worksheet->SetCellValue('AE'.$rowCount, $v['status']);
+
+				}
+			break;
+			case "mcr":
+				$filename = "export-data-mcr";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-mcr.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+			
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['boq_no']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['sow_category']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_status']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['ne_name']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['on_air_date']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['on_air_unlock']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['alarm_submit']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['alarm_approved']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['ssv_fr_submit']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['ssv_fr_approved']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['ssv_sr_ftr_submit']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['ftr_sr_ftr_approved']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['pmr_lv_submit']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['pmr_lv_approved']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['rtwp_rssi']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['hn_submit']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['hn_approved']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['mcr_submit']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['mcr_exit']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['mcr_issues']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['mcr_pic']);
+					$worksheet->SetCellValue('AA'.$rowCount, $v['70_ssv_sr']);
+					$worksheet->SetCellValue('AB'.$rowCount, $v['70_ssv_fr']);
+					$worksheet->SetCellValue('AC'.$rowCount, $v['71_rssi']);
+					$worksheet->SetCellValue('AD'.$rowCount, $v['73_pmr']);
+					$worksheet->SetCellValue('AE'.$rowCount, $v['74_alarm_log']);
+					$worksheet->SetCellValue('AF'.$rowCount, $v['xx_others3']);
+					$worksheet->SetCellValue('AG'.$rowCount, $v['xx_others4']);
+					$worksheet->SetCellValue('AH'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('AI'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('AJ'.$rowCount, $v['uploader_id']);
+					$worksheet->SetCellValue('AK'.$rowCount, $v['status']);
+
+
 				}
 			break;
 			case "receivedall":

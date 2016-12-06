@@ -73,18 +73,39 @@
 	var submodul = "{$submodul|default:''}";
 	var param = {};
 	
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			$('#grid_{$submodul}').datagrid('reload',{
+				'table' : 'tbl_master_tracker_sitebinder',
+				'phaseyear' : $('#{$submodul}_phaseyear').val(),
+				'phasename' : $('#{$submodul}_phasename').val(),
+				'boqno' 	: $('#{$submodul}_boqno').val(),
+				'allfield' 	: $('#{$submodul}_allfield').val(),
+				'initial_phase' : 'G',
+				'initial_boqno' : 'A'
+			});
+		}
+	});
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_master_tracker_sitebinder',
-			'kat' : $('#{$submodul}_filter_kategori').val(),
-			'key' : $('#{$submodul}_txt').val()
+			'phaseyear' : $('#{$submodul}_phaseyear').val(),
+			'phasename' : $('#{$submodul}_phasename').val(),
+			'boqno' 	: $('#{$submodul}_boqno').val(),
+			'allfield' 	: $('#{$submodul}_allfield').val(),
+			'initial_phase' : 'G',
+			'initial_boqno' : 'A' 
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_master_tracker_sitebinder';
-		param['kat']   = $('#{$submodul}_filter_kategori').val();
-		param['key']   = $('#{$submodul}_txt').val();
+		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
+		param['phasename']   = $('#{$submodul}_phasename').val();
+		param['boqno']    = $('#{$submodul}_boqno').val();
+		param['allfield']    = $('#{$submodul}_allfield').val();
+		param['initial_phase']   = 'G';
+		param['initial_boqno'] = 'A';
 		
-		openWindowWithPost('{$host}backend/exportdata/excell/{$main}/{$submodul}', param);
+		openWindowWithPost('{$host}backend/exportdatawithtemplate/sitebinder', param);
 	});
 </script>

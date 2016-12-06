@@ -1577,6 +1577,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
@@ -1680,6 +1681,12 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'on_air_week',title:'ON AIR Week',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'ic_issues',title:'IC_ISSUES',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'ic_owner',title:'IC_OWNER',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'atp_date',title:'ATP Date',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
@@ -1725,7 +1732,9 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_date',title:'On Air Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'alarm_submit',title:'Alarm Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'alarm_approved',title:'Alarm Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ssv_fr_submit',title:'SSV FR Submit',width:100, halign:'center',align:'left', sortable:true},
@@ -2302,7 +2311,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			table = "tbl_master_tracker_siteinfo";
 			judulwindow = 'Form Site Info';
 			lebar = 700;
-			tinggi = 200;
+			tinggi = 600;
 			urlpost = host+'backend/getdisplay/progress/form-'+submodulnya;
 		break;
 		case "siteprogress":			
@@ -2355,6 +2364,13 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			lebar_import = 700;
 			tinggi_import = 600;
 			type_import = "uploadalldatabase";
+		break;
+		case "boqpersite":			
+			table = "tbl_all_database";
+			judulwindow = 'Form BOQ Per Site';
+			lebar = 700;
+			tinggi = 200;
+			urlpost = host+'backend/getdisplay/database/form-'+submodulnya;
 		break;
 		//End Modul PO All Database
 		
@@ -2774,5 +2790,3 @@ function openWindowWithPostRequest(winURL, params) {
     }, 10000);
   
 }
-
-
