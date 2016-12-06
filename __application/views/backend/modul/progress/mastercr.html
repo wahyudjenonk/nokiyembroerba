@@ -35,9 +35,10 @@
 
 							<div style='width:100%;margin-bottom: 3px;'>
 								{include file="backend/template/button_grid.html"}	
-								<label>Phase Year</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phaseyear' /> &nbsp;
-								<label>Phase Name</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
+								<label>Year</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phaseyear' /> &nbsp;
+								<label>Phase</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
 								<label>CR Status</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_crstatus' /> &nbsp;
+								<label>CR Type</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_crtype' /> &nbsp;
 								<label>All Field</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_allfield' /> &nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
@@ -80,8 +81,10 @@
 				'phaseyear' : $('#{$submodul}_phaseyear').val(),
 				'phasename' : $('#{$submodul}_phasename').val(),
 				'crstatus' 	: $('#{$submodul}_crstatus').val(),
+				'crtype' : $('#{$submodul}_crtype').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
+				
 			});
 		}
 	});
@@ -91,8 +94,10 @@
 			'phaseyear' : $('#{$submodul}_phaseyear').val(),
 			'phasename' : $('#{$submodul}_phasename').val(),
 			'crstatus' 	: $('#{$submodul}_crstatus').val(),
+			'crtype' : $('#{$submodul}_crtype').val(),
 			'allfield' 	: $('#{$submodul}_allfield').val(),
-			'initial_phase' : 'B'
+			'initial_phase' : 'B',
+			
 		});
 	});
 	
@@ -101,8 +106,10 @@
 		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
 		param['phasename']   = $('#{$submodul}_phasename').val();
 		param['crstatus']    = $('#{$submodul}_crstatus').val();
+		param['crtype']    = $('#{$submodul}_crtype').val();
 		param['allfield']    = $('#{$submodul}_allfield').val();
 		param['initial_phase']   = 'B';
+		
 		
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/mastercr', param);
 	});

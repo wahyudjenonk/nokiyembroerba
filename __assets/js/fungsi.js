@@ -133,7 +133,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 			];
 			kolom[modnya] = [	
@@ -161,7 +161,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -186,7 +186,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -211,7 +211,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -236,7 +236,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -261,7 +261,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [	
-				{field:'id',title:'ID',width:90, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [	
@@ -293,15 +293,15 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			kolom[modnya] = [
 				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'phase_year',title:'Year',width:100, halign:'center',align:'center', sortable:true},
-				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Year',width:75, halign:'center',align:'center', sortable:true},
+				{field:'po_type',title:'PO Type',width:75, halign:'center',align:'left', sortable:true},
 				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'center', sortable:true},
-				{field:'currency',title:'Currency',width:150, halign:'center',align:'left', sortable:true},
-				{field:'basic_contract',title:'Basic Contract',width:200, halign:'center',align:'left', sortable:true},
-				{field:'po_date',title:'PO Date',width:100, halign:'center',align:'center', sortable:true},
+				{field:'currency',title:'Curr',width:50, halign:'center',align:'left', sortable:true},
+				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_date',title:'PO Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_received',title:'PO Recived',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_delivery',title:'PO Delivery',width:100, halign:'center',align:'left', sortable:true},
-				{field:'revision_no',title:'Revisi On No',width:100, halign:'center',align:'center', sortable:true},
+				{field:'revision_no',title:'Rev No',width:75, halign:'center',align:'center', sortable:true},
 				{field:'po_gross_idr',title:'PO Gross IDR',width:100, halign:'center',align:'right', sortable:true},
 				{field:'po_nett_idr',title:'PO Nett IDR',width:100, halign:'center',align:'right', sortable:true},
 				{field:'jis_dorr_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'right', sortable:true},
@@ -1407,12 +1407,97 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 	var urlglobal="";
 	var param={};
 	var footer=false;
-	var pagesizeboy=20;
+	var pagesizeboy=100;
 	var paging=true;	
 	var fitnya=true;
 	var url_crud = host+"backend/simpandata/"+crud_table;
 
 	switch (modnya){
+		case "masterpo":
+			judulnya = "";
+			urlnya = "masterpo";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Year',width:75, halign:'center',align:'center', sortable:true},
+				{field:'po_type',title:'PO Type',width:75, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'center', sortable:true},
+				{field:'currency',title:'Curr',width:50, halign:'center',align:'left', sortable:true},
+				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_date',title:'PO Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_received',title:'PO Recived',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_delivery',title:'PO Delivery',width:100, halign:'center',align:'left', sortable:true},
+				{field:'revision_no',title:'Rev No',width:75, halign:'center',align:'center', sortable:true},
+				{field:'po_gross_idr',title:'PO Gross IDR',width:100, halign:'center',align:'right', sortable:true},
+				{field:'po_nett_idr',title:'PO Nett IDR',width:100, halign:'center',align:'right', sortable:true},
+				{field:'jis_dorr_rate',title:'Jis Dorr Rate',width:100, halign:'center',align:'right', sortable:true},
+				{field:'po_gross_usd',title:'PO Gross USD',width:100, halign:'center',align:'right', sortable:true},
+				{field:'po_nett_usd',title:'PO Nett USD',width:100, halign:'center',align:'right', sortable:true},
+				{field:'remarks',title:'Remark',width:200, halign:'center',align:'left', sortable:true, resizable: true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'center', sortable:true},
+				{field:'file_name',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "mastercr":
+			judulnya = "";
+			urlnya = "mastercr";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:200, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'cr_no_indosat',title:'CR No Indosat',width:200, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:75, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Phase Year',width:50, halign:'center',align:'left', sortable:true},
+				{field:'nodin',title:'NODIN',width:200, halign:'center',align:'left', sortable:true},
+				{field:'cr_position',title:'CR Position',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_pic',title:'CR Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_submit',title:'CR Submit',width:75, halign:'center',align:'left', sortable:true},
+				{field:'cr_approved',title:'CR Approved',width:75, halign:'center',align:'left', sortable:true},
+				{field:'po_received',title:'PO Received',width:75, halign:'center',align:'left', sortable:true},
+				{field:'cr_currency',title:'CR Currency',width:75, halign:'center',align:'left', sortable:true},
+				{field:'value_before',title:'Value Before',width:100, halign:'center',align:'right', sortable:true},
+				{field:'value_after',title:'Value After',width:100, halign:'center',align:'right', sortable:true},
+				{field:'value_delta',title:'Value Delta',width:100, halign:'center',align:'right', sortable:true},
+				{field:'cr_type',title:'CR Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'value_additional',title:'Value Additional',width:100, halign:'center',align:'left', sortable:true},
+				{field:'value_reduction',title:'Value Reduction',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:120, halign:'center',align:'left', sortable:true},
+				{field:'file_name',title:'File Name',width:400, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:100, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
 		case "siteinfo":
 			judulnya = "";
 			urlnya = "siteinfo";
@@ -2089,7 +2174,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
         pagination:paging,
        // pagination:true,
 		pageSize:pagesizeboy,
-		pageList:[10,20,30,40,50,75,100,200],
+		pageList:[100,250,500],
         remoteSort: false,
         //showFooter: true,
 		url: (urlglobal == "" ? host+"backend/getdata/"+urlnya : urlglobal),		

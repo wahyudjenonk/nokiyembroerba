@@ -319,64 +319,6 @@ class Backend extends JINGGA_Controller {
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-masterpo.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
-				$headerStyle = array(
-					'fill' => array(
-							'type' => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb'=>'#134292'),
-					),
-					'font' => array(
-							'bold' => true,
-							'color' => array('rgb'=>'FFFFFF')
-					)
-				);
-				
-				$worksheet->SetCellValue('A'.$rowCount,'ID');
-				$worksheet->getStyle('A'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('B'.$rowCount,'PO No.');
-				$worksheet->getStyle('B'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('C'.$rowCount,'Phase Code');
-				$worksheet->getStyle('C'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('D'.$rowCount,'Phase Name');
-				$worksheet->getStyle('D'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('E'.$rowCount,'Year');
-				$worksheet->getStyle('E'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('F'.$rowCount,'PO Type.');
-				$worksheet->getStyle('F'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('G'.$rowCount,'Project Name');
-				$worksheet->getStyle('G'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('H'.$rowCount,'Currency');
-				$worksheet->getStyle('H'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('I'.$rowCount,'Basic Contract');
-				$worksheet->getStyle('I'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('J'.$rowCount,'PO Date');
-				$worksheet->getStyle('J'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('K'.$rowCount,'PO Received');
-				$worksheet->getStyle('K'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('L'.$rowCount,'PO Delivery');
-				$worksheet->getStyle('L'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('M'.$rowCount,'Revisi On No');
-				$worksheet->getStyle('M'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('N'.$rowCount,'PO Gross IDR');
-				$worksheet->getStyle('N'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('O'.$rowCount,'PO Nett IDR');
-				$worksheet->getStyle('O'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('P'.$rowCount,'Jis Dorr Rate');
-				$worksheet->getStyle('P'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('Q'.$rowCount,'PO Gross USD');
-				$worksheet->getStyle('Q'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('R'.$rowCount,'PO Nett USD');
-				$worksheet->getStyle('R'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('S'.$rowCount,'Remarks');
-				$worksheet->getStyle('S'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('T'.$rowCount,'Update By');
-				$worksheet->getStyle('T'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('U'.$rowCount,'Update Date');
-				$worksheet->getStyle('U'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('V'.$rowCount,'File Name');
-				$worksheet->getStyle('V'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('W'.$rowCount,'Status');
-				$worksheet->getStyle('W'.$rowCount)->applyFromArray($headerStyle);
-
 				
 				foreach($data as $k => $v){
 					$rowCount++;
@@ -384,11 +326,11 @@ class Backend extends JINGGA_Controller {
 					$objPHPExcel->getActiveSheet()->getStyle('K'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
 					$objPHPExcel->getActiveSheet()->getStyle('L'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
-					$worksheet->SetCellValue('B'.$rowCount, $v['po_no']);
-					$worksheet->SetCellValue('C'.$rowCount, $v['phase_code']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['phase_code']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['phase_year']);
 					$worksheet->SetCellValue('D'.$rowCount, $v['phase_name']);
-					$worksheet->SetCellValue('E'.$rowCount, $v['phase_year']);
-					$worksheet->SetCellValue('F'.$rowCount, $v['po_type']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['po_type']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['po_no']);
 					$worksheet->SetCellValue('G'.$rowCount, $v['project_name']);
 					$worksheet->SetCellValue('H'.$rowCount, $v['currency']);
 					$worksheet->SetCellValue('I'.$rowCount, $v['basic_contract']);
@@ -413,61 +355,6 @@ class Backend extends JINGGA_Controller {
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-mastercr.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
-				$headerStyle = array(
-					'fill' => array(
-							'type' => PHPExcel_Style_Fill::FILL_SOLID,
-							'color' => array('rgb'=>'#134292'),
-					),
-					'font' => array(
-							'bold' => true,
-							'color' => array('rgb'=>'FFFFFF')
-					)
-				);
-				
-				$worksheet->SetCellValue('A'.$rowCount,'ID');
-				$worksheet->getStyle('A'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('B'.$rowCount,'CR No Nokia');
-				$worksheet->getStyle('B'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('C'.$rowCount,'CR No Indosat');
-				$worksheet->getStyle('C'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('D'.$rowCount,'CR Status');
-				$worksheet->getStyle('D'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('E'.$rowCount,'phasecode');
-				$worksheet->getStyle('E'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('F'.$rowCount,'phasename');
-				$worksheet->getStyle('F'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('G'.$rowCount,'phaseyear');
-				$worksheet->getStyle('G'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('H'.$rowCount,'NODIN');
-				$worksheet->getStyle('H'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('I'.$rowCount,'CR Position');
-				$worksheet->getStyle('I'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('J'.$rowCount,'CR PIC');
-				$worksheet->getStyle('J'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('K'.$rowCount,'CR Submit');
-				$worksheet->getStyle('K'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('L'.$rowCount,'CR Approved');
-				$worksheet->getStyle('L'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('M'.$rowCount,'PO Received');
-				$worksheet->getStyle('M'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('N'.$rowCount,'Value Before');
-				$worksheet->getStyle('N'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('O'.$rowCount,'Value After');
-				$worksheet->getStyle('O'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('P'.$rowCount,'Value Delta');
-				$worksheet->getStyle('P'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('Q'.$rowCount,'crtype');
-				$worksheet->getStyle('Q'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('R'.$rowCount,'remarks');
-				$worksheet->getStyle('R'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('S'.$rowCount,'updateby');
-				$worksheet->getStyle('S'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('T'.$rowCount,'updateat');
-				$worksheet->getStyle('T'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('U'.$rowCount,'filename');
-				$worksheet->getStyle('U'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('V'.$rowCount,'status');
-				$worksheet->getStyle('V'.$rowCount)->applyFromArray($headerStyle);
 				
 				foreach($data as $k => $v){
 					$rowCount++;
@@ -484,15 +371,18 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('K'.$rowCount, $v['cr_submit']);
 					$worksheet->SetCellValue('L'.$rowCount, $v['cr_approved']);
 					$worksheet->SetCellValue('M'.$rowCount, $v['po_received']);
-					$worksheet->SetCellValue('N'.$rowCount, $v['value_before']);
-					$worksheet->SetCellValue('O'.$rowCount, $v['value_after']);
-					$worksheet->SetCellValue('P'.$rowCount, $v['value_delta']);
-					$worksheet->SetCellValue('Q'.$rowCount, $v['cr_type']);
-					$worksheet->SetCellValue('R'.$rowCount, $v['remarks']);
-					$worksheet->SetCellValue('S'.$rowCount, $v['update_by']);
-					$worksheet->SetCellValue('T'.$rowCount, $v['update_date']);
-					$worksheet->SetCellValue('U'.$rowCount, $v['file_name']);
-					$worksheet->SetCellValue('V'.$rowCount, $v['status']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['cr_currency']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['value_before']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['value_after']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['value_delta']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['cr_type']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['value_additional']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['value_reduction']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['remarks']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['file_name']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['status']);
 				}
 			break;
 			case "siteinfo":
