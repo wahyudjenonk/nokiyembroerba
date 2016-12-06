@@ -1350,7 +1350,7 @@
   overflow: hidden;
   height: 18px;
   line-height: 18px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .datagrid-header .datagrid-cell {
   height: auto;
@@ -1364,7 +1364,7 @@
 }
 .datagrid-header-rownumber,
 .datagrid-cell-rownumber {
-  width: 70px;
+  width: 0px;
   text-align: center;
   margin: 0;
   padding: 0;

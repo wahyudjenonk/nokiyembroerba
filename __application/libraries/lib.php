@@ -289,9 +289,8 @@ class lib {
 					'2' => array('id'=>'mcr','txt'=>'MCR'),
 					'3' => array('id'=>'atf','txt'=>'ATF'),
 					'4' => array('id'=>'sitebinder','txt'=>'Site Binder'),
-					'5' => array('id'=>'certificate','txt'=>'Certificate'),
-					'6' => array('id'=>'acceptanceclosing','txt'=>'Closing'),
-					'7' => array('id'=>'costsales','txt'=>'Cost & Sales')
+					'5' => array('id'=>'acceptanceclosing','txt'=>'Closing'),
+					'6' => array('id'=>'costsales','txt'=>'Cost & Sales')
 				);
 			break;
 			case "comboalldatabse":

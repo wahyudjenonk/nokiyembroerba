@@ -37,6 +37,7 @@
 								{include file="backend/template/button_grid.html"}	
 								<label>Year</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phaseyear' /> &nbsp;
 								<label>Phase</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
+								<label>PO No</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_pono' /> &nbsp;
 								<label>PO Type</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_potype' /> &nbsp;
 								<label>All</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_allfield' /> &nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
@@ -46,19 +47,14 @@
 								</a>
 								<a href="javascript:void(0)" style="float: right;" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="genform('import_data', '{$main}','{$submodul}', 'windowform');">
 									<span class="l-btn-left l-btn-icon-left">
-										<span class="l-btn-text">Import Data</span><span class="l-btn-icon icon-import">&nbsp;</span>
+										<span class="l-btn-text">Import</span><span class="l-btn-icon icon-import">&nbsp;</span>
 									</span>
 								</a>	
 								<a href="javascript:void(0)" style="float: right;" class="l-btn l-btn-small l-btn-plain" group="" id="exportdata_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
-										<span class="l-btn-text">Export Excel</span><span class="l-btn-icon icon-xls">&nbsp;</span>
+										<span class="l-btn-text">Export</span><span class="l-btn-icon icon-xls">&nbsp;</span>
 									</span>
 								</a>						
-							</div>
-							<br>
-							<div style='width:100%'>
-								
-
 							</div>
 						</div>
 						
@@ -84,9 +80,11 @@
 				'table' : 'tbl_master_po',
 				'phaseyear' : $('#{$submodul}_phaseyear').val(),
 				'phasename' : $('#{$submodul}_phasename').val(),
+				'pono' 	: $('#{$submodul}_pono').val(),
 				'potype' 	: $('#{$submodul}_potype').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
+				'initial_pono' : 'A',
 				'initial_potype' : 'C'
 			});
 		}
@@ -96,9 +94,11 @@
 			'table' : 'tbl_master_po',
 			'phaseyear' : $('#{$submodul}_phaseyear').val(),
 			'phasename' : $('#{$submodul}_phasename').val(),
+			'pono' 	: $('#{$submodul}_pono').val(),
 			'potype' 	: $('#{$submodul}_potype').val(),
 			'allfield' 	: $('#{$submodul}_allfield').val(),
 			'initial_phase' : 'B',
+			'initial_pono' : 'A',
 			'initial_potype' : 'C'
 		});
 	});
@@ -107,9 +107,11 @@
 		param['table'] = 'tbl_master_po';
 		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
 		param['phasename']   = $('#{$submodul}_phasename').val();
+		param['pono']   = $('#{$submodul}_pono').val();
 		param['potype']   	 = $('#{$submodul}_potype').val();
 		param['allfield']    = $('#{$submodul}_allfield').val();
 		param['initial_phase']   = 'B';
+		param['initial_pono']   = 'A';
 		param['initial_potype']   = 'C';
 		
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/masterpo', param);
