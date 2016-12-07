@@ -472,22 +472,22 @@ class Backend extends JINGGA_Controller {
 				foreach($data as $k => $v){
 					$rowCount++;
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
-					$worksheet->SetCellValue('B'.$rowCount, $v['boq_no']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['boqno']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['site_id']);
 					$worksheet->SetCellValue('D'.$rowCount, $v['site_name']);
 					$worksheet->SetCellValue('E'.$rowCount, $v['sow_category']);
 					$worksheet->SetCellValue('F'.$rowCount, $v['site_status']);
 					$worksheet->SetCellValue('G'.$rowCount, $v['region_code']);
 					$worksheet->SetCellValue('H'.$rowCount, $v['phase_name']);
-					$worksheet->SetCellValue('I'.$rowCount, $v['ne_name']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['po_ne']);
 					$worksheet->SetCellValue('J'.$rowCount, $v['on_air_date']);
 					$worksheet->SetCellValue('K'.$rowCount, $v['on_air_unlock']);
 					$worksheet->SetCellValue('L'.$rowCount, $v['alarm_submit']);
 					$worksheet->SetCellValue('M'.$rowCount, $v['alarm_approved']);
 					$worksheet->SetCellValue('N'.$rowCount, $v['ssv_fr_submit']);
-					$worksheet->SetCellValue('O'.$rowCount, $v['ssv_fr_approved']);
-					$worksheet->SetCellValue('P'.$rowCount, $v['ssv_sr_ftr_submit']);
-					$worksheet->SetCellValue('Q'.$rowCount, $v['ftr_sr_ftr_approved']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['ssv_vr_approved']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['ssv_frftr_submit']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['ftr_srftr_approved']);
 					$worksheet->SetCellValue('R'.$rowCount, $v['pmr_lv_submit']);
 					$worksheet->SetCellValue('S'.$rowCount, $v['pmr_lv_approved']);
 					$worksheet->SetCellValue('T'.$rowCount, $v['rtwp_rssi']);
@@ -502,8 +502,8 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('AC'.$rowCount, $v['71_rssi']);
 					$worksheet->SetCellValue('AD'.$rowCount, $v['73_pmr']);
 					$worksheet->SetCellValue('AE'.$rowCount, $v['74_alarm_log']);
-					$worksheet->SetCellValue('AF'.$rowCount, $v['xx_others3']);
-					$worksheet->SetCellValue('AG'.$rowCount, $v['xx_others4']);
+					$worksheet->SetCellValue('AF'.$rowCount, $v['xx_other3']);
+					$worksheet->SetCellValue('AG'.$rowCount, $v['xx_other4']);
 					$worksheet->SetCellValue('AH'.$rowCount, $v['update_by']);
 					$worksheet->SetCellValue('AI'.$rowCount, $v['update_date']);
 					$worksheet->SetCellValue('AJ'.$rowCount, $v['uploader_id']);

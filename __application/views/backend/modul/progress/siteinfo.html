@@ -37,8 +37,8 @@
 								{include file="backend/template/button_grid.html"}	
 								<label>Site ID</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_siteid' /> &nbsp;
 								<label>Site Name</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_sitename' /> &nbsp;
-								<label>Region Code</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_regioncode' /> &nbsp;
-								<label>Name</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
+								<label>Region</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_regioncode' /> &nbsp;
+								<label>Phase</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
 								<label>All Field</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_allfield' /> &nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
@@ -58,7 +58,7 @@
 							</div>
 						</div>
 						
-						{include file="backend/template/grid_editable.html" tinggi_grid="getClientHeight()-220" tablenya="tbl_master_tracker_siteinfo"}
+						{include file="backend/template/grid_editable.html" tinggi_grid="getClientHeight()-230" tablenya="tbl_master_tracker_siteinfo"}
 					</div>
 					
 					<div id='frm_{$submodul}' style='display:none;'></div>

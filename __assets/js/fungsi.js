@@ -1507,7 +1507,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+				/*{field:'action',title:'Action Inline Edit',width:120,align:'center',
 					formatter:function(value,row,index){
 						if (row.editing){
 							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
@@ -1518,19 +1518,19 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 							return e;
 						}
 					}
-				}					
+				}*/
+				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_name',title:'Site Name',width:150, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},					
 			]
 			kolom[modnya] = [
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true,
+				{field:'sow_category',title:'SOW Category',width:150, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true,
-					editor:{type:'textbox'}
-				},
-				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true,
-					editor:{type:'textbox'}
-				},
-				{field:'tbl_master_sitename_id',title:'Site Status',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_sitename_id',title:'Site Status',width:75, halign:'center',align:'center', sortable:true,
 					formatter:function(value,row){
 						return row.site_status || value;
 					},
@@ -1543,7 +1543,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
 				},
-				{field:'tbl_master_region_id',title:'Region Code',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_region_id',title:'Region',width:50, halign:'center',align:'center', sortable:true,
 					formatter:function(value,row){
 						return row.region_code || value;
 					},
@@ -1556,10 +1556,10 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
 				},
-				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'left', sortable:true,
+				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'center', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'cluster',title:'Cluster',width:100, halign:'center',align:'left', sortable:true,
+				{field:'cluster',title:'Cluster',width:50, halign:'center',align:'center', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'tbl_master_phase_id',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true,
@@ -1576,20 +1576,20 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
 				},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sow_detail',title:'SOW Detail',width:100, halign:'center',align:'left', sortable:true,
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'sow_detail',title:'SOW Detail',width:300, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'system_key',title:'System Key',width:100, halign:'center',align:'left', sortable:true,
+				{field:'system_key',title:'System Key',width:150, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'site_id_ori',title:'Site Ori',width:100, halign:'center',align:'left', sortable:true,
+				{field:'site_id_ori',title:'Site Ori',width:75, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true,
+				{field:'site_name_ori',title:'Site Name Ori',width:150, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'tbl_master_pone_id',title:'NE Name',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_pone_id',title:'NE Name',width:75, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.po_ne || value;
 					},
@@ -1615,16 +1615,16 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'partner_npo',title:'Partner No',width:100, halign:'center',align:'left', sortable:true,
+				{field:'partner_npo',title:'Partner NPO',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'remarks_siteinfo',title:'Remarks',width:100, halign:'center',align:'left', sortable:true,
+				{field:'remarks_siteinfo',title:'Remarks',width:200, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
-				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:70, halign:'center',align:'left', sortable:true,
+				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:75, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -1641,9 +1641,9 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			//height = 800;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+				/*{field:'action',title:'Action Inline Edit',width:120,align:'center',
 					formatter:function(value,row,index){
 						if (row.editing){
 							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
@@ -1654,16 +1654,16 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 							return e;
 						}
 					}
-				}
+				}*/
+				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:150, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:150, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region',width:50, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
@@ -1766,7 +1766,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'on_air_week',title:'ON AIR Week',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'ic_issues',title:'IC_ISSUES',width:100, halign:'center',align:'left', sortable:true,
+				{field:'ic_issues',title:'IC_ISSUES',width:200, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'ic_owner',title:'IC_OWNER',width:100, halign:'center',align:'left', sortable:true,
@@ -1789,9 +1789,9 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 					editor:{type:'textbox'}
 				},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:75, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
@@ -1808,22 +1808,22 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			//height = 800;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
-				{field:'id',title:'ID',width:60, halign:'center',align:'left', sortable:true},
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_status',title:'Site Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_ne',title:'NE Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:150, halign:'center',align:'left', sortable:true},
+				{field:'sow_category',title:'SOW Category',width:50, halign:'center',align:'left', sortable:true},
+				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:50, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'on_air_date',title:'On Air Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'alarm_submit',title:'Alarm Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'alarm_approved',title:'Alarm Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ssv_fr_submit',title:'SSV FR Submit',width:100, halign:'center',align:'left', sortable:true},
-				{field:'ssv_vr_approved',title:'SSV VR Approved',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ssv_vr_approved',title:'SSV FR Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ssv_frftr_submit',title:'SSV FR/FTR Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ftr_srftr_approved',title:'FTR SR/FTR Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pmr_lv_submit',title:'PMR LV Submit',width:100, halign:'center',align:'left', sortable:true},
@@ -1833,10 +1833,19 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'hn_approved',title:'HN Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'mcr_submit',title:'MCR Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'mcr_exit',title:'MCR Exit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'mcr_issues',title:'MCR Issues',width:200, halign:'center',align:'left', sortable:true},
+				{field:'mcr_pic',title:'MCR Pic',width:100, halign:'center',align:'left', sortable:true},
+				{field:'70_ssv_sr',title:'70.SSV SR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'70_ssv_fr',title:'70.SSV FR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'71_rssi',title:'71.RSSI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'73_pmr',title:'73.PMR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'74_alarm_log',title:'74.Alarm Log',width:100, halign:'center',align:'left', sortable:true},
+				{field:'xx_other3',title:'xx.Other 3',width:100, halign:'center',align:'left', sortable:true},
+				{field:'xx_other4',title:'xx.Other 4',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'uploader_id',title:'Uploader ID',width:50, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:75, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
 							return "Active";
