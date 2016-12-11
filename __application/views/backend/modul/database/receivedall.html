@@ -37,7 +37,7 @@
 							</a>
 							{include file="backend/template/button_grid.html"}
 						</div>	
-						{include file="backend/template/grid.html"}
+						{include file="backend/template/grid_celledit.html" tablenya="tbl_all_database"}
 					</div>
 					
 					<div id='frm_{$submodul}' style='display:none;'></div>				
@@ -55,7 +55,7 @@
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
-				'table' : 'tbl_database',
+				'table' : 'tbl_all_database',
 				'kat' : $('#{$submodul}_filter_kategori').val(),
 				'key' : $('#{$submodul}_txt').val()
 			});
@@ -64,7 +64,7 @@
 	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
-			'table' : 'tbl_database',
+			'table' : 'tbl_all_database',
 			'kat' : $('#{$submodul}_filter_kategori').val(),
 			'key' : $('#{$submodul}_txt').val()
 		});

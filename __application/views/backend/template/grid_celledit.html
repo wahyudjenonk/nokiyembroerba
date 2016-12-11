@@ -1,0 +1,21 @@
+<style type="text/css">
+	.datagrid-row-over td{
+		background:#D0E5F5;
+	}
+	.datagrid-row-selected td{
+		background:#FBEC88;
+		color:#000;
+	}
+</style>
+<div id='maingrid_{$submodul}'>
+	<div id='grid_{$submodul}' style='height:100%;'></div>
+</div>
+<script>
+$(function(){
+	$('#maingrid_{$submodul}').css({
+		'height':({$tinggi_grid|default:'getClientHeight()-230'})
+	});
+	genGridCellEditing('{$submodul}','grid_{$submodul}', '', '', '{$tablenya}');
+});
+</script>
+
