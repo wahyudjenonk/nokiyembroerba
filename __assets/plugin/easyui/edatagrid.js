@@ -294,7 +294,7 @@
 							return;
 						}
 						opts.editIndex = index;
-						focusEditor(this);
+						//focusEditor(this);
 						
 						var rows = dg.datagrid('getRows');
 						opts.onEdit.call(this, index, rows[index]);

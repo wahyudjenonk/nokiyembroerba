@@ -1507,7 +1507,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				/*{field:'action',title:'Action Inline Edit',width:120,align:'center',
+				{field:'action',title:'Action Inline Edit',width:120,align:'center',
 					formatter:function(value,row,index){
 						if (row.editing){
 							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
@@ -1518,7 +1518,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 							return e;
 						}
 					}
-				}*/
+				},//*/
 				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -1665,6 +1665,9 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.rfi || value;
+					},
 					editor:{
                        type:'datebox',
                        options:{
@@ -2250,6 +2253,227 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 	});	
 }	
 
+
+function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
+	//var data_dumi=[{"id":'fixed',"text":"fixed"}];
+	if(lebarnya == undefined){
+		lebarnya = getClientWidth-250;
+	}
+	if(tingginya == undefined){
+		tingginya = getClientHeight-300
+	}
+	
+	var kolom ={};
+	var frozen ={};
+	var judulnya;
+	var urlnya;
+	var urlglobal="";
+	var fieldnyaboy = "id";
+	var param={};
+	var footer=false;
+	var pagesizeboy=100;
+	var paging=true;	
+	var fitnya=true;
+	var url_crud = host+"backend/simpandata/"+crud_table;
+
+	switch (modnya){
+		case "receivedall":
+			judulnya = "";
+			urlnya = "receivedall";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'action',title:'Action CellEdit',width:100,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
+						}
+					}
+				}
+			]
+			kolom[modnya] = [
+				{field:'id_reff1',title:'ID Reff 1',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'tbl_master_phase_id',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.phase_code || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						url:host+'backend/getcombobox/tbl_master_phase',
+                       }
+                    }
+				},
+				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pr_number',title:'PR Number',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'pr_line_item',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'purchasing_group',title:'Purchasing Group',width:100, halign:'center',align:'left', sortable:true},
+				{field:'document_type',title:'Document Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'vendor_account_number',title:'Vendor Account Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'contact_person',title:'Contact Person',width:100, halign:'center',align:'left', sortable:true},
+				{field:'term_of_payment',title:'Term of Payment',width:100, halign:'center',align:'left', sortable:true},
+				{field:'incoterms_code',title:'Incoterms Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'incoterms_location',title:'Incoterms Location',width:100, halign:'center',align:'left', sortable:true},
+				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:'implementer',title:'Implementer',width:100, halign:'center',align:'left', sortable:true},
+				{field:'manager',title:'Manager',width:100, halign:'center',align:'left', sortable:true},
+				{field:'document_text_free_text_notes',title:'Document Text / Free Text (notes)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'collective_no',title:'Collective No.',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discount_type_header',title:'Discount Type (Header)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discount_amount_percentage_header',title:'Discount Amount / Percentage (Header)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'collective_no',title:'Collective No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'requester',title:'Requester',width:100, halign:'center',align:'left', sortable:true},
+				{field:'rfx_auction_number',title:'RFx / Auction Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'contract_number',title:'Contract Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'account_assignment_category',title:'Account Assignment Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'item_category',title:'Item Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'tax_code',title:'Tax Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'limit',title:'Limit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_price',title:'Material Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_group',title:'Material Group',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plant',title:'Plant',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delivery_date',title:'Delivery Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'require_gr',title:'Require GR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'invoice_receipt',title:'Invoice Receipt',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discount_type_item',title:'Discount Type (Item)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'amount_percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'indicator',title:'Indicator',width:100, halign:'center',align:'left', sortable:true},
+				{field:'assigned_to_line_item',title:'Assigned to Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'service_number',title:'Service Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'services_quantity',title:'Services Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'gross_price',title:'Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'gl_account_number',title:'GL Account Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'business_area',title:'Business Area',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cost_center',title:'Cost Center',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wbs',title:'WBS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'internal_order',title:'Internal Order',width:100, halign:'center',align:'left', sortable:true},
+				{field:'assets_number',title:'Assets Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'activity_number',title:'Activity Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'assigned_to_line_item2',title:'Assigned to Line Item2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'invoicing_plan_date',title:'Invoicing Plan Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'percentage_to_be_invoiced',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'left', sortable:true},
+				{field:'values_to_be_invoiced',title:'Values to be invoiced',width:100, halign:'center',align:'left', sortable:true},
+				{field:'buyer',title:'Buyer',width:100, halign:'center',align:'left', sortable:true},
+				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]			
+		break;
+	}
+	
+	$("#"+divnya).edatagrid({
+		title:judulnya,
+        height:tingginya,
+        width:lebarnya,
+		rownumbers:true,
+		iconCls:'database',
+        fit:fitnya,
+        striped:true,
+        pagination:paging,
+       // pagination:true,
+		pageSize:pagesizeboy,
+		pageList:[100,250,500],
+        remoteSort: false,
+        //showFooter: true,
+		url: (urlglobal == "" ? host+"backend/getdata/"+urlnya : urlglobal),		
+		saveUrl: url_crud+'/add/inline_edit',
+        updateUrl: url_crud+'/edit/inline_edit',
+        destroyUrl: url_crud+'/delete',
+		nowrap: true,
+        singleSelect:true,
+		queryParams:param,
+		showFooter:footer,
+		frozenColumns:[
+            frozen[modnya]
+        ],
+		columns:[
+            kolom[modnya]
+        ],
+		//toolbar: tolbarnya,
+		onEndEdit:function(index,row){
+            if(divnya == "receivedall"){
+				var ed_phasecode = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'tbl_master_phase_id'
+				});
+				row.tbl_master_phase_id = $(ed_phasecode.target).combobox('getText');
+			}
+        },		
+		onBeforeEdit:function(index,row,rowIndex){
+            row.editing = true;
+            updateActions(divnya,index);
+        },
+        onAfterEdit:function(index,row){
+            row.editing = false;
+            updateActions(divnya,index);
+        },
+        onCancelEdit:function(index,row){
+            row.editing = false;
+            updateActions(divnya,index);
+        },
+		onClickRow:function(rowIndex){
+			index_row = rowIndex;
+		},
+		rowStyler: function(index,row){
+			if (row.status == 0){
+				return 'background-color:#FFD1BB;'; // return inline style
+			}
+			
+		},
+	}).datagrid('enableCellEditing').datagrid('gotoCell', {
+		index: 0,
+		field: fieldnyaboy
+	});
+	
+}	
+//*/	
+
 function updateActions(div,index){   
 	$('#'+div).datagrid('updateRow',{
         index: index,
@@ -2309,6 +2533,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 	var urlpost = host+'backend/get_form/'+submodulnya+'/form';
 	var urlimport = "";
 	var id_tambahan = "";
+	var celledit = false;
 	lebar = 850;
 	tinggi = 350;
 
@@ -2459,6 +2684,14 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			tinggi_import = 600;
 			type_import = "uploadalldatabase";
 		break;
+		case "receivedall":			
+			table = "tbl_all_database";
+			judulwindow = 'Form BOQ Per Site';
+			lebar = 700;
+			tinggi = 200;
+			celledit = true;
+			urlpost = host+'backend/getdisplay/database/form-'+submodulnya;
+		break;
 		case "boqpersite":			
 			table = "tbl_all_database";
 			judulwindow = 'Form BOQ Per Site';
@@ -2524,8 +2757,11 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "edit":
 		case "inactive":
 		case "active":
-		
-			var row = $("#grid_"+submodulnya).datagrid('getSelected');
+			if(celledit == true){
+				var row = $("#grid_"+submodulnya).datagrid('getSelectedCells');
+			}else{
+				var row = $("#grid_"+submodulnya).datagrid('getSelected');
+			}
 			if(row){
 				if(type=='edit'){
 					if(stswindow == undefined){
