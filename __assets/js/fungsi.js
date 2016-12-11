@@ -2780,10 +2780,15 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 					});
 				}else if(type=='inactive'){
 					urldelete = host+'backend/simpandata/'+table;
+					
+					if(submodulnya == 'siteinfo'){
+						id_tambahan = row.boqno;
+					}
+					
 					$.messager.confirm('POIN v.2','Are You Sure Set Inactive This Data ?',function(re){
 						if(re){
 							loadingna();
-							$.post(urldelete, {id:row.id, 'editstatus':'inactive'}, function(r){
+							$.post(urldelete, {id:row.id, 'id_tambahan':id_tambahan, 'editstatus':'inactive'}, function(r){
 								if(r==1){
 									winLoadingClose();
 									$.messager.alert('POIN v.2',"Data Inactive",'info');
@@ -2798,10 +2803,15 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 					});	
 				}else if(type=='active'){
 					urldelete = host+'backend/simpandata/'+table;
+					
+					if(submodulnya == 'siteinfo'){
+						id_tambahan = row.boqno;
+					}
+					
 					$.messager.confirm('POIN v.2','Are You Sure Activated Again This Data ?',function(re){
 						if(re){
 							loadingna();
-							$.post(urldelete, {id:row.id, 'editstatus':'activate'}, function(r){
+							$.post(urldelete, {id:row.id, 'id_tambahan':id_tambahan, 'editstatus':'activate'}, function(r){
 								if(r==1){
 									winLoadingClose();
 									$.messager.alert('POIN v.2',"Data Activated Again",'info');
