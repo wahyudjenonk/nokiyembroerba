@@ -322,9 +322,9 @@ class Backend extends JINGGA_Controller {
 				
 				foreach($data as $k => $v){
 					$rowCount++;
-					//$objPHPExcel->getActiveSheet()->getStyle('J'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
-					//$objPHPExcel->getActiveSheet()->getStyle('K'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
-					//$objPHPExcel->getActiveSheet()->getStyle('L'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD);					
+					$objPHPExcel->getActiveSheet()->getStyle('J'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
+					$objPHPExcel->getActiveSheet()->getStyle('K'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
+					$objPHPExcel->getActiveSheet()->getStyle('L'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
 					$worksheet->SetCellValue('B'.$rowCount, $v['phase_code']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['phase_year']);
@@ -334,9 +334,9 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('G'.$rowCount, $v['project_name']);
 					$worksheet->SetCellValue('H'.$rowCount, $v['currency']);
 					$worksheet->SetCellValue('I'.$rowCount, $v['basic_contract']);
-					$worksheet->SetCellValue('J'.$rowCount, strtotime($v['po_date']));
-					$worksheet->SetCellValue('K'.$rowCount, strtotime($v['po_received']));
-					$worksheet->SetCellValue('L'.$rowCount, strtotime($v['po_delivery']));
+					$worksheet->SetCellValue('J'.$rowCount, $v['po_date']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['po_received']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['po_delivery']);
 					$worksheet->SetCellValue('M'.$rowCount, $v['revision_no']);
 					$worksheet->SetCellValue('N'.$rowCount, $v['po_gross_idr']);
 					$worksheet->SetCellValue('O'.$rowCount, $v['po_nett_idr']);
