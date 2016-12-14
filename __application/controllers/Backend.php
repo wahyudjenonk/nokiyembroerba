@@ -512,6 +512,132 @@ class Backend extends JINGGA_Controller {
 
 				}
 			break;
+			case "atf":
+				$filename = "export-data-atf";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-atf.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['sow_category']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_status']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['po_ne']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['atf_submit']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['atf_approved1']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['dismantle']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['material_pickup']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['material_inbound_nokia']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['material_inbound_isat']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['atf_approved2']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['atf_closed']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['file_name']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['status']);
+
+				}
+			break;
+			case "acceptanceclosing":
+				$filename = "export-data-acceptanceclosing";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-accclosing.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['phase_code']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['po_ne']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['sow_category']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['site_status']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['on_air_date']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['atp_date']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['endorse_approved']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['mcr_exit_date']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['mcr_exit_no']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['pac_date']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['pac_no']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['fac_date']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['fac_no']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['top_certificate']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['remarks_certificate']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['pmis_status']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['pmp_status']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['babt_submit']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['babt_approved']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['baut1_date']);
+					$worksheet->SetCellValue('AA'.$rowCount, $v['baut1_no']);
+					$worksheet->SetCellValue('AB'.$rowCount, $v['bast1_date']);
+					$worksheet->SetCellValue('AC'.$rowCount, $v['baut2_date']);
+					$worksheet->SetCellValue('AD'.$rowCount, $v['baut2_no']);
+					$worksheet->SetCellValue('AE'.$rowCount, $v['bast2_date']);
+					$worksheet->SetCellValue('AF'.$rowCount, $v['baut3_date']);
+					$worksheet->SetCellValue('AG'.$rowCount, $v['baut3_no']);
+					$worksheet->SetCellValue('AH'.$rowCount, $v['bast3_date']);
+					$worksheet->SetCellValue('AI'.$rowCount, $v['top_baut']);
+					$worksheet->SetCellValue('AJ'.$rowCount, $v['remarks_baut']);
+					$worksheet->SetCellValue('AK'.$rowCount, $v['invoice1_date']);
+					$worksheet->SetCellValue('AL'.$rowCount, $v['invoice1_no']);
+					$worksheet->SetCellValue('AM'.$rowCount, $v['remittance1_date']);
+					$worksheet->SetCellValue('AN'.$rowCount, $v['invoice2_date']);
+					$worksheet->SetCellValue('AO'.$rowCount, $v['invoice2_no']);
+					$worksheet->SetCellValue('AP'.$rowCount, $v['remittance2_date']);
+					$worksheet->SetCellValue('AQ'.$rowCount, $v['invoice3_date']);
+					$worksheet->SetCellValue('AR'.$rowCount, $v['invoice3_no']);
+					$worksheet->SetCellValue('AS'.$rowCount, $v['remittance3_date']);
+					$worksheet->SetCellValue('AT'.$rowCount, $v['top_invoice']);
+					$worksheet->SetCellValue('AU'.$rowCount, $v['remarks_invoice']);
+					$worksheet->SetCellValue('AV'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('AW'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('AX'.$rowCount, $v['status']);
+				}
+			break;case "costsales":
+				$filename = "export-data-costsales";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-costsales.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['phase_code']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['po_ne']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['sow_category']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['site_status']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['on_air_baseline']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['on_air_date']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['pac_baseline']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['pac_date2']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['delay_no_onair']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['delay_on_days']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['delay_no_pac']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['delay_on_days2']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['target_sales']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['actual_sales']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['target_cost']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['actual_cost']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['remarks']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['status']);
+				}
+			break;
 			case "receivedall":
 				$filename = "export-data-receivedall";
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-receivedall.xlsx");
@@ -533,7 +659,7 @@ class Backend extends JINGGA_Controller {
 				$worksheet->getStyle('B'.$rowCount)->applyFromArray($headerStyle);
 				$worksheet->SetCellValue('C'.$rowCount,'ID Reff2');
 				$worksheet->getStyle('C'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('D'.$rowCount,'UL Type');
+				$worksheet->SetCellValue('D'.$rowCount,'Level');
 				$worksheet->getStyle('D'.$rowCount)->applyFromArray($headerStyle);
 				$worksheet->SetCellValue('E'.$rowCount,'Phase Code');
 				$worksheet->getStyle('E'.$rowCount)->applyFromArray($headerStyle);
@@ -695,7 +821,7 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
 					$worksheet->SetCellValue('B'.$rowCount, $v['id_reff1']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['id_reff2']);
-					$worksheet->SetCellValue('D'.$rowCount, $v['ul_type']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['level']);
 					$worksheet->SetCellValue('E'.$rowCount, $v['phase_code']);
 					$worksheet->SetCellValue('F'.$rowCount, $v['phase_year']);
 					$worksheet->SetCellValue('G'.$rowCount, $v['phase_name']);
@@ -899,7 +1025,7 @@ class Backend extends JINGGA_Controller {
 
 				$worksheet->SetCellValue('A'.$rowCount,'ID');
 				$worksheet->getStyle('A'.$rowCount)->applyFromArray($headerStyle);
-				$worksheet->SetCellValue('B'.$rowCount,'UL Type');
+				$worksheet->SetCellValue('B'.$rowCount,'Level');
 				$worksheet->getStyle('B'.$rowCount)->applyFromArray($headerStyle);
 				$worksheet->SetCellValue('C'.$rowCount,'Phase Name');
 				$worksheet->getStyle('C'.$rowCount)->applyFromArray($headerStyle);
@@ -945,7 +1071,7 @@ class Backend extends JINGGA_Controller {
 			foreach($data as $k => $v){
 					$rowCount++;
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
-					$worksheet->SetCellValue('B'.$rowCount, $v['ul_type']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['level']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['phase_name']);
 					$worksheet->SetCellValue('D'.$rowCount, $v['project_name']);
 					$worksheet->SetCellValue('E'.$rowCount, $v['po_type']);

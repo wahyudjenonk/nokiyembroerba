@@ -916,6 +916,13 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
@@ -928,7 +935,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 						}
 					}
 				},
-			]
+			]		
 		break;
 		case "reservationall":
 			judulnya = "";
@@ -1165,85 +1172,29 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'level',title:'Lev',width:25, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
-				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'networkboq',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pr_number',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pr_line_item',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'purchasing_group',title:'Purchasing Group',width:100, halign:'center',align:'left', sortable:true},
-				{field:'document_type',title:'Document Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'vendor_account_number',title:'Vendor Account Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'contact_person',title:'Contact Person',width:100, halign:'center',align:'left', sortable:true},
-				{field:'term_of_payment',title:'Term of Payment',width:100, halign:'center',align:'left', sortable:true},
-				{field:'incoterms_code',title:'Incoterms Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'incoterms_location',title:'Incoterms Location',width:100, halign:'center',align:'left', sortable:true},
-				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
-				{field:'implementer',title:'Implementer',width:100, halign:'center',align:'left', sortable:true},
-				{field:'manager',title:'Manager',width:100, halign:'center',align:'left', sortable:true},
-				{field:'document_text_free_text_notes',title:'Document Text / Free Text (notes)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'collective_no',title:'Collective No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'discount_type_header',title:'Discount Type (Header)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'discount_amount_percentage_header',title:'Discount Amount / Percentage (Header)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'requester',title:'Requester',width:100, halign:'center',align:'left', sortable:true},
-				{field:'rfx_auction_number',title:'RFx / Auction Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'contract_number',title:'Contract Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'account_assignment_category',title:'Account Assignment Category',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_category',title:'Item Category',width:100, halign:'center',align:'left', sortable:true},
-				{field:'tax_code',title:'Tax Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
-				{field:'limit',title:'Limit',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_price',title:'Material Price',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_group',title:'Material Group',width:100, halign:'center',align:'left', sortable:true},
-				{field:'plant',title:'Plant',width:100, halign:'center',align:'left', sortable:true},
-				{field:'delivery_date',title:'Delivery Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'require_gr',title:'Require GR',width:100, halign:'center',align:'left', sortable:true},
-				{field:'invoice_receipt',title:'Invoice Receipt',width:100, halign:'center',align:'left', sortable:true},
-				{field:'discount_type_item',title:'Discount Type (Item)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'amount_percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'indicator',title:'Indicator',width:100, halign:'center',align:'left', sortable:true},
-				{field:'assigned_to_line_item',title:'Assigned to Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'service_number',title:'Service Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'services_quantity',title:'Services Quantity',width:100, halign:'center',align:'left', sortable:true},
-				{field:'gross_price',title:'Gross Price',width:100, halign:'center',align:'left', sortable:true},
-				{field:'gl_account_number',title:'GL Account Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'business_area',title:'Business Area',width:100, halign:'center',align:'left', sortable:true},
-				{field:'cost_center',title:'Cost Center',width:100, halign:'center',align:'left', sortable:true},
-				{field:'wbs',title:'WBS',width:100, halign:'center',align:'left', sortable:true},
-				{field:'internal_order',title:'Internal Order',width:100, halign:'center',align:'left', sortable:true},
-				{field:'assets_number',title:'Assets Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'activity_number',title:'Activity Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'assigned_to_line_item2',title:'Assigned to Line Item2',width:100, halign:'center',align:'left', sortable:true},
-				{field:'invoicing_plan_date',title:'Invoicing Plan Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'percentage_to_be_invoiced',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'left', sortable:true},
-				{field:'values_to_be_invoiced',title:'Values to be invoiced',width:100, halign:'center',align:'left', sortable:true},
-				{field:'buyer',title:'Buyer',width:100, halign:'center',align:'left', sortable:true},
-				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
 				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
 				{field:'delta_qty',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
-				{field:'siteid',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sitename',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
-				{field:'regioncode',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
-				{field:'networkboq',title:'networkboq',width:100, halign:'center',align:'left', sortable:true},
-				{field:'wpidsvc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
@@ -1251,17 +1202,10 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price_mapping',title:'totalgrossprice Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price_mapping',title:'totalnettprice Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_actual_mapping',title:'totalnetactual Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta_mapping',title:'totalnetdelta Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno_old',title:'Boqno old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_id_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
@@ -1507,18 +1451,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			frozen[modnya] = [	
 				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'action',title:'Action Inline Edit',width:120,align:'center',
-					formatter:function(value,row,index){
-						if (row.editing){
-							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
-							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
-							return s+c;
-						} else {
-							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
-							return e;
-						}
-					}
-				},//*/
 				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -1630,6 +1562,18 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 							return "Active";
 						} else {
 							return "Inactive";
+						}
+					}
+				},
+				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
 						}
 					}
 				},
@@ -2575,61 +2519,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				},
 			]
 		break;
-		case "boqpersite":
-			judulnya = "";
-			urlnya = "boqpersite";
-			//height = 800;
-			urlglobal = host+'backend/getdata/'+urlnya;
-			frozen[modnya] = [
-				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_reff1',title:'ID Reff 1',width:100, halign:'center',align:'left', sortable:true},
-			]
-			kolom[modnya] = [
-				{field:'level',title:'Lev',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
-				{field:'wp_id_svc',title:'WPIDSVC',width:100, halign:'center',align:'left', sortable:true},
-				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
-				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
-				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price_mapping',title:'totalgrossprice Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price_mapping',title:'totalnettprice Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_actual_mapping',title:'totalnetactual Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta_mapping',title:'totalnetdelta Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno_old',title:'Boqno old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_id_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
-				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
-					formatter: function(value,row,index){
-						if (row.status == 1){
-							return "Active";
-						} else {
-							return "Inactive";
-						}
-					}
-				},
-			]
-		break;
 	
 		case "tbl_employees":
 			judulnya = "";
@@ -2866,7 +2755,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
-				{field:'limit',title:'Limit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'limitt',title:'Limit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
 				{field:'material_price',title:'Material Price',width:100, halign:'center',align:'left', sortable:true},
 				{field:'material_group',title:'Material Group',width:100, halign:'center',align:'left', sortable:true},
@@ -2920,6 +2809,392 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 					}
 				},
 			]			
+		break;
+		case "receiveddollar":
+			judulnya = "";
+			urlnya = "receiveddollar";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_nett_price',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_actual',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta',title:'Total Nett Delta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]		
+		break;
+		case "received":
+			judulnya = "";
+			urlnya = "received";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Delta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]		
+		break;
+		case "reservationall":
+			judulnya = "";
+			urlnya = "reservationall";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_reff1',title:'ID Reff 1',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				
+				{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'prnumber_rcv',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'prlineitem_rcv',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'purchasinggroup_rcv',title:'Purchasing Group',width:100, halign:'center',align:'left', sortable:true},
+				{field:'documenttype_rcv',title:'Document Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'vendoraccountnumber_rcv',title:'Vendor Account Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'contactperson_rcv',title:'Contact Person',width:100, halign:'center',align:'left', sortable:true},
+				{field:'termofpayment_rcv',title:'Term of Payment',width:100, halign:'center',align:'left', sortable:true},
+				{field:'incotermscode_rcv',title:'Incoterms Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'incotermslocation_rcv',title:'Incoterms Location',width:100, halign:'center',align:'left', sortable:true},
+				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:'implementer_rcv',title:'Implementer',width:100, halign:'center',align:'left', sortable:true},
+				{field:'manager_rcv',title:'Manager',width:100, halign:'center',align:'left', sortable:true},
+				{field:'documenttextfreetextnotes_rcv',title:'Document Text / Free Text (notes)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'collectiveno_rcv',title:'Collective No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discounttypeheader_rcv',title:'Discount Type (Header)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discountamountpercentageheader_rcv',title:'Discount Amount / Percentage (Header)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'requester_rcv',title:'Requester',width:100, halign:'center',align:'left', sortable:true},
+				{field:'rfxauctionnumber_rcv',title:'RFx / Auction Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'contractnumber_rcv',title:'Contract Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'accountassignmentcategory_rcv',title:'Account Assignment Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemcategory_rcv',title:'Item Category',width:100, halign:'center',align:'left', sortable:true},
+				{field:'taxcode_rcv',title:'Tax Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'shorttext_rcv',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'limit_rcv',title:'Limit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialsquantity_rcv',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialprice_rcv',title:'Material Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialgroup_rcv',title:'Material Group',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plant_rcv',title:'Plant',width:100, halign:'center',align:'left', sortable:true},
+				{field:'deliverydate_rcv',title:'Delivery Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'requiregr_rcv',title:'Require GR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'invoicereceipt_rcv',title:'Invoice Receipt',width:100, halign:'center',align:'left', sortable:true},
+				{field:'discounttypeitem_rcv',title:'Discount Type (Item)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'amountpercentageitem_rcv',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
+				{field:'indicator_rcv',title:'Indicator',width:100, halign:'center',align:'left', sortable:true},
+				{field:'assignedtolineitem_rcv',title:'Assigned to Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'servicenumber_rcv',title:'Service Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'servicesquantity_rcv',title:'Services Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'grossprice_rcv',title:'Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'glaccountnumber_rcv',title:'GL Account Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'businessarea_rcv',title:'Business Area',width:100, halign:'center',align:'left', sortable:true},
+				{field:'costcenter_rcv',title:'Cost Center',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wbs_rcv',title:'WBS',width:100, halign:'center',align:'left', sortable:true},
+				{field:'internalorder_rcv',title:'Internal Order',width:100, halign:'center',align:'left', sortable:true},
+				{field:'assetsnumber_rcv',title:'Assets Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'networknumber_rcv',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'activitynumber_rcv',title:'Activity Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'assignedtolineitem2_rcv',title:'Assigned to Line Item2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'invoicingplandate_rcv',title:'Invoicing Plan Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'percentagetobeinvoiced_rcv',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'left', sortable:true},
+				{field:'valuestobeinvoiced_rcv',title:'Values to be invoiced',width:100, halign:'center',align:'left', sortable:true},
+				{field:'buyer_rcv',title:'Buyer',width:100, halign:'center',align:'left', sortable:true},
+				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actualqty_rcv',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'deltaqty_rcv',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'statuscrqty_rcv',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarkscr_rcv',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialgrossprice_rcv',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnettprice_rcv',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalgrossprice_rcv',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalnettprice_rcv',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalnetactual_rcv',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalnetdelta_rcv',title:'total nett Delta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'networkboq',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price_mapping',title:'Total Gross Price Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price_mapping',title:'Total Nett Price Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_actual_mapping',title:'Total Nett Actual Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta_mapping',title:'Total Nett Delta Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boq_no_old',title:'Boqno Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id_old',title:'Site ID Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name_old',title:'Site Name Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code_old',title:'Region Code old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "reservationdollar":
+			judulnya = "";
+			urlnya = "reservationdollar";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'shorttext_rcv',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'networknumber_rcv',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialgrossprice_rcv',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnettprice_rcv',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalgrossprice_rcv',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalnettprice_rcv',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalnetactual_rcv',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
+				{field:'totalnetdelta_rcv',title:'Total Nett Delta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno_old',title:'BOQ No Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'siteid_old',title:'Site ID Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sitename_old',title:'Site Name Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'regioncode_old',title:'Region Code Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "reservation":
+			judulnya = "";
+			urlnya = "reservation";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'shorttext_rcv',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'networknumber_rcv',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Delta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno_old',title:'BOQ No Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'siteid_old',title:'Site ID Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sitename_old',title:'Site Name Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'regioncode_old',title:'Region Code Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "boqpersite":
+			judulnya = "";
+			urlnya = "boqpersite";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'shorttext_rcv',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'networknumber_rcv',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				/*{field:' ',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'Total Nett Delta',width:100, halign:'center',align:'left', sortable:true},*/
+				{field:'boqno_old',title:'BOQ No Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'siteid_old',title:'Site ID Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sitename_old',title:'Site Name Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'regioncode_old',title:'Region Code Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
 		break;
 	}
 	
