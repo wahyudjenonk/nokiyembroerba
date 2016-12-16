@@ -543,6 +543,75 @@ class Backend extends JINGGA_Controller {
 
 				}
 			break;
+			case "sitebinder":
+				$filename = "export-data-sitebinder";
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-sitebinder.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['sow_category']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_status']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['po_ne']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['cluster']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['on_air_date']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['atp_date']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['atp_method']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['partner_ni']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['indosat_pic']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['10_lld_ndb']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['22_tssr_pdf']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['23_sid_pdf']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['50_boq_pdf']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['56_atf_xls']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['56_atf_pdf']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['57_atp_functional']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['57_atp_physical']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['61_redline_pdf']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['62_abd_dwg']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['63_abd_pdf']);
+					$worksheet->SetCellValue('AA'.$rowCount, $v['xx_others']);
+					$worksheet->SetCellValue('AB'.$rowCount, $v['xx_others2']);
+					$worksheet->SetCellValue('AC'.$rowCount, $v['doc_submit']);
+					$worksheet->SetCellValue('AD'.$rowCount, $v['reviewer']);
+					$worksheet->SetCellValue('AE'.$rowCount, $v['doc_accept']);
+					$worksheet->SetCellValue('AF'.$rowCount, $v['doc_status']);
+					$worksheet->SetCellValue('AG'.$rowCount, $v['70_ssv']);
+					$worksheet->SetCellValue('AH'.$rowCount, $v['71_rssi']);
+					$worksheet->SetCellValue('AI'.$rowCount, $v['73_pmr']);
+					$worksheet->SetCellValue('AJ'.$rowCount, $v['74_alarm_log']);
+					$worksheet->SetCellValue('AK'.$rowCount, $v['xx_others3']);
+					$worksheet->SetCellValue('AL'.$rowCount, $v['xx_others4']);
+					$worksheet->SetCellValue('AM'.$rowCount, $v['mcr_exit_accept']);
+					$worksheet->SetCellValue('AN'.$rowCount, $v['endorse_submit']);
+					$worksheet->SetCellValue('AO'.$rowCount, $v['approver']);
+					$worksheet->SetCellValue('AP'.$rowCount, $v['endorse_approved']);
+					$worksheet->SetCellValue('AQ'.$rowCount, $v['endorse_status']);
+					$worksheet->SetCellValue('AR'.$rowCount, $v['dc_submit']);
+					$worksheet->SetCellValue('AS'.$rowCount, $v['dc_reviewer']);
+					$worksheet->SetCellValue('AT'.$rowCount, $v['dc_approved']);
+					$worksheet->SetCellValue('AU'.$rowCount, $v['dc_status']);
+					$worksheet->SetCellValue('AV'.$rowCount, $v['oa_to_atp']);
+					$worksheet->SetCellValue('AW'.$rowCount, $v['atp_to_submit']);
+					$worksheet->SetCellValue('AX'.$rowCount, $v['submit_to_accept']);
+					$worksheet->SetCellValue('AY'.$rowCount, $v['accept_to_endorse']);
+					$worksheet->SetCellValue('AZ'.$rowCount, $v['endorse_to_dc_approved']);
+					$worksheet->SetCellValue('bA'.$rowCount, $v['total_oa_to_dc_approved']);
+					$worksheet->SetCellValue('BB'.$rowCount, $v['remarks']);
+					$worksheet->SetCellValue('BC'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('BD'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('BE'.$rowCount, $v['file_name']);
+					$worksheet->SetCellValue('BF'.$rowCount, $v['status']);
+
+				}
+			break;
 			case "acceptanceclosing":
 				$filename = "export-data-acceptanceclosing";
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-accclosing.xlsx");

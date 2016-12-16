@@ -823,12 +823,12 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'right', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
@@ -870,12 +870,12 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'right', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
@@ -917,12 +917,12 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:' ',title:'materialgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:' ',title:'materialnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:' ',title:'totalgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:' ',title:'totalnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:' ',title:'totalnetactual',width:100, halign:'center',align:'right', sortable:true},
+				{field:' ',title:'totalnetdelta',width:100, halign:'center',align:'right', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
@@ -2790,12 +2790,16 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_gross_price',title:'materialgrossprice',width:100, halign:'center',align:'right', sortable:true,
+					formatter: function (value,row){
+						return NumberFormat(row.material_gross_price);
+					}
+				},
+				{field:'material_nett_price',title:'materialnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_gross_price',title:'totalgrossprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_nett_price',title:'totalnettprice',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_net_actual',title:'totalnetactual',width:100, halign:'center',align:'right', sortable:true},
+				{field:'total_net_delta',title:'totalnetdelta',width:100, halign:'center',align:'right', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
@@ -3128,6 +3132,62 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'ID Upload',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+			]
+		break;
+		case "mapping":
+			judulnya = "";
+			urlnya = "mapping";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'id',title:'ID',width:70, halign:'center',align:'left', sortable:true},
+				{field:'id_reff1',title:'IDReff1',width:70, halign:'center',align:'left', sortable:true},
+				{field:'level',title:'Lev',width:25, halign:'center',align:'left', sortable:true},
+			]
+			kolom[modnya] = [
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'networkboq',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pr_number',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pr_line_item',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno_old',title:'Boqno old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status',title:'Status',width:50, halign:'center',align:'left', sortable:true,
 					formatter: function(value,row,index){
 						if (row.status == 1){
@@ -3548,6 +3608,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "edit":
 		case "inactive":
 		case "active":
+		case "delete":
 			if(celledit == true){
 				var row = $("#grid_"+submodulnya).datagrid('getSelectedCells');
 			}else{
@@ -3615,8 +3676,26 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 							});	
 						}
 					});	
+				}else if(type=='delete'){
+					urldelete = host+'backend/simpandata/'+table;
+					
+					$.messager.confirm('POIN v.2','Are You Sure Delete This Data ?',function(re){
+						if(re){
+							loadingna();
+							$.post(urldelete, {id:row.id, 'id_tambahan':id_tambahan, 'editstatus':'delete'}, function(r){
+								if(r==1){
+									winLoadingClose();
+									$.messager.alert('POIN v.2',"Data Inactive",'info');
+									$('#grid_'+submodulnya).datagrid('reload');								
+								}else{
+									winLoadingClose();
+									console.log(r)
+									$.messager.alert('POIN v.2',"Failed Set Inactive Data",'error');
+								}
+							});	
+						}
+					});
 				}
-				
 			}
 			else{
 				$.messager.alert('POIN v.2',"Select Row In Grid",'error');
