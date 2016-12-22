@@ -2952,15 +2952,36 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'item_text',title:'Item Text',width:400, halign:'center',align:'left', sortable:true},
 				{field:'short_text',title:'Short Text',width:150, halign:'center',align:'left', sortable:true},
 				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materials_quantity',title:'Mat Qty',width:50, halign:'center',align:'left', sortable:true},
-				{field:'actual_qty',title:'Act Qty',width:50, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Mat Qty',width:50, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'actual_qty',title:'Act Qty',width:50, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'delta_qty',title:'Delta',width:50, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarkscr',title:'RemarksCR',width:200, halign:'center',align:'left', sortable:true},
-				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarkscr',title:'RemarksCR',width:200, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.cr_no_nokia || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_cr',
+                       }
+                    }
+				},
 				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_price',title:'Material Price',width:120, halign:'center',align:'right', sortable:true},
+				{field:'material_price',title:'Material Price',width:120, halign:'center',align:'right', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'material_gross_price',title:'Material Gross Price',width:120, halign:'center',align:'right', sortable:true},
 				{field:'material_nett_price',title:'Material Nett Price',width:120, halign:'center',align:'right', sortable:true},
 				{field:'total_gross_price',title:'Total Gross Price',width:120, halign:'center',align:'right', sortable:true},
@@ -2976,6 +2997,18 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 							return "Active";
 						} else {
 							return "Inactive";
+						}
+					}
+				},
+				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
 						}
 					}
 				},
@@ -3153,7 +3186,20 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.boqno || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_tracker_siteinfo',
+                       }
+                    }
+				},
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
@@ -3167,21 +3213,42 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'shorttext_rcv',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'networknumber_rcv',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'currency',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
 				{field:'materialgrossprice_rcv',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
 				{field:'materialnettprice_rcv',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalgrossprice_rcv',title:'Total Gross Price',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnettprice_rcv',title:'Total Nett Price',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetactual_rcv',title:'Total Nett Actual',width:100, halign:'center',align:'left', sortable:true},
-				{field:'totalnetdelta_rcv',title:'Total Nett Delta',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno_old',title:'BOQ No Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_gross_price_mapping',title:'Total Gross Price Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_price_mapping',title:'Total Nett Price Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_nett_actual_mapping',title:'Total Nett Actual Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'total_net_delta_mapping',title:'Total Nett Delta Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno_old',title:'BOQ No Old',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.boqno_old || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_tracker_siteinfo',
+                       }
+                    }
+				},
 				{field:'siteid_old',title:'Site ID Old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sitename_old',title:'Site Name Old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'regioncode_old',title:'Region Code Old',width:100, halign:'center',align:'left', sortable:true},
@@ -3194,6 +3261,18 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 							return "Active";
 						} else {
 							return "Inactive";
+						}
+					}
+				},
+				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
 						}
 					}
 				},
@@ -3268,7 +3347,20 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.boqno || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_tracker_siteinfo',
+                       }
+                    }
+				},
 				{field:'site_id',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
@@ -3283,20 +3375,36 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'short_text',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'network_number',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true},
-				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materials_quantity',title:'Materials Quantity',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'actual_qty',title:'Actual Qty',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'delta_qty',title:'Delta Qty',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty',title:'Status CR Qty',width:100, halign:'center',align:'left', sortable:true},
 				{field:'remarkscr',title:'RemarksCR',width:100, halign:'center',align:'left', sortable:true},
-				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true},
-				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true},
-				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'cr_status',title:'CR Status',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'boqno_old',title:'Boqno old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_id_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
@@ -3323,7 +3431,20 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.boqno || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_tracker_siteinfo',
+                       }
+                    }
+				},
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
@@ -3337,13 +3458,21 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'shorttext_rcv',title:'Short Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'networknumber_rcv',title:'Network Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'delta_qty_mapping',title:'Delta Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_cr_mapping',title:'RemarksCR Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'remarks_cr_reloc_mapping',title:'RemarksCR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				/*{field:' ',title:'Currency',width:100, halign:'center',align:'left', sortable:true},
 				{field:' ',title:'Material Gross Price',width:100, halign:'center',align:'left', sortable:true},
 				{field:' ',title:'Material Nett Price',width:100, halign:'center',align:'left', sortable:true},
@@ -3389,16 +3518,20 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'wp_id_svc',title:'WPID SVC',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_on_air',title:'Qty On Air',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_on_air_remarks',title:'Qty On Air Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'qty_on_air_remarks',title:'Qty On Air Remarks',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'boqno_old',title:'boqno old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'siteid_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
 				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
@@ -3425,9 +3558,9 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'wpidsvc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
@@ -3443,13 +3576,21 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'top_cert',title:'TOP CERT',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_ba',title:'Qty BA',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ba_mcr_no',title:'BA MCR No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'bast_mcr_no',title:'BAST MCR No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'bast_mcr_no',title:'BAST MCR No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'ba_pac_no',title:'BA PAC No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'bast_pac_no',title:'BAST PAC No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'bast_pac_no',title:'BAST PAC No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'ba_fac_no',title:'BA FAC No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'bast_fac_no',title:'BAST FAC No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'bast_fac_no',title:'BAST FAC No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'remarks_baut',title:'Remarks BAUT',width:100, halign:'center',align:'left', sortable:true},
-				{field:'remarks_bast',title:'Remarks BAST',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_bast',title:'Remarks BAST',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'top_ba',title:'TOP BA',width:100, halign:'center',align:'left', sortable:true},
 				{field:'bapf_no',title:'BAPF No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'bamho_no',title:'BAMHO No',width:100, halign:'center',align:'left', sortable:true},
@@ -3458,42 +3599,6 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'actual_value',title:'Actual Value',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pac_value',title:'PAC Value',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ba_value',title:'BA Value',width:100, halign:'center',align:'left', sortable:true},
-			]
-		break;
-		case "boqoa":
-			judulnya = "";
-			urlnya = "boqoa";
-			//height = 800;
-			urlglobal = host+'backend/getdata/'+urlnya;
-			frozen[modnya] = [
-				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'id_reff1',title:'ID Reff1',width:100, halign:'center',align:'left', sortable:true},
-				{field:'level',title:'Lev',width:25, halign:'center',align:'left', sortable:true},
-			]
-			kolom[modnya] = [
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
-				{field:'wp_id_svc',title:'WPID SVC',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
-				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_on_air',title:'Qty On Air',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_on_air_remarks',title:'Qty On Air Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno_old',title:'boqno old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'siteid_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'regioncode_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
 			]
 		break;
 		case "boqinv":
@@ -3516,9 +3621,9 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'wp_id_svc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_cert',title:'Qty CERT',width:100, halign:'center',align:'left', sortable:true},
@@ -3553,28 +3658,63 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
-				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
-				{field:'wp_id_svc',title:'WPID SVC',width:100, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'siteid',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name',title:'sitename',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'regioncode',width:100, halign:'center',align:'left', sortable:true},
+				{field:'network_boq',title:'networkboq',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wp_id_svc',title:'wpidsvc',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'line_item',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
-				{field:'item_text',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
+				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
+				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_on_air',title:'Qty On Air',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_on_air_remarks',title:'Qty On Air Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno_old',title:'boqno old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'siteid_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sitename_old',title:'sitename old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'regioncode_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_remarks',title:'On Air Remarks',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wpid',title:'WPID',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'wp_name',title:'WP Name',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'qc_no',title:'QC No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'scc_no',title:'SCC No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'por_no',title:'POR No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'por_status',title:'POR Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'wbs_no',title:'WBS No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'so_no1',title:'SO No1',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'so_no2',title:'SO No2',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'so_no3',title:'SO No3',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'so_status',title:'SO Status',width:100, halign:'center',align:'left', sortable:true},
+				{field:'remarks_por_so',title:'Remarks POR SO',width:100, halign:'center',align:'left', sortable:true},
+				{field:'materialnettprice',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
+				{field:'plan_value',title:'Plan Value',width:100, halign:'center',align:'left', sortable:true},
+				{field:'actual_value',title:'Actual Value',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pac_value',title:'PAC Value',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ba_value',title:'BA Value',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_baseline',title:'ON AIR Baseline',width:100, halign:'center',align:'left', sortable:true},
+				{field:'on_air_date',title:'ON AIR Date',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pac_baseline',title:'PAC Baseline',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pac_date2',title:'PAC Date2',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Updateby',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Updateat',width:100, halign:'center',align:'left', sortable:true},
 			]
 		break;
 	}
@@ -4353,6 +4493,6 @@ function openWindowWithPostRequest(winURL, params) {
   document.body.removeChild(form); 
 	setTimeout(function() {
 		mywindow.close();
-    }, 10000000000000);
+    }, 60000);
   
 }

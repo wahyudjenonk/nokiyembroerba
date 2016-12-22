@@ -348,10 +348,11 @@ class Backend extends JINGGA_Controller {
 		$this->load->library("PHPExcel");
 		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
 		$data = $this->mbackend->getdata($p1,'result_array');
+		$date=date('Ymd-His');
 
 		switch($p1){
 			case "masterpo":
-				$filename = "export-data-masterpo";
+				$filename = "export-data-masterpo-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-masterpo.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -387,7 +388,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "mastercr":
-				$filename = "export-data-mastercr";
+				$filename = "export-data-mastercr-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-mastercr.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -422,7 +423,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "siteinfo":
-				$filename = "export-data-siteinfo";
+				$filename = "export-data-siteinfo-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-siteinfo.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -458,7 +459,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "siteprogress":
-				$filename = "export-data-siteprogress";
+				$filename = "export-data-siteprogress-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-siteprogress.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -500,7 +501,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "mcr":
-				$filename = "export-data-mcr";
+				$filename = "export-data-mcr-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-mcr.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -549,7 +550,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "atf":
-				$filename = "export-data-atf";
+				$filename = "export-data-atf-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-atf.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -580,7 +581,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "sitebinder":
-				$filename = "export-data-sitebinder";
+				$filename = "export-data-sitebinder-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-sitebinder.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -649,7 +650,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "acceptanceclosing":
-				$filename = "export-data-acceptanceclosing";
+				$filename = "export-data-acceptanceclosing-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-accclosing.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -708,7 +709,7 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('AX'.$rowCount, $v['status']);
 				}
 			break;case "costsales":
-				$filename = "export-data-costsales";
+				$filename = "export-data-costsales-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-costsales.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -744,7 +745,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "receivedall":
-				$filename = "export-data-receivedall";
+				$filename = "export-data-receivedall-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-receivedall.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
@@ -836,7 +837,7 @@ class Backend extends JINGGA_Controller {
 			break;
 
 			case "receiveddollar":
-				$filename = "export-data-received-with-price";
+				$filename = "export-data-received-with-price-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-receiveddollar.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 6;
@@ -875,7 +876,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "received":
-				$filename = "export-data-received";
+				$filename = "export-data-received-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-received.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 9;
@@ -961,7 +962,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "reservationall":
-				$filename = "export-data-reservation-all";
+				$filename = "export-data-reservation-all-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-reservationall.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 9;
@@ -1287,7 +1288,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "reservationdollar":
-				$filename = "export-data-reservation-with_price";
+				$filename = "export-data-reservation-with_price-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-reservationdollar.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 9;
@@ -1424,7 +1425,7 @@ class Backend extends JINGGA_Controller {
 				}
 			break;
 			case "reservation":
-				$filename = "export-data-reservation";
+				$filename = "export-data-reservation-".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-reservation.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 9;

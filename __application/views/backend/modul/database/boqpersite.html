@@ -75,24 +75,41 @@
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_all_database',
-				'kat' : $('#{$submodul}_filter_kategori').val(),
-				'key' : $('#{$submodul}_txt').val()
+				'phasename' : $('#{$submodul}_phasename').val(),
+				'phaseyear' : $('#{$submodul}_phaseyear').val(),
+				'potype' : $('#{$submodul}_potype').val(),
+				'pono' : $('#{$submodul}_pono').val(),
+				'allfield' 	: $('#{$submodul}_allfield').val(),
+				'initial_phase' : 'B',
+				'initial_potype' : 'C',
+				'initial_pono' : 'D'
 			});
 		}
 	});
-	
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_all_database',
-			'kat' : $('#{$submodul}_filter_kategori').val(),
-			'key' : $('#{$submodul}_txt').val()
+				'phasename' : $('#{$submodul}_phasename').val(),
+				'phaseyear' : $('#{$submodul}_phaseyear').val(),
+				'potype' : $('#{$submodul}_potype').val(),
+				'pono' : $('#{$submodul}_pono').val(),
+				'allfield' 	: $('#{$submodul}_allfield').val(),
+				'initial_phase' : 'B',
+				'initial_potype' : 'C',
+				'initial_pono' : 'D'
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_all_database';
-		param['kat']   = $('#{$submodul}_filter_kategori').val();
-		param['key']   = $('#{$submodul}_txt').val();
-		
-		openWindowWithPost('{$host}backend/exportdatawithtemplate/reservationall', param);
+		param['phasename']   = $('#{$submodul}_phasename').val();
+		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
+		param['potype']   = $('#{$submodul}_potype').val();
+		param['pono']   = $('#{$submodul}_pono').val();
+		param['allfield']    = $('#{$submodul}_allfield').val();
+		param['initial_phase']   = 'B';
+		param['initial_potype']   = 'D';
+		param['initial_pono']   = 'D';	
+
+		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/received', param);
 	});
 </script>
