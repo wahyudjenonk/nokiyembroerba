@@ -32,6 +32,30 @@
 			}
 			
 			closeWindow();
+			$('#grid_potype').datagrid('reload');
+		});
+		return false;
+	});
+	
+	$('#cancelPOType').on('click',function(){
+		closeWindow();
+		$('#grid_potype').datagrid('reload');
+		return false;
+	});
+
+</script>
+{*
+<script>
+	$('#savePOType').on('click',function(){
+		submit_form('frmpotype_{$acak}',function(r){
+			if(r==1){
+				$.messager.alert('POIN', "Data Saved", 'info');
+				$('.info-empty').remove();
+			}else{
+				$.messager.alert('POIN', "Failed Saved", 'error');
+			}
+			
+			closeWindow();
 			$('#grid_phase').datagrid('reload');
 		});
 		return false;
@@ -44,3 +68,4 @@
 	});
 
 </script>
+*}

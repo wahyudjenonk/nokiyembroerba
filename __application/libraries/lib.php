@@ -340,7 +340,16 @@ class lib {
 		$sql = $sql . " LIMIT $start,$limit";
 					
 		$data = $ci->db->query($sql)->result_array();  
-				
+		
+		if($table == 'mapping'){
+			foreach($data as $k => $v){
+				if($v['level'] == '2'){					
+					$indexnya = ($k-1);
+					$data[$k]['material_number'] = $data[$indexnya]['material_number']; 
+				}
+			}
+		}
+		
 		if($data){
 		   $responce = new stdClass();
 		   $responce->rows= $data;
