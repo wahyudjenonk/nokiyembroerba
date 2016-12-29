@@ -346,6 +346,13 @@ class lib {
 				if($v['level'] == '2'){					
 					$indexnya = ($k-1);
 					$data[$k]['material_number'] = $data[$indexnya]['material_number']; 
+					$data[$k]['item_text'] = $data[$indexnya]['item_text']; 
+					$data[$k]['po_no'] = $data[$indexnya]['po_no']; 
+					$data[$k]['phase_name'] = $data[$indexnya]['phase_name']; 
+					$data[$k]['po_type'] = $data[$indexnya]['po_type']; 
+					$data[$k]['materials_quantity'] = $data[$indexnya]['materials_quantity'];
+					$data[$k]['actual_qty'] = $data[$indexnya]['actual_qty'];
+					$data[$k]['delta_qty'] = $data[$indexnya]['delta_qty'];
 				}
 			}
 		}

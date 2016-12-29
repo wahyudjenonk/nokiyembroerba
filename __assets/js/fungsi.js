@@ -3067,13 +3067,13 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				
 				//{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phasecode',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phaseyear',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phasename',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'prnumber_rcv',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'prlineitem_rcv',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'pono',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'purchasinggroup_rcv',title:'Purchasing Group',width:100, halign:'center',align:'left', sortable:true},
 				{field:'documenttype_rcv',title:'Document Type',width:100, halign:'center',align:'left', sortable:true},
@@ -3186,7 +3186,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'masterphaseid',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno || value;
@@ -4182,12 +4182,12 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 							$.post(urldelete, {id:row.id, 'id_tambahan':id_tambahan, 'editstatus':'delete'}, function(r){
 								if(r==1){
 									winLoadingClose();
-									$.messager.alert('POIN v.2',"Data Inactive",'info');
+									$.messager.alert('POIN v.2',"Data Deleted",'info');
 									$('#grid_'+submodulnya).datagrid('reload');								
 								}else{
 									winLoadingClose();
 									console.log(r)
-									$.messager.alert('POIN v.2',"Failed Set Inactive Data",'error');
+									$.messager.alert('POIN v.2',"Failed Deleted Data",'error');
 								}
 							});	
 						}
