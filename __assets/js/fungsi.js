@@ -3844,6 +3844,8 @@ function cancelrow(div,target){
 function genform(type, modulnya, submodulnya, stswindow, tabel){
 	var urlpost = host+'backend/get_form/'+submodulnya+'/form';
 	var urlimport = "";
+	var urldownload = host+'backend/download/'+submodulnya+'/physic/';
+	var urldelete = "";
 	var id_tambahan = "";
 	var celledit = false;
 	lebar = 850;
@@ -3993,6 +3995,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "uploadalldatabase":	
 			table = "tbl_all_database";
 			urlimport = host+'backend/getdisplay/database/import-'+submodulnya;
+			urldelete = host+'backend/simpandata/'+table;
 			lebar_import = 700;
 			tinggi_import = 600;
 			type_import = "uploadalldatabase";
@@ -4106,6 +4109,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "inactive":
 		case "active":
 		case "delete":
+		case "download_file_import":
 			if(celledit == true){
 				var row = $("#grid_"+submodulnya).datagrid('getSelectedCells');
 			}else{
@@ -4174,24 +4178,26 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 						}
 					});	
 				}else if(type=='delete'){
-					urldelete = host+'backend/simpandata/'+table;
-					
-					$.messager.confirm('POIN v.2','Are You Sure Delete This Data ?',function(re){
+					$.messager.confirm('POIN v.2','Are You Sure Delete (Hidden) This Data ?',function(re){
 						if(re){
 							loadingna();
-							$.post(urldelete, {id:row.id, 'id_tambahan':id_tambahan, 'editstatus':'delete'}, function(r){
+							$.post(urldelete, {id:row.id, 'file_name':row.file_name, 'editstatus':'delete'}, function(r){
 								if(r==1){
 									winLoadingClose();
-									$.messager.alert('POIN v.2',"Data Deleted",'info');
+									$.messager.alert('POIN v.2',"Data Was Deleted (Hidden)",'info');
 									$('#grid_'+submodulnya).datagrid('reload');								
 								}else{
 									winLoadingClose();
 									console.log(r)
-									$.messager.alert('POIN v.2',"Failed Deleted Data",'error');
+									$.messager.alert('POIN v.2',"Failed Was Deleted (Hidden) Data",'error');
 								}
 							});	
 						}
 					});
+				}else if(type=='download_file_import'){
+					param['table'] = submodulnya;
+					param['namafile'] = row.file_name;
+					openWindowWithPostRequest(urldownload, param);
 				}
 			}
 			else{
