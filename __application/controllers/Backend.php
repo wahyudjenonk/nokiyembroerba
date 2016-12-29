@@ -359,9 +359,11 @@ class Backend extends JINGGA_Controller {
 				
 				foreach($data as $k => $v){
 					$rowCount++;
-					$objPHPExcel->getActiveSheet()->getStyle('J'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
-					$objPHPExcel->getActiveSheet()->getStyle('K'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
-					$objPHPExcel->getActiveSheet()->getStyle('L'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
+					//$objPHPExcel->getActiveSheet()->getStyle('J'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
+					//$objPHPExcel->getActiveSheet()->getStyle('K'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
+					//$objPHPExcel->getActiveSheet()->getStyle('L'.$rowCount)->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2);					
+					//$po_date = date('Y-m-d',PHPExcel_Shared_Date::PHPToExcel($v['po_date']));
+					
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
 					$worksheet->SetCellValue('B'.$rowCount, $v['phase_code']);
 					$worksheet->SetCellValue('C'.$rowCount, $v['phase_year']);
@@ -1149,6 +1151,7 @@ class Backend extends JINGGA_Controller {
 		if($import == 1){
 			echo $import;
 		}else{
+			unlink($import['folder_upload']);
 			$this->nsmarty->assign('type', $p1);
 			$this->nsmarty->assign('data', $import);
 			$this->nsmarty->display("backend/modul/".$this->input->post('folder')."/hasil_import.html");
@@ -1165,10 +1168,17 @@ class Backend extends JINGGA_Controller {
 		echo json_encode($datacombo);
 	}
 	
-	function download($type=""){
+	function download($type="", $file="template"){
 		$this->load->helper('download');
-		$data = file_get_contents("__repository/template/temp_".$type.".xlsx");
-		$name = "temp_".$type.".xlsx";
+		
+		if($file == 'template'){
+			$data = file_get_contents("__repository/template/temp_".$type.".xlsx");
+			$name = "temp_".$type.".xlsx";
+		}elseif($file == 'physic'){
+			$name = $this->input->post('namafile');
+			$data = file_get_contents("__repository/tmp_upload_database/".$name);
+		}
+		
 		force_download($name, $data);
 	}
 	
