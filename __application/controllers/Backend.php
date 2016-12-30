@@ -312,8 +312,8 @@ class Backend extends JINGGA_Controller {
 		$this->nsmarty->assign("acak", md5(date('H:i:s')) );
 		
 		if($display == true){
-			if(!file_exists($this->config->item('appl').APPPATH.'views/'.$temp)){$this->nsmarty->display('konstruksi.html');}
-			$this->nsmarty->display($temp);
+			if(!file_exists($this->config->item('appl').APPPATH.'views/'.$temp)){$this->nsmarty->display('konstruksi.html');
+			}else{$this->nsmarty->display($temp);}
 		}
 	}
 	
