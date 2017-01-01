@@ -3498,7 +3498,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				},
 			]
 		break;
-		case "boqoa":
+		case "boqoa": //nangkene
 			judulnya = "";
 			urlnya = "boqoa";
 			//height = 800;
@@ -3524,9 +3524,19 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'plan_qty_mapping',title:'Plan Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'aqtual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'status_cr_qty_mapping',title:'Status CR Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
+				{field:'chk_onair', title:'<input type="checkbox" onChange="kumpulAction(\'checkboxgrid\',\'boqoa_onair_all\',\''+divnya+'\')" />', width:50, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return '<input type="checkbox" id="boqoa_onair_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqoa_onair\',\''+divnya+'\',\''+row.id+'\',\''+row.plan_qty_mapping+'\')" />';
+					}
+				},
 				{field:'qty_on_air',title:'Qty On Air',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_on_air_remarks',title:'Qty On Air Remarks',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
+				},
+				{field:'chk_atp', title:'<input type="checkbox" onChange="kumpulAction(\'checkboxgrid\',\'boqoa_atp_all\',\''+divnya+'\')" />', width:50, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return '<input type="checkbox" id="boqoa_atp_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqoa_atp\',\''+divnya+'\',\''+row.id+'\',\''+row.aqtual_qty_mapping+'\')" />';
+					}
 				},
 				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true,
@@ -3741,6 +3751,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
         singleSelect:true,
 		queryParams:param,
 		showFooter:footer,
+		selectOnCheck:false,
 		frozenColumns:[
             frozen[modnya]
         ],
@@ -4275,16 +4286,37 @@ function genTab(div, mod, sub_mod, tab_array, div_panel, judul_panel, mod_num, h
 function kumpulAction(type, p1, p2, p3, p4, p5){
 	var param = {};
 	switch(type){
-		case "reservation":
-			grid = $('#grid_reservasi').datagrid('getSelected');
-			$.post(host+'backend/simpan_data/tbl_reservasi_confirm', { 'id':grid.id, 'confirm':p1 }, function(rsp){
-				if(rsp == 1){
-					$.messager.alert('Roger Salon',"Confirm OK",'info');
-				}else{
-					$.messager.alert('Roger Salon',"Failed Confirm",'error');
-				}
-				$('#grid_reservasi').datagrid('reload');	
-			} );
+		case "checkboxgrid":
+			switch(p1){
+				case "boqoa_onair":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'id':p3, 'plan_qty':p4}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqoa_onair_all":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqoa_atp":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'id':p3, 'aqtual_qty':p4}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqoa_atp_all":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;				
+			}
 		break;
 		case "userrole":
 			$.post(host+'backend/getdisplay/usermanagement/form_user_role', {'id':p1, 'editstatus':'add'}, function(resp){
