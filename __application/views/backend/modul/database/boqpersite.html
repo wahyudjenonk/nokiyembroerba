@@ -35,8 +35,12 @@
 
 							<div style='width:100%;margin-bottom: 3px;'>
 								
-								<label>Phase</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
-								<label>BOQ No</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_boqno' /> &nbsp;
+								<label>Phase</label> :<select style='width:100px;padding:2px;' id='{$submodul}_phasename'>
+									{$tbl_master_phase_db}
+								</select>  &nbsp;
+								<label>BOQ No</label> :<select style='width:100px;padding:2px;' id='{$submodul}_boqno'>
+									{$tbl_master_tracker_siteinfo_db}
+								</select>  &nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
 										<span class="l-btn-text">Filter Data</span><span class="l-btn-icon icon-search">&nbsp;</span>
@@ -69,13 +73,9 @@
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_all_database',
 				'phasename' : $('#{$submodul}_phasename').val(),
-				'phaseyear' : $('#{$submodul}_phaseyear').val(),
-				'potype' : $('#{$submodul}_potype').val(),
-				'pono' : $('#{$submodul}_pono').val(),
-				'allfield' 	: $('#{$submodul}_allfield').val(),
+				'boqno' : $('#{$submodul}_boqno').val(),
 				'initial_phase' : 'B',
-				'initial_potype' : 'C',
-				'initial_pono' : 'D'
+				'initial_boqno' : 'J',
 			});
 		}
 	});
@@ -83,25 +83,17 @@
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_all_database',
 				'phasename' : $('#{$submodul}_phasename').val(),
-				'phaseyear' : $('#{$submodul}_phaseyear').val(),
-				'potype' : $('#{$submodul}_potype').val(),
-				'pono' : $('#{$submodul}_pono').val(),
-				'allfield' 	: $('#{$submodul}_allfield').val(),
+				'boqno' : $('#{$submodul}_boqno').val(),
 				'initial_phase' : 'B',
-				'initial_potype' : 'C',
-				'initial_pono' : 'D'
+				'initial_potype' : 'J',
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_all_database';
 		param['phasename']   = $('#{$submodul}_phasename').val();
-		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
-		param['potype']   = $('#{$submodul}_potype').val();
-		param['pono']   = $('#{$submodul}_pono').val();
-		param['allfield']    = $('#{$submodul}_allfield').val();
+		param['boqno']   = $('#{$submodul}_boqno').val();
 		param['initial_phase']   = 'B';
-		param['initial_potype']   = 'D';
-		param['initial_pono']   = 'D';	
+		param['initial_boqno']   = 'J';	
 
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/received', param);
 	});

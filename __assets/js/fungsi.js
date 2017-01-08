@@ -229,9 +229,9 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				},
 			]
 		break;
-		case "pone":
+		case "nename":
 			judulnya = "";
-			urlnya = "pone";
+			urlnya = "nename";
 			//height = 800;
 			fitnya = true;
 			urlglobal = host+'backend/getdata/'+urlnya;
@@ -3073,7 +3073,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'prnumber_rcv',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'prlineitem_rcv',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
-				{field:'pono',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'purchasinggroup_rcv',title:'Purchasing Group',width:100, halign:'center',align:'left', sortable:true},
 				{field:'documenttype_rcv',title:'Document Type',width:100, halign:'center',align:'left', sortable:true},
@@ -3186,7 +3186,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phasename',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno || value;
@@ -3203,12 +3203,12 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				},
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'regioncode',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'region_code',title:'Region Code',width:100, halign:'center',align:'left', sortable:true},
 				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true},
 				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true},
-				{field:'projectname',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'potype',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
-				{field:'pono',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'project_name',title:'Project Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
+				{field:'po_no',title:'PO No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'lineitem_rcv',title:'Line Item',width:100, halign:'center',align:'left', sortable:true},
 				{field:'materialnumber_rcv',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'itemtext_rcv',title:'Item Text',width:100, halign:'center',align:'left', sortable:true},
@@ -3289,7 +3289,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phasename',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
@@ -3529,7 +3529,9 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 						return '<input type="checkbox" id="boqoa_onair_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqoa_onair\',\''+divnya+'\',\''+row.id+'\',\''+row.plan_qty_mapping+'\')" />';
 					}
 				},
-				{field:'qty_on_air',title:'Qty On Air',width:100, halign:'center',align:'left', sortable:true},
+				{field:'qty_on_air',title:'Qty On Air',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'qty_on_air_remarks',title:'Qty On Air Remarks',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -3538,7 +3540,9 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 						return '<input type="checkbox" id="boqoa_atp_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqoa_atp\',\''+divnya+'\',\''+row.id+'\',\''+row.aqtual_qty_mapping+'\')" />';
 					}
 				},
-				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true},
+				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -3578,13 +3582,27 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'on_air_remarks',title:'On Air Remarks',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_atp',title:'Qty ATP',width:100, halign:'center',align:'left', sortable:true},
 				{field:'atp_remarks',title:'ATP Remarks',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_cert',title:'Qty CERT',width:100, halign:'center',align:'left', sortable:true},
+				{field:'chk_qtypac', title:'<input type="checkbox" onChange="kumpulAction(\'checkboxgrid\',\'boqba_qtypac_all\',\''+divnya+'\')" />', width:50, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return '<input type="checkbox" id="boqba_qtypac_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqba_qtypac\',\''+divnya+'\',\''+row.id+'\',\''+row.qty_atp+'\')" />';
+					}
+				},
+				{field:'qty_pac',title:'Qty PAC',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'mcr_no',title:'MCR No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pac_no',title:'PAC No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'fac_no',title:'FAC No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'remarks_certificate',title:'Remarks Certificate',width:100, halign:'center',align:'left', sortable:true},
 				{field:'top_cert',title:'TOP CERT',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_ba',title:'Qty BA',width:100, halign:'center',align:'left', sortable:true},
+				{field:'chk_qtyba', title:'<input type="checkbox" onChange="kumpulAction(\'checkboxgrid\',\'boqba_qtyba_all\',\''+divnya+'\')" />', width:50, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return '<input type="checkbox" id="boqba_qtyba_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqba_qtyba\',\''+divnya+'\',\''+row.id+'\',\''+row.qty_pac+'\')" />';
+					}
+				},
+				{field:'qty_ba',title:'Qty BA',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'ba_mcr_no',title:'BA MCR No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'bast_mcr_no',title:'BAST MCR No',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
@@ -3602,8 +3620,12 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 					editor:{type:'textbox'}
 				},
 				{field:'top_ba',title:'TOP BA',width:100, halign:'center',align:'left', sortable:true},
-				{field:'bapf_no',title:'BAPF No',width:100, halign:'center',align:'left', sortable:true},
-				{field:'bamho_no',title:'BAMHO No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'bapf_no',title:'BAPF No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'bamho_no',title:'BAMHO No',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'materialnettprice',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_value',title:'Plan Value',width:100, halign:'center',align:'left', sortable:true},
 				{field:'actual_value',title:'Actual Value',width:100, halign:'center',align:'left', sortable:true},
@@ -3638,7 +3660,14 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'actual_qty_mapping',title:'Actual Qty Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_cert',title:'Qty CERT',width:100, halign:'center',align:'left', sortable:true},
 				{field:'qty_ba',title:'Qty BA',width:100, halign:'center',align:'left', sortable:true},
-				{field:'qty_inv',title:'Qty INV',width:100, halign:'center',align:'left', sortable:true},
+				{field:'chk_qtyinv', title:'<input type="checkbox" onChange="kumpulAction(\'checkboxgrid\',\'boqinv_qtyinv_all\',\''+divnya+'\')" />', width:50, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return '<input type="checkbox" id="boqinv_qtyinv_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'boqinv_qtyinv\',\''+divnya+'\',\''+row.id+'\',\''+row.qty_pac+'\')" />';
+					}
+				},
+				{field:'qty_inv',title:'Qty INV',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'inv1_no',title:'INV1 No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'rem_inv1',title:'Rem INV1',width:100, halign:'center',align:'left', sortable:true},
 				{field:'inv2_no',title:'INV2 No',width:100, halign:'center',align:'left', sortable:true},
@@ -3699,6 +3728,11 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'por_no',title:'POR No',width:200, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'chk_porsts', title:'<input type="checkbox" onChange="kumpulAction(\'checkboxgrid\',\'wpidso_porsts_all\',\''+divnya+'\')" />', width:50, halign:'center',align:'center',
+					formatter: function(value,row,index){
+						return '<input type="checkbox" id="wpidso_porsts_'+row.id+'" onChange="kumpulAction(\'checkboxgrid\',\'wpidso_porsts\',\''+divnya+'\',\''+row.id+'\')" />';
+					}
+				},
 				{field:'por_status',title:'POR Status',width:200, halign:'center',align:'left', sortable:true},
 				{field:'wbs_no',title:'WBS No',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
@@ -3713,7 +3747,9 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 					editor:{type:'textbox'}
 				},
 				{field:'so_status',title:'SO Status',width:200, halign:'center',align:'left', sortable:true},
-				{field:'remarks_por_so',title:'Remarks POR SO',width:200, halign:'center',align:'left', sortable:true},
+				{field:'remarks_por_so',title:'Remarks POR SO',width:200, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'materialnettprice',title:'materialnettprice',width:100, halign:'center',align:'left', sortable:true},
 				{field:'plan_value',title:'Plan Value',width:100, halign:'center',align:'left', sortable:true},
 				{field:'actual_value',title:'Actual Value',width:100, halign:'center',align:'left', sortable:true},
@@ -3899,7 +3935,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			tinggi = 400;
 			urlpost = host+'backend/getdisplay/master/form-'+submodulnya;
 		break;
-		case "pone":
+		case "nename":
 			table = "tbl_master_pone";
 			judulwindow = 'Form Master NE Name';
 			lebar = 600;
@@ -4120,6 +4156,7 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "inactive":
 		case "active":
 		case "delete":
+		case "undelete":
 		case "download_file_import":
 			if(celledit == true){
 				var row = $("#grid_"+submodulnya).datagrid('getSelectedCells');
@@ -4201,6 +4238,23 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 									winLoadingClose();
 									console.log(r)
 									$.messager.alert('POIN v.2',"Failed Was Deleted (Hidden) Data",'error');
+								}
+							});	
+						}
+					});
+				}else if(type=='undelete'){
+					$.messager.confirm('POIN v.2','Are You Sure Undelete This Data ?',function(re){
+						if(re){
+							loadingna();
+							$.post(urldelete, {id:row.id, 'file_name':row.file_name, 'editstatus':'undelete'}, function(r){
+								if(r==1){
+									winLoadingClose();
+									$.messager.alert('POIN v.2',"Data Was Undeleted",'info');
+									$('#grid_'+submodulnya).datagrid('reload');								
+								}else{
+									winLoadingClose();
+									console.log(r)
+									$.messager.alert('POIN v.2',"Failed Was Undeleted Data",'error');
 								}
 							});	
 						}
@@ -4315,7 +4369,63 @@ function kumpulAction(type, p1, p2, p3, p4, p5){
 							$('#'+p2).datagrid('reload');
 						}
 					});
-				break;				
+				break;
+				case "boqba_qtypac":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'id':p3, 'qty_atp':p4}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqba_qtypac_all":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqba_qtyba":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'id':p3, 'qty_pac':p4}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqba_qtyba_all":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqinv_qtyinv":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'id':p3, 'qty_pac':p4}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "boqinv_qtyinv_all":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;	
+				case "wpidso_porsts":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'id':p3,}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;
+				case "wpidso_porsts_all":
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+						if(resp == 1){
+							$('#'+p2).datagrid('reload');
+						}
+					});
+				break;			
 			}
 		break;
 		case "userrole":

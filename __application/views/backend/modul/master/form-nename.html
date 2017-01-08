@@ -1,4 +1,4 @@
-<form method="post" id='frmpone_{$acak}' url='{$host}backend/simpandata/tbl_master_pone' class="form-horizontal">
+<form method="post" id='frmnename_{$acak}' url='{$host}backend/simpandata/tbl_master_pone' class="form-horizontal">
 	<input type='hidden' name='editstatus' value='{$editstatus}' /> 
 	<input type='hidden' name='id' value="{$data.id|default:''}" /> 
 	
@@ -15,14 +15,14 @@
 	<div class="hr-line-dashed"></div>
     <div class="form-group">
         <div class="col-sm-4 col-sm-offset-2">
-            <a class="btn btn-primary" id='savePONE' >Save</a>
-            <a class="btn btn-danger" id='cancelPONE'>Cancel</a>
+            <a class="btn btn-primary" id='saveNEName' >Save</a>
+            <a class="btn btn-danger" id='cancelNEName'>Cancel</a>
         </div>
     </div>	
 </form>
 
 <script>
-	$('#savePONE').on('click',function(){
+	$('#saveNEName').on('click',function(){
 		submit_form('frmpone_{$acak}',function(r){
 			if(r==1){
 				$.messager.alert('POIN', "Data Saved", 'info');
@@ -31,14 +31,14 @@
 				$.messager.alert('POIN', "Failed Saved", 'error');
 			}
 			closeWindow();
-			$('#grid_pone').datagrid('reload');
+			$('#grid_nename').datagrid('reload');
 		});
 		return false;
 	});
 	
-	$('#cancelPONE').on('click',function(){
+	$('#cancelNEName').on('click',function(){
 		closeWindow();
-		$('#grid_pone').datagrid('reload');
+		$('#grid_nename').datagrid('reload');
 		return false;
 	});
 

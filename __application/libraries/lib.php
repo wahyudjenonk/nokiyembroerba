@@ -353,6 +353,16 @@ class lib {
 					$data[$k]['materials_quantity'] = $data[$indexnya]['materials_quantity'];
 					$data[$k]['actual_qty'] = $data[$indexnya]['actual_qty'];
 					$data[$k]['delta_qty'] = $data[$indexnya]['delta_qty'];
+				}if ($v['level'] == '1') {
+					$indexnya = ($k+1);
+					$data[$k]['boqno'] = $data[$indexnya]['boqno']; 
+					$data[$k]['site_id'] = $data[$indexnya]['site_id']; 
+					$data[$k]['boqno'] = $data[$indexnya]['boqno'];
+					$data[$k]['site_name'] = $data[$indexnya]['site_name'];
+					$data[$k]['network_boq'] = $data[$indexnya]['network_boq'];
+					$data[$k]['plan_qty_mapping'] = $data[$indexnya]['plan_qty_mapping']; 
+					$data[$k]['aqtual_qty_mapping'] = $data[$indexnya]['aqtual_qty_mapping']; 
+					$data[$k]['delta_qty_mapping'] = $data[$indexnya]['delta_qty_mapping']; 
 				}
 			}
 		}

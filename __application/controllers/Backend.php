@@ -68,7 +68,7 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}
 					break;
-					case "form-pone":
+					case "form-nename":
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_master_pone', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
@@ -182,6 +182,14 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;	
+					case "boqpersite":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}	
+						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
+						$this->nsmarty->assign("tbl_master_tracker_siteinfo_db", $this->lib->fillcombo('boqpersite_boqno', 'return'));										
+					break;
 					case "form-boqall":
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
@@ -330,7 +338,7 @@ class Backend extends JINGGA_Controller {
 					$date=date('YmdHis');
 					
 					header("Content-type: application/vnd-ms-excel");
-					header("Content-Disposition: attachment; filename=expordata-".$submodul."-".$date.".xls");
+					header("Content-Disposition: attachment; filename=exportdata-".$submodul."-".$date.".xls");
 					
 					$this->nsmarty->assign('submodul', $submodul);
 					$this->nsmarty->assign('data', $data);
@@ -348,7 +356,7 @@ class Backend extends JINGGA_Controller {
 		$this->load->library("PHPExcel");
 		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
 		$data = $this->mbackend->getdata($p1,'result_array');
-		$date=date('Ymd-His');
+		$date=date('YmdHis');
 
 		switch($p1){
 			case "masterpo":
