@@ -35,12 +35,14 @@
 
 							<div style='width:100%;margin-bottom: 3px;'>
 								
-								<label>Phase</label> :<select style='width:100px;padding:2px;' id='{$submodul}_phasename'>
-									{$tbl_master_phase_db}
-								</select>  &nbsp;
-								<label>BOQ No</label> :<select style='width:100px;padding:2px;' id='{$submodul}_boqno'>
-									{$tbl_master_tracker_siteinfo_db}
-								</select>  &nbsp;
+								<label>Phase</label> :
+									<select style='width:100px;padding:2px;' id='{$submodul}_phasename'>
+										{$tbl_master_phase_db}
+									</select>  
+								&nbsp;
+								<label>BOQ No</label> :
+									<select style='width:100px;padding:2px;' id='{$submodul}_boqno'></select>  
+								&nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
 										<span class="l-btn-text">Filter Data</span><span class="l-btn-icon icon-search">&nbsp;</span>
@@ -67,7 +69,11 @@
 <script>
 	var submodul = "{$submodul|default:''}";
 	var param = {};
-
+	
+	$('#{$submodul}_phasename').on('change', function(){
+		fillCombo(host+'backend/getfillcombo/boqpersite_boqno', '{$submodul}_boqno', '', $(this).val() );
+	});
+	
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{

@@ -261,6 +261,8 @@ class lib {
 			$selTxt = $p1;
 		}
 		
+		$p2 = $ci->input->post('v2');
+		
 		$optTemp = '<option value=""> -- Choose -- </option>';
 		switch($type){
 			case "jenis_pembayaran":

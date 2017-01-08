@@ -188,7 +188,7 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}	
 						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
-						$this->nsmarty->assign("tbl_master_tracker_siteinfo_db", $this->lib->fillcombo('boqpersite_boqno', 'return'));										
+						//$this->nsmarty->assign("tbl_master_tracker_siteinfo_db", $this->lib->fillcombo('boqpersite_boqno', 'return'));										
 					break;
 					case "form-boqall":
 						if($editstatus == 'edit'){
@@ -1174,6 +1174,10 @@ class Backend extends JINGGA_Controller {
 	function getcombobox($type=""){
 		$datacombo = $this->mbackend->get_combo($type);
 		echo json_encode($datacombo);
+	}
+	
+	function getfillcombo($type=""){
+		echo $this->lib->fillcombo($type, "return");
 	}
 	
 	function download($type="", $file="template"){
