@@ -2815,7 +2815,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 	var fieldnyaboy = "id";
 	var param={};
 	var footer=false;
-	var pagesizeboy=100;
+	var pagesizeboy=50;
 	var paging=true;	
 	var fitnya=true;
 	var url_crud = host+"backend/simpandata/"+crud_table;
@@ -3286,6 +3286,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
 				{field:'id',title:'ID',width:100, halign:'center',align:'left', sortable:true},
+				{field:'id_reff1',title:'ID Reff1',width:100, halign:'center',align:'left', sortable:true},
 			]
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
@@ -3776,7 +3777,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
         pagination:paging,
        // pagination:true,
 		pageSize:pagesizeboy,
-		pageList:[100,250,500],
+		pageList:[50,100,250,500],
         remoteSort: false,
         //showFooter: true,
 		url: (urlglobal == "" ? host+"backend/getdata/"+urlnya : urlglobal),		

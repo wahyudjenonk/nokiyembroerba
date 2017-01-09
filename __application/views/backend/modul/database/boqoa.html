@@ -34,11 +34,14 @@
 							*}
 
 							<div style='width:100%;margin-bottom: 3px;'>
-								<label>Name</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
-								<label>Site ID</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_siteid' /> &nbsp;
-								<label>PO Type</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_potype' /> &nbsp;
-								<label>PO NO</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_pono' /> &nbsp;
-								<label>All Field</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_allfield' /> &nbsp;
+								<label>Phase</label> :
+									<select style='width:100px;padding:2px;' id='{$submodul}_phasename'>
+										{$tbl_master_phase_db}
+									</select>  
+								&nbsp;
+								<label>BOQ No</label> :
+									<select style='width:400px;padding:2px;' id='{$submodul}_boqno'></select>  
+								&nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
 										<span class="l-btn-text">Filter Data</span><span class="l-btn-icon icon-search">&nbsp;</span>
@@ -64,20 +67,20 @@
 <script>
 	var submodul = "{$submodul|default:''}";
 	var param = {};
-
+	
+	$('#{$submodul}_phasename').on('change', function(){
+		fillCombo(host+'backend/getfillcombo/boqpersite_boqno', '{$submodul}_boqno', '', $(this).val() );
+	});
+	
 	$(document).keypress(function(e) {
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_all_database',
 				'phasename' : $('#{$submodul}_phasename').val(),
-				'siteid' : $('#{$submodul}_siteid').val(),
-				'potype' : $('#{$submodul}_potype').val(),
-				'pono' : $('#{$submodul}_pono').val(),
+				'boqno' : $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
-				'initial_site' : 'C',
-				'initial_potype' : 'E',
-				'initial_pono' : 'F'
+				'initial_boqno' : 'C',
 			});
 		}
 	});
@@ -85,27 +88,20 @@
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_all_database',
 				'phasename' : $('#{$submodul}_phasename').val(),
-				'siteid' : $('#{$submodul}_siteid').val(),
-				'potype' : $('#{$submodul}_potype').val(),
-				'pono' : $('#{$submodul}_pono').val(),
+				'boqno' : $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
-				'initial_site' : 'C',
-				'initial_potype' : 'E',
-				'initial_pono' : 'F'
-		});
+				'initial_boqno' : 'C',
+			});
+		
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['table'] = 'tbl_all_database';
 		param['phasename']   = $('#{$submodul}_phasename').val();
-		param['siteid']   = $('#{$submodul}_siteid').val();
-		param['potype']   = $('#{$submodul}_potype').val();
-		param['pono']   = $('#{$submodul}_pono').val();
+		param['boqno']   = $('#{$submodul}_boqno').val();
 		param['allfield']    = $('#{$submodul}_allfield').val();
 		param['initial_phase']   = 'B';
-		param['initial_site']   = 'C';
-		param['initial_potype']   = 'E';
-		param['initial_pono']   = 'F';	
+		param['initial_boqno']   = 'C';	
 
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/boqoa', param);
 	});

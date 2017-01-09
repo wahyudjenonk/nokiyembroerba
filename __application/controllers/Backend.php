@@ -200,13 +200,27 @@ class Backend extends JINGGA_Controller {
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
-						}						
-					break;			
+						}
+					break;	
+					case "boqoa":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
+					break;		
 					case "form-boqba":
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
+					break;
+					case "boqba":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
 					break;
 					case "form-boqinv":
 						if($editstatus == 'edit'){
@@ -214,11 +228,25 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}						
 					break;
+					case "boqinv":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
+					break;
 					case "form-wpidso":
 						if($editstatus == 'edit'){
 							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
 							$this->nsmarty->assign("data", $data);
 						}						
+					break;
+					case "wpidso":
+						if($editstatus == 'edit'){
+							$data = $this->db->get_where('tbl_all_database', array('id'=>$id))->row_array();
+							$this->nsmarty->assign("data", $data);
+						}
+						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
 					break;
 				}
 			break;
