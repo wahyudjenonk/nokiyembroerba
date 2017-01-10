@@ -97,14 +97,9 @@
 			});
 		
 	});
+	
 	$('#exportdata_{$submodul}').on('click', function(){
-		param['table'] = 'tbl_all_database';
-		param['phasename']   = $('#{$submodul}_phasename').val();
-		param['boqno']   = $('#{$submodul}_boqno').val();
-		param['allfield']    = $('#{$submodul}_allfield').val();
-		param['initial_phase']   = 'B';
-		param['initial_boqno']   = 'J';	
-
-		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/boqpersite', param);
+		param['boqidnya']   = $('#{$submodul}_boqno').val();
+		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/boqform', param);
 	});
 </script>

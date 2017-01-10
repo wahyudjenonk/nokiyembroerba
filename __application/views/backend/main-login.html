@@ -28,17 +28,17 @@
 						<center><img src="{$host}__assets/img/nokia_white_logo.png" width='250px' height='100px' style='margin-top:15px !important;'/></center>
 						<form class="m-t" role="form" action="{$host}backoffice-masuk" method="post">
 							<div class="form-group">
-								<input type="text" name='user' class="form-control" placeholder="Username" required="">
+								<input type="text" name='user' style='color:black !important;' class="form-control" placeholder="Username" required="">
 							</div>
 							<div class="form-group">
-								<input type="password" name='pwd' class="form-control" placeholder="Password" required="">
+								<input type="password" name='pwd' style='color:black !important;' class="form-control" placeholder="Password" required="">
 							</div>
 							<button type="submit" class="btn btn-primary">Login</button>
 							
 						</form>
 						{if isset($error)}
 							<div style="text-align:center;margin-top:10px">
-								<span style="color:red;"><b><i>{$error}</i></b></span>
+								<span style="color:white;"><b><i>{$error}</i></b></span>
 							</div>
 						{/if}	
 					</div>

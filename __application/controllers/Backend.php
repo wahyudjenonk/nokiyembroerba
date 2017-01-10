@@ -383,7 +383,11 @@ class Backend extends JINGGA_Controller {
 	function exportdatawithtemplate($p1=""){
 		$this->load->library("PHPExcel");
 		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
-		$data = $this->mbackend->getdata($p1,'result_array');
+		
+		if($p1 != 'boqform'){
+			$data = $this->mbackend->getdata($p1,'result_array');
+		}
+		
 		$date=date('YmdHis');
 
 		switch($p1){
@@ -1113,7 +1117,7 @@ class Backend extends JINGGA_Controller {
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 5;
 				
-			foreach($data as $k => $v){
+				foreach($data as $k => $v){
 					$rowCount++;
 					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
 					$worksheet->SetCellValue('B'.$rowCount, $v['id_reff1']);
@@ -1149,6 +1153,68 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('AF'.$rowCount, $v['uploader_id']);
 					$worksheet->SetCellValue('AG'.$rowCount, $v['status']);
 				}
+			break;
+			
+			case "boqform":
+				$filename = "export-boqform-".$date;
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-boqform.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 14;
+				
+				$databoq = $this->mbackend->getdata("getboqdetail", "row_array");
+				$worksheet->SetCellValue('I1', $databoq['boqno']); 
+				$worksheet->SetCellValue('I2', $databoq['po_ne']); 
+				$worksheet->SetCellValue('I3', $databoq['phase_code']); 
+				$worksheet->SetCellValue('I4', $databoq['region_code']); 
+				$worksheet->SetCellValue('I5', $databoq['site_id']); 
+				$worksheet->SetCellValue('I6', $databoq['site_name']); 
+				$worksheet->SetCellValue('I7', $databoq['site_id_ori']); 
+				$worksheet->SetCellValue('I8', $databoq['site_name_ori']); 
+				$worksheet->SetCellValue('I9', $databoq['sow_category']); 
+				$worksheet->SetCellValue('I10', $databoq['network_boq']);
+				
+				$worksheet->SetCellValue('B7', "Bill of Quantity per Site Indosat Project AOP ".$databoq['phase_year']); 
+				$worksheet->SetCellValue('B8', "PROJECT ".$databoq['phase_name']); 
+				
+				$datadetailnya = $this->mbackend->getdata("getisiboq", "variable");
+				foreach($datadetailnya as $k => $v){
+					$worksheet->getStyle('B'.$rowCount.":J".$rowCount)->applyFromArray(
+						array(
+							'fill' => array(
+								'type' => PHPExcel_Style_Fill::FILL_SOLID,
+								'color' => array('rgb' => 'FFFF33')
+							),
+						)
+					);
+					$worksheet->SetCellValue('C'.$rowCount, $v['po_type']);
+					
+					foreach($v['detail'] as $zz => $yy){
+						$rowCount++;
+						$worksheet->getStyle('B'.$rowCount.":J".$rowCount)->applyFromArray(
+							array(
+								'borders' => array(
+								  'allborders' => array(
+									  'style' => PHPExcel_Style_Border::BORDER_THIN
+								  )
+								)
+							)
+						);
+						
+						$worksheet->SetCellValue('D'.$rowCount, $yy['material_number']);
+						$worksheet->SetCellValue('E'.$rowCount, $yy['material_description']);
+						$worksheet->SetCellValue('G'.$rowCount, $yy['po_no']);
+						$worksheet->SetCellValue('H'.$rowCount, $yy['plan_qty_mapping']);
+						$worksheet->SetCellValue('I'.$rowCount, $yy['aqtual_qty_mapping']);
+						$worksheet->SetCellValue('J'.$rowCount, $yy['network_boq']);
+					}
+					
+					$rowCount++;
+				}
+				
+				$worksheet->SetCellValue('D'.($rowCount+3), "Date :");
+				$worksheet->SetCellValue('D'.($rowCount+4), "NSN Representative,");
+				$worksheet->SetCellValue('H'.($rowCount+3), "Date :");
+				$worksheet->SetCellValue('H'.($rowCount+4), "Indosat Representative,");
 			break;
 		}
 		

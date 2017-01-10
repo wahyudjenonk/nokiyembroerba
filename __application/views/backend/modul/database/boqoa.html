@@ -76,22 +76,23 @@
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_all_database',
-				'phasename' : $('#{$submodul}_phasename').val(),
-				'boqno' : $('#{$submodul}_boqno').val(),
+			//	'phasename' : $('#{$submodul}_phasename').val(),
+				'boqno_persite' : $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
-				'initial_boqno' : 'C',
+				'initial_boqno' : 'J',
 			});
 		}
 	});
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_all_database',
-				'phasename' : $('#{$submodul}_phasename').val(),
-				'boqno' : $('#{$submodul}_boqno').val(),
+				'table' : 'tbl_all_database',
+			//	'phasename' : $('#{$submodul}_phasename').val(),
+				'boqno_persite' : $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
-				'initial_boqno' : 'C',
+				'initial_boqno' : 'J',
 			});
 		
 	});
