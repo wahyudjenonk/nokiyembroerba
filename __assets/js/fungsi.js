@@ -4340,6 +4340,7 @@ function genTab(div, mod, sub_mod, tab_array, div_panel, judul_panel, mod_num, h
 
 function kumpulAction(type, p1, p2, p3, p4, p5){
 	var param = {};
+	
 	switch(type){
 		case "checkboxgrid":
 			switch(p1){
@@ -4351,7 +4352,8 @@ function kumpulAction(type, p1, p2, p3, p4, p5){
 					});
 				break;
 				case "boqoa_onair_all":
-					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+					var boqno = $('#boqoa_boqno').val();
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'boqno':boqno}, function(resp){
 						if(resp == 1){
 							$('#'+p2).datagrid('reload');
 						}
@@ -4365,7 +4367,8 @@ function kumpulAction(type, p1, p2, p3, p4, p5){
 					});
 				break;
 				case "boqoa_atp_all":
-					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid'}, function(resp){
+					var boqno = $('#boqoa_boqno').val();
+					$.post(host+'backend/simpandata/checkbox_update/', {'field':p1, 'editstatus':'updategrid', 'boqno':boqno}, function(resp){
 						if(resp == 1){
 							$('#'+p2).datagrid('reload');
 						}
