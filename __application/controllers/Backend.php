@@ -447,9 +447,10 @@ class Backend extends JINGGA_Controller {
 					$worksheet->SetCellValue('H'.$rowCount, $v['nodin']);
 					$worksheet->SetCellValue('I'.$rowCount, $v['cr_position']);
 					$worksheet->SetCellValue('J'.$rowCount, $v['cr_pic']);
-					$worksheet->SetCellValue('K'.$rowCount, $v['cr_submit']);
-					$worksheet->SetCellValue('L'.$rowCount, $v['cr_approved']);
-					$worksheet->SetCellValue('M'.$rowCount, $v['po_received']);
+					
+					$worksheet->SetCellValue('K'.$rowCount, PHPExcel_Shared_Date::PHPToExcel( strtotime($v['cr_submit']) ) );					
+					$worksheet->SetCellValue('L'.$rowCount, PHPExcel_Shared_Date::PHPToExcel( strtotime($v['cr_approved']) ) );
+					$worksheet->SetCellValue('M'.$rowCount, PHPExcel_Shared_Date::PHPToExcel( strtotime($v['po_received']) ) );
 					$worksheet->SetCellValue('N'.$rowCount, $v['cr_currency']);
 					$worksheet->SetCellValue('O'.$rowCount, $v['value_before']);
 					$worksheet->SetCellValue('P'.$rowCount, $v['value_after']);
@@ -1253,7 +1254,10 @@ class Backend extends JINGGA_Controller {
 		if($import == 1){
 			echo $import;
 		}else{
-			unlink($import['folder_upload']);
+			if(isset($import['folder_upload'])){
+				unlink($import['folder_upload']);
+			}
+			
 			$this->nsmarty->assign('type', $p1);
 			$this->nsmarty->assign('data', $import);
 			$this->nsmarty->display("backend/modul/".$this->input->post('folder')."/hasil_import.html");
@@ -1299,7 +1303,8 @@ class Backend extends JINGGA_Controller {
 	}
 	
 	function test(){
-		print_r($this->auth);
+		$crsubmitt = strtotime("2017-01-10");
+		echo $crsubmitt;
 	}
 	
 }
