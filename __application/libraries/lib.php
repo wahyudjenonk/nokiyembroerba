@@ -295,10 +295,14 @@ class lib {
 					'6' => array('id'=>'costsales','txt'=>'Cost & Sales')
 				);
 			break;
-			case "comboalldatabse":
+			case "comboalldatabase":
 				$data = array(
 					'0' => array('id'=>'received','txt'=>'Received'),
 					'1' => array('id'=>'reservation','txt'=>'Reservation'),
+					'2' => array('id'=>'boqoa','txt'=>'BOQ OA'),
+					'3' => array('id'=>'boqba','txt'=>'BOQ BA'),
+					'4' => array('id'=>'boqinv','txt'=>'BOQ INV'),
+					'5' => array('id'=>'wpidso','txt'=>'WPID SO'),
 				);
 			break;
 			default:

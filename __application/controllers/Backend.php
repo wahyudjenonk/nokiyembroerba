@@ -1157,7 +1157,8 @@ class Backend extends JINGGA_Controller {
 			break;
 			
 			case "boqform":
-				$filename = "export-boqform-".$date;
+				$databoq = $this->mbackend->getdata("getboqdetail", "row_array");
+				$filename = $databoq['site_id']."_".$databoq['po_ne']."_BoQ_".$databoq['sow_category']."_".$databoq['phase_name']."_NOKIA_".$databoq['site_name']."_".$databoq['boqno']."_".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-boqform.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 14;
@@ -1212,10 +1213,18 @@ class Backend extends JINGGA_Controller {
 					$rowCount++;
 				}
 				
-				$worksheet->SetCellValue('D'.($rowCount+3), "Date :");
-				$worksheet->SetCellValue('D'.($rowCount+4), "NSN Representative,");
-				$worksheet->SetCellValue('H'.($rowCount+3), "Date :");
-				$worksheet->SetCellValue('H'.($rowCount+4), "Indosat Representative,");
+				$worksheet->SetCellValue('C'.($rowCount+3), "Date :")->getStyle('C'.($rowCount+3))->getAlignment()->applyFromArray(
+    				array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,)
+				);
+				$worksheet->SetCellValue('C'.($rowCount+4), "NOKIA Representative,")->getStyle('C'.($rowCount+4))->getAlignment()->applyFromArray(
+    				array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,)
+				);
+				$worksheet->SetCellValue('H'.($rowCount+3), "Date :")->getStyle('H'.($rowCount+3))->getAlignment()->applyFromArray(
+    				array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,)
+				);
+				$worksheet->SetCellValue('H'.($rowCount+4), "INDOSAT Representative,")->getStyle('H'.($rowCount+4))->getAlignment()->applyFromArray(
+    				array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,)
+				);
 			break;
 		}
 		

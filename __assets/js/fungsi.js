@@ -492,7 +492,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'alarm_approved',title:'Alarm Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ssv_fr_submit',title:'SSV FR Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ssv_vr_approved',title:'SSV VR Approved',width:100, halign:'center',align:'left', sortable:true},
-				{field:'ssv_frftr_submit',title:'SSV FR/FTR Submit',width:100, halign:'center',align:'left', sortable:true},
+				{field:'ssv_frftr_submit',title:'SSV SR/FTR Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'ftr_srftr_approved',title:'FTR SR/FTR Approved',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pmr_lv_submit',title:'PMR LV Submit',width:100, halign:'center',align:'left', sortable:true},
 				{field:'pmr_lv_approved',title:'PMR LV Approved',width:100, halign:'center',align:'left', sortable:true},
@@ -1485,21 +1485,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'cluster',title:'Cluster',width:50, halign:'center',align:'center', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'tbl_master_phase_id',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true,
-					formatter:function(value,row){
-						return row.phase_code || value;
-					},
-					editor:{
-                       type:'combobox',
-                       options:{
-						valueField:'id',
-						textField:'txt',
-						width:200,
-						url:host+'backend/getcombobox/tbl_master_phase',
-                       }
-                    }
-				},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'sow_detail',title:'SOW Detail',width:300, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -1544,6 +1529,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'remarks_siteinfo',title:'Remarks',width:200, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
@@ -1556,7 +1543,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 						}
 					}
 				},
-				{field:'action',title:'Action Inline Edit',width:120,align:'center',
+				/*{field:'action',title:'Action Inline Edit',width:120,align:'center',
 					formatter:function(value,row,index){
 						if (row.editing){
 							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
@@ -1567,7 +1554,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 							return e;
 						}
 					}
-				},
+				},*/
 			]
 		break;	
 		case "siteprogress":
@@ -1597,7 +1584,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:150, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region',width:50, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'rfi',title:'RFI',width:100, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
@@ -1726,6 +1712,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
@@ -1755,7 +1742,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:50, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:50, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'on_air_date',title:'On Air Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'alarm_submit',title:'Alarm Submit',width:100, halign:'center',align:'left', sortable:true,
@@ -1794,7 +1780,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'ssv_frftr_submit',title:'SSV FR/FTR Submit',width:100, halign:'center',align:'left', sortable:true,
+				{field:'ssv_frftr_submit',title:'SSV SR/FTR Submit',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -1902,6 +1888,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'xx_other4',title:'xx.Other 4',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
@@ -1931,7 +1918,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:50, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:50, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'atf_submit',title:'ATF Submit',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
@@ -2005,6 +1991,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
@@ -2034,7 +2021,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:50, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:50, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'10_lld_ndb',title:'10. LLD/NDB',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
@@ -2063,7 +2049,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'61_redline_pdf',title:'61. Redline PDF',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'62_bd_dwg',title:'62. BD DWG',width:100, halign:'center',align:'left', sortable:true,
+				{field:'62_bd_dwg',title:'62. ABD DWG',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'63_abd_pdf',title:'63. ABD PDF',width:100, halign:'center',align:'left', sortable:true,
@@ -2084,7 +2070,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'reviewer',title:'RIVIEWER',width:100, halign:'center',align:'left', sortable:true,
+				{field:'reviewer',title:'REVIEWER',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'doc_accept',title:'DOC ACCEPT',width:100, halign:'center',align:'left', sortable:true,
@@ -2159,7 +2145,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'dc_reviewer',title:'DC RIVIEWER',width:100, halign:'center',align:'left', sortable:true,
+				{field:'dc_reviewer',title:'DC REVIEWER',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'dc_approved',title:'DC APPROVED',width:100, halign:'center',align:'left', sortable:true,
@@ -2192,6 +2178,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'remarks',title:'Remarks',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
@@ -2221,20 +2208,11 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:50, halign:'center',align:'left', sortable:true},
 				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'left', sortable:true},
 				{field:'region_code',title:'Region Code',width:50, halign:'center',align:'left', sortable:true},
-				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'po_ne',title:'NE',width:50, halign:'center',align:'left', sortable:true},
 				{field:'on_air_date',title:'On Air Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'atp_date',title:'Atp Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'endorse_approved',title:'Endorse Approved',width:100, halign:'center',align:'left', sortable:true},
-				{field:'mcr_exit_date',title:'Mcr Exit Date',width:100, halign:'center',align:'left', sortable:true,
-					editor:{
-                       type:'datebox',
-                       options:{
-						formatter : formatDate,
-						parser : parserDate,
-                       }
-                    }
-                },
+				{field:'mcr_exit_date',title:'Mcr Exit Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'mcr_exit_no',title:'Mcr Exit No',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -2274,6 +2252,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'pmp_status',title:'Pmp Status',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:' ',title:'BABT No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'babt_submit',title:'Babt Submit',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
@@ -2292,19 +2271,11 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'baut1_date',title:'Baut1 Date',width:100, halign:'center',align:'left', sortable:true,
-					editor:{
-                       type:'datebox',
-                       options:{
-						formatter : formatDate,
-						parser : parserDate,
-                       }
-                    }
-                },
-				{field:'baut1_no',title:'Baut1 No',width:100, halign:'center',align:'left', sortable:true,
+                {field:' ',title:'BABT Remakrs',width:100, halign:'center',align:'left', sortable:true},
+				{field:'baut1_no',title:'BAUT MCR No',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'bast1_date',title:'Bast1 Date',width:100, halign:'center',align:'left', sortable:true,
+				{field:'baut1_date',title:'BAUT MCR',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -2313,7 +2284,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'baut2_date',title:'Baut2 Date',width:100, halign:'center',align:'left', sortable:true,
+				{field:'bast1_date',title:'BAST MCR Date',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -2322,10 +2293,10 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'baut2_no',title:'Baut2 No',width:100, halign:'center',align:'left', sortable:true,
+				{field:'baut2_no',title:'BAUT PAC No',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'bast2_date',title:'Bast2 Date',width:100, halign:'center',align:'left', sortable:true,
+				{field:'baut2_date',title:'BAUT PAC Date',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -2334,7 +2305,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'baut3_date',title:'Baut3 Date',width:100, halign:'center',align:'left', sortable:true,
+				{field:'bast2_date',title:'BAST PAC Date',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -2343,10 +2314,19 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
                 },
-				{field:'baut3_no',title:'Baut3 No',width:100, halign:'center',align:'left', sortable:true,
+				{field:'baut3_no',title:'BAUT FAC No',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'bast3_date',title:'Bast3 Date',width:100, halign:'center',align:'left', sortable:true,
+				{field:'baut3_date',title:'BAUT FAC Date',width:100, halign:'center',align:'left', sortable:true,
+					editor:{
+                       type:'datebox',
+                       options:{
+						formatter : formatDate,
+						parser : parserDate,
+                       }
+                    }
+                },
+				{field:'bast3_date',title:'BAST FAC Date',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -2430,6 +2410,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'remarks_invoice',title:'Remarks Invoice',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
 				{field:'update_date',title:'Update Date',width:100, halign:'center',align:'left', sortable:true},
 				{field:'uploader_id',title:'UL ID',width:150, halign:'center',align:'left', sortable:true},
@@ -4051,6 +4032,14 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 		case "receivedall":			
 			table = "tbl_all_database";
 			judulwindow = 'Form Received All';
+			lebar = 700;
+			tinggi = 200;
+			celledit = true;
+			urlpost = host+'backend/getdisplay/database/form-'+submodulnya;
+		break;
+		case "reservationall":			
+			table = "tbl_all_database";
+			judulwindow = 'Form Reservation All';
 			lebar = 700;
 			tinggi = 200;
 			celledit = true;
