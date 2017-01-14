@@ -3048,9 +3048,9 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				
 				//{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phasecode',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phaseyear',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phasename',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:100, halign:'center',align:'left', sortable:true},
 				{field:'prnumber_rcv',title:'PR Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'prlineitem_rcv',title:'PR Line Item',width:100, halign:'center',align:'left', sortable:true},
@@ -3167,7 +3167,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phasename',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno || value;
@@ -3271,7 +3271,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			]
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
-				{field:'phasename',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:true},
 				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:true},
@@ -4029,7 +4029,9 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			tinggi_import = 600;
 			type_import = "uploadalldatabase";
 		break;
-		case "receivedall":			
+		case "receivedall":
+		case "receiveddollar":
+		case "received":			
 			table = "tbl_all_database";
 			judulwindow = 'Form Received All';
 			lebar = 700;

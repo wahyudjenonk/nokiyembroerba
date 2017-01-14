@@ -78,7 +78,7 @@
 		if(e.which == 13) {
 			$('#grid_{$submodul}').datagrid('reload',{
 				'table' : 'tbl_all_database',
-			//	'phasename' : $('#{$submodul}_phasename').val(),
+				'phasename_persite' : $('#{$submodul}_phasename').val(),
 				'boqno_persite' : $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
@@ -89,7 +89,7 @@
 	$('#search_{$submodul}').on('click', function(){
 		$('#grid_{$submodul}').datagrid('reload',{
 			'table' : 'tbl_all_database',
-			//	'phasename' : $('#{$submodul}_phasename').val(),
+				'phasename_persite' : $('#{$submodul}_phasename').val(),
 				'boqno_persite' : $('#{$submodul}_boqno').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
@@ -100,6 +100,7 @@
 	
 	$('#exportdata_{$submodul}').on('click', function(){
 		param['boqidnya']   = $('#{$submodul}_boqno').val();
+		param['phaseidnya']   = $('#{$submodul}_phasename').val();
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/boqform', param);
 	});
 </script>

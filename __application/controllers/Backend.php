@@ -1157,13 +1157,13 @@ class Backend extends JINGGA_Controller {
 			break;
 			
 			case "boqform":
-				$databoq = $this->mbackend->getdata("getboqdetail", "row_array");
-				$filename = $databoq['site_id']."_".$databoq['po_ne']."_BoQ_".$databoq['sow_category']."_".$databoq['phase_name']."_NOKIA_".$databoq['site_name']."_".$databoq['boqno']."_".$date;
 				$objPHPExcel = $objReader->load("__repository/template_export/template-export-boqform.xlsx");
 				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
 				$rowCount = 14;
 				
 				$databoq = $this->mbackend->getdata("getboqdetail", "row_array");
+				$filename = $databoq['site_id']."_".$databoq['po_ne']."_BoQ_".$databoq['sow_category']."_".$databoq['phase_name']."_NOKIA_".$databoq['site_name']."_".$databoq['boqno']."_".$date;
+				
 				$worksheet->SetCellValue('I1', $databoq['boqno']); 
 				$worksheet->SetCellValue('I2', $databoq['po_ne']); 
 				$worksheet->SetCellValue('I3', $databoq['phase_code']); 
@@ -1174,6 +1174,7 @@ class Backend extends JINGGA_Controller {
 				$worksheet->SetCellValue('I8', $databoq['site_name_ori']); 
 				$worksheet->SetCellValue('I9', $databoq['sow_category']); 
 				$worksheet->SetCellValue('I10', $databoq['network_boq']);
+				$worksheet->SetCellValue('I11', $databoq['atpdatenya']);
 				
 				$worksheet->SetCellValue('B7', "Bill of Quantity per Site Indosat Project AOP ".$databoq['phase_year']); 
 				$worksheet->SetCellValue('B8', "PROJECT ".$databoq['phase_name']); 
