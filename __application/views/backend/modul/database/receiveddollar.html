@@ -78,8 +78,8 @@
 				'pono' : $('#{$submodul}_pono').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
-				'initial_potype' : 'C',
-				'initial_pono' : 'D'
+				'initial_potype' : 'D',
+				'initial_pono' : 'C'
 			});
 		}
 	});
@@ -92,8 +92,8 @@
 				'pono' : $('#{$submodul}_pono').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'B',
-				'initial_potype' : 'C',
-				'initial_pono' : 'D'
+				'initial_potype' : 'D',
+				'initial_pono' : 'C'
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
@@ -105,7 +105,7 @@
 		param['allfield']    = $('#{$submodul}_allfield').val();
 		param['initial_phase']   = 'B';
 		param['initial_potype']   = 'D';
-		param['initial_pono']   = 'D';	
+		param['initial_pono']   = 'C';	
 
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/receiveddollar', param);
 	});
