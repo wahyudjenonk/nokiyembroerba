@@ -59,4 +59,15 @@
 			
 		});
 	});
+
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			$('#grid_{$submodul}').datagrid('reload',{
+				'table' : 'tbl_uploader_tracker',
+				'allfield' 	: $('#{$submodul}_allfield').val(),
+				
+			});
+		}
+	});
+	
 </script>
