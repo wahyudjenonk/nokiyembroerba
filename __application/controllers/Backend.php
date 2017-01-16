@@ -385,7 +385,7 @@ class Backend extends JINGGA_Controller {
 		$objReader = PHPExcel_IOFactory::createReader('Excel2007');
 		
 		if($p1 != 'boqform'){
-			$data = $this->mbackend->getdata($p1,'result_array', 'exportdata');
+			$data = $this->mbackend->getdata($p1,'result_array');
 		}
 		
 		$date=date('YmdHis');
