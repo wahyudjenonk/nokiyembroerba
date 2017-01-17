@@ -20,18 +20,6 @@
 					
 					<div id='grid_nya_{$submodul}' style='height:400px;width:100%;'>
 						<div id='tb_{$submodul}' style='margin-bottom:10px;'>
-							{*
-							<select id='{$submodul}_filter_kategori' style='width:100px;padding:5px;'>
-								<option value='all'>All</option>
-								<option value=''>not</option>
-							</select>
-							<input type='text' style='width:150px;padding:5px;' id='{$submodul}_txt' />
-							<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
-								<span class="l-btn-left l-btn-icon-left">
-									<span class="l-btn-text"></span><span class="l-btn-icon icon-search">&nbsp;</span>
-								</span>
-							</a>
-							*}
 
 							<div style='width:100%;margin-bottom: 3px;'>
 								{include file="backend/template/button_grid.html" varbutton="siteinfo"}	
@@ -53,11 +41,23 @@
 							</div>
 						</div>
 						
-						{include file="backend/template/grid_editable.html" tinggi_grid="getClientHeight()-230" tablenya="tbl_master_tracker_siteinfo"}
+						{include file="backend/template/grid_celledit.html" tinggi_grid="getClientHeight()-230" tablenya="tbl_master_tracker_siteinfo"}
 					</div>
 					
 					<div id='frm_{$submodul}' style='display:none;'></div>
-				
+					
+					<div id='footer_{$submodul}' style="padding:5px;">
+						<a href="javascript:void(0)" style="" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="$('#grid_{$submodul}').datagrid('acceptChanges');$('#grid_{$submodul}').datagrid('reload');">
+							<span class="l-btn-left l-btn-icon-left">
+								<span class="l-btn-text">Save Editing</span><span class="l-btn-icon icon-save">&nbsp;</span>
+							</span>
+						</a>
+						<a href="javascript:void(0)" style="" class="l-btn l-btn-small l-btn-plain" group="" id="" onClick="$('#grid_{$submodul}').datagrid('rejectChanges');">
+							<span class="l-btn-left l-btn-icon-left">
+								<span class="l-btn-text">Cancel Editing</span><span class="l-btn-icon icon-no">&nbsp;</span>
+							</span>
+						</a>
+					</div>
 				</div>
 			</div>
 			
