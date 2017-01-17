@@ -1341,8 +1341,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 	var urlnya;
 	var urlglobal="";
 	var param={};
-	var footer=false;
-	var pagesizeboy=100;
+	var footers=false;
+	var pagesizeboy=50;
 	var paging=true;	
 	var fitnya=true;
 	var url_crud = host+"backend/simpandata/"+crud_table;
@@ -1453,7 +1453,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'sow_category',title:'SOW Category',width:150, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'tbl_master_sitename_id',title:'Site Status',width:75, halign:'center',align:'center', sortable:true,
+				{field:'tbl_master_sitename_id',title:'', hidden:true},
+				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'center', sortable:true,
 					formatter:function(value,row){
 						return row.site_status || value;
 					},
@@ -1466,7 +1467,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
                        }
                     }
 				},
-				{field:'tbl_master_region_id',title:'Region',width:50, halign:'center',align:'center', sortable:true,
+				{field:'tbl_master_region_id',title:'', hidden:true},
+				{field:'region_code',title:'Region',width:50, halign:'center',align:'center', sortable:true,
 					formatter:function(value,row){
 						return row.region_code || value;
 					},
@@ -1497,7 +1499,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'site_name_ori',title:'Site Name Ori',width:150, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'tbl_master_pone_id',title:'NE Name',width:75, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_pone_id',title:'', hidden:true},
+				{field:'po_ne',title:'NE Name',width:75, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.po_ne || value;
 					},
@@ -2640,64 +2643,6 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 			]			
 		break;
 	
-		case "tbl_employees":
-			judulnya = "";
-			urlnya = "tbl_emp_act";
-			fitnya = true;
-			kolom[modnya] = [	
-				{field:'costcenter_desc',title:'Cost Center',width:100, halign:'center',align:'left',
-					editor:{type:'validatebox',options:{}}
-				},
-				{field:'employee_id',title:'Emp. ID',width:80, halign:'center',align:'center'},
-				{field:'name_na',title:'Employee Name',width:180, halign:'center',align:'left'},
-				{field:'cost_nbr',title:'Cost',width:100, halign:'center',align:'right'},
-				{field:'percent',title:'%',width:50, halign:'center',align:'right',
-					
-					editor:{type:'numberbox',options:{precision:1,value:0,min:0,max:100}}
-				},
-				{field:'quantity',title:'Quantity',width:100, halign:'center',align:'right',
-					editor:{type:'numberbox',options:{ value:0 }}
-				},
-				{field:'cost_type',title:'Cost Type',width:100, halign:'center',align:'right',
-					editor:{
-                       type:'combobox',
-                       options:{
-                           valueField:'id',
-                           textField:'value',
-						   data: [{
-								id: 'Fixed',
-								value: 'Fixed'
-							}]
-                          // method:'get',
-                          // url:'products.json',
-                          // required:true
-                       }
-                    }
-				},
-				{field:'budget_type',title:'Budget',width:100, halign:'center',align:'right',
-					editor:{
-                       type:'combobox',
-                       options:{
-                           valueField:'id',
-                           textField:'value',
-						   data: [{
-								id: 'Fixed',
-								value: 'Fixed'
-							}]
-                          // method:'get',
-                          // url:'products.json',
-                          // required:true
-                       }
-                    }
-				},
-				{field:'input_rate',title:'Input Rate',width:80, halign:'center',align:'right',
-					editor:{type:'numberbox',options:{value:0}}
-				},
-				{field:'output_rate',title:'Output Rate',width:80, halign:'center',align:'right',
-					editor:{type:'numberbox',options:{value:0}}
-				},
-			]
-		break;
 	}
 	
 	$("#"+divnya).edatagrid({
@@ -2711,7 +2656,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
         pagination:paging,
        // pagination:true,
 		pageSize:pagesizeboy,
-		pageList:[100,250,500],
+		pageList:[50,100,250,500],
         remoteSort: false,
         //showFooter: true,
 		url: (urlglobal == "" ? host+"backend/getdata/"+urlnya : urlglobal),		
@@ -2721,7 +2666,8 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 		nowrap: true,
         singleSelect:true,
 		queryParams:param,
-		showFooter:footer,
+		showFooter:false,
+		footer:'#footer_'+modnya,
 		frozenColumns:[
             frozen[modnya]
         ],
@@ -2730,28 +2676,43 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
         ],
 		//toolbar: tolbarnya,
 		onEndEdit:function(index,row){
-            if(divnya == "siteinfo"){
+            if(modnya == "siteinfo"){
 				var ed_sitestatus = $(this).datagrid('getEditor', {
 					index: index,
-					field: 'tbl_master_sitename_id'
+					field: 'site_status'
 				});
+				/*
 				var ed_regioncode = $(this).datagrid('getEditor', {
 					index: index,
-					field: 'tbl_master_region_id'
-				});
-				var ed_phasecode = $(this).datagrid('getEditor', {
-					index: index,
-					field: 'tbl_master_phase_id'
+					field: 'region_code'
 				});
 				var ed_pone = $(this).datagrid('getEditor', {
 					index: index,
-					field: 'tbl_master_pone_id'
+					field: 'po_ne'
 				});
+				*/
 				
-				row.tbl_master_sitename_id = $(ed_sitestatus.target).combobox('getText');
-				row.tbl_master_region_id = $(ed_regioncode.target).combobox('getText');
-				row.tbl_master_phase_id = $(ed_phasecode.target).combobox('getText');
-				row.tbl_master_pone_id = $(ed_pone.target).combobox('getText');
+				console.log($(ed_sitestatus.target).combobox('getValue'));
+				//console.log($(ed_regioncode.target).combobox('getValue'));
+				//console.log($(ed_pone.target).combobox('getValue'));
+				
+				//sitename
+				if(ed_sitestatus){
+					row.tbl_master_sitename_id = $(ed_sitestatus.target).combobox('getValue');
+					row.site_status = $(ed_sitestatus.target).combobox('getText');
+				}
+				/*
+				//region
+				if(ed_regioncode){				
+					row.tbl_master_region_id = $(ed_regioncode.target).combobox('getValue');
+					row.region_code = $(ed_regioncode.target).combobox('getText');
+				}
+				//ne name
+				if(ed_pone){
+					row.tbl_master_pone_id = $(ed_pone.target).combobox('getValue');
+					row.po_ne = $(ed_pone.target).combobox('getText');
+				}
+				*/
 			}
         },		
 		onBeforeEdit:function(index,row,rowIndex){
@@ -2795,13 +2756,140 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 	var urlglobal="";
 	var fieldnyaboy = "id";
 	var param={};
-	var footer=false;
+	var footers=false;
 	var pagesizeboy=50;
 	var paging=true;	
 	var fitnya=true;
 	var url_crud = host+"backend/simpandata/"+crud_table;
 
 	switch (modnya){
+		case "siteinfo":
+			judulnya = "";
+			urlnya = "siteinfo";
+			//height = 800;
+			fitnya = true;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [	
+				{field:'id',title:'ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_name',title:'Site Name',width:150, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},					
+			]
+			kolom[modnya] = [
+				{field:'sow_category',title:'SOW Category',width:150, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'tbl_master_sitename_id',title:'', hidden:true},
+				{field:'site_status',title:'Site Status',width:75, halign:'center',align:'center', sortable:true,
+					formatter:function(value,row){
+						return row.site_status || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						url:host+'backend/getcombobox/tbl_master_sitename',
+                       }
+                    }
+				},
+				{field:'tbl_master_region_id',title:'', hidden:true},
+				{field:'region_code',title:'Region',width:50, halign:'center',align:'center', sortable:true,
+					formatter:function(value,row){
+						return row.region_code || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						url:host+'backend/getcombobox/tbl_master_region',
+                       }
+                    }
+				},
+				{field:'area_name',title:'Area Name',width:100, halign:'center',align:'center', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'cluster',title:'Cluster',width:50, halign:'center',align:'center', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'sow_detail',title:'SOW Detail',width:300, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'system_key',title:'System Key',width:150, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_id_ori',title:'Site Ori',width:75, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'site_name_ori',title:'Site Name Ori',width:150, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'tbl_master_pone_id',title:'', hidden:true},
+				{field:'po_ne',title:'NE Name',width:75, halign:'center',align:'left', sortable:true,
+					formatter:function(value,row){
+						return row.po_ne || value;
+					},
+					editor:{
+                       type:'combobox',
+                       options:{
+						valueField:'id',
+						textField:'txt',
+						width:200,
+						url:host+'backend/getcombobox/tbl_master_pone',
+                       }
+                    }
+				},
+				{field:'network_boq',title:'Network BOQ',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'wp_id_svc',title:'WP ID SVC',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'so_svc',title:'SO SVC',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'partner_npo',title:'Partner NPO',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'remarks_siteinfo',title:'Remarks',width:200, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
+				{field:'phase_code',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true},
+				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'update_by',title:'Update By',width:100, halign:'center',align:'left', sortable:true},
+				{field:'update_date',title:'Update Date',width:150, halign:'center',align:'left', sortable:true},
+				{field:'uploader_id',title:'UL ID',width:50, halign:'center',align:'left', sortable:true},
+				{field:'status',title:'Status',width:75, halign:'center',align:'left', sortable:true,
+					formatter: function(value,row,index){
+						if (row.status == 1){
+							return "Active";
+						} else {
+							return "Inactive";
+						}
+					}
+				},
+				/*{field:'action',title:'Action Inline Edit',width:120,align:'center',
+					formatter:function(value,row,index){
+						if (row.editing){
+							var s = '<a href="#" onclick="saverow(\''+divnya+'\',this)">Save</a> ';
+							var c = '<a href="#" onclick="cancelrow(\''+divnya+'\',this)">Cancel</a>';
+							return s+c;
+						} else {
+							var e = '<a href="#" onclick="editrow(\''+divnya+'\',this)">Edit</a> ';
+							return e;
+						}
+					}
+				},*/
+			]
+		break;			
 		case "receivedall":
 			judulnya = "";
 			urlnya = "receivedall";
@@ -2814,7 +2902,8 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			kolom[modnya] = [
 				//{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'level',title:'Lev',width:25, halign:'center',align:'center', sortable:true},
-				{field:'tbl_master_phase_id',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_phase_id',title:'Lev',width:25, halign:'center',align:'center', hidden:true},
+				{field:'phase_code',title:'Phase Code',width:120, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.phase_code || value;
 					},
@@ -2944,6 +3033,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'remarkscr',title:'RemarksCR',width:200, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'tbl_master_cr_id',title:'tbl_master_cr_id',width:100, halign:'center',align:'left', hidden:true},
 				{field:'cr_no_nokia',title:'CR No Nokia',width:100, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.cr_no_nokia || value;
@@ -2981,6 +3071,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 						}
 					}
 				},
+				/*
 				{field:'action',title:'Action Inline Edit',width:120,align:'center',
 					formatter:function(value,row,index){
 						if (row.editing){
@@ -2993,6 +3084,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 						}
 					}
 				},
+				*/
 			]		
 		break;
 		case "received":
@@ -3168,7 +3260,8 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_tracker_siteinfo_id',title:'Phase Name',width:100, halign:'center',align:'left', hidden:true},
+				{field:'boqno',title:'BOQ No',width:120, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno || value;
 					},
@@ -3217,7 +3310,8 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'total_nett_price_mapping',title:'Total Nett Price Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'total_nett_actual_mapping',title:'Total Nett Actual Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'total_net_delta_mapping',title:'Total Nett Delta Mapping',width:100, halign:'center',align:'left', sortable:true},
-				{field:'boqno_old',title:'BOQ No Old',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_tracker_siteinfo_id_old',title:'tbl_master_tracker_siteinfo_id_old',width:100,hidden:true},
+				{field:'boqno_old',title:'BOQ No Old',width:120, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno_old || value;
 					},
@@ -3318,7 +3412,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				},
 			]
 		break;
-		case "mapping":
+		case "mapping": //mappingnya
 			judulnya = "";
 			urlnya = "mapping";
 			//height = 800;
@@ -3338,7 +3432,8 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
 				{field:'material_number',title:'Material Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'item_text',title:'Item Text',width:400, halign:'center',align:'left', sortable:true},
-				{field:'boqno',title:'boqno',width:100, halign:'center',align:'left', sortable:true,
+				{field:'tbl_master_tracker_siteinfo_id',title:'tbl_master_tracker_siteinfo_id',hidden:true},
+				{field:'boqno',title:'boqno',width:120, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno || value;
 					},
@@ -3413,6 +3508,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 			kolom[modnya] = [
 				{field:'level',title:'Level',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:200, halign:'center',align:'left', sortable:true},
+				{field:'tbl_master_tracker_siteinfo_id',title:'tbl_master_tracker_siteinfo_id',hidden:true},
 				{field:'boqno',title:'BOQ No',width:100, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
 						return row.boqno || value;
@@ -3768,7 +3864,8 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 		nowrap: true,
         singleSelect:true,
 		queryParams:param,
-		showFooter:footer,
+		showFooter:footers,
+		footer:'#footer_'+modnya,
 		selectOnCheck:false,
 		frozenColumns:[
             frozen[modnya]
@@ -3778,12 +3875,102 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
         ],
 		//toolbar: tolbarnya,
 		onEndEdit:function(index,row){
-            if(divnya == "receivedall"){
-				var ed_phasecode = $(this).datagrid('getEditor', {
+            if(modnya == "receivedall"){
+				var ed_phase_code = $(this).datagrid('getEditor', {
 					index: index,
-					field: 'tbl_master_phase_id'
+					field: 'phase_code'
 				});
-				row.tbl_master_phase_id = $(ed_phasecode.target).combobox('getText');
+				//Phase Name
+				if(ed_phase_code){
+					row.tbl_master_phase_id = $(ed_phase_code.target).combobox('getValue');
+					row.phase_code = $(ed_phase_code.target).combobox('getText');
+				}
+			}else if(modnya == "receiveddollar"){
+				var ed_cr_no_nokia = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'cr_no_nokia'
+				});
+				//CR
+				if(ed_cr_no_nokia){
+					row.cr_no_nokia = $(ed_cr_no_nokia.target).combobox('getText');
+					row.tbl_master_cr_id = $(ed_cr_no_nokia.target).combobox('getValue');				
+				}
+			}else if(modnya == "reservationdollar"){
+				var ed_boqno = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'boqno'
+				});
+				var ed_boqno_old = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'boqno_old'
+				});
+				//BOQ
+				if(ed_boqno){
+					row.boqno = $(ed_boqno.target).combobox('getText');
+					row.tbl_master_tracker_siteinfo_id = $(ed_boqno.target).combobox('getValue');
+				}
+				//BOQ OLD
+				if(ed_boqno_old){
+					row.boqno_old = $(ed_boqno_old.target).combobox('getText');
+					row.tbl_master_tracker_siteinfo_id_old = $(ed_boqno_old.target).combobox('getValue');
+				}
+			}else if(modnya == "mapping"){				
+				var ed_boqno = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'boqno'
+				});
+				//BOQ
+				if(ed_boqno){
+					row.boqno = $(ed_boqno.target).combobox('getText');
+					row.tbl_master_tracker_siteinfo_id = $(ed_boqno.target).combobox('getValue');
+				}
+			}else if(modnya == "boqpersite"){				
+				var ed_boqno = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'boqno'
+				});
+				//BOQ
+				if(ed_boqno){
+					row.boqno = $(ed_boqno.target).combobox('getText');
+					row.tbl_master_tracker_siteinfo_id = $(ed_boqno.target).combobox('getValue');
+				}
+			}else if(modnya == "siteinfo"){
+				var ed_sitestatus = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'site_status'
+				});
+				
+				var ed_regioncode = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'region_code'
+				});
+				var ed_pone = $(this).datagrid('getEditor', {
+					index: index,
+					field: 'po_ne'
+				});
+				
+				//sitename
+				if(ed_sitestatus){
+					console.log($(ed_sitestatus.target).combobox('getValue'));
+					
+					row.tbl_master_sitename_id = $(ed_sitestatus.target).combobox('getValue');
+					row.site_status = $(ed_sitestatus.target).combobox('getText');
+				}
+				
+				//region
+				if(ed_regioncode){				
+					console.log($(ed_regioncode.target).combobox('getValue'));
+					
+					row.tbl_master_region_id = $(ed_regioncode.target).combobox('getValue');
+					row.region_code = $(ed_regioncode.target).combobox('getText');
+				}
+				//ne name
+				if(ed_pone){
+					console.log($(ed_pone.target).combobox('getValue'));
+					
+					row.tbl_master_pone_id = $(ed_pone.target).combobox('getValue');
+					row.po_ne = $(ed_pone.target).combobox('getText');
+				}
 			}
         },		
 		onBeforeEdit:function(index,row,rowIndex){
