@@ -41,17 +41,17 @@
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">CR Submit</label>
 		<div class="col-sm-4">
-			<input class="form-control" type="datebox" name='cr_submit' value="{$data.cr_submit|default:''}" />
+			<input class="form-control" type="text" name='cr_submit' id="dateboxsubmit" value="{$data.cr_submit|default:''}" style="width:100%;" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">CR Approved</label>
 		<div class="col-sm-4">
-			<input class="form-control" type="date" name='cr_approved' value="{$data.cr_approved|default:''}" />
+			<input class="form-control" type="text" name='cr_approved' id="dateboxcrapproved" value="{$data.cr_approved|default:''}" style="width:100%;" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">PO Received</label>
-		<div class="col-sm-4 easyui-calendar">
-			<input class="form-control" type="date" name='po_received' value="{$data.po_received|default:''}" />
+		<div class="col-sm-4">
+			<input class="form-control" type="text" name='po_received' id="dateboxporeceived" value="{$data.po_received|default:''}" style="width:100%;" />
 		</div>
 	</div>
 	<div class="form-group"><label class="col-sm-2 control-label">CR Currency</label>
@@ -123,5 +123,36 @@
 		$('#grid_mastercr').datagrid('reload');
 		return false;
 	});
+
+	$('#dateboxsubmit').datebox({
+    	required:true
+    });
+
+    $('#dateboxporeceived').datebox({
+    required:true
+    });
+
+    $('#dateboxcrapproved').datebox({
+    required:true
+    });
+
+    $.fn.datebox.defaults.formatter = function(date){
+		var y = date.getFullYear();
+		var m = date.getMonth()+1;
+		var d = date.getDate();
+		return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+	};
+	$.fn.datebox.defaults.parser = function(s){
+		if (!s) return new Date();
+		var ss = s.split('-');
+		var y = parseInt(ss[0],10);
+		var m = parseInt(ss[1],10);
+		var d = parseInt(ss[2],10);
+		if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+			return new Date(y,m-1,d);
+		} else {
+			return new Date();
+		}
+	};
 
 </script>

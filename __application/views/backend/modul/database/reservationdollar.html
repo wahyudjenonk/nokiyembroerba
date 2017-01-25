@@ -39,6 +39,7 @@
 								<label>Phase</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_phasename' /> &nbsp;
 								<label>PO Type</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_potype' /> &nbsp;
 								<label>PO No</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_pono' /> &nbsp;
+								<label>Item Text</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_itemtext' /> &nbsp;
 								<label>All Field</label> : <input type='text' style='width:75px;padding:2px;' id='{$submodul}_allfield' /> &nbsp;
 								<a href="javascript:void(0)" class="l-btn l-btn-small l-btn-plain" group="" id="search_{$submodul}" onClick="">
 									<span class="l-btn-left l-btn-icon-left">
@@ -76,10 +77,12 @@
 				'phaseyear' : $('#{$submodul}_phaseyear').val(),
 				'potype' : $('#{$submodul}_potype').val(),
 				'pono' : $('#{$submodul}_pono').val(),
+				'itemtext' : $('#{$submodul}_itemtext').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'J',
 				'initial_potype' : 'E',
-				'initial_pono' : 'D'
+				'initial_pono' : 'D',
+				'initial_itemtext' : 'H'
 			});
 		}
 	});
@@ -90,10 +93,12 @@
 				'phaseyear' : $('#{$submodul}_phaseyear').val(),
 				'potype' : $('#{$submodul}_potype').val(),
 				'pono' : $('#{$submodul}_pono').val(),
+				'itemtext' : $('#{$submodul}_itemtext').val(),
 				'allfield' 	: $('#{$submodul}_allfield').val(),
 				'initial_phase' : 'J',
 				'initial_potype' : 'E',
-				'initial_pono' : 'D'
+				'initial_pono' : 'D',
+				'initial_itemtext' : 'H'
 		});
 	});
 	$('#exportdata_{$submodul}').on('click', function(){
@@ -102,10 +107,12 @@
 		param['phaseyear']   = $('#{$submodul}_phaseyear').val();
 		param['potype']   = $('#{$submodul}_potype').val();
 		param['pono']   = $('#{$submodul}_pono').val();
+		param['itemtext']   = $('#{$submodul}_itemtext').val();
 		param['allfield']    = $('#{$submodul}_allfield').val();
 		param['initial_phase']   = 'J';
 		param['initial_potype']   = 'E';
 		param['initial_pono']   = 'D';	
+		param['initial_itemtext']   = 'H';				
 
 		openWindowWithPostRequest('{$host}backend/exportdatawithtemplate/reservationdollar', param);
 	});
