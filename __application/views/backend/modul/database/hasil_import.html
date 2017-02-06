@@ -5,6 +5,7 @@
 	<table width='100%'>
 		<tr style='background:#F2F2F2;'>
 			<td width='15%' align='center'><b>Rows Excel</b></td>
+			<td width='15%' align='center'><b>Phase Code</b></td>
 			<td width='15%' align='center'><b>PO Type</b></td>
 			<td width='15%' align='center'><b>PO No</b></td>
 			<td width='15%' align='center'><b>CR No Nokia</b></td>
@@ -12,6 +13,7 @@
 		{foreach from=$data item=rows}
 			<tr>
 				<td>{$rows.row|default:''}</td>
+				<td>{$rows.phase.phase_code|default:'-'}</td>
 				<td>{$rows.potype.po_type|default:'-'}</td>
 				<td>{$rows.masterpo.po_no|default:'-'}</td>
 				<td>{$rows.mastercr.cr_no_nokia|default:'-'}</td>

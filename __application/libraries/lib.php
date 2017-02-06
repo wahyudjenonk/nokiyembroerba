@@ -18,6 +18,7 @@ class lib {
 	}
 	
 	//class Upload File Version 1.0 - Beta
+
 	function uploadnong($upload_path="", $object="", $file=""){
 		//$upload_path = "./__repository/".$folder."/";
 		
@@ -299,10 +300,8 @@ class lib {
 				$data = array(
 					'0' => array('id'=>'received','txt'=>'Received'),
 					'1' => array('id'=>'reservation','txt'=>'Reservation'),
-					'2' => array('id'=>'boqoa','txt'=>'BOQ OA'),
-					'3' => array('id'=>'boqba','txt'=>'BOQ BA'),
-					'4' => array('id'=>'boqinv','txt'=>'BOQ INV'),
-					'5' => array('id'=>'wpidso','txt'=>'WPID SO'),
+					'2' => array('id'=>'wpid','txt'=>'WPID'),
+					'3' => array('id'=>'so','txt'=>'SO'),
 				);
 			break;
 			default:
@@ -345,7 +344,21 @@ class lib {
 		 		
 		$sql = $sql . " LIMIT $start,$limit";
 					
-		$data = $ci->db->query($sql)->result_array();  
+		$data = $ci->db->query($sql)->result_array(); 
+
+		if($table == 'mapping') {
+		 	foreach($data as $k => $v){
+				if($v['level'] == '2'){					
+					$indexnya = ($k-1);
+					$data[$k]['po_type'] = $data[$indexnya]['po_type']; 
+					$data[$k]['po_no'] = $data[$indexnya]['po_no']; 
+					$data[$k]['line_item'] = $data[$indexnya]['line_item']; 
+					$data[$k]['phase_name'] = $data[$indexnya]['phase_name']; 
+					$data[$k]['material_number'] = $data[$indexnya]['material_number']; 
+					$data[$k]['item_text'] = $data[$indexnya]['item_text'];
+				}
+			}
+		} 
 		
 		/*if($table == 'mapping'){
 			foreach($data as $k => $v){

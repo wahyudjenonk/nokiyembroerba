@@ -1,6 +1,6 @@
 <div class="wrapper wrapper-content">
-
-<div class="row">
+   {* <div class="row">
+        <div class="row">
     <div class="col-lg-3">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
@@ -52,7 +52,52 @@
                 <small>In first month</small>
             </div>
         </div>
-	</div>
+    </div> *}
+   
+</div>
+        <div class="col-lg-12" style='padding-right:0px !important;'>
+            
+            <div class="ibox">
+                <div class="ibox-content" style='padding-bottom:0px !important;'>
+                    
+                    <div id='grid_nya_{$submodul}'>
+                        {include file="backend/template/grid_dashboard.html" tablenya="main"}
+                    </div>
+                    
+                    <div id='frm_{$submodul}' style='display:none;'></div>              
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>
 
-</div>
+<script>
+    var submodul = "{$submodul|default:''}";
+    var param = {};
+
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            $('#grid_{$submodul}').datagrid('reload',{
+                'table' : 'tbl_master_phase',
+                'kat' : $('#{$submodul}_filter_kategori').val(),
+                'key' : $('#{$submodul}_txt').val()
+            });
+        }
+    });
+    
+    $('#search_{$submodul}').on('click', function(){
+        $('#grid_{$submodul}').datagrid('reload',{
+            'table' : 'tbl_master_phase',
+            'kat' : $('#{$submodul}_filter_kategori').val(),
+            'key' : $('#{$submodul}_txt').val()
+        });
+    });
+    $('#exportdata_{$submodul}').on('click', function(){
+        param['table'] = 'tbl_master_phase';
+        param['kat']   = $('#{$submodul}_filter_kategori').val();
+        param['key']   = $('#{$submodul}_txt').val();
+        
+        openWindowWithPost('{$host}backend/exportdata/excell/{$main}/{$submodul}', param);
+    });
+</script>

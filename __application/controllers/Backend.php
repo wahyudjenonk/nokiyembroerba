@@ -138,7 +138,7 @@ class Backend extends JINGGA_Controller {
 						$type_import = $this->input->post('type_import');
 						
 						$this->nsmarty->assign("type_import", $type_import);
-						$this->nsmarty->assign("combotracker", $this->lib->fillcombo('combotracker', 'return') );
+						$this->nsmarty->assign("comboalldatabase", $this->lib->fillcombo('comboalldatabase', 'return') );
 					break;
 					case "form-receivedall":
 						if($editstatus == 'edit'){
@@ -188,7 +188,7 @@ class Backend extends JINGGA_Controller {
 							$this->nsmarty->assign("data", $data);
 						}	
 						$this->nsmarty->assign("tbl_master_phase_db", $this->lib->fillcombo('tbl_all_database', 'return'));
-						//$this->nsmarty->assign("tbl_master_tracker_siteinfo_db", $this->lib->fillcombo('boqpersite_boqno', 'return'));										
+						$this->nsmarty->assign("tbl_master_tracker_siteinfo_db", $this->lib->fillcombo('boqpersite_boqno', 'return'));										
 					break;
 					case "form-boqall":
 						if($editstatus == 'edit'){
@@ -1209,6 +1209,141 @@ class Backend extends JINGGA_Controller {
 				$worksheet->SetCellValue('H'.($rowCount+4), "INDOSAT Representative,")->getStyle('H'.($rowCount+4))->getAlignment()->applyFromArray(
     				array('horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,)
 				);
+			break;
+
+			case "boqoa":
+				$filename = "export-data-boqoa-".$date;
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-boqoa.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				//$boqoa = $this->mbackend->getdata("boqoa", "variable");
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['id_reff1']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['level']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['network_boq']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['wp_id_svc']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['po_type']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['po_no']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['line_item']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['item_text']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['plan_qty_mapping']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['aqtual_qty_mapping']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['status_cr_qty_mapping']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['qty_on_air']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['qty_on_air_remarks']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['qty_atp']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['qty_atp_remarks']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['site_id_ori']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['site_name_ori']);
+				}
+			break;
+			case "boqba":
+				$filename = "export-data-boqba-".$date;
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-boqba.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				//$boqoa = $this->mbackend->getdata("boqoa", "variable");
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['id_reff1']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['level']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['network_boq']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['wp_id_svc']);
+					$worksheet->SetCellValue('K'.$rowCount, $v['po_type']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['po_no']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['line_item']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['item_text']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['plan_qty_mapping']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['aqtual_qty_mapping']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['status_cr_qty_mapping']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['qty_on_air']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['qty_on_air_remarks']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['qty_atp']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['qty_atp_remarks']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['qty_pac']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['mcr_no']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['pac_no']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['fac_no']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['remarks_certificate']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['top_cert']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['qty_ba']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['site_id_ori']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['site_name_ori']);
+				}
+			break;
+
+			case "wpidso":
+				$filename = "export-data-wpidso-".$date;
+				$objPHPExcel = $objReader->load("__repository/template_export/template-export-wpidso.xlsx");
+				$worksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$rowCount = 5;
+				
+				foreach($data as $k => $v){
+					$rowCount++;
+					$worksheet->SetCellValue('A'.$rowCount, $v['id']);
+					$worksheet->SetCellValue('B'.$rowCount, $v['id_reff1']);
+					$worksheet->SetCellValue('C'.$rowCount, $v['level']);
+					$worksheet->SetCellValue('D'.$rowCount, $v['phase_name']);
+					$worksheet->SetCellValue('E'.$rowCount, $v['boqno']);
+					$worksheet->SetCellValue('F'.$rowCount, $v['site_id']);
+					$worksheet->SetCellValue('G'.$rowCount, $v['site_name']);
+					$worksheet->SetCellValue('H'.$rowCount, $v['region_code']);
+					$worksheet->SetCellValue('I'.$rowCount, $v['network_boq']);
+					$worksheet->SetCellValue('J'.$rowCount, $v['wp_id_svc']);	
+					$worksheet->SetCellValue('K'.$rowCount, $v['po_type']);
+					$worksheet->SetCellValue('L'.$rowCount, $v['po_no']);
+					$worksheet->SetCellValue('M'.$rowCount, $v['lineitem_rcv']);
+					$worksheet->SetCellValue('N'.$rowCount, $v['materialnumber_rcv']);
+					$worksheet->SetCellValue('O'.$rowCount, $v['itemtext_rcv']);
+					$worksheet->SetCellValue('P'.$rowCount, $v['shorttext_rcv']);
+					$worksheet->SetCellValue('Q'.$rowCount, $v['networknumber_rcv']);
+					$worksheet->SetCellValue('R'.$rowCount, $v['plan_qty_mapping']);
+					$worksheet->SetCellValue('S'.$rowCount, $v['aqtual_qty_mapping']);
+					$worksheet->SetCellValue('T'.$rowCount, $v['delta_qty_mapping']);
+					$worksheet->SetCellValue('U'.$rowCount, $v['status_cr_qty_mapping']);
+					$worksheet->SetCellValue('V'.$rowCount, $v['qty_on_air']);
+					$worksheet->SetCellValue('W'.$rowCount, $v['qty_on_air_remarks']);
+					$worksheet->SetCellValue('X'.$rowCount, $v['wpid']);
+					$worksheet->SetCellValue('Y'.$rowCount, $v['wp_name']);
+					$worksheet->SetCellValue('Z'.$rowCount, $v['qc_no']);
+					$worksheet->SetCellValue('AA'.$rowCount, $v['scc_no']);
+					$worksheet->SetCellValue('AB'.$rowCount, $v['por_no']);
+					$worksheet->SetCellValue('AC'.$rowCount, $v['por_status']);
+					$worksheet->SetCellValue('AD'.$rowCount, $v['wbs_no']);
+					$worksheet->SetCellValue('AE'.$rowCount, $v['so_no1']);
+					$worksheet->SetCellValue('AF'.$rowCount, $v['so_no2']);
+					$worksheet->SetCellValue('AG'.$rowCount, $v['so_no3']);
+					$worksheet->SetCellValue('AH'.$rowCount, $v['so_status']);
+					$worksheet->SetCellValue('AI'.$rowCount, $v['remarks_por_so']);
+					$worksheet->SetCellValue('AJ'.$rowCount, $v['material_nett_price']);
+					$worksheet->SetCellValue('AK'.$rowCount, $v['plan_value']);
+					$worksheet->SetCellValue('AL'.$rowCount, $v['actual_value']);
+					$worksheet->SetCellValue('AM'.$rowCount, $v['pac_value']);
+					$worksheet->SetCellValue('AN'.$rowCount, $v['ba_value']);
+					$worksheet->SetCellValue('AO'.$rowCount, $v['on_air_baseline']);
+					$worksheet->SetCellValue('AP'.$rowCount, $v['on_air_date']);
+					$worksheet->SetCellValue('AQ'.$rowCount, $v['pac_baseline']);
+					$worksheet->SetCellValue('AR'.$rowCount, $v['pac_date2']);
+					$worksheet->SetCellValue('AS'.$rowCount, $v['update_by']);
+					$worksheet->SetCellValue('AT'.$rowCount, $v['update_date']);
+					$worksheet->SetCellValue('AU'.$rowCount, $v['uploader_id']);
+					$worksheet->SetCellValue('AW'.$rowCount, $v['status']);
+				}
 			break;
 		}
 		

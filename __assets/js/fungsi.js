@@ -100,6 +100,104 @@ function getClientWidth(){
 	return theWidth;
 }
 
+function genGridDashboard(modnya, divnya, lebarnya, tingginya, par1){
+	if(lebarnya == undefined){
+		lebarnya = getClientWidth-250;
+	}
+	if(tingginya == undefined){
+		tingginya = getClientHeight-200;
+	}
+
+	var kolom ={};
+	var frozen ={};
+	var judulnya;
+	var param={};
+	var urlnya;
+	var urlglobal="";
+	var url_detil="";
+	var post_detil={};
+	var fitnya=true;
+	var klik=false;
+	var doble_klik=false;
+	var pagesizeboy = 100;
+	var singleSelek = true;
+	var nowrap_nya = true;
+	var footer=false;
+	var rownumbernya=false;
+
+	switch(modnya){
+		case "main":
+			judulnya = "";
+			urlnya = "main";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'site_name',title:'Site Name',width:75, halign:'center',align:'left', sortable:false},
+			]
+			kolom[modnya] = [
+				{field:'site_id',title:'Site ID',width:75, halign:'center',align:'left', sortable:false},
+				{field:'on_air_date',title:'On Air Date',width:75, halign:'center',align:'left', sortable:false},
+				{field:'mcr_exit',title:'MCR Exit',width:75, halign:'center',align:'left', sortable:false},
+				{field:'atp_date',title:'ATP Date',width:75, halign:'center',align:'left', sortable:false},
+				{field:'endorse_approved',title:'ATP Endorse',width:75, halign:'center',align:'left', sortable:false},
+				{field:'phase_code',title:'phase_code',width:75, halign:'center',align:'left', sortable:false},
+				{field:'sow_category',title:'SOW Category',width:75, halign:'center',align:'left', sortable:false},
+			]
+		break;
+	}
+
+	grid_nya=$("#"+divnya).datagrid({
+		title:judulnya,
+		width: '100%',
+		height: '100%',
+		rownumbers:rownumbernya,
+		iconCls:'database',
+        fit:fitnya,
+        striped:true,
+        pagination:true,
+        remoteSort: false,
+		showFooter:footer,
+		singleSelect:singleSelek,
+        url: urlglobal,		
+		nowrap: nowrap_nya,
+		pageSize:pagesizeboy,
+		pageList:[100,200],
+		queryParams:param,
+		frozenColumns:[
+            frozen[modnya]
+        ],
+		columns:[
+            kolom[modnya]
+        ],
+		onClickRow:function(rowIndex,rowData){
+		 
+        },
+		onDblClickRow:function(rowIndex,rowData){
+			if(doble_klik==true){
+				switch(modnya){
+					case "list_produk_kasir":
+					break;
+				}
+			}
+		},
+		//toolbar: '#tb_'+modnya,
+		rowStyler: function(index,row){
+			if (row.status == 0){
+				return 'background-color:#FFD1BB;'; // return inline style
+			}
+			
+		},
+		onLoadSuccess: function(data){
+			if(data.total == 0){
+				var $panel = $(this).datagrid('getPanel');
+				var $info = '<div class="info-empty" style="margin-top:18%;">No Data Available</div>';
+				$($panel).find(".datagrid-view").append($info);
+			}else{
+				$('.info-empty').remove();
+			}
+		},
+	});
+}
 
 function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	if(lebarnya == undefined){
@@ -120,13 +218,31 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 	var fitnya=true;
 	var klik=false;
 	var doble_klik=false;
-	var pagesizeboy = 20;
+	var pagesizeboy = 50;
 	var singleSelek = true;
 	var nowrap_nya = true;
 	var footer=false;
 	var rownumbernya=false;
 
 	switch(modnya){
+		case "main":
+			judulnya = "";
+			urlnya = "main";
+			//height = 800;
+			urlglobal = host+'backend/getdata/'+urlnya;
+			frozen[modnya] = [
+				{field:'phase_code',title:'phase_code',width:100, halign:'center',align:'left', sortable:false},
+				{field:'site_id',title:'Site ID',width:100, halign:'center',align:'left', sortable:false},
+				{field:'site_name',title:'Site Name',width:100, halign:'center',align:'left', sortable:false},
+				{field:'sow_category',title:'SOW Category',width:100, halign:'center',align:'left', sortable:false},
+			]
+			kolom[modnya] = [
+				{field:'on_air_date',title:'On Air Date',width:100, halign:'center',align:'left', sortable:false},
+				{field:'mcr_exit',title:'MCR Exit',width:100, halign:'center',align:'left', sortable:false},
+				{field:'atp_date',title:'ATP Date',width:100, halign:'center',align:'left', sortable:false},
+				{field:'endorse_approved',title:'ATP Endorse',width:100, halign:'center',align:'left', sortable:false},
+			]
+		break;
 		case "phase":
 			judulnya = "";
 			urlnya = "phase";
@@ -746,6 +862,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 		case "receivedall":
 			judulnya = "";
 			urlnya = "receivedall";
+			fitnya = true;
 			//height = 800;
 			urlglobal = host+'backend/getdata/'+urlnya;
 			frozen[modnya] = [
@@ -755,19 +872,8 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 			kolom[modnya] = [
 				//{field:'id_reff2',title:'ID Reff 2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'level',title:'Lev',width:25, halign:'center',align:'center', sortable:true},
-				{field:'tbl_master_phase_id',title:'Phase Code',width:100, halign:'center',align:'left', sortable:true,
-					formatter:function(value,row){
-						return row.phase_code || value;
-					},
-					editor:{
-                       type:'combobox',
-                       options:{
-						valueField:'id',
-						textField:'txt',
-						url:host+'backend/getcombobox/tbl_master_phase',
-                       }
-                    }
-				},
+				{field:'tbl_master_phase_id',title:'Lev',width:25, halign:'center',align:'center', hidden:true},
+				{field:'phase_code',title:'Phase Code',width:120, halign:'center',align:'left', sortable:true},
 				{field:'phase_year',title:'Phase Year',width:100, halign:'center',align:'left', sortable:true},
 				{field:'phase_name',title:'Phase Name',width:150, halign:'center',align:'left', sortable:true},
 				{field:'po_type',title:'PO Type',width:50, halign:'center',align:'left', sortable:true},
@@ -809,7 +915,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'require_gr',title:'Require GR',width:100, halign:'center',align:'left', sortable:true},
 				{field:'invoice_receipt',title:'Invoice Receipt',width:100, halign:'center',align:'left', sortable:true},
 				{field:'discount_type_item',title:'Discount Type (Item)',width:100, halign:'center',align:'left', sortable:true},
-				{field:'amount_percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'right', sortable:true},
+				{field:'amount_percentage_item',title:'Amount / percentage (Item)',width:100, halign:'center',align:'left', sortable:true},
 				{field:'indicator',title:'Indicator',width:100, halign:'center',align:'left', sortable:true},
 				{field:'assigned_to_line_item',title:'Assigned to Line Item',width:100, halign:'center',align:'left', sortable:true},
 				{field:'service_number',title:'Service Number',width:100, halign:'center',align:'left', sortable:true},
@@ -825,7 +931,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
 				{field:'activity_number',title:'Activity Number',width:100, halign:'center',align:'left', sortable:true},
 				{field:'assigned_to_line_item2',title:'Assigned to Line Item2',width:100, halign:'center',align:'left', sortable:true},
 				{field:'invoicing_plan_date',title:'Invoicing Plan Date',width:100, halign:'center',align:'left', sortable:true},
-				{field:'percentage_to_be_invoiced',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'right', sortable:true},
+				{field:'percentage_to_be_invoiced',title:'Percentage (%) to be invoiced',width:100, halign:'center',align:'left', sortable:true},
 				{field:'values_to_be_invoiced',title:'Values to be invoiced',width:100, halign:'center',align:'left', sortable:true},
 				{field:'buyer',title:'Buyer',width:100, halign:'center',align:'left', sortable:true},
 				{field:'basic_contract',title:'Basic Contract',width:100, halign:'center',align:'left', sortable:true},
@@ -1288,7 +1394,7 @@ function genGrid(modnya, divnya, lebarnya, tingginya, par1){
         url: urlglobal,		
 		nowrap: nowrap_nya,
 		pageSize:pagesizeboy,
-		pageList:[20,50,100,200],
+		pageList:[50,100,200],
 		queryParams:param,
 		frozenColumns:[
             frozen[modnya]
@@ -1711,7 +1817,9 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'atp_method',title:'ATP Method',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true},
+				{field:'partner_ni',title:'Partner NI',width:100, halign:'center',align:'left', sortable:true,
+					editor:{type:'textbox'}
+				},
 				{field:'indosat_pic',title:'Indosat Pic',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
@@ -2088,7 +2196,7 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'doc_status',title:'DOC STATUS',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'70_ssv',title:'70. SSV',width:100, halign:'center',align:'left', sortable:true,
+				{field:'70_ssv_fr',title:'70. SSV',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
 				{field:'71_rssi',title:'71. RSSI',width:100, halign:'center',align:'left', sortable:true,
@@ -2100,13 +2208,13 @@ function genGridEditable(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'74_alarm_log',title:'74. ALARM LOG',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'xx_others3',title:'XX. OTHERS3',width:100, halign:'center',align:'left', sortable:true,
+				{field:'xx_other3',title:'XX. OTHERS3',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'xx_others4',title:'XX. OTHERS4',width:100, halign:'center',align:'left', sortable:true,
+				{field:'xx_other4',title:'XX. OTHERS4',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'mcr_exit_accept',title:'MCR EXIT ACCEPT',width:100, halign:'center',align:'left', sortable:true,
+				{field:'mcr_exit',title:'MCR EXIT ACCEPT',width:100, halign:'center',align:'left', sortable:true,
 					editor:{
                        type:'datebox',
                        options:{
@@ -2821,6 +2929,7 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'site_name_ori',title:'Site Name Ori',width:150, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
+				{field:'status_cr_reloc_mapping',title:'Status CR Reloc Mapping',width:100, halign:'center',align:'left', sortable:true},
 				{field:'tbl_master_pone_id',title:'', hidden:true},
 				{field:'po_ne',title:'NE Name',width:75, halign:'center',align:'left', sortable:true,
 					formatter:function(value,row){
@@ -3586,10 +3695,10 @@ function genGridCellEditing(modnya, divnya, lebarnya, tingginya, crud_table){
 				{field:'qty_atp_remarks',title:'Qty ATP Remarks',width:100, halign:'center',align:'left', sortable:true,
 					editor:{type:'textbox'}
 				},
-				{field:'boqno_old',title:'boqno old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'siteid_old',title:'siteid old',width:100, halign:'center',align:'left', sortable:true},
-				{field:'sitename_old',title:'sitename old',width:200, halign:'center',align:'left', sortable:true},
-				{field:'regioncode_old',title:'regioncode old',width:100, halign:'center',align:'left', sortable:true},
+				//{field:'boqno',title:'Boqno Old',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_id_ori',title:'Site ID Ori',width:100, halign:'center',align:'left', sortable:true},
+				{field:'site_name_ori',title:'Site Name Ori',width:100, halign:'center',align:'left', sortable:true},
+				//{field:'region_code',title:'Region Code Ori',width:100, halign:'center',align:'left', sortable:true},
 			]
 		break;
 		case "boqba":
@@ -4236,7 +4345,14 @@ function genform(type, modulnya, submodulnya, stswindow, tabel){
 			tinggi = 200;
 			urlpost = host+'backend/getdisplay/database/form-'+submodulnya;
 		break;
-		case "wpidso":			
+		case "wpid":			
+			table = "tbl_all_database";
+			judulwindow = 'Form BOQ Per Site';
+			lebar = 700;
+			tinggi = 200;
+			urlpost = host+'backend/getdisplay/database/form-'+submodulnya;
+		break;
+		case "so":			
 			table = "tbl_all_database";
 			judulwindow = 'Form BOQ Per Site';
 			lebar = 700;

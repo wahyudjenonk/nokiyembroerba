@@ -125,6 +125,7 @@
 	
 	$('#cancelImport_{$acak}').on('click',function(){
 		closeWindow();
+		$('#grid_{$type_import}').datagrid('reload');
 		return false;
 	});
 </script>

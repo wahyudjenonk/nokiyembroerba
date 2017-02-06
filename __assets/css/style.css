@@ -3521,7 +3521,7 @@ video {
   padding: px 10px 40px;
 }
 #page-wrapper {
-  padding: 0 15px;
+  padding: 0 5px;
   min-height: 568px;
   position: relative !important;
 }
@@ -3822,7 +3822,7 @@ code {
 .ibox-content {
   background-color: #ffffff;
   color: inherit;
-  padding: 15px 20px 66px 20px;
+  padding: 10px 10px 10px 10px;
   border-color: #ffffff;
   border-image: none;
   border-style: solid solid none;
